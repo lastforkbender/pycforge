@@ -157,6 +157,7 @@ class PublicDistributionTests(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("python -m pytest -q", workflow)
+        self.assertIn("setuptools==82.0.1 pytest==9.1.1 .", workflow)
         self.assertIn("SOURCE_DATE_EPOCH", workflow)
         self.assertIn("tools/normalize_sdist.py", workflow)
         self.assertIn("python -m tools.verify_pypi_readme", workflow)
