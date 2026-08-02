@@ -11,9 +11,9 @@ documented, deliberately bounded Python subset into readable C11 source while
 producing diagnostics, source mappings, decision traces, and reproducible
 fingerprints.
 
-![PyCForge 0.15.2 desktop workspace showing a Python source bundle, generated C, and the transpilation summary](https://raw.githubusercontent.com/lastforkbender/pycforge/main/docs/images/pycforge-workspace-0.15.2.png)
+![PyCForge 0.15.2 desktop workspace showing a Python source bundle, generated C, and the transpilation summary](https://raw.githubusercontent.com/lastforkbender/pycforge/6ad94a7963720772b60ae16b46da46396b1e616d/docs/images/pycforge-workspace-0.15.2.png)
 
-**[Open the 32-page PyCForge Programmer's Conversion Guide (PDF)](https://github.com/lastforkbender/pycforge/blob/main/docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf)**
+**[Open the 32-page PyCForge Programmer's Conversion Guide (PDF)](https://raw.githubusercontent.com/lastforkbender/pycforge/6ad94a7963720772b60ae16b46da46396b1e616d/docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf)**
 
 ## Quick start
 
@@ -155,7 +155,7 @@ and the Programmer's Conversion Guide for the complete limitations.
 
 ## Documentation
 
-- **[Programmer's Conversion Guide — 0.15.2 Reference Edition (PDF)](https://github.com/lastforkbender/pycforge/blob/main/docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf)**
+- **[Programmer's Conversion Guide — 0.15.2 Reference Edition (PDF)](https://raw.githubusercontent.com/lastforkbender/pycforge/6ad94a7963720772b60ae16b46da46396b1e616d/docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf)**
 - [Supported Python](https://github.com/lastforkbender/pycforge/blob/main/specifications/supported_python.md)
 - [Workspace specification](https://github.com/lastforkbender/pycforge/blob/main/specifications/pycforge_workspace.md)
 - [Current state](https://github.com/lastforkbender/pycforge/blob/main/CURRENT_STATE.md)

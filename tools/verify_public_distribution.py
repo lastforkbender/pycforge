@@ -31,13 +31,21 @@ EXPECTED_SCREENSHOT = Path("docs/images/pycforge-workspace-0.15.2.png")
 EXPECTED_PROGRAMMER_GUIDE = Path(
     "docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf"
 )
+ASSET_COMMIT = "6ad94a7963720772b60ae16b46da46396b1e616d"
+EXPECTED_SCREENSHOT_URL = (
+    "https://raw.githubusercontent.com/lastforkbender/pycforge/"
+    f"{ASSET_COMMIT}/docs/images/pycforge-workspace-0.15.2.png"
+)
+EXPECTED_PROGRAMMER_GUIDE_URL = (
+    "https://raw.githubusercontent.com/lastforkbender/pycforge/"
+    f"{ASSET_COMMIT}/docs/"
+    "PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf"
+)
 EXPECTED_README_SNIPPETS = (
     "python -m pip install pycforge",
     "PyQt5 and the desktop application as required",
-    "https://raw.githubusercontent.com/lastforkbender/pycforge/main/"
-    "docs/images/pycforge-workspace-0.15.2.png",
-    "https://github.com/lastforkbender/pycforge/blob/main/docs/"
-    "PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf",
+    EXPECTED_SCREENSHOT_URL,
+    EXPECTED_PROGRAMMER_GUIDE_URL,
 )
 EXPECTED_PROJECT_URLS = [
     "Homepage, https://github.com/lastforkbender/pycforge",

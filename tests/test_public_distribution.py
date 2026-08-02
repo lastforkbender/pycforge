@@ -44,6 +44,16 @@ class PublicDistributionTests(unittest.TestCase):
         self.assertIn("PyQt5 and the desktop application as required", readme)
         self.assertIn("pycforge convert input.py --output generated.c", readme)
         self.assertIn("pycforge --format json convert input.py", readme)
+        self.assertEqual(
+            readme.count(distribution_verifier.EXPECTED_SCREENSHOT_URL), 1
+        )
+        self.assertEqual(
+            readme.count(distribution_verifier.EXPECTED_PROGRAMMER_GUIDE_URL), 2
+        )
+        self.assertNotIn(
+            "raw.githubusercontent.com/lastforkbender/pycforge/main/docs/",
+            readme,
+        )
         self.assertNotIn(".[workspace]", readme)
         self.assertNotIn("optional desktop", readme.lower())
         distribution_verifier._verify_public_readme(readme.encode("utf-8"))
@@ -143,9 +153,16 @@ class PublicDistributionTests(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/release.yml").read_text(
             encoding="utf-8"
         )
+        ci_workflow = (ROOT / ".github/workflows/ci.yml").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("python -m pytest -q", workflow)
         self.assertIn("SOURCE_DATE_EPOCH", workflow)
         self.assertIn("tools/normalize_sdist.py", workflow)
+        self.assertIn("python -m tools.verify_pypi_readme", workflow)
+        self.assertIn("readme-renderer[md]==45.0", workflow)
+        self.assertIn("python -m tools.verify_pypi_readme", ci_workflow)
+        self.assertIn("readme-renderer[md]==45.0", ci_workflow)
         self.assertIn("cmp \"$release_file\"", workflow)
         self.assertNotIn("--clobber", workflow)
 

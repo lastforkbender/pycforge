@@ -50,12 +50,14 @@ jobs:
       - name: Build and inspect distributions
         run: |
           python -m pip install --upgrade pip
-          python -m pip install build==1.5.0 twine==6.2.0 setuptools==82.0.1 wheel==0.47.0
+          python -m pip install build==1.5.0 twine==6.2.0 'readme-renderer[md]==45.0' setuptools==82.0.1 wheel==0.47.0
           echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
           python -m build
           SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" python tools/normalize_sdist.py dist/pycforge-0.15.2.tar.gz
           python -m twine check --strict dist/*
           python tools/verify_public_distribution.py dist
+      - name: Prove the PyPI README renders with immutable live assets
+        run: python -m tools.verify_pypi_readme
       - name: Clean-install and construct the desktop workspace
         run: |
           python -m venv /tmp/pycforge-clean-install
