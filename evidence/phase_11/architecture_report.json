@@ -1,0 +1,6 @@
+{
+  "audit": "architecture",
+  "passed": true,
+  "schema_version": "pycforge.architecture-report/0.11",
+  "violations": []
+}

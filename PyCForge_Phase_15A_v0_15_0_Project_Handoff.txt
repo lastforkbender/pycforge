@@ -1,0 +1,207 @@
+PYCFORGE PHASE 15A v0.15.0 PROJECT HANDOFF
+===========================================
+
+STATUS
+------
+
+Phase 15A responsiveness and isolation is promoted and sealed.
+
+Package:             0.15.0
+Converter contract:  0.14.3 (unchanged)
+Workspace contract:  pycforge-workspace/0.3
+Worker protocol:     pycforge.worker-protocol/0.1
+Settings schema:     1 (unchanged)
+
+PyCForge is a deterministic Python-to-C source transpiler. It produces and
+independently validates deterministic C11 source and stops. It does not compile,
+assemble, link, load, run, execute, test, debug, profile, deploy, or otherwise
+invoke generated C.
+
+
+AUTHENTICATED PREDECESSOR
+-------------------------
+
+Phase 15A began from sealed Checkpoint E:
+
+  pycforge_checkpoint_e_v0_14_4.tar.gz
+  size:    1,398,824 bytes
+  SHA-256: b609c761748a4caf96a42df7ba99dc2e74416fb6c880a2ac547f181f5313c5c0
+  root:    pycforge_checkpoint_e_v0_14_4
+
+The predecessor wheel is:
+
+  pycforge-0.14.4-py3-none-any.whl
+  size:    360,994 bytes
+  SHA-256: c1bcafe638cb07b2bc87cb869ab2bbf2fbff20c8cc073b5716b189b075e5ccd6
+
+The frozen converter subtree remains:
+
+  a45bc2c31b954f9856c8eab36e95f68b086d5fdd682d2cf47ba2186887743124
+
+No file under pycforge/converter changed. Sealed Checkpoint E and historical
+Phase 14 transition, evidence, validator, builder, handoff, and fingerprint
+records remain immutable.
+
+
+PHASE 15A DELIVERED
+-------------------
+
+1. Process-isolated conversion
+
+   - spawn-only child process;
+   - one conversion invocation per child;
+   - no GUI-interpreter converter authority;
+   - bounded canonical JSON over send_bytes/recv_bytes;
+   - no pickle or arbitrary object IPC;
+   - strict request/result/artifact/mapping/fingerprint validation.
+
+2. Latest-wins supervision
+
+   - exactly one active and one replaceable latest pending request;
+   - a newer request retires an older pending request;
+   - cooperative cancellation receives 750 ms;
+   - non-cooperative work enters hard termination;
+   - worker reclamation is bounded by two seconds;
+   - latest pending work begins within 250 ms after prior exit;
+   - close accepts without waiting for converter cooperation.
+
+3. Immutable publication authority
+
+   - revision generation, bundle fingerprint, request fingerprint, and
+     transport fingerprint must all match;
+   - A-to-B-to-A edits do not revive late A results;
+   - canceled, stale, superseded, failed, malformed, partial, crashed, or
+     oversized work cannot publish C;
+   - last-known-good C remains read-only and becomes unsavable when stale.
+
+4. Revision, index, and file services
+
+   - source-proportional revision authentication is off the GUI thread;
+   - UTF-8 size/hash, line starts, and UTF-16 line starts are cached per exact
+     immutable document revision;
+   - generated-C position indexes are deferred after terminal status;
+   - linked-file reads, hashes, observations, and atomic writes are off the GUI
+     thread;
+   - guarded Save C rechecks exact freshness immediately before os.replace.
+
+5. Large-file workspace protections
+
+   - source edits coalesce for 120 ms and cancel/stale immediately;
+   - literal search debounces 150 ms, is latest-wins, and stores at most 5,000
+     UTF-16 ranges while retaining the exact total;
+   - automatic large-file mode disables whole-document syntax highlighting;
+   - marker storage, ExtraSelections, overview rail, and bracket scans are
+     capped and viewport-focused;
+   - generated C populates in 32 KiB event-loop slices;
+   - hidden generated C and hidden details do not populate eagerly;
+   - progress-only events do no work proportional to full source or output.
+
+
+VALIDATION
+----------
+
+Final cumulative discovery:
+
+  discovered: 670
+  passed:     652
+  skipped:     18
+  failed:       0
+
+The 18 skips are expected environment/custody skips. PyQt5 is unavailable in
+the promotion environment, and optional older sealed-custody artifacts are not
+all present. No unexpected skip promotes a visible-widget or platform claim.
+
+The Phase 15A validator passes all nine ordered audits:
+
+  contract identities
+  frozen converter subtree
+  authenticated Checkpoint E predecessor
+  runtime isolation and toolchain boundary
+  direct-versus-isolated exact equivalence
+  bounded maximum-input fixtures
+  100 edit/convert/cancel cycles
+  honest platform scope
+  source-transpiler safety
+
+Direct and spawned results match exact result_to_json bytes for the fixed
+single-module and required-keyword-only cases.
+
+Maximum-envelope evidence includes:
+
+  999,999 UTF-8 bytes and 100,000 source lines
+  249,996 tokens
+  99,996 AST nodes
+  exact 1,000,000-byte worker request
+  clean rejection at 1,000,001 source bytes
+  950,000-byte dense literal search with 50,000 exact matches and 5,000 stored
+
+The stress gate submits 100 edit/convert/cancel cycles. All 100 cancel. Ten
+cycles cancel an active spawned child. Ten workers start and ten are reaped;
+maximum simultaneous workers is one; no active PID or pending generation
+remains.
+
+Validation and packaging invoke no C compiler, linker, loader, foreign function,
+or generated-C executor.
+
+
+PLATFORM EVIDENCE AND NON-CLAIMS
+--------------------------------
+
+The Phase 15A promotion environment is headless Linux without PyQt5. Headless
+architecture, failure, custody, and maximum-envelope evidence passes.
+
+This release does not claim:
+
+  visible PyQt event-loop measurements
+  visible Windows 11 execution
+  visible Linux desktop execution
+  display-scaling or assistive-technology evidence
+  the Phase 15B custom visual/menu system
+  the Phase 15C wider IDE-grade workspace
+  the Phase 15D distribution/platform gate
+
+Those claims cannot be inferred from offscreen or source-string checks.
+
+
+PRODUCT IDENTITY AND EXCLUSIONS
+-------------------------------
+
+The front-facing application and workspace identity is PyCForge. No alternate
+theme-derived application, subsystem, component, workspace, mode, menu, schema,
+or settings name is retained in the current source tree. Original
+pre-migration bytes remain authoritative in the authenticated Phase 15A
+archive.
+
+Phase 15A adds no compiler, linker, runner, debugger, terminal, toolchain,
+plugin, project/directory explorer, recursive file scan, host import discovery,
+package discovery, generated-C editing, or external command hook.
+
+
+REPRODUCTION
+------------
+
+From the extracted source root:
+
+  python -m unittest discover -s tests
+  python tools/validate_phase15a.py --mode promotion \
+    --predecessor /path/to/pycforge_checkpoint_e_v0_14_4.tar.gz
+  python tools/build_phase15a_release.py /fresh/output/directory
+
+The release builder performs two fixed-epoch wheel builds, two normalized
+source-archive builds, exact wheel RECORD/entry-point/asset/native-member
+inspection, and isolated installed-wheel plus extracted-source direct/spawned
+transpilation smokes.
+
+
+NEXT BOUNDARY
+-------------
+
+Phase 15B is the next separately authorizable stage:
+
+  one shared action registry
+  custom gradient/icon main and context menus
+  cohesive next-generation PyCForge graphics
+  keyboard, mnemonic, focus, high-DPI, and accessibility behavior
+
+Phase 15C and Phase 15D remain unopened. Continuing to another phase requires
+separate authorization.

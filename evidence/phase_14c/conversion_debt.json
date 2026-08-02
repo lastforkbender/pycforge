@@ -1,0 +1,153 @@
+{
+  "schema_version": "pycforge.conversion-debt/0.14.2",
+  "phase": 14,
+  "mini_phase": "14C",
+  "status": "opening-owned",
+  "items": [
+    {
+      "id": "DEBT-INT-RANGE",
+      "risk": "High",
+      "status": "sealed-contained-in-14A",
+      "owner": "phase14a-numeric-semantics",
+      "description": "Python arbitrary-precision integers are represented only inside the declared signed-int64 domain.",
+      "containment": "The sealed 14A domain and helpers remain exact. Keyword binding changes only the association between already-proved actuals and formals and cannot widen any represented integer value.",
+      "next_decision": "Any broader integer representation or checked arithmetic remains a separately approved future evaluation."
+    },
+    {
+      "id": "DEBT-DIVMOD-PRECONDITIONS",
+      "risk": "High",
+      "status": "sealed-contained-in-14A",
+      "owner": "phase14a-helper-precondition-gate",
+      "description": "C division and remainder are undefined for zero and INT64_MIN divided by negative one, while Python has defined failure or arbitrary-precision behavior.",
+      "containment": "A floor-arithmetic expression used as a keyword actual retains its sealed 14A fact, literal-divisor proof, helper version, and prerequisite placement.",
+      "next_decision": "Do not alter the sealed divisor proof or helpers during 14C."
+    },
+    {
+      "id": "DEBT-FAILURE-MODEL",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-exception-semantics-evaluation",
+      "description": "General Python exceptions, arithmetic failures, call-binding TypeError, raise/assert, and unwinding have no approved C runtime representation.",
+      "containment": "14C accepts only statically complete valid bindings and rejects invalid bindings before C IR. It adds no runtime binder, propagation, cleanup, or failure channel.",
+      "next_decision": "A separately approved exception mini-phase must specify propagation, cleanup, ownership, traceback limits, and cancellation before any implementation."
+    },
+    {
+      "id": "DEBT-SHORT-CIRCUIT-CALL-TEMP",
+      "risk": "High",
+      "status": "sealed-contained-in-14B",
+      "owner": "phase14b-conditional-temporary-regions",
+      "description": "Prerequisite temporaries inside Boolean and chained-comparison conditional regions must remain inside their exact Python reachability guards.",
+      "containment": "A keyword actual may compose with an independently proved sealed 14B region. Its complete prerequisite closure is staged at the actual's source position and no nested prerequisite may be hoisted across the region guard.",
+      "next_decision": "Do not alter 14B region selection, guard polarity, rolling-middle reuse, fact schema, or historical generated C during 14C."
+    },
+    {
+      "id": "DEBT-RECURSION",
+      "risk": "High",
+      "status": "explicitly-deferred-clean-rejection",
+      "owner": "phase14-callgraph-evaluation",
+      "description": "Direct and mutual recursion lack a separately budgeted resource and termination contract.",
+      "containment": "Keyword binding feeds the same closed call graph and cannot make a recursive edge eligible. PYC2920 retains precedence.",
+      "next_decision": "Retain clean rejection unless a separately approved bounded recursion contract is proposed."
+    },
+    {
+      "id": "DEBT-STRING-RUNTIME",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-string-and-fstring-evaluation",
+      "description": "Formatting, concatenation, allocation, encoding failure, and owned string lifetime are outside the borrowed-literal string boundary.",
+      "containment": "A string keyword actual must already satisfy the borrowed immutable const-char representation and exact formal category. Binding adds no string operation or ownership change.",
+      "next_decision": "Evaluate f-strings and advanced string operations independently with representation, allocation, cleanup, and failure budgets."
+    },
+    {
+      "id": "DEBT-EXPANDED-CALL-BINDING",
+      "risk": "High",
+      "status": "active-contained-in-14C-opening",
+      "owner": "phase14c-direct-keyword-call-binding",
+      "description": "Defaults, keyword arguments, keyword-only parameters, variadics, and unpacking require richer deterministic binding and evaluation rules.",
+      "containment": "14C opens only explicit named actuals for already-resolved source functions whose existing required positional-only and positional-or-keyword formals are each bound exactly once. Values stage once in source order and pure references enter the C call in formal order. Defaults, keyword-only parameters, variadics, unpacking, runtime binding, range, record constructors, dynamic targets, and recursion remain rejected.",
+      "next_decision": "Implement and independently validate the exact two-order binding fact, complete bijection, diagnostic precedence, C IR reference order, determinism, cancellation, mappings, and historical compatibility before promotion."
+    },
+    {
+      "id": "DEBT-COMPREHENSION-AND-PATTERN",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-comprehension-and-pattern-evaluation",
+      "description": "Comprehensions and pattern matching introduce hidden scopes, conditional binding, iteration, and failure-sensitive control flow.",
+      "containment": "Keyword binding adds no source scope, iteration, conditional binding, or pattern behavior. Comprehension and Match forms remain rejected.",
+      "next_decision": "Give each family a separate feasibility classification; acceptance of direct keyword calls authorizes neither."
+    },
+    {
+      "id": "DEBT-CONTEXT-CLEANUP",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-context-manager-and-finally-evaluation",
+      "description": "Context managers and finally regions require exact cleanup ordering across normal, failure, return, break, continue, and cancellation paths.",
+      "containment": "14C stages only predecessor-owned no-new-cleanup actual values. It adds no cleanup stack, context protocol, or finally region.",
+      "next_decision": "Do not open until an exception and cleanup-region architecture is separately approved."
+    },
+    {
+      "id": "DEBT-SUSPENSION-STATE",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-generator-and-async-evaluation",
+      "description": "Generators and async syntax require suspension state, retained locals, resumption, ownership, cancellation, and scheduler boundaries.",
+      "containment": "Yield, yield-from, await, async functions, async iteration, and async calls remain rejected. A keyword binding fact creates no retained or resumable state.",
+      "next_decision": "Require a dedicated state-machine architecture and resource model before any feature implementation."
+    },
+    {
+      "id": "DEBT-CLOSURE-DECORATOR-DYNAMIC-CALLABLE",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-closure-lambda-decorator-evaluation",
+      "description": "Closures, nonlocal capture, lambdas, decorators, and indirect callables require environment objects or import-time callable transformation.",
+      "containment": "Only an already-resolved direct top-level source-function binding is eligible. Assignment-created aliases, attributes, callables as values, closures, lambdas, decorators, and indirect targets remain rejected.",
+      "next_decision": "Evaluate lexical closure representation independently; decorators remain deferred unless their execution timing is separately modeled."
+    },
+    {
+      "id": "DEBT-STATEFUL-BINDING-FORMS",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-binding-and-state-removal-evaluation",
+      "description": "Destructuring, starred assignment, assignment expressions, global/nonlocal mutation, and deletion can alter binding lifetime and control-visible state.",
+      "containment": "A 14C argument-to-formal association is call metadata, not a new Python visible binding or mutation form. No local, global, nonlocal, destructuring, deletion, or starred target is opened.",
+      "next_decision": "Evaluate fixed scalar binding forms separately; defer global, nonlocal, deletion, and starred forms."
+    },
+    {
+      "id": "DEBT-ADVANCED-CONTAINERS",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-advanced-container-evaluation",
+      "description": "Sets, dynamic operations, comprehensions, slicing, mutation, aliasing, and escape exceed fixed local container ownership.",
+      "containment": "Only an already-proved scalar container read may appear as a keyword actual. Container values cannot become parameters or escape; binding adds no mutation or lookup behavior.",
+      "next_decision": "Any evaluated operation receives its own capacity, representation, ownership, failure, and helper decision."
+    },
+    {
+      "id": "DEBT-GENERAL-OBJECT-MODEL",
+      "risk": "Extreme",
+      "status": "explicit-permanent-boundary-unless-reopened",
+      "owner": "phase13-record-boundary-custodian",
+      "description": "General classes require identity, inheritance, dispatch, descriptors, mutation, allocation, aliasing, and lifecycle semantics absent from static records.",
+      "containment": "Static-record constructors do not participate in 14C keyword binding. Only an already-proved scalar field read may be an actual value; general objects, methods, and dynamic attributes remain rejected.",
+      "next_decision": "Remain deferred unless a future roadmap explicitly reopens the general object model with a complete runtime architecture."
+    }
+  ],
+  "summary": {
+    "total_items": 14,
+    "high": 9,
+    "extreme": 5,
+    "unowned_high_or_extreme": 0,
+    "items_without_containment": 0,
+    "silent_approximations": 0,
+    "sealed_phase14a_items": [
+      "DEBT-INT-RANGE",
+      "DEBT-DIVMOD-PRECONDITIONS"
+    ],
+    "sealed_phase14b_items": [
+      "DEBT-SHORT-CIRCUIT-CALL-TEMP"
+    ],
+    "phase14c_active_items": [
+      "DEBT-EXPANDED-CALL-BINDING"
+    ],
+    "neighboring_items_opened": []
+  }
+}

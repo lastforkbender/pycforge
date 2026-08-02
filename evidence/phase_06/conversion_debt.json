@@ -1,0 +1,10 @@
+{
+  "schema": "pycforge.conversion-debt/0.1",
+  "baseline": "phase6-candidate-1",
+  "entries": [
+    {"construct":"control flow","status":"unsupported","planned_phase":8,"risk":"Moderate","containment":"stable diagnostic"},
+    {"construct":"calls and broader function forms","status":"unsupported","planned_phase":9,"risk":"High","containment":"stable diagnostic"},
+    {"construct":"string operations beyond literals","status":"unsupported","planned_phase":14,"risk":"High","containment":"literal-only contract"},
+    {"construct":"Python arbitrary-precision integer equivalence","status":"unsupported outside declared fixed-width policy","planned_phase":"contract reconsideration","risk":"Extreme","containment":"narrow annotation-trust slice"}
+  ]
+}

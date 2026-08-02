@@ -1,0 +1,9 @@
+{
+  "audit": "determinism",
+  "fixture": "two exact-annotated functions with one understood call",
+  "fresh_process_runs": 2,
+  "byte_identical": true,
+  "serialized_result_sha256": "527e584b835cd08ac66d92013ebc37e11810fada9b670e8906cb0a3ed27cabca",
+  "telemetry_in_semantic_fingerprint": false,
+  "passed": true
+}

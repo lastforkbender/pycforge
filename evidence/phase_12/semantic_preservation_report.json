@@ -1,0 +1,41 @@
+{
+  "current_helper_manifest": [],
+  "current_status": "Converted",
+  "explicit_phase11_status": "Converted",
+  "generated_c_compiled_or_executed": false,
+  "historical_c_ir_fixture_sha256": {
+    "c-ir/0.10-helper": "de941a930e2e17ce7bdd4a3167a7a297e8c12e605a870ffd34905c5925b3c211",
+    "c-ir/0.11-container": "2196981b45abbab1533bc1ed1916afb697112f820490dd49aeb094a2e8b718f5",
+    "c-ir/0.8": "b6539ada46e74888a18dc54f3b8d22ec4abd4acf36d1bc12b43b0eec7c927a45",
+    "c-ir/0.9": "44a7deb905bcd48851da4e867459e2880368c1ac4519210cafa73dac6a3627c2"
+  },
+  "historical_c_ir_serialization_preserved": true,
+  "passed": true,
+  "phase10_helper_asset_fingerprints": [
+    "23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869",
+    "cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e"
+  ],
+  "phase10_helper_fingerprints_preserved": true,
+  "phase10_helper_registry_fingerprint": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+  "phase11_archive_sha256": "8af71e84cb6a1f12fc1206f589233067191f87ce4fc4f550765ff64098038275",
+  "phase11_c_ir_schema": "c-ir/0.11",
+  "phase11_generated_c_fixture_sha256": {
+    "container": "2fec8c598b4da10da97517fd8d23f4b52af312df1004a8c7f26148b1d519faf1",
+    "scalar": "1f63ad089b6ce5765df1a26af2811451ce86b40766458e248fec290a0c80304b"
+  },
+  "phase11_generated_c_fixtures_preserved": true,
+  "phase11_generated_schema": "generated-c/0.11",
+  "phase11_tree_sha256": "95fbabf3311a5f7dcb88608ef66c7ef43ed085ae1e3fc99351472da8ca1d4e82",
+  "scalar_generated_c_byte_identical": true,
+  "schema_version": "pycforge.semantic-preservation/0.12",
+  "sealed_historical_c_ir_fixture_sha256": {
+    "c-ir/0.10-helper": "de941a930e2e17ce7bdd4a3167a7a297e8c12e605a870ffd34905c5925b3c211",
+    "c-ir/0.11-container": "2196981b45abbab1533bc1ed1916afb697112f820490dd49aeb094a2e8b718f5",
+    "c-ir/0.8": "b6539ada46e74888a18dc54f3b8d22ec4abd4acf36d1bc12b43b0eec7c927a45",
+    "c-ir/0.9": "44a7deb905bcd48851da4e867459e2880368c1ac4519210cafa73dac6a3627c2"
+  },
+  "sealed_phase11_generated_c_fixture_sha256": {
+    "container": "2fec8c598b4da10da97517fd8d23f4b52af312df1004a8c7f26148b1d519faf1",
+    "scalar": "1f63ad089b6ce5765df1a26af2811451ce86b40766458e248fec290a0c80304b"
+  }
+}

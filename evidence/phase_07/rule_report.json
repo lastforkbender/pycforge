@@ -1,0 +1,58 @@
+{
+  "audit": "rules",
+  "manifest": [
+    {
+      "node_kind": "Assign",
+      "rule_id": "phase6.assignment.simple",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "BinOp",
+      "rule_id": "phase6.numeric.arithmetic",
+      "rule_version": "0.6",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "Constant",
+      "rule_id": "phase6.literal.known",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "FunctionDef",
+      "rule_id": "phase6.function.annotated",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "Name",
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "Return",
+      "rule_id": "phase6.return.simple",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    }
+  ],
+  "notes": [
+    "Registry is frozen, sorted, and rejects equal-specificity overlap."
+  ],
+  "passed": true,
+  "rule_count": 6
+}

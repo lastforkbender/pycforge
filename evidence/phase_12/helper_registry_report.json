@@ -1,0 +1,17 @@
+{
+  "audit": "helpers",
+  "generated_c_compiled_or_executed": false,
+  "golden_fixture_files_present": true,
+  "golden_mismatches": [],
+  "helper_count": 2,
+  "helpers": [
+    "pycf.i64.floor_div@1.0.0",
+    "pycf.i64.floor_mod@1.0.0"
+  ],
+  "passed": true,
+  "raw_text_ingestion_supported": false,
+  "registry_fingerprint": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+  "registry_version": "phase10-support-templates-v0.10",
+  "resolved_manifest_fingerprint": "b866ee57db0b14c324e090501b80a40730734242eb115dbcaf829db099ed97ca",
+  "schema_version": "pycforge.helper-registry-report/0.12"
+}

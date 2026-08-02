@@ -1,0 +1,6 @@
+{
+  "audit": "determinism",
+  "passed": true,
+  "schema_version": "pycforge.determinism-report/0.11",
+  "sha256": "44088ac3e81ccb16c3cdc766300dfeafab38694179e7eb63808262642cf41d59"
+}

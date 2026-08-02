@@ -1,0 +1,121 @@
+{
+  "schema_version": "pycforge.checkpoint-e-entry-report/0.1",
+  "checkpoint": "E",
+  "date": "2026-07-26",
+  "status": "documentation-opening-complete",
+  "implementation_status": "not-started",
+  "release_status": "not-promoted",
+  "predecessor": {
+    "release": "0.14.3",
+    "phase": "14D",
+    "status": "promoted-and-sealed",
+    "tests_discovered": 539,
+    "tests_passed": 524,
+    "tests_skipped": 15,
+    "tests_failed": 0,
+    "focused_phase14d_passed": 65,
+    "focused_phase14d_failed": 0,
+    "converter_subtree_sha256": "74b32c25e40af3398dd46288941812ce7ad87f0d4b72fec3d3bd786cc1b8f3a8",
+    "wheel": {
+      "filename": "pycforge-0.14.3-py3-none-any.whl",
+      "size": 340054,
+      "sha256": "c0dd0c0ed79131daa5af815a8a9bb096b9f955c9c617ec0b8eb6a10c69d27b7f"
+    }
+  },
+  "authorization": {
+    "purpose": "Raise the PyCForge desktop application to an extreme-high-quality IDE-grade transpiler workspace with professional graphics and menus while preventing hangs or freezes on large conversion requests.",
+    "checkpoint_selected": "Hardening Checkpoint E",
+    "phase14e_opened": false,
+    "phase15_opened": false
+  },
+  "identity": {
+    "front_facing_application": "PyCForge",
+    "exclusive_workspace_identity": "PyCForge",
+    "original_pre_migration_bytes": "authoritative-in-authenticated-phase15a-archive"
+  },
+  "architecture_decision": {
+    "future_conversion_worker": "process-isolated",
+    "gui_process_runs_converter": false,
+    "scheduler": "one-active-one-latest-pending",
+    "cooperative_then_hard_cancellation": true,
+    "generation_and_bundle_fingerprint_publication_guard": true,
+    "lazy_virtualized_result_projection_required": true,
+    "converter_facade_and_semantics_unchanged": true
+  },
+  "resource_envelope": {
+    "max_source_bytes": 1000000,
+    "max_source_lines": 100000,
+    "max_tokens": 250000,
+    "max_ast_nodes": 100000,
+    "independent_near_ceiling_fixtures_required": true,
+    "combined_valid_fixture_required": true,
+    "over_limit_rejection_fixtures_required": true
+  },
+  "feature_boundary": {
+    "ide_grade_source_workspace": true,
+    "custom_gradient_icon_main_menu": true,
+    "custom_gradient_icon_context_menus": true,
+    "generated_c_read_only": true,
+    "run_or_execute": false,
+    "build_or_compile_or_link_or_load": false,
+    "debugger": false,
+    "terminal_or_repl": false,
+    "toolchain_surface": false,
+    "plugins_or_extensions": false,
+    "project_explorer_or_host_discovery": false,
+    "generated_c_editing": false
+  },
+  "feature_matrix": {
+    "path": "specifications/feature_matrix.json",
+    "schema": "pycforge.feature-matrix/0.14.3",
+    "entry_count": 69,
+    "modified": false,
+    "advanced_unsupported_or_deferred_entries_remain_closed": true,
+    "reconciliation": "transition/checkpoint_e/feature_matrix_reconciliation.md"
+  },
+  "platform_gate": {
+    "real_pyqt_required": true,
+    "offscreen_only_sufficient": false,
+    "windows_11_required": true,
+    "visible_linux_platform_required": true,
+    "accessibility_gate_required": true,
+    "high_dpi_gate_required": true,
+    "current_gate_status": "open"
+  },
+  "opening_records": [
+    "docs/pycforge_workspace_quality_addendum.md",
+    "transition/checkpoint_e/entry_criteria.md",
+    "transition/checkpoint_e/architecture_and_workspace_decision.md",
+    "transition/checkpoint_e/performance_budgets.md",
+    "transition/checkpoint_e/feature_boundaries.md",
+    "transition/checkpoint_e/feature_matrix_reconciliation.md",
+    "transition/checkpoint_e/breadth_and_change_budgets.md",
+    "transition/checkpoint_e/rollback_conditions.md",
+    "transition/checkpoint_e/opening_evidence.md",
+    "evidence/checkpoint_e/workspace_debt.json"
+  ],
+  "opening_change_custody": {
+    "python_files_modified": 0,
+    "test_files_modified": 0,
+    "tool_files_modified": 0,
+    "existing_specifications_modified": 0,
+    "historical_transition_files_modified": 0,
+    "historical_evidence_files_modified": 0,
+    "version_files_modified": 0,
+    "active_converter_contracts_modified": false,
+    "generated_c_contract_modified": false,
+    "compiler_linker_loader_debugger_or_executor_invoked": false
+  },
+  "promotion_gates": {
+    "implementation_complete": false,
+    "semantic_preservation_complete": false,
+    "maximum_input_responsiveness_complete": false,
+    "failure_injection_complete": false,
+    "accessibility_complete": false,
+    "real_pyqt_complete": false,
+    "windows_11_complete": false,
+    "linux_visible_complete": false,
+    "deterministic_packaging_complete": false,
+    "release_promoted": false
+  }
+}

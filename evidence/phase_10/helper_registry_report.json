@@ -1,0 +1,38 @@
+{
+  "schema_version": "pycforge.helper-registry-report/0.10",
+  "registry_version": "phase10-support-templates-v0.10",
+  "interface_id": "pycforge-helper/1",
+  "registry_fingerprint": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+  "resolved_all_manifest_fingerprint": "b866ee57db0b14c324e090501b80a40730734242eb115dbcaf829db099ed97ca",
+  "helpers": [
+    {
+      "reference": "pycf.i64.floor_div@1.0.0",
+      "asset_fingerprint": "23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869",
+      "factory_kind": "structured-c-ir",
+      "target_contract": "c11-portable-fixed-v1",
+      "allocation": "none",
+      "failure_strategy": "caller-proved preconditions"
+    },
+    {
+      "reference": "pycf.i64.floor_mod@1.0.0",
+      "asset_fingerprint": "cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e",
+      "factory_kind": "structured-c-ir",
+      "target_contract": "c11-portable-fixed-v1",
+      "allocation": "none",
+      "failure_strategy": "caller-proved preconditions"
+    }
+  ],
+  "registration_order_independent": true,
+  "exact_dependency_closure": true,
+  "dependency_cycles_diagnosed": true,
+  "missing_dependencies_diagnosed": true,
+  "deduplication_passed": true,
+  "unused_helpers_absent": true,
+  "target_interface_validation_passed": true,
+  "ownership_failure_contracts_present": true,
+  "cancellation_publishes_partial_plan": false,
+  "raw_text_ingestion_supported": false,
+  "golden_mismatches": [],
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

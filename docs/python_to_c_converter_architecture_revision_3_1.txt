@@ -1,0 +1,3470 @@
+CAPABLE PYTHON-TO-C SOURCE CONVERTER
+MODULAR ARCHITECTURE, DELIVERY, AND LIFECYCLE ROADMAP
+Revision 3.1 — Engineering Hardening Edition
+================================================
+
+REVISION 3.1 HIGHLIGHTS
+-----------------------
+This edition retains the source-converter boundary and strengthens the roadmap at
+the points where a modular design can otherwise become ambiguous or fail between
+phases.
+
+Engineering additions include:
+- an explicit Target C Source Contract and Conversion Semantics Specification
+- failure-contained stage results and immutable stage artifacts
+- transactional phase promotion that preserves the last-known-good baseline
+- a rule-planning contract that prevents selection, explanation, and lowering
+  from disagreeing
+- separation of deterministic decision traces from nondeterministic operational
+  telemetry
+- explicit representation, ownership, lifetime, evaluation-order, and failure
+  obligations for every rule
+- deterministic configuration, identifier, ordering, and fingerprint policies
+- bounded-input, cancellation, concurrency, and atomic-save requirements
+- stronger rule-overlap, mutation, metamorphic, and cross-process determinism tests
+- a tool-first delivery order that proves the headless conversion path before the
+  PyQt5 workspace becomes an implementation dependency
+
+DOCUMENT STATUS
+---------------
+
+This revision supersedes Revision 3.0.
+
+This revision preserves the phase-transition discipline and project-native
+identity of Revision 3.0 while making stage failure containment, conversion
+semantics, target-C assumptions, observability isolation, and phase promotion
+concrete enough to test.
+
+The project is a Python-to-C source converter. It is not a compiler, build
+system, C execution environment, debugger, native toolchain wrapper, or runtime
+verification platform.
+
+The system accepts Python source, analyzes only the information necessary for
+conversion, produces readable C source, explains its conversion decisions, and
+allows the generated C to be viewed or saved.
+
+The product boundary is absolute:
+
+    Python source
+        -> conversion pipeline
+        -> generated C source
+        -> view or save
+        -> stop
+
+Generated C is never compiled or executed by this application.
+
+
+1. PURPOSE
+----------
+
+The purpose of this project is to build a professional, extensible Python-to-C
+source conversion system rather than a fragile collection of text-replacement
+rules.
+
+The converter should transform a declared and documented subset of Python into
+coherent, deterministic, human-readable C source. It should make unsupported or
+ambiguous cases explicit instead of silently guessing.
+
+The central design objective is long-term maintainability.
+
+A converter can appear simple while it supports only literals, assignments,
+arithmetic, and basic functions. Complexity rises when additional Python
+constructs require information about:
+
+- scopes and symbol resolution
+- inferred value categories
+- evaluation order
+- control-flow structure
+- function signatures
+- container shapes
+- name collisions
+- temporary values
+- generated declarations
+- helper-code requirements
+- unsupported dynamic behavior
+- source-to-output traceability
+
+Without disciplined boundaries, new conversion rules begin to modify unrelated
+rules. The project then degrades into direct AST-to-string rendering, duplicated
+logic, inconsistent output, and untraceable special cases.
+
+The required architecture is:
+
+    small centralized conversion coordinator
+        +
+    explicit conversion stages
+        +
+    normalized Python representation
+        +
+    focused analysis fact tables
+        +
+    independent conversion-rule families
+        +
+    structured C representation
+        +
+    deterministic C renderer
+        +
+    native conversion feedback and trace records
+        +
+    minimal PyQt5 two-pane workspace
+
+The Python implementation is the control plane. It coordinates conversion,
+validates stage boundaries, selects rules, records decisions, and assembles the
+result. It does not embed every construct-specific conversion rule.
+
+
+2. PRODUCT BOUNDARY
+-------------------
+
+2.1 Included responsibilities
+
+The system shall:
+
+- open or receive Python source
+- parse the source using a declared Python grammar version
+- normalize supported constructs into stable internal forms
+- resolve names and scopes where required for conversion
+- infer limited value categories where required for rule selection
+- preserve source evaluation order in the generated representation
+- select explicit conversion rules
+- construct structured C output
+- render readable and deterministic C source
+- emit declarations, helper definitions, and includes when required by a rule
+- produce structured diagnostics
+- produce deterministic native decision-trace records and optional separate
+  operational telemetry
+- show Python and generated C side by side
+- save the Python source and generated C source
+- support headless conversion, inspection, validation, and fixture testing
+
+2.2 Explicitly excluded responsibilities
+
+The system shall not:
+
+- compile generated C
+- execute generated C
+- generate or launch native executables
+- discover GCC, Clang, MSVC, or any other C toolchain
+- compare execution results with CPython
+- embed a debugger or terminal
+- manage native builds
+- benchmark generated-program performance
+- optimize generated-program execution performance
+- evaluate user expressions as an optimization shortcut
+- run sanitizers against generated programs
+- claim full Python behavioral equivalence
+- hide unsupported Python behavior behind silent approximations
+
+2.3 Product statement
+
+The canonical product statement is:
+
+    Enter or open Python source, convert it into professional C source,
+    inspect the conversion decisions, and save the result.
+
+2.4 Project independence
+
+This converter is a standalone software product. Its architecture, terminology,
+diagnostics, trace formats, user interface, package structure, and roadmap are
+self-contained.
+
+The project shall not:
+
+- depend on subsystems from unrelated applications
+- reuse unrelated product names as internal architecture labels
+- describe its interface as inheriting another project's visual identity
+- require another project to interpret diagnostics, decision traces, or telemetry
+- allow shared engineering ideas to become hidden code or branding dependencies
+
+General engineering practices may be reused, but every implemented subsystem must
+have a converter-native name, contract, test suite, and ownership boundary.
+
+
+3. NON-NEGOTIABLE ARCHITECTURAL RULES
+------------------------------------
+
+1. The conversion coordinator orchestrates stages but does not implement
+   construct-specific conversion rules.
+
+2. Python AST nodes are not translated directly into scattered handwritten C
+   strings.
+
+3. Parsing, normalization, analysis, rule selection, C construction, validation,
+   and rendering are separate stages.
+
+4. Conversion-rule modules communicate through explicit contracts.
+
+5. Conversion-rule modules do not own global mutable state.
+
+6. Generated C is represented structurally before final text rendering.
+
+7. Every supported construct reaches rendering through a declared conversion
+   rule.
+
+8. Every unsupported construct produces a structured diagnostic.
+
+9. The converter never guesses silently. It must convert, emit an explicitly
+   declared approximation, or reject the construct.
+
+10. Any approximation must be visible in the conversion result and deterministic
+    decision-trace record.
+
+11. The PyQt5 workspace depends only on the public converter facade.
+
+12. The conversion engine does not depend on PyQt5.
+
+13. Every stage and rule family is independently testable.
+
+14. Every stage validates its output before the next stage receives it.
+
+15. Generated C must preserve the conversion model's declared ordering and
+    structural intent.
+
+16. Analysis is performed only when it materially informs conversion.
+
+17. No execution-oriented subsystem may become a hidden project dependency.
+
+18. Known limitations belong in the feature matrix and conversion-debt register.
+
+19. Architecture fitness checks are automated.
+
+20. A feature-expansion release must pass its required hardening checkpoint before
+    another feature-expansion release begins.
+
+21. No feature may exist only in the GUI.
+
+22. All meaningful conversion decisions must be observable, attributable,
+    serializable, and reproducible.
+
+23. All named subsystems, schemas, packages, and visual conventions must be native
+    to this converter and must not imply dependency on an unrelated project.
+
+24. Every conversion is governed by an explicit, fingerprinted Target C Source
+    Contract. No rule may rely on an unstated C dialect, width, encoding, linkage,
+    or implementation-defined assumption.
+
+25. Every stage returns a typed outcome and a new validated artifact. A failed,
+    rejected, or canceled stage may not mutate or publish a downstream artifact.
+
+26. Conversion decision tracing and operational telemetry are observers only.
+    Their failure, truncation, or absence may not alter rule selection or generated
+    C.
+
+27. Deterministic conversion facts and nondeterministic measurements are stored,
+    serialized, fingerprinted, and tested separately.
+
+28. A rule is selected once into an immutable RulePlan. Lowering and explanation
+    consume that same plan and may not independently rediscover the decision.
+
+29. Generated identifiers, declarations, helpers, and output ordering are assigned
+    only by centralized deterministic services.
+
+30. A phase is promoted only as an atomic candidate baseline after every gate
+    passes. Failed phase work leaves the preceding baseline buildable and unchanged.
+
+31. Input Python is treated as untrusted data. The converter never imports,
+    evaluates, executes, or performs source-controlled module discovery.
+
+32. Each supported rule declares its semantic obligations and semantic delta.
+    Unresolved obligations result in rejection or an explicitly permitted
+    approximation.
+
+33. Approximation permission is an explicit allowlist decision, never a global
+    fallback caused by selecting a broad profile.
+
+
+4. TOP-LEVEL SYSTEM ARCHITECTURE
+--------------------------------
+
+The system consists of three products:
+
+A. Source conversion engine
+B. Headless conversion laboratory
+C. PyQt5 conversion workspace
+
+The high-level flow is:
+
+    Conversion Request
+        |
+        v
+    Request Canonicalization and Resource Policy
+        |
+        v
+    Source Document
+        |
+        v
+    Source Loader
+        |
+        v
+    Python Parser
+        |
+        v
+    Normalized Python Representation
+        |
+        v
+    Conversion Analysis Services
+        |
+        v
+    Conversion Facts
+        |
+        v
+    Support Classification and Rule Planning
+        |
+        v
+    Representation, Ownership, and Lifetime Plan
+        |
+        v
+    Structured C Representation (C IR)
+        |
+        v
+    Structural Validation
+        |
+        v
+    Deterministic C Renderer
+        |
+        v
+    Conversion Result
+        |
+        +--> Generated C source
+        +--> Diagnostics
+        +--> deterministic decision trace
+        +--> optional operational telemetry
+        +--> Source/output mapping
+        `--> Conversion summary
+
+All clients share the same facade:
+
+    Converter Facade
+        +--> CLI laboratory
+        +--> fixture and regression tests
+        `--> PyQt5 workspace
+
+No client is permitted to duplicate conversion behavior.
+
+The Target C Source Contract and Conversion Semantics Specification govern the
+whole flow. They are inputs to planning and validation, not behavior hidden in
+the renderer.
+
+Each arrow is an artifact boundary. The receiving stage accepts only a validated
+artifact with a declared schema version. A stage cannot modify the artifact it
+receives. It either publishes one complete successor artifact or publishes no
+successor artifact.
+
+
+5. RECOMMENDED PROJECT STRUCTURE
+--------------------------------
+
+pycforge/
+|
+|-- converter/
+|   |
+|   |-- contracts/
+|   |   |-- target_c.py
+|   |   |-- conversion_semantics.py
+|   |   |-- profiles.py
+|   |   |-- compatibility.py
+|   |   `-- schema_versions.py
+|   |
+|   |-- core/
+|   |   |-- converter.py
+|   |   |-- pipeline.py
+|   |   |-- stage.py
+|   |   |-- stage_artifact.py
+|   |   |-- stage_outcome.py
+|   |   |-- context.py
+|   |   |-- configuration.py
+|   |   |-- canonicalization.py
+|   |   |-- fingerprint.py
+|   |   |-- cancellation.py
+|   |   |-- resource_policy.py
+|   |   |-- diagnostics.py
+|   |   |-- request.py
+|   |   |-- result.py
+|   |   `-- errors.py
+|   |
+|   |-- frontend/
+|   |   |-- parser.py
+|   |   |-- source_document.py
+|   |   |-- source_unit.py
+|   |   |-- encoding.py
+|   |   |-- token_stream.py
+|   |   |-- source_map.py
+|   |   |-- syntax_validation.py
+|   |   |-- normalizer.py
+|   |   `-- python_version.py
+|   |
+|   |-- analysis/
+|   |   |-- symbols/
+|   |   |-- scopes/
+|   |   |-- value_categories/
+|   |   |-- control_flow/
+|   |   |-- evaluation_order/
+|   |   |-- truthiness/
+|   |   |-- type_constraints/
+|   |   |-- representations/
+|   |   |-- ownership_lifetime/
+|   |   |-- effects/
+|   |   |-- calls/
+|   |   |-- declarations/
+|   |   |-- helper_requirements/
+|   |   `-- analysis_pipeline.py
+|   |
+|   |-- ir/
+|   |   |-- python_ir/
+|   |   |-- c_ir/
+|   |   |-- ids.py
+|   |   |-- provenance.py
+|   |   |-- visitors.py
+|   |   |-- serialization.py
+|   |   `-- validation.py
+|   |
+|   |-- rules/
+|   |   |-- base.py
+|   |   |-- plan.py
+|   |   |-- semantic_obligations.py
+|   |   |-- registry.py
+|   |   |-- dispatch.py
+|   |   |-- overlap_audit.py
+|   |   |-- literals/
+|   |   |-- expressions/
+|   |   |-- assignments/
+|   |   |-- control_flow/
+|   |   |-- functions/
+|   |   |-- containers/
+|   |   |-- classes/
+|   |   |-- modules/
+|   |   `-- unsupported/
+|   |
+|   |-- c_output/
+|   |   |-- builder.py
+|   |   |-- name_allocator.py
+|   |   |-- declaration_order.py
+|   |   |-- precedence.py
+|   |   |-- formatter.py
+|   |   |-- renderer.py
+|   |   |-- conformance.py
+|   |   `-- source_map.py
+|   |
+|   |-- support_templates/
+|   |   |-- registry.py
+|   |   |-- declarations/
+|   |   |-- helpers/
+|   |   `-- includes/
+|   |
+|   |-- decision_trace/
+|   |   |-- recorder.py
+|   |   |-- events.py
+|   |   |-- decisions.py
+|   |   |-- schema.py
+|   |   |-- serializer.py
+|   |   |-- diff.py
+|   |   `-- retention.py
+|   |
+|   |-- telemetry/
+|   |   |-- sink.py
+|   |   |-- events.py
+|   |   |-- budgets.py
+|   |   `-- snapshot.py
+|   |
+|   |-- io/
+|   |   |-- atomic_writer.py
+|   |   `-- path_policy.py
+|   |
+|   `-- facade.py
+|
+|-- cli/
+|   |-- main.py
+|   |-- convert_command.py
+|   |-- inspect_command.py
+|   |-- validate_command.py
+|   |-- suite_command.py
+|   |-- diff_command.py
+|   `-- watch_command.py
+|
+|-- ide/
+|   |-- app.py
+|   |-- main_window.py
+|   |-- controllers/
+|   |-- widgets/
+|   |   |-- python_editor.py
+|   |   |-- generated_c_viewer.py
+|   |   |-- diagnostics_panel.py
+|   |   |-- conversion_summary.py
+|   |   `-- navigation_rail.py
+|   |-- highlighting/
+|   |   |-- quantum_highlighter.py
+|   |   |-- python_rules.py
+|   |   `-- c_rules.py
+|   |-- themes/
+|   |   |-- converter_dark.qss
+|   |   `-- tokens.py
+|   `-- resources/
+|       `-- icons/
+|
+|-- tests/
+|   |-- unit/
+|   |-- stage/
+|   |-- rule/
+|   |-- structural/
+|   |-- golden/
+|   |-- diagnostics/
+|   |-- decision_trace/
+|   |-- semantics/
+|   |-- determinism/
+|   |-- resource_limits/
+|   |-- security/
+|   |-- architecture/
+|   `-- ide/
+|
+|-- fixtures/
+|   |-- literals/
+|   |-- expressions/
+|   |-- assignments/
+|   |-- control_flow/
+|   |-- functions/
+|   |-- containers/
+|   `-- unsupported/
+|
+|-- specifications/
+|   |-- supported_python.md
+|   |-- feature_matrix.md
+|   |-- conversion_contract.md
+|   |-- conversion_semantics.md
+|   |-- target_c_source_contract.md
+|   |-- representation_contracts.md
+|   |-- ownership_and_lifetime.md
+|   |-- c_output_style.md
+|   |-- approximation_policy.md
+|   |-- diagnostic_codes.md
+|   |-- decision_trace_schema.md
+|   |-- telemetry_schema.md
+|   `-- architecture_rules.md
+|
+`-- tools/
+    |-- generate_c_nodes.py
+    |-- update_golden_files.py
+    |-- inspect_conversion.py
+    |-- audit_rule_overlap.py
+    |-- audit_determinism.py
+    |-- verify_transition_packet.py
+    `-- check_architecture.py
+
+The package name `converter` is intentional. Project terminology must not imply
+that generated C is compiled or executed.
+
+There is one canonical Python IR and one canonical C IR. The project may provide
+builders, visitors, views, and serializers for those IRs, but it must not create
+competing node hierarchies under output, rule, or GUI packages.
+
+
+6. CENTRAL CONVERSION COORDINATOR
+---------------------------------
+
+The coordinator owns the conversion sequence, immutable request data, stage
+lifecycle, failure containment, diagnostic collection, and result assembly.
+
+It may know:
+
+- active conversion stage
+- source unit identity
+- converter configuration
+- available rule families
+- accumulated diagnostics
+- generated helper requirements
+- decision-trace recording state
+- optional telemetry sink state
+- output revision identity
+
+It must not know:
+
+- how each Python operator is converted
+- how every C expression is rendered
+- construct-specific special cases
+- GUI widget state
+- native toolchain details
+
+Conceptual facade:
+
+    class PythonToCConverter:
+        def convert(self, request: ConversionRequest) -> ConversionResult:
+            canonical = self.request_validator.canonicalize(request)
+            services = ConversionServices.for_request(canonical)
+            artifact = StageArtifact.initial(canonical)
+
+            for stage in self.pipeline.stages:
+                outcome = stage.run(artifact, services)
+                if not outcome.completed:
+                    return self.results.from_terminal_outcome(
+                        outcome,
+                        last_completed_artifact=artifact,
+                    )
+
+                validation = stage.validate(outcome.artifact, services)
+                if not validation.accepted:
+                    return self.results.from_validation_failure(
+                        validation,
+                        last_completed_artifact=artifact,
+                    )
+
+                artifact = outcome.artifact
+
+            return self.results.from_completed_artifact(artifact, services)
+
+A StageOutcome has exactly one terminal category:
+
+- Completed: contains one complete candidate artifact
+- Rejected: source or configuration cannot satisfy a declared conversion contract
+- InternalFailure: a converter invariant failed
+- Canceled: cooperative cancellation was observed at a declared safe point
+
+Only a validated Completed artifact replaces the coordinator's current artifact.
+Diagnostics and observer records may be appended through isolated sinks, but no
+stage may mutate an upstream artifact in place. Internal exceptions are converted
+at the facade boundary without publishing a half-built C artifact.
+
+The coordinator remains small enough to understand in one sitting.
+
+
+7. PUBLIC REQUEST AND RESULT CONTRACTS
+--------------------------------------
+
+ConversionRequest contains only stable conversion inputs:
+
+- a SourceBundle containing one primary source and zero or more explicitly supplied
+  companion sources
+- source text or source bytes plus a declared decoding policy for each document
+- canonical logical source and module names
+- declared Python version
+- semantic policy and explicit approximation allowlist
+- Target C Source Contract identifier and version
+- selected rule-set version
+- formatting preferences
+- resource policy
+
+The first implementation accepts a one-document SourceBundle, but the container
+contract is established in Phase 0 so later module support does not require a
+breaking request redesign. Companion sources are never discovered implicitly.
+Absolute display paths are client metadata and are excluded from semantic and
+output fingerprints.
+
+It must not contain:
+
+- compiler selection
+- linker settings
+- executable settings
+- run arguments
+- runtime benchmarking options
+- GUI state
+- destination overwrite policy
+
+ObservationOptions are separate from ConversionRequest and contain:
+
+- diagnostic presentation verbosity
+- deterministic decision-trace recording level
+- optional operational-telemetry level and budget
+
+SaveRequest is also separate and contains destination, newline, overwrite, and
+atomic-replacement policy. A path used to save a result is not a semantic input to
+conversion.
+
+ConversionResult should contain:
+
+- generated C text only when a complete publishable translation unit exists
+- ResultStatus
+- diagnostics
+- conversion summary
+- source-to-output mappings
+- selected rules
+- helper declarations or definitions included
+- unsupported and approximated constructs
+- source-bundle, target-contract, semantic-policy, resource-policy, renderer,
+  rule-set, helper-manifest, and output fingerprints
+- deterministic decision-trace reference or embedded record
+- optional separately identified operational-telemetry snapshot
+
+ResultStatus is an enum, not a Boolean:
+
+- Converted
+- ConvertedWithWarnings
+- ConvertedWithApproximations
+- Rejected
+- InternalFailure
+- Canceled
+
+ResultStatus is derived from the terminal StageOutcome and semantic diagnostics,
+never assigned independently by a client. For a publishable result,
+ConvertedWithApproximations takes precedence over ConvertedWithWarnings. Any
+InternalError produces InternalFailure. Observation-only diagnostics do not change
+ResultStatus.
+
+A rejected, failed, or canceled result may expose the last completed stage and
+inspection references, but it must not expose partial text as generated C. Clients
+may continue displaying the last earlier successful output, clearly marked stale.
+
+Fingerprints have explicit domains. Stage timings, timestamps, absolute machine
+paths, process IDs, locale, and telemetry truncation state are excluded from every
+semantic and generated-output fingerprint.
+
+A composite request fingerprint covers source bundle, declared grammar, target,
+semantic/helper/approximation policy, resource policy, rule set, and renderer
+configuration. ObservationOptions and SaveRequest are excluded. The output
+fingerprint covers the exact generated bytes only.
+
+Each fingerprint is stored with a domain tag, schema version, canonicalization
+version, and hash-algorithm identifier. Fingerprints from incompatible domains or
+versions are never compared as if they proved equality.
+
+A successful result means that the converter produced structurally valid C text
+according to its own conversion contract. It does not mean that the C has been
+compiled, executed, or behaviorally proven.
+
+
+8. CONVERSION PIPELINE
+----------------------
+
+Recommended stages:
+
+1. Request canonicalization and Target C Source Contract validation
+2. Source acquisition, bounded decoding, and line-index construction
+3. Python parsing through the declared-version adapter
+4. Syntax validation
+5. Python normalization and provenance construction
+6. Normalized Python IR validation
+7. Symbol discovery and scope resolution
+8. Constraint collection and limited value-category inference
+9. Evaluation-order, effect, and truthiness analysis
+10. Control-flow shaping
+11. Conversion support classification and single-pass rule selection
+12. Representation, ownership, lifetime, and helper-requirement planning
+13. Declaration, temporary, and generated-name planning
+14. Final conversion-plan validation
+15. Structured C IR construction
+16. Helper dependency closure and translation-unit assembly
+17. C IR validation against the Target C Source Contract
+18. Deterministic C rendering
+19. Independent generated-C text conformance validation
+20. Source/output mapping assembly
+21. Deterministic decision-trace finalization
+22. Conversion result assembly
+
+Every stage implements a common protocol:
+
+    class ConversionStage(Protocol):
+        stage_id: StageId
+        input_schema: SchemaRef
+        output_schema: SchemaRef
+
+        def run(self, artifact, services) -> StageOutcome:
+            ...
+
+        def validate(self, artifact, services) -> ValidationResult:
+            ...
+
+`run` is preferred over `execute` to avoid execution-oriented language.
+
+Each stage publishes:
+
+- accepted input form
+- produced output form
+- required facts
+- emitted diagnostics
+- stage invariants
+- deterministic behavior requirements
+- resource limits and cancellation safe points
+- failure and diagnostic categories
+- entry and exit criteria
+
+8.1 Stage artifact contract
+
+Every StageArtifact contains:
+
+- artifact kind and schema version
+- conversion identity and parent-artifact fingerprint
+- payload or stable references to payload tables
+- validation status and validator version
+- deterministic artifact fingerprint
+- provenance needed by the next stage
+
+Artifacts are immutable after publication. Large tables may use internal
+copy-on-write storage, but published views remain immutable. Stage-local scratch
+state is discarded on Rejected, InternalFailure, or Canceled outcomes.
+
+8.2 Resource and cancellation contract
+
+Source size, nesting depth, node count, diagnostic count, trace-event count, and
+other potentially unbounded work have explicit configurable ceilings with safe
+defaults. A ceiling produces a stable diagnostic rather than an uncontrolled
+exception. Long stages check cancellation only at documented points and never
+publish a partially validated artifact.
+
+8.3 Reentrancy and concurrency
+
+Converter instances are either documented as reentrant or explicitly single-use.
+All request state is per conversion. Registries are immutable after startup, and
+parallel conversions cannot share mutable builders, collectors, allocators, or
+observer buffers.
+
+8.4 Target C Source Contract
+
+The converter does not compile C, but it must still define exactly what kind of C
+source it promises to emit. The first production release selects one narrow
+Target C Source Contract rather than claiming unspecified generic C.
+
+The versioned contract declares:
+
+- C language edition and whether any extensions are permitted
+- required standard headers and exact-width type availability
+- integer widths, signedness policy, overflow policy, and numeric-conversion rules
+- floating representation assumptions that conversion rules may depend on
+- character, string-literal, Unicode, and source-file encoding policy
+- Boolean and null-sentinel representation
+- identifier namespaces, reserved-identifier rules, linkage, and name mangling
+- declaration-placement and translation-unit constraints
+- allowed preprocessor constructs
+- helper-template interface version
+- line-ending and final-newline policy where these affect output bytes
+- implementation-defined behaviors that are prohibited from rule assumptions
+
+The contract is validated before parsing and participates in the semantic
+configuration fingerprint. A rule that needs an undeclared target property is
+ineligible. The renderer formats a valid C IR; it does not invent target policy.
+
+The generated-C text conformance stage may parse rendered text with an independent
+C grammar or perform an equivalent non-executing syntax check. This is source
+validation only. It neither invokes a compiler nor claims executable correctness.
+
+8.5 Conversion Semantics Specification
+
+Readable C is not enough. Every supported Python construct needs a written mapping
+from declared Python semantics to the Target C Source Contract.
+
+The versioned specification covers, when relevant:
+
+- source evaluation order and side-effect sequencing
+- lexical scope, binding, shadowing, and closure limitations
+- truthiness and short-circuit behavior
+- chained comparisons and single evaluation of operands
+- integer precision, overflow, coercion, floor division, modulo, and shifts
+- floating special values and comparison policy
+- equality versus identity
+- `None` representation and unsupported uses
+- string encoding, immutability expectations, and concatenation policy
+- container shape, capacity, indexing, aliasing, and mutation policy
+- argument evaluation, parameter passing, return representation, and recursion
+- allocation ownership, borrowing, transfer, cleanup, and lifetime boundaries
+- exception-producing operations and the declared rejection or mapping policy
+- module initialization, global state, and import limitations
+
+Python annotations are evidence under an explicit annotation-trust policy; they
+are never silently treated as proof. When a rule relies on an annotation, that
+reliance appears in its RulePlan and decision trace.
+
+Each RulePlan declares:
+
+- eligibility preconditions
+- facts and source evidence used
+- semantic obligations satisfied
+- representation and ownership requirements
+- evaluation and failure behavior
+- any semantic delta from Python
+- diagnostics and helper requirements
+
+An obligation with no proved or policy-authorized resolution makes the rule
+ineligible. Approximation is permitted only when the request explicitly allows the
+specific approximation code or rule family, and the resulting semantic delta is
+reported in diagnostics, summary, and decision trace.
+
+8.6 Atomic publication and path policy
+
+Saving is a client operation over a complete ConversionResult. The shared writer
+validates destination and overwrite policy, writes a temporary file in the same
+destination directory, applies the declared encoding and newline policy, flushes
+according to the platform contract, and atomically replaces the target only after
+the full write succeeds. If the platform cannot provide the requested guarantee,
+the save is rejected before changing the existing file.
+
+Symlink handling, permission preservation, backup policy, and recovery diagnostics
+are explicit. A rejected, failed, canceled, or observation-incomplete conversion
+cannot trigger generated-C publication automatically.
+
+8.7 Transformation and optimization policy
+
+The initial product performs only transformations required for correct declared
+source conversion, such as explicit temporaries, declaration shaping, and helper
+insertion. It does not evaluate user expressions or optimize generated-program
+performance.
+
+Canonicalization for stable rendering is allowed only when it preserves RulePlan
+semantics and source provenance. Any future optimization or simplification is an
+explicit optional stage with its own contract, proof obligations, diagnostics,
+decision trace, feature flag, and phase gate; it is never hidden in normalization,
+rules, helpers, or the renderer.
+
+
+9. NORMALIZED PYTHON REPRESENTATION
+-----------------------------------
+
+The Python AST is a parser product, not the long-term conversion contract.
+
+A normalized representation should:
+
+- remove parser-version incidental differences
+- normalize equivalent constructs
+- assign stable node IDs
+- preserve source spans
+- preserve ordering
+- expose explicit statement and expression categories
+- avoid embedding generated C text
+
+The normalized representation is intentionally narrower than Python itself. A
+node that cannot be represented reliably for the selected profile is classified
+as unsupported before C construction.
+
+9.1 Source document contract
+
+Parsing begins from an immutable SourceDocument containing decoded text, original
+byte identity when available, encoding decision, newline table, token stream, and
+line/column index. Python source is never imported or evaluated. The parser adapter
+must either honor the requested Python grammar version or reject the request; it
+must not silently parse with a different runtime grammar.
+
+The decoding contract defines UTF-8 defaults, BOM and Python encoding-cookie
+handling, conflict diagnostics, undecodable-byte behavior, and the mapping between
+byte offsets and code-point positions. If a client supplies already decoded text,
+the request records that fact rather than inventing an original byte encoding.
+
+Comments and non-semantic trivia are retained separately when needed for source
+mapping or configured output comments. They do not become semantic Python IR
+nodes.
+
+9.2 Identity and provenance
+
+Node IDs are unique and stable within one canonical source revision. Cross-edit
+identity is a separate best-effort mapping and is never assumed by semantic facts.
+Every normalized or synthetic node records its origin node IDs and source spans.
+Synthetic nodes use a distinct identifier domain so they cannot be mistaken for
+literal source nodes.
+
+A source span defines byte or code-point basis, start/end convention, and handling
+of tabs, Unicode, and line endings. All diagnostics and mappings use the same
+coordinate contract.
+
+9.3 Normalization discipline
+
+Normalization removes parser-incidental variation but does not perform target-C
+lowering, choose helpers, or erase evaluation boundaries. Any desugaring that can
+alter ordering, binding, or source attribution requires its own normalized node
+form and provenance rule. Normalization must be idempotent and must validate that
+all input nodes are either represented or explicitly rejected.
+
+The representation should remain structurally stable. Analysis results belong in
+separate fact tables rather than being repeatedly copied into new trees.
+
+Examples:
+
+    symbol_facts[node_id]
+    scope_facts[node_id]
+    value_category_facts[node_id]
+    ordering_facts[node_id]
+    declaration_facts[node_id]
+    support_facts[node_id]
+    rule_decisions[node_id]
+
+This limits object growth and allows analyses to be recomputed independently.
+
+
+10. SUPPORT STATES
+------------------
+
+Every meaningful conversion decision key receives exactly one support state. The
+key contains at least node ID, semantic-context ID, target-contract version,
+semantic-policy version, and rule-set version; a node alone is not sufficient
+because the same syntax may be supported in one context and rejected in another.
+
+Support states are:
+
+- SupportedDirect
+- SupportedWithHelper
+- SupportedApproximation
+- Unsupported
+- BlockedByDependency
+- PendingInternal
+
+No PendingInternal decision may reach final plan validation or C construction.
+
+SupportedDirect
+    Converts into ordinary C structure without generated helper code.
+
+SupportedWithHelper
+    Converts into C structure plus an explicitly selected helper template.
+
+SupportedApproximation
+    Converts according to a documented non-equivalent rule. The approximation
+    must be visible in diagnostics and the deterministic decision-trace record.
+
+Unsupported
+    Stops conversion for the affected construct with a structured diagnostic.
+
+BlockedByDependency
+    The construct cannot be planned because a required child, binding, fact, or
+    target property was rejected. It records a causal reference to the primary
+    diagnostic and does not duplicate a cascade of root-cause errors.
+
+PendingInternal
+    Analysis has not reached a decision. This is an internal validation failure
+    if it survives beyond support classification.
+
+The default policy should favor Unsupported over an unproven approximation.
+
+Support classification is complete only when every reachable decision key has a
+terminal state, all BlockedByDependency states point to a valid cause, and every
+supported state has exactly one immutable RulePlan. Unsupported or blocked
+constructs never leave placeholders in a publishable translation unit.
+
+
+11. LIMITED ANALYSIS SERVICES
+-----------------------------
+
+This project does not require a full Python semantic engine. Analysis exists only
+to select and construct conversion rules correctly.
+
+11.1 Symbol and scope analysis
+
+Required for:
+
+- distinguishing local and nonlocal names
+- assigning stable binding IDs independently from source spelling
+- planning declarations
+- avoiding generated-name collisions
+- resolving function parameters
+- handling module-level declarations
+- detecting use-before-binding and unsupported closure behavior
+- separating Python namespaces from C identifier namespaces
+
+11.2 Value-category inference
+
+Use a deliberately limited constraint lattice such as:
+
+- integer-like
+- floating-like
+- boolean-like
+- none-like
+- string-like
+- bytes-like
+- list-like
+- tuple-like
+- mapping-like
+- set-like
+- range-like
+- iterable-like
+- callable-like
+- object-like
+- unknown
+- contradictory
+
+Unknown means insufficient evidence; contradictory means available evidence cannot
+be reconciled under the active policy. They are different states and receive
+different diagnostics.
+
+Every inferred fact records provenance, including literal evidence, annotation
+evidence, binding evidence, rule assumptions, and any widening decision. Inference
+order must not affect the result.
+
+The goal is rule selection, not proof of complete Python behavior. A value category
+is not a C type and must never be rendered as one.
+
+11.3 Representation, ownership, and lifetime planning
+
+After value-category constraints are known, a central planner selects explicit
+RepresentationPlan values. Each plan declares:
+
+- Target C type reference
+- storage shape and mutability
+- value, pointer, or aggregate passing convention
+- nullability
+- ownership state: static, owned, borrowed, transferred, or not applicable
+- allocation and cleanup responsibility
+- lifetime region
+- required helper-template interfaces
+- semantic assumptions and unresolved obligations
+
+Rules request representation capabilities; they do not invent raw C types. A
+representation conflict rejects the enclosing conversion unit with a primary
+diagnostic and causal blocked states.
+
+11.4 Evaluation-order, truthiness, and effect analysis
+
+The converter must represent source order explicitly whenever C expression rules
+could obscure it. Short-circuit boundaries, chained comparisons, calls, indexing,
+and mutation are explicitly sequenced. Temporary variables are introduced when
+necessary, with one evaluation of each source operand unless an approximation
+explicitly states otherwise.
+
+Truthiness is a semantic fact selected per representation. It is never reduced to
+`value != 0` unless the active rule proves that mapping valid.
+
+Effects are conservative and conversion-oriented. At minimum they distinguish:
+
+- pure value construction
+- reads mutable state
+- writes state
+- may allocate
+- may require cleanup
+- may encounter an operation whose Python failure behavior is unsupported
+- creates a control-flow boundary
+
+11.5 Declaration, temporary, and name planning
+
+Plan declarations before rendering so generated C is coherent and stable. The
+central name allocator works from binding IDs and a frozen traversal order. It
+rejects or escapes C keywords, implementation-reserved spellings, helper-name
+collisions, linkage collisions, and collisions introduced by normalization.
+
+No rule constructs a final generated identifier by string concatenation. Names are
+assigned once and referenced by ID from the C IR.
+
+11.6 Helper requirements
+
+A rule may request a named helper template. Requirements must be declarative and
+resolved centrally. Rule modules must not inject arbitrary support files.
+
+11.7 Fact-table contracts
+
+Every fact table declares:
+
+- key domain and schema version
+- producer stage and allowed consumers
+- completeness and unknown-value rules
+- provenance form
+- deterministic iteration and serialization order
+- invalidation dependencies
+- validator and negative fixtures
+
+Fact tables are immutable after publication. Re-analysis creates a new table and
+artifact fingerprint rather than editing facts consumed by an earlier plan.
+
+11.8 Bounded analysis policy
+
+No whole-program engine is implied. When a construct would require open-world
+module discovery, unrestricted alias analysis, arbitrary call-target discovery,
+or general exception modeling, the active subset must reject it or select a
+specifically documented helper/approximation rule. Analysis depth and refinement
+iterations are bounded and deterministic.
+
+
+12. CONVERSION RULE REGISTRY
+----------------------------
+
+The registry maps normalized constructs and known facts to conversion rules.
+
+A rule key may include:
+
+- normalized node kind
+- operator kind
+- value categories
+- semantic policy and approximation allowlist
+- Target C Source Contract capabilities
+- source context
+- language feature flags
+
+Rule selection must be:
+
+- deterministic
+- inspectable
+- based on an explicit specificity key with audited overrides
+- conflict-detecting
+- independent from GUI state
+- independent from import and registration order
+
+The registry is built and validated once, then frozen. It rejects duplicate IDs,
+ambiguous best matches, unreachable rules, accidental shadowing, missing rule
+versions, and unapproved overlap. Numeric priority alone is not sufficient to make
+an ambiguous rule set correct.
+
+Conceptual contract:
+
+    class ConversionRule(Protocol):
+        rule_id: RuleId
+        rule_version: RuleVersion
+        family_id: RuleFamilyId
+        specificity: SpecificityKey
+
+        def evaluate(self, node, facts, policy, target) -> MatchResult:
+            ...
+
+        def plan(self, match) -> RulePlan:
+            ...
+
+        def lower(self, plan, resolved_requirements, builder) -> CNodeRef:
+            ...
+
+`evaluate` is pure and records the tested predicates and rejection reasons.
+`plan` creates the single immutable decision used for support state, semantic
+obligations, representation requests, helpers, diagnostics, lowering, and
+explanation. Explanations are rendered from RulePlan data; there is no separate
+`explain` calculation that could disagree with conversion.
+
+`lower` consumes only the selected RulePlan and centrally resolved requirements.
+It returns references to structured C IR nodes, never final C text.
+
+Every registry build publishes an ordered manifest containing rule IDs, versions,
+family ownership, specificity keys, overlap approvals, and a rule-set fingerprint.
+The manifest is part of every transition packet and conversion fingerprint domain.
+
+12.1 Rule coverage and conflict evidence
+
+Each rule supplies:
+
+- a positive eligibility fixture
+- a near-miss fixture for each meaningful predicate
+- an unsupported-boundary fixture
+- overlap fixtures for every approved overlap
+- plan serialization and lowering fixtures
+- semantic-obligation and diagnostic expectations
+
+Automated audits prove that every supported fixture selects exactly one rule, every
+rejected candidate explains why, and no rule becomes unreachable after registry
+changes.
+
+
+13. RULE FAMILIES
+-----------------
+
+Recommended families:
+
+- literals
+- identifiers
+- unary expressions
+- binary expressions
+- comparisons
+- boolean expressions
+- assignments
+- augmented assignments
+- conditional statements
+- loops
+- break and continue
+- function definitions
+- calls
+- returns
+- lists and tuples
+- dictionary-like structures
+- indexing and slicing
+- imports represented as comments or declarations where supported
+- classes for explicitly defined semantic policies and representation contracts
+- unsupported dynamic constructs
+
+Each family owns only its own conversion logic.
+
+Family-level documentation must state:
+
+- accepted normalized forms
+- required analysis facts
+- Target C capabilities and semantic-policy requirements
+- evaluation-order, representation, ownership, and lifetime obligations
+- generated C patterns
+- helper requirements
+- explicit semantic delta and approximation codes, if any
+- unsupported cases
+- positive, near-miss, boundary, structural, and golden fixtures
+
+13.1 Grammar coverage and feature matrix
+
+The declared Python grammar is audited against a versioned feature matrix. Every
+parser node kind and every normalized node/context combination is classified as:
+
+- Supported in a named policy/target combination
+- Planned for a named phase
+- Deferred with an owner and reconsideration event
+- Unsupported with a stable diagnostic
+- NotApplicable with a written reason
+
+Each supported entry links to its semantics section, RulePlan IDs, target
+requirements, approximation codes, fixtures, and first supported release. Each
+unsupported entry links to its primary diagnostic and boundary fixtures.
+
+The grammar audit fails if a newly accepted parser node lacks a matrix entry. This
+prevents syntax acceptance, parser upgrades, or normalization fallback from
+silently expanding the claimed language subset.
+
+
+14. CONVERSION PROFILES
+-----------------------
+
+Profiles are versioned presets over independent configuration dimensions; they are
+not monolithic modes. The canonical dimensions are:
+
+- Target C Source Contract
+- semantic policy
+- helper policy
+- approximation allowlist
+- output style
+- diagnostic presentation policy
+
+Rule selection may depend on the first four. Output style may affect rendering but
+must not change support classification, representation, or helpers. Diagnostic
+presentation and observer settings must not change conversion facts.
+
+14.1 Strict C profile
+
+Goals:
+
+- ordinary, readable C
+- minimal helper code
+- explicit declarations
+- rejection of unresolved dynamic constructs
+
+Best for statically understandable Python input.
+
+14.2 Assisted C profile
+
+Goals:
+
+- permit selected generated helper functions and support declarations
+- convert a wider subset without claiming Python equivalence
+- make every helper visible in the generated source and conversion summary
+
+Helpers are source templates only. The application does not build or run them.
+
+14.3 Educational profile
+
+Goals:
+
+- maximize readability
+- preserve source-oriented naming
+- emit explanatory comments
+- favor explicit temporaries over compact C expressions
+
+Educational is principally an output-style preset and may be combined with Strict
+C or Assisted C semantic policy. If its explicit-temporary preference would alter
+observable behavior rather than only structure, that transformation requires an
+ordinary semantic rule and obligation proof.
+
+14.4 Approximation allowlist
+
+Approximations are disabled by default and are authorized individually by stable
+approximation code or narrowly scoped rule-family code. There is no "approximate
+anything" profile.
+
+Each permission declares:
+
+- affected construct and preconditions
+- exact semantic delta
+- severity and user-visible marker
+- profile presets that may expose the permission
+- tests proving it cannot match outside its declared boundary
+
+Profiles must not be called native, runtime, hybrid, executable, or interoperability
+modes.
+
+All configuration is canonicalized before rule selection. Unknown fields, unknown
+enum values, invalid combinations, and unsupported contract versions are rejected.
+Canonical configuration serialization is stable and versioned.
+
+
+15. STRUCTURED C REPRESENTATION
+-------------------------------
+
+The C representation should model at least:
+
+- translation units
+- includes
+- comments
+- type references
+- declarations
+- identifiers
+- literals
+- unary and binary expressions
+- calls
+- casts
+- assignments
+- blocks
+- conditionals
+- loops
+- break and continue
+- returns
+- function declarations and definitions
+- structs where supported
+- helper declarations and definitions
+
+It must also model the distinctions that validation requires:
+
+- C type and declarator structure rather than raw type strings
+- symbol references by binding ID rather than repeated identifier text
+- lvalue and value contexts
+- storage duration, linkage, qualifiers, and nullability where applicable
+- explicit casts and numeric-conversion intent
+- sequencing boundaries and temporary references
+- source provenance for original and synthetic nodes
+- ownership and cleanup annotations used by structural validation
+
+The C IR is target-contract aware but formatting independent. A C IR validator
+checks, at minimum, reference resolution, declaration/use compatibility, legal
+declarator structure, control-flow placement, return consistency, helper interface
+compatibility, generated-name legality, ordering constraints, and absence of
+unsequenced source effects promised by a RulePlan.
+
+The renderer owns:
+
+- whitespace
+- indentation
+- braces
+- line breaking
+- operator precedence
+- parentheses
+- comment formatting
+- stable ordering
+
+Conversion rules must not own formatting.
+
+The renderer is total over validated C IR: each valid node kind renders or the
+renderer reports InternalError. Rendering never consults Python IR facts, selects
+rules, allocates semantic names, or changes ownership decisions. Ordered manifests
+and explicit sort keys are used everywhere; incidental dictionary, set, filesystem,
+or plugin discovery order may not affect output.
+
+15.1 Source/output mapping contract
+
+Mappings are many-to-many records assembled from C IR provenance during rendering,
+never recovered by searching generated strings. Each record contains source-
+document ID and span, Python IR origin IDs, RulePlan ID, C IR node IDs, rendered
+byte and line/column ranges, and an origin kind:
+
+- direct source conversion
+- synthetic conversion structure
+- generated declaration or temporary
+- support template
+- explanatory comment
+
+Every supported source decision maps to at least one C IR or diagnostic record.
+Every non-formatting generated region maps to a RulePlan, synthetic provenance, or
+helper manifest entry. Mapping validators check coordinate basis, range bounds,
+revision identity, overlap policy, and UTF-8/newline consistency.
+
+Navigation selects a primary target by a documented deterministic rule while still
+retaining all related mappings. Approximate mappings are marked and cannot be
+presented as exact one-to-one correspondence.
+
+
+16. SUPPORT-CODE TEMPLATES
+--------------------------
+
+Some conversions may require generated C helpers. These are not a runtime
+subsystem and must not be presented as one.
+
+Examples:
+
+- string duplication helper
+- bounded list helper
+- safe indexing helper
+- conversion-specific utility macro
+
+Every helper is:
+
+- explicitly named
+- versioned
+- selected by a declared rule
+- visible in the conversion summary
+- rendered as source
+- independently golden-tested
+- removable when unused
+- governed by a semantic interface contract
+- compatible with a declared Target C Source Contract
+- explicit about ownership, allocation, cleanup, and failure behavior
+
+Helpers are registered project assets. Python input cannot name an arbitrary
+template, path, include, or source fragment. A helper is represented as a C IR
+factory, or its maintained source template is parsed and validated into C IR at
+registry-build time. No rule injects unchecked text.
+
+The support-template registry resolves an exact-version dependency closure,
+rejects missing or cyclic dependencies, validates interface compatibility, orders
+helpers with a deterministic topological key, and emits each helper once. It
+publishes a helper manifest and fingerprint with the conversion result.
+
+The system does not compile, link, load, or test helper execution.
+
+
+17. DIAGNOSTICS
+---------------
+
+Diagnostics are a first-class conversion product.
+
+Every diagnostic shall include:
+
+- stable code
+- stable diagnostic instance ID
+- severity
+- conversion stage
+- message
+- source span
+- related spans where useful
+- causal diagnostic ID for a blocked or cascading condition
+- semantic policy and Target C Source Contract
+- rule ID when applicable
+- fact or obligation references when applicable
+- explanation
+- suggested source change when known
+- approximation code and semantic delta when applicable
+- effect on ResultStatus
+
+Severity levels:
+
+- Information
+- Warning
+- Approximation
+- Error
+- InternalError
+
+Example:
+
+    PYC2104 — Unsupported dynamic addition
+
+    The converter cannot select a stable C representation for `left + right`
+    because both operand categories remain unknown in the Strict C profile.
+
+    Options:
+    - add source annotations accepted by the converter
+    - rewrite the expression using supported value categories
+    - select Assisted C if an appropriate helper rule exists
+
+Internal exceptions are caught at the facade boundary and returned as structured
+InternalError diagnostics.
+
+Diagnostic codes are owned by documented namespaces and are never reused for a
+different meaning. Code retirement, severity changes, and schema changes are
+versioned. Diagnostics are deduplicated and sorted by an explicit stable key based
+on source position, stage rank, severity rank, code, and decision identity.
+
+One root cause produces one primary diagnostic. Blocked parents refer to it instead
+of flooding the result with repeated errors. Suggested edits are descriptive by
+default; any machine-applicable edit includes an exact source revision and span so
+it cannot be applied to stale text.
+
+InternalError details presented to users omit host paths and implementation data
+that are not needed for remediation. Developer details may be placed in a separate
+opt-in diagnostic attachment.
+
+
+18. NATIVE CONVERSION FEEDBACK SYSTEM
+-------------------------------------
+
+The converter includes its own native feedback and trace subsystem. It provides
+immediate, structured visibility across the conversion chain. It is not a
+debugger, is not derived from another project, and does not observe generated-
+program execution.
+
+It has two channels with different contracts:
+
+A. Deterministic decision trace
+   Explains what the converter decided and why. It is reproducible and may
+   participate in golden evidence.
+
+B. Operational telemetry
+   Measures converter timing, memory, queue depth, cache behavior, and cancellation
+   responsiveness. It is nondeterministic and never participates in conversion or
+   output fingerprints.
+
+The channels have separate schemas, serializers, retention settings, budgets, and
+diff views. They are not two views over one mutable event object.
+
+Every meaningful conversion decision may record:
+
+- source node and span
+- stage
+- normalized form
+- known facts
+- support state
+- candidate rules
+- selected rule
+- rejected-rule reasons
+- generated C node IDs
+- helper requirements
+- approximation state
+- diagnostics
+- deterministic fingerprints
+
+Operational telemetry may separately record:
+
+- monotonic stage durations
+- process-local memory estimates
+- cache hit and miss counts
+- observer drops or truncation
+- cancellation latency
+
+Canonical principle:
+
+    Every meaningful conversion decision must be observable, attributable,
+    serializable, and reproducible.
+
+18.1 Deterministic decision-trace record
+
+Each conversion can produce a versioned JSON record containing:
+
+- schema version
+- converter version
+- input fingerprint
+- configuration fingerprint
+- resource-policy fingerprint
+- stage summaries
+- rule decisions
+- diagnostic records
+- output fingerprint
+- source/output mappings
+- generated artifact metadata
+- Target C Source Contract version
+- semantic-policy and approximation-allowlist versions
+- rule-set and helper-manifest fingerprints
+- completeness and deterministic truncation status
+
+Decision records contain immutable value snapshots or stable IDs. They never retain
+a mutable ConversionContext, builder, fact table, GUI object, or arbitrary Python
+object graph.
+
+Trace recording levels are None, Summary, Decisions, and Full. Event ordering and
+event-count limits are deterministic. If a requested trace exceeds its declared
+budget, the trace marks itself incomplete and emits a separate observation
+diagnostic; conversion facts, ResultStatus, and generated C remain unchanged.
+
+18.2 Decision diff
+
+The CLI may compare two saved records:
+
+    pycforge diff record_a.json record_b.json
+
+It should show changes in:
+
+- normalized structure
+- inferred categories
+- support states
+- selected rules
+- helper requirements
+- diagnostics
+- generated C fingerprint
+
+Operational telemetry can be compared through a separate command or explicit flag.
+Timing changes are never mixed into the default semantic decision diff.
+
+18.3 Observer isolation and data discipline
+
+The decision-trace serializer uses an explicit public schema. It must not call
+`dataclasses.asdict()` over internal object graphs.
+
+Stages publish immutable observer events through a narrow sink interface. Observer
+callbacks cannot query or mutate live stage state. Sink exceptions are contained,
+and bounded buffers use a declared drop/truncation policy. Disabling either channel
+must leave selected rules, diagnostics, C IR, rendered C, and conversion
+fingerprints byte-identical.
+
+Source text is excluded from saved records by default. An explicit policy controls
+whether excerpts or full source may be embedded, with clear size and privacy
+limits.
+
+The headless laboratory is the authoritative feedback surface during development.
+The PyQt5 workspace consumes completed immutable results and snapshots; it does not
+continuously inspect mutable converter internals to discover progress.
+
+
+19. DATACLASS AND OBJECT-MODEL DISCIPLINE
+-----------------------------------------
+
+The project will naturally use many structured values. Dataclasses are allowed
+only when structural fields and value-style behavior are central.
+
+19.1 Immutable value objects
+
+Use `@dataclass(frozen=True, slots=True)` for:
+
+- SourceSpan
+- NodeId and other identifiers where appropriate
+- Diagnostic
+- ConversionRequest
+- ConversionSummary
+- RuleDecision
+- RulePlan
+- StageArtifact metadata
+- TargetCSourceContract
+- RepresentationPlan
+- stage timing records in the telemetry schema only
+- source/output mapping entries
+
+19.2 Representation nodes
+
+Generated Python IR and C IR nodes may use frozen, slotted dataclasses,
+preferably generated from a schema to ensure consistency.
+
+19.3 Fact tables
+
+Do not rebuild entire trees to attach facts. Use stable IDs and separate maps.
+
+19.4 Mutable lifecycle objects
+
+Use ordinary classes for:
+
+- ConversionContext
+- DiagnosticCollector
+- RuleRegistry
+- CBuilder
+- DecisionTraceRecorder
+- TelemetrySink
+- Pipeline
+- Renderer
+- Facade
+
+19.5 Interning
+
+Intern repeated value categories, operators, type tokens, and common identifiers
+where useful.
+
+Interning is an optimization, not identity semantics. It is introduced only after
+measurement, is bounded or lifecycle-scoped, and cannot retain request source data
+indefinitely or make parallel-request behavior observable.
+
+19.6 Serialization
+
+Public JSON is produced by explicit serializers with schema versions. Internal
+class shape is never the public storage contract.
+
+Project rule:
+
+    A dataclass is permitted only when structural equality, explicit fields,
+    and value-style representation are central to the object.
+
+
+20. HEADLESS CONVERSION LABORATORY
+----------------------------------
+
+The headless laboratory is the primary development and gate-evidence surface. Its
+complete first-slice workflow exists before conversion behavior is wired into the
+PyQt5 workspace. Engineers must be able to understand every stage without polling
+or manually observing GUI state.
+
+All commands use the same public converter facade as the GUI.
+
+20.1 Convert
+
+    pycforge convert SOURCE.py
+
+Responsibilities:
+
+- run the conversion pipeline
+- print concise stage status
+- write or display generated C
+- report diagnostics
+- optionally save a deterministic decision-trace record
+- optionally save a separate operational-telemetry snapshot
+
+Useful options:
+
+    --show-c
+    --show-normalized
+    --show-c-ir
+    --show-rules
+    --show-facts
+    --show-mappings
+    --profile strict-c
+    --target-c CONTRACT
+    --allow-approx CODE[,CODE...]
+    --trace-level none|summary|decisions|full
+    --telemetry none|summary|full
+    --format text|json
+    --output FILE.c
+    --record FILE.json
+
+Generated C is written only for a publishable result and is saved with temporary-
+file, flush, and atomic-replace discipline. A failed conversion never truncates a
+previous successful output file.
+
+20.2 Inspect
+
+    pycforge inspect SOURCE.py
+
+Shows why the converter made each decision:
+
+- source construct
+- normalized form
+- known facts
+- support state
+- candidate rules
+- selected rule
+- helper requirements
+- generated C fragment
+- diagnostics
+- semantic obligations and deltas
+- representation, ownership, and lifetime plan
+- provenance and causal diagnostic chain
+
+Useful development controls include:
+
+    --stop-after STAGE
+    --save-artifact FILE
+    --load-artifact FILE
+
+Loading a stage artifact requires matching schema, converter, target-contract,
+semantic-policy, and rule-set compatibility. It is a development accelerator, not
+a way to bypass validators.
+
+20.3 Validate
+
+    pycforge validate SOURCE.py
+
+Performs source-conversion contract validation only:
+
+- every supported node has a selected rule
+- no PendingInternal support state reaches C construction
+- every C node satisfies model invariants
+- every supported RulePlan closes its semantic obligations
+- every representation has compatible ownership and lifetime facts
+- declarations are planned consistently
+- generated identifiers are valid and collision-free
+- renderer precedence is preserved
+- helper dependencies resolve once
+- source mappings reference valid spans
+- output is deterministic
+- unsupported constructs have diagnostics
+- rendered text passes independent non-executing C grammar conformance
+- disabling decision trace and telemetry leaves conversion artifacts identical
+
+It does not invoke a C compiler or execute C.
+
+20.4 Fixture suites
+
+    pycforge convert-suite CATEGORY
+
+Each fixture contains:
+
+- Python input
+- declared Python grammar, semantic policy, and Target C Source Contract
+- expected diagnostics
+- expected support states where relevant
+- expected rule IDs and semantic obligations where relevant
+- optional normalized Python IR and C IR structural snapshots
+- approved generated C
+- optional approved deterministic decision-trace excerpt
+- fixture schema version and ownership metadata
+
+The suite compares structural and golden outputs. It does not compare runtime
+behavior.
+
+20.5 Watch mode
+
+    pycforge watch SOURCE.py
+
+Optional developer convenience. It reruns conversion on source changes and
+refreshes the generated C and diagnostics. It never builds or runs the output.
+
+Watch mode debounces revisions, assigns a monotonic request generation, cooperatively
+cancels obsolete requests, and publishes only a complete result matching the newest
+source fingerprint. The last successful output remains available and marked stale
+while a newer conversion is pending or rejected.
+
+20.6 Architecture and gate commands
+
+The laboratory also exposes stable commands for automation:
+
+    pycforge audit-rules
+    pycforge audit-determinism FIXTURE_OR_SUITE
+    pycforge verify-transition PACKET.json
+    pycforge diff RECORD_A.json RECORD_B.json
+
+Commands use documented exit categories for Converted, Rejected, InternalFailure,
+Canceled, invalid fixture, and invalid transition evidence. Text and JSON modes
+must represent the same facts.
+
+
+21. PYQT5 CONVERSION WORKSPACE
+------------------------------
+
+The GUI is intentionally small. It is not a full IDE.
+
+Primary layout:
+
+    [collapsible navigation] [generated C] [Python editor]
+                              read-only      editable
+
+Core actions:
+
+- Open Python
+- Save Python
+- Save Python As
+- Convert
+- Save Generated C
+- Copy Generated C
+- Show or hide diagnostics
+- Show or hide conversion summary
+
+Explicitly absent:
+
+- Run
+- Build
+- Debug
+- Terminal
+- Toolchain settings
+- Executable configuration
+- Plugin marketplace
+- large project explorer
+
+21.1 Generated C pane
+
+The generated C pane is permanently read-only. Modification is blocked through:
+
+- typing
+- paste
+- cut
+- drag-and-drop
+- edit commands
+
+It may support selection, copying, searching, and source mapping.
+
+21.2 Python editor
+
+The Python pane is the only editable source pane.
+
+21.3 Explicit conversion
+
+Editing Python never automatically replaces generated C unless optional watch
+mode is deliberately enabled in a future developer setting.
+
+The normal workflow is:
+
+    edit Python
+        -> press Convert
+        -> inspect generated C and diagnostics
+        -> save C
+
+The UI submits an immutable request to a worker that calls only the public facade.
+It does not hold a ConversionContext or subscribe to mutable stage objects. A
+request generation and source fingerprint guard result publication, so a late
+result cannot replace output for newer source.
+
+21.4 Output revision tracking
+
+The UI clearly distinguishes:
+
+- current Python revision
+- revision used for displayed C
+- stale generated output
+- successful conversion
+- conversion with warnings or approximations
+- failed conversion
+- canceled or superseded conversion
+- incomplete decision trace or telemetry snapshot without mislabeling conversion
+
+The UI swaps complete result models atomically. It never incrementally assembles
+generated C from progress events. Python and generated-C saves use the same atomic
+writer policy as the headless client.
+
+21.5 Quantum Syntax Highlighting
+
+Only visible text plus a small margin is highlighted.
+
+Requirements:
+
+- viewport-limited work
+- coalesced scroll updates
+- stale task cancellation
+- multiline-state preservation
+- plain-text fallback
+- no conversion blocking
+
+21.6 Visual language
+
+The workspace uses a project-native professional visual language:
+
+- dark operational surface
+- restrained blue, purple, and orange accents
+- custom professional SVG iconography
+- clear state colors
+- high information density without clutter
+- no emoji or ASCII substitute icons
+
+
+22. TESTING STRATEGY
+--------------------
+
+22.1 Unit tests
+
+Test:
+
+- normalized nodes
+- fact-table operations
+- rule matching
+- C nodes
+- precedence handling
+- diagnostics
+- helper resolution
+- serializers
+
+22.2 Stage tests
+
+Every stage is tested independently with valid and invalid inputs, every terminal
+StageOutcome, cancellation at each safe point, resource-limit rejection, input
+artifact immutability, and refusal to publish an invalid successor artifact.
+
+22.3 Rule tests
+
+Every rule family receives focused source fixtures, near-miss and overlap fixtures,
+semantic-obligation expectations, and expected C structures. RulePlan explanation
+and lowering are checked against the same serialized decision.
+
+22.4 Golden-output tests
+
+Compare generated C against reviewed `.c` files.
+
+Golden updates require intentional review. A changed output is not automatically
+an improvement.
+
+Goldens are layered: diagnostic and RulePlan snapshots identify semantic change;
+C IR snapshots identify structural change; rendered `.c` files identify editorial
+change. A renderer-only edit should not force semantic snapshots to change.
+
+22.5 Structural property tests
+
+Verify properties such as:
+
+- deterministic output
+- stable declaration ordering
+- no duplicate helper emission
+- valid source mappings
+- no unresolved C IR placeholders
+- valid identifier generation
+- balanced structural blocks
+- stable semantic-obligation closure
+- valid ownership and cleanup paths in the declared structural model
+- rule selection independent of registration order
+- decision trace and telemetry observational equivalence
+
+22.6 Diagnostic tests
+
+Verify codes, spans, severity, and suggested remedies.
+
+22.7 Grammar-aware fuzzing
+
+Generate Python source within the declared subset and verify that conversion:
+
+- succeeds deterministically, or
+- fails with a structured diagnostic,
+- never crashes without an InternalError result,
+- never leaves a PendingInternal state in a successful result.
+
+Every minimized failure becomes a permanent regression fixture.
+
+Fuzzers enforce source-size, nesting, node-count, and time budgets. They cover both
+supported grammar generation and boundary mutation around unsupported constructs.
+Shrinking preserves the declared Python grammar version and request policy.
+
+22.8 Architecture tests
+
+Continuously reject:
+
+- PyQt imports inside converter packages
+- rule modules returning final C strings
+- GUI-only conversion logic
+- mutable global registry state
+- direct AST-to-C rendering outside approved frontend adapters
+- support-template inclusion without a declared requirement
+- public JSON coupled to internal dataclass layout
+- toolchain or execution dependencies
+- competing Python or C IR node hierarchies
+- rules constructing final generated names or raw C types
+- helpers injecting unvalidated C text
+- observer imports or callbacks that can influence analysis or lowering
+- nondeterministic fields entering semantic or output fingerprints
+
+22.9 Cross-process determinism tests
+
+Run representative suites in fresh processes with different hash seeds, locales,
+time zones, temporary directories, CPU counts, and supported Python patch versions.
+Generated C, semantic diagnostics, decision traces, manifests, and fingerprints
+must remain identical. Operational telemetry is intentionally excluded.
+
+22.10 Metamorphic and mutation tests
+
+Metamorphic fixtures apply transformations whose expected relationship is declared,
+such as whitespace/comment changes, safe alpha-renaming, or equivalent parenthesis
+changes. They verify both what must remain stable and what source mappings must
+change.
+
+Mutation testing targets rule predicates, overlap resolution, validators,
+diagnostic cascades, precedence tables, and helper dependency logic. A surviving
+mutation in a conversion-critical boundary opens conversion debt.
+
+22.11 Security and resource tests
+
+Verify that input is never imported or evaluated, source-controlled paths cannot
+select helpers or includes, pathological nesting is contained, diagnostic and
+trace volumes are bounded, cancellation is responsive, atomic saves preserve old
+files on failure, and internal diagnostics do not leak host paths by default.
+
+22.12 Compatibility tests
+
+Every Candidate, StableInternal, or PublicStable schema has producer/consumer
+contract fixtures. Supported migrations are tested in both directions promised by
+policy; unsupported versions fail with a stable compatibility diagnostic.
+
+22.13 Converter performance and scale tests
+
+Measure converter-only latency, peak retained memory, artifact size, cancellation
+latency, and observer overhead across declared small, medium, and maximum supported
+source classes. Each release has explicit regression budgets and test-machine
+normalization rules. Performance telemetry never alters correctness evidence, and
+no generated-program execution or benchmark is implied.
+
+
+23. GENERATED-C QUALITY GATES
+-----------------------------
+
+Generated C quality is evaluated structurally and editorially, not by execution.
+
+Required gates:
+
+- byte-deterministic output for identical request inputs
+- declared Target C Source Contract and semantic-policy fingerprints
+- stable formatting
+- coherent declaration order
+- valid identifier spelling
+- collision-free generated names
+- explicit includes
+- no unresolved placeholders
+- no duplicate helper definitions
+- correct renderer precedence and parentheses
+- C IR type, binding, linkage, and control-flow consistency
+- closed semantic, representation, ownership, and lifetime obligations
+- independent non-executing C grammar conformance of rendered text
+- readable source-oriented comments where configured
+- complete source/output mapping
+- explicit markings for approximations
+- no hidden generated content outside the result
+- no timestamps, absolute host paths, process IDs, or incidental discovery order
+- exact agreement between helper manifest and emitted helper definitions
+
+Optional static text checks may enforce house style. They must not invoke a C
+compiler.
+
+These gates prove conformance to the converter's declared source contract. They do
+not claim that the text was compiled, linked, executed, or behaviorally equivalent
+outside the documented conversion semantics.
+
+
+24. CONVERSION-DEBT REGISTER
+----------------------------
+
+Conversion debt is tracked separately from ordinary technical debt.
+
+Each entry records:
+
+- affected Python construct
+- selected profile
+- current behavior
+- desired behavior
+- approximation or rejection status
+- diagnostic code
+- affected rules
+- unmet semantic, representation, ownership, or lifetime obligation
+- affected Target C Source Contracts and schema versions
+- affected fixtures
+- risk classification
+- planned milestone
+- owner
+- containment status and stop-the-line effect
+- date or event that forces reconsideration
+
+No limitation may live only in a comment or developer memory.
+
+Risk classes:
+
+- Low: isolated syntax or rendering behavior
+- Moderate: shared declaration or control-flow behavior
+- High: rule selection affecting several construct families
+- Extreme: broad dynamic Python behavior with no stable C mapping
+
+Extreme-risk features default to Unsupported unless the project explicitly
+approves a documented approximation.
+
+
+25. PHASE GATES AND TRANSITION CONTRACTS
+----------------------------------------
+
+Every phase has:
+
+- entry criteria
+- exit criteria
+- required tests
+- required specifications
+- decision-trace and telemetry-isolation requirements
+- architectural checks
+- explicit non-goals
+- produced artifacts
+- consumed artifacts
+- compatibility obligations
+- rollback conditions
+- resource and cancellation limits
+- candidate-baseline identifier
+
+A phase is complete only when evidence exists. A feature demonstration alone is
+not sufficient.
+
+Every phase follows the same state model:
+
+    Planned -> Active -> Candidate -> Promoted
+                            |
+                            `-> Rejected
+
+Only Promoted artifacts may be consumed as the stable starting point of another
+phase. Rejected candidate work remains inspectable but cannot replace a promoted
+baseline.
+
+No phase gate may require compiling or executing generated C.
+
+25.1 Phase transition packet
+
+Every completed phase publishes a versioned transition packet containing:
+
+- phase identifier and roadmap revision
+- artifacts produced
+- artifact schema versions
+- artifact content fingerprints and readiness levels
+- accepted inputs and guaranteed outputs
+- invariants established
+- diagnostics introduced or changed
+- decision-trace and telemetry schemas introduced or changed
+- tests added and their coverage intent
+- target-contract, semantic-obligation, rule-manifest, determinism, resource, and
+  architecture reports
+- known limitations
+- deferred decisions
+- conversion-debt entries opened or closed
+- compatibility notes for the next phase
+- last-known-good baseline and candidate-baseline identifiers
+- promotion decision and reviewer evidence
+
+The next phase may begin only after this packet is reviewed.
+
+25.2 Artifact readiness levels
+
+Every cross-phase artifact receives one readiness level:
+
+- Experimental: shape may change freely inside the current phase
+- Candidate: structure is usable by the next phase but not yet public
+- StableInternal: internal consumers may depend on it through a versioned contract
+- PublicStable: external clients may depend on it according to compatibility policy
+
+No next phase may depend on an Experimental artifact.
+
+Candidate means eligible for gate evaluation, not safe for unguarded downstream
+use. A downstream phase may prototype against Candidate artifacts only in isolated
+experimental work; it cannot promote until those dependencies are themselves
+StableInternal or PublicStable.
+
+25.3 Transition compatibility rule
+
+When a downstream phase consumes an upstream artifact, the upstream phase must
+publish:
+
+- a schema or protocol
+- validation rules
+- at least one positive fixture
+- at least one invalid-input fixture
+- a deterministic serialization or inspection form where applicable
+
+Breaking changes require:
+
+- a schema-version change
+- migration notes
+- updated transition packet
+- reviewed golden changes
+- explicit conversion-debt review
+- producer/consumer compatibility fixtures
+- an adapter or an explicit rejection of old versions
+
+Consumers pin the contract versions they accept. They never reinterpret an older
+artifact according to a newer internal class shape. Migration creates a new
+artifact; it does not rewrite historical evidence in place.
+
+25.4 Gate evidence
+
+Each phase gate stores evidence under a predictable location such as:
+
+    evidence/phase_06/
+        transition_packet.json
+        artifact_manifest.json
+        test_summary.json
+        architecture_report.json
+        semantics_report.json
+        rule_manifest.json
+        determinism_report.json
+        resource_report.json
+        decision_trace_sample.json
+        golden_manifest.json
+        debt_delta.json
+
+Evidence files are development records, not user-facing product artifacts.
+
+25.5 Stop-the-line conditions
+
+Phase advancement stops when any of the following is true:
+
+- deterministic output regresses
+- a PendingInternal support state reaches C construction
+- a semantic, representation, ownership, or lifetime obligation remains open in a
+  supported RulePlan
+- diagnostics lose required source spans
+- decision-trace records cannot explain a selected rule from its actual RulePlan
+- generated C contains unresolved placeholders
+- architecture checks detect GUI leakage or direct AST-to-C rendering
+- enabling, disabling, truncating, or failing an observer changes conversion facts
+- cross-process determinism fails
+- a failed or canceled conversion can overwrite a prior successful output
+- a phase requires an unapproved breaking change to a StableInternal artifact
+- golden changes are broad but unexplained
+- conversion debt grows without ownership or milestone assignment
+
+25.6 Rollback discipline
+
+Every phase identifies the last known-good revision. If a transition causes broad
+instability, the project restores that revision and reopens the phase rather than
+allowing unstable behavior to become the next phase's baseline.
+
+Rollback never depends on reconstructing an overwritten artifact. Promoted
+manifests, fixtures, schemas, and gate evidence are immutable. A rollback changes
+the selected baseline reference to a verified earlier manifest and records the
+reason in a new transition event.
+
+25.7 Atomic phase promotion
+
+Phase promotion is a transaction:
+
+1. Start the candidate from an identified promoted baseline.
+2. Write new schemas, artifacts, fixtures, and evidence under candidate identities.
+3. Validate the complete candidate without altering the baseline manifest.
+4. Verify content fingerprints and all transition-packet references.
+5. Promote the candidate baseline with one atomic version/tag update.
+6. Retain the preceding promoted baseline until the project retention policy says
+   it may be archived.
+
+If any step fails, the baseline reference does not move. This is the enforceable
+meaning of phase independence: failures are possible, but they are contained,
+diagnosable, restartable, and unable to corrupt the previous completed phase.
+
+25.8 Restart and replay evidence
+
+Each phase declares which artifacts can be serialized and replayed in the headless
+laboratory. Replay always revalidates compatibility and fingerprints. A phase can
+therefore resume from a confirmed artifact boundary without depending on GUI state
+or undocumented in-memory objects.
+
+
+26. CROSS-PHASE ENGINEERING RULES
+----------------------------------
+
+26.1 Vertical-slice rule
+
+Every language feature must travel through the complete conversion chain:
+
+    source fixture
+        -> normalized representation
+        -> required facts
+        -> support classification
+        -> immutable RulePlan
+        -> representation, ownership, lifetime, declaration, and name plan
+        -> structured C
+        -> validation
+        -> rendered C
+        -> diagnostics
+        -> decision-trace explanation
+        -> golden fixture
+
+A feature is not complete when only parsing or rendering works.
+
+26.2 Breadth budget
+
+Each feature phase declares a maximum number of new construct families. The phase
+may not add more families until existing ones satisfy all gates. This prevents
+partial support from accumulating faster than the system can explain and test it.
+
+26.3 Hardening checkpoint rule
+
+After every two feature-expansion phases, run a hardening checkpoint before the
+next expansion phase. The checkpoint includes:
+
+- deterministic-output audit
+- golden review
+- diagnostic consistency audit
+- decision-trace schema, explanation, and observer-isolation audit
+- conversion-debt review
+- architecture fitness run
+- fuzzing of the newly expanded subset
+- documentation synchronization
+
+The checkpoint may be a milestone rather than a public release, but it is required.
+
+26.4 Dependency direction review
+
+At every phase transition, verify that dependencies still point inward:
+
+- PyQt depends on the facade
+- CLI depends on the facade
+- facade depends on pipeline contracts
+- stages depend on representations and services
+- rules depend on explicit facts and C builders
+- renderers depend on C structures
+- decision trace and telemetry observe through declared immutable events
+
+No lower-level conversion package may import GUI or command-layer code.
+
+26.5 Decision freezing
+
+A major representation decision becomes frozen only after:
+
+- at least two independent feature families use it
+- its validator exists
+- its serializer or inspector exists
+- its transition packet records the decision
+- no unresolved Extreme-risk debt depends on changing it immediately
+
+This avoids freezing premature designs while preventing endless churn.
+
+26.6 Phase-local experiments
+
+Experimental work remains behind internal feature flags and may not affect default
+conversion output, public JSON, or golden fixtures until promoted through a gate.
+
+26.7 Dependency-DAG rule
+
+Every stage and cross-phase artifact declares its dependencies. The gate tool
+validates an acyclic dependency graph and a topological stage order. If bounded
+refinement is needed inside an analysis stage, its convergence rule, iteration
+limit, and non-convergence diagnostic are part of that single stage contract; it
+does not create an undocumented backward edge in the pipeline.
+
+26.8 Semantic-obligation rule
+
+A feature phase may add syntax only when it also owns the corresponding semantic
+obligations, target assumptions, negative boundaries, and approximation policy.
+Parser acceptance is never counted as language support.
+
+26.9 Change-budget rule
+
+Each phase states separate budgets for new construct families, schema changes,
+diagnostic-code changes, helper additions, and golden churn. Exceeding a budget
+requires splitting the phase or recording an explicit gate-approved exception.
+
+26.10 Failure-injection rule
+
+Before promotion, inject cancellation, resource exhaustion, invalid artifacts,
+observer failure, save interruption, and schema mismatch at each newly introduced
+boundary. The preceding promoted baseline and prior saved output must remain
+unchanged.
+
+
+27. DEVELOPMENT PHASES
+----------------------
+
+PHASE -1: CONVERSION FEASIBILITY SPIKES
+
+Investigate the highest-risk semantic and source-mapping decisions before
+committing production architecture:
+
+- Python evaluation order to explicit C temporaries
+- unknown and contradictory type evidence
+- numeric overflow, division, modulo, and truthiness policies
+- string encoding, ownership, and lifetime choices
+- function signature conversion
+- list and dictionary representation choices
+- nested scope naming
+- class representation boundaries
+- helper-template dependency resolution
+- source/output mapping
+- deterministic node identity and synthetic-node provenance
+- decision-trace isolation from operational telemetry
+
+Entry criteria:
+
+- product boundary is understood
+- spike questions are written as explicit decisions
+
+Exit criteria:
+
+- every spike is classified as supported directly, supported with helper, supported
+  approximation, deferred, or unsupported
+- each accepted direction has a written rationale, risk class, target assumption,
+  semantic delta, and falsifiable acceptance fixture
+- no production API is frozen from spike-only evidence
+
+Produced transition artifacts:
+
+- feasibility decision log
+- initial risk register
+- rejected-design notes
+- first semantic-obligation inventory
+- candidate Target C Source Contract decisions
+
+Prose is sufficient only when the decision is contractual. Questions about
+ordering, provenance, representation, or renderer structure that cannot be settled
+reliably on paper require a disposable source-only microprototype and captured
+fixture. Spike code never becomes production code by copy or API freeze.
+
+PHASE 0: PRODUCT AND CONVERSION CONTRACT
+
+Deliver:
+
+- supported Python specification
+- grammar-complete feature-matrix skeleton with explicit unsupported entries
+- SourceBundle and logical source-identity contract, initially limited to one
+  document
+- declared Python grammar and annotation-trust policy
+- Target C Source Contract
+- Conversion Semantics Specification
+- semantic-policy, helper-policy, and output-style dimensions
+- versioned approximation allowlist policy
+- representation, ownership, and lifetime policy
+- generated-C style guide
+- diagnostic code policy
+- ResultStatus and fingerprint-domain contracts
+- deterministic decision-trace schema draft
+- separate operational-telemetry schema draft
+- resource, cancellation, and atomic-save policies
+- explicit non-execution product boundary
+
+Entry criteria:
+
+- feasibility spikes have decisions or explicit deferrals
+
+Exit criteria:
+
+- no roadmap requirement depends on compiling or running C
+- all product terminology uses converter/conversion consistently
+- every future phase has declared non-goals
+- every construct in the first milestone has documented evaluation, type-evidence,
+  representation, ownership, failure, and approximation behavior
+- the first milestone input, expected RulePlans, C IR shape, and rendered C shape
+  are approved
+- configuration combinations and fingerprint domains are unambiguous
+
+Transition artifact maturity:
+
+- product boundary and non-execution contract: PublicStable
+- target, semantic, diagnostic, result, and observer schemas: Candidate
+
+PHASE 1: CORE FACADE AND EMPTY PIPELINE
+
+Deliver:
+
+- ConversionRequest
+- ConversionResult
+- ConversionContext
+- canonical request validation
+- typed StageOutcome and immutable StageArtifact protocols
+- diagnostic collector
+- resource policy and cooperative cancellation
+- deterministic fingerprint services
+- isolated decision-trace recorder skeleton
+- isolated operational-telemetry sink skeleton
+- deterministic empty result
+
+Entry criteria:
+
+- request and result fields are specified
+- minimum diagnostic, result, decision-trace, and telemetry schemas are available
+
+Exit criteria:
+
+- repeated identical requests produce identical fingerprints
+- malformed requests produce structured diagnostics
+- stage ordering is explicit and inspectable
+- rejected, failed, and canceled stages publish no successor artifact
+- observer enablement, failure, and truncation cannot change the empty conversion
+  result
+- concurrent requests share no mutable request state
+
+Required transition packet:
+
+- facade contract
+- stage outcome/artifact contracts and failure-injection evidence
+- empty-pipeline invariant list
+- deterministic fingerprint fixture
+- observer-isolation fixture
+
+Transition artifact maturity:
+
+- facade, request, result, StageOutcome, and StageArtifact contracts: StableInternal
+
+PHASE 2: HEADLESS CONVERSION LABORATORY
+
+Deliver:
+
+- convert command
+- inspect command
+- validate command
+- suite command
+- stage stop/save/load inspection
+- rule, determinism, architecture, and transition-packet audit commands
+- text and JSON formats
+- decision-record creation and semantic diff skeleton
+- separate telemetry snapshot option
+
+Use a stub conversion rule initially.
+
+Entry criteria:
+
+- facade is StableInternal
+- diagnostics and empty decision traces serialize deterministically
+
+Exit criteria:
+
+- every command operates without PyQt
+- no command invokes a native toolchain
+- text and JSON outputs represent the same result facts
+- command failures return stable exit categories and structured diagnostics
+- incompatible stage artifacts are rejected before use
+- interrupted output saves preserve the preceding file
+- the laboratory can produce every evidence type required by Checkpoint A
+
+Hardening checkpoint A:
+
+- facade/CLI contract audit
+- JSON schema review
+- stage failure-containment and observer-isolation audit
+- cross-process empty-pipeline determinism audit
+- architecture fitness baseline
+
+Transition artifact maturity:
+
+- headless command and JSON evidence contracts: StableInternal
+
+PHASE 3: SOURCE FRONTEND AND NORMALIZED PYTHON IR
+
+Deliver:
+
+- immutable SourceDocument
+- bounded decoding, token, line-index, and source-span services
+- declared-version parser adapter
+- stable per-revision source and synthetic node IDs
+- normalized core Python IR nodes
+- provenance tables
+- syntax and normalization diagnostics
+- Python IR validator, serializer, and inspector
+
+Entry criteria:
+
+- stage artifact, diagnostic, resource, and cancellation contracts are StableInternal
+- the headless laboratory can inspect and save a stage artifact
+
+Exit criteria:
+
+- the requested Python grammar is honored or rejected explicitly
+- supported syntax produces deterministic, idempotently normalized Python IR
+- invalid syntax and resource ceilings produce span-accurate diagnostics
+- Unicode, tabs, mixed newline input, and synthetic provenance have fixtures
+- normalized nodes contain no generated C text or target representation
+- parser-runtime differences are contained behind the frontend adapter
+- input source is never imported, evaluated, or used for module discovery
+
+Non-goals:
+
+- value-category inference
+- rule selection
+- C construction or rendering
+
+Transition artifact maturity:
+
+- SourceBundle, SourceDocument, and normalized core Python IR: StableInternal
+
+PHASE 4: STRUCTURED C IR AND RENDERER
+
+Deliver:
+
+- versioned essential C IR schema
+- structured type and declarator model
+- binding-ID and source-provenance references
+- translation-unit builder
+- C IR validator
+- precedence-aware deterministic renderer
+- source-output mapping assembly
+- independent non-executing generated-C grammar validator
+- renderer and conformance golden tests
+
+Entry criteria:
+
+- Target C Source Contract is Candidate or stronger
+- normalized source identity and provenance contracts are StableInternal
+
+Exit criteria:
+
+- C IR validates independently of Python rules
+- renderer output is byte-deterministic and total over valid C IR
+- precedence, declarator, keyword, reserved-name, and parentheses fixtures pass
+- source-map entries and synthetic provenance survive rendering
+- independent text conformance accepts every positive renderer golden
+- rules and helpers cannot bypass C IR with final text
+
+Non-goals:
+
+- Python construct support
+- rule selection
+- inference of C representation from Python facts
+
+Transition artifact maturity:
+
+- essential C IR and renderer protocol: StableInternal
+- formatter style: Candidate until Phase 6 golden review
+
+PHASE 5: ANALYSIS AND CONVERSION-PLANNING FOUNDATIONS
+
+Deliver:
+
+- fact-table protocol with provenance and invalidation contracts
+- binding and scope facts
+- limited constraint/value-category lattice
+- evaluation-order, truthiness, and effect facts
+- representation, ownership, and lifetime planner
+- declaration, temporary, and deterministic generated-name planner
+- support classification
+- frozen rule registry, overlap audit, and immutable RulePlan
+- declarative helper requirements
+- final conversion-plan validator
+
+Entry criteria:
+
+- normalized Python IR and essential C IR are StableInternal
+- Target C and Conversion Semantics contracts cover the first slice
+
+Exit criteria:
+
+- every published fact records producer, key domain, completeness, and provenance
+- unknown and contradictory evidence remain distinct and deterministic
+- rule selection is independent of registration order and has no unapproved overlap
+- every supported decision has one RulePlan and closed or explicitly requested
+  semantic obligations
+- representation conflicts, unsafe lifetimes, and name collisions reject cleanly
+- analysis uses immutable fact tables rather than rebuilding or annotating the IR
+- decision-trace explanations are rendered from the actual RulePlan
+
+Non-goals:
+
+- broad Python feature coverage
+- helper source emission
+- GUI integration
+
+Transition artifact maturity:
+
+- core fact, RulePlan, and representation-plan schemas: StableInternal
+- first-slice Target C Source Contract and Conversion Semantics Specification:
+  StableInternal
+
+PHASE 6: FIRST COMPLETE CONVERSION SLICE
+
+Support a deliberately narrow headless slice:
+
+- integer, float, boolean, string literals
+- simple names
+- basic assignment
+- selected arithmetic expressions
+- one annotated top-level function form under the annotation-trust policy
+- return
+
+String support in this phase is limited to literal representation with explicit
+encoding and lifetime. Mutation, concatenation, and dynamic string operations
+remain unsupported.
+
+Entry criteria:
+
+- normalized Python IR and C IR are StableInternal
+- first-slice Target C and Conversion Semantics contracts are StableInternal
+- analysis, RulePlan, representation, and name-planning contracts are StableInternal
+- CLI, diagnostics, decision trace, and telemetry isolation are available
+
+Required evidence:
+
+- source fixture
+- normalized model
+- fact and immutable RulePlan records
+- semantic-obligation and representation-plan report
+- structured C validation
+- approved golden C
+- decision-trace record
+- cross-process deterministic output
+- failure-injection results at each stage boundary
+
+Exit criteria:
+
+- the complete slice works through API and CLI without PyQt
+- inspect explains every selected rule
+- validate finds no structural defect
+- source/output navigation is correct for the slice
+- unsupported neighboring constructs fail cleanly
+- trace and telemetry settings do not change conversion artifacts
+- failed, canceled, or resource-limited conversions leave prior output untouched
+
+Hardening checkpoint B:
+
+- first end-to-end architecture audit
+- first full golden review
+- first semantic-obligation and decision-trace explanation-quality review
+- first cross-process determinism and failure-containment review
+- conversion-debt baseline
+
+PHASE 7: PYQT5 WORKSPACE SHELL
+
+Deliver:
+
+- two-pane layout
+- permanently read-only generated C viewer
+- editable Python editor
+- open and atomic-save Python actions
+- explicit Convert action
+- atomic save generated C action
+- diagnostics and conversion-summary panels
+- immutable completed decision-trace and telemetry views
+- source/output navigation
+- project-native converter visual language
+- custom professional SVG iconography
+
+Entry criteria:
+
+- Phase 6 headless slice and Checkpoint B are promoted
+- facade, result, diagnostic, mapping, and observation-snapshot contracts are
+  StableInternal
+
+Exit criteria:
+
+- GUI performs conversion only through the public facade
+- GUI and CLI show equivalent conversion facts for the same canonical request
+- workers publish only complete results matching the current source fingerprint
+- late, canceled, failed, or rejected requests cannot replace newer output
+- stale output, approximations, rejection, cancellation, and observer truncation
+  have distinct visible states
+- read-only C cannot be modified through ordinary edit paths
+- no Run, Build, Debug, terminal, or toolchain controls exist
+- GUI shutdown and save-interruption tests preserve user files
+
+Non-goals:
+
+- new Python construct support
+- live access to mutable pipeline state
+- IDE, build-system, or execution features
+
+PHASE 8: CONTROL FLOW
+
+Support selected:
+
+- if/elif/else
+- short-circuit Boolean expressions
+- chained comparisons with single operand evaluation
+- while
+- for over explicitly supported bounded forms
+- break
+- continue
+
+Entry criteria:
+
+- first complete slice is stable
+- truthiness, evaluation-order, effect, declaration, and temporary-planning
+  contracts are StableInternal
+- C block, branch, and loop structures are validated
+
+Exit criteria:
+
+- each form has positive, nested, near-miss, and unsupported fixtures
+- truthiness and short-circuit decisions have closed semantic obligations
+- chained-comparison operands are evaluated once in declared source order
+- declaration, cleanup, break, and continue plans are deterministic across branches
+- branch-defined bindings, zero-iteration loops, loop-target lifetime, and loop
+  bound evaluation have explicit policies
+- source mapping identifies conditions, branch bodies, loop bodies, and synthetic
+  temporaries
+- the decision trace explains condition and loop RulePlans without consulting GUI
+- loop `else`, mutation during iteration, and other unsupported neighboring
+  semantics have explicit policy and diagnostics
+
+Hardening checkpoint C:
+
+- GUI/facade isolation and stale-result race audit
+- control-flow semantic-obligation and source-mapping audit
+- fact-table memory, rule-selection conflict, and determinism audit
+- diagnostic cascade and cancellation audit
+
+PHASE 9: FUNCTIONS AND CALL CONVERSION
+
+Support selected:
+
+- function definitions
+- positional parameters
+- local declarations
+- calls with understood targets
+- returns
+
+Dynamic call targets remain unsupported unless a declared helper rule exists.
+
+Defaults, keyword arguments, variadic arguments, closures, generators, and
+reflection remain unsupported until individually specified.
+
+Entry criteria:
+
+- constraint, representation, ownership, declaration, and name planning are
+  StableInternal
+- call and return semantic obligations are approved for the selected subset
+
+Exit criteria:
+
+- signatures and prototypes are documented per semantic policy and Target C Source
+  Contract
+- argument evaluation order and single evaluation are fixture-proven
+- all reachable return paths have compatible representations and cleanup plans
+- implicit Python `None` return and fallthrough behavior are either explicitly
+  represented or rejected for the selected signature
+- calls with unresolved targets produce stable diagnostics
+- local-name collision handling is tested
+- ownership transfer across parameter and return boundaries is explicit
+- recursion and nested-function policy are explicit, even when unsupported
+- annotation evidence used by a call is visible in the RulePlan
+
+PHASE 10: SUPPORT-TEMPLATE INFRASTRUCTURE
+
+Deliver:
+
+- helper registry
+- exact-version dependency resolver
+- deduplication
+- helper summaries
+- target-contract and interface validators
+- C IR factories or parse-and-validate template ingestion
+- ownership and failure contracts
+- helper golden tests
+
+Entry criteria:
+
+- function and call boundaries are stable
+- at least two promoted RulePlans or accepted feasibility decisions demonstrate
+  concrete helper requirements
+- helper requirements already exist as declarations rather than text injection
+
+Exit criteria:
+
+- dependency cycles are diagnosed
+- each helper is versioned, fingerprinted, target-compatible, and emitted once
+- unused helpers are absent
+- raw unchecked C text cannot enter through a helper or rule
+- dependency ordering is deterministic across registration order
+- helper inclusion and semantic obligations are fully visible in diagnostics, the
+  conversion summary, helper manifest, and decision-trace records
+
+Non-goals:
+
+- broad helper library
+- container support merely to justify infrastructure
+- user-supplied helper templates
+
+PHASE 11: BOUNDED CONTAINERS
+
+Support deliberately bounded forms:
+
+- list literals
+- tuple literals
+- dictionary literals
+- indexing
+- selected loops over supported representations
+
+Representation choices must be documented per semantic policy and Target C Source
+Contract.
+
+Entry criteria:
+
+- function and call boundaries are stable
+- support-template registry and helper interfaces are StableInternal
+- each proposed container form has an approved representation and failure policy
+
+Exit criteria:
+
+- each container representation has a schema, capacity rule, aliasing model,
+  ownership/lifetime contract, and style rationale
+- list mutability, tuple immutability, dictionary ordering, key equality/hash
+  assumptions, and iteration order are explicitly supported or rejected
+- indexing, negative-index, bounds, allocation-failure, mutation, and cleanup
+  behavior are explicit
+- container element constraints have provenance and deterministic conflict handling
+- helper selection and cleanup paths are declarative and target-compatible
+- generated declarations remain deterministic
+- unsupported dynamic resizing, heterogeneous elements, aliasing, or comparison
+  behavior produces primary diagnostics without partial helper output
+- each supported container form has full vertical-slice evidence
+
+Hardening checkpoint D:
+
+- helper registry audit
+- ownership, failure-policy, and Target C compatibility audit
+- container aliasing, bounds, and cleanup audit
+- generated-source readability review
+- broad golden-diff review
+
+PHASE 12: EXPLICIT MODULE BUNDLES
+
+Support a bounded multi-document SourceBundle and internal module references. The
+converter accepts only sources explicitly supplied in the request and initially
+emits one deterministic C translation unit for the bundle.
+
+Entry criteria:
+
+- the SourceBundle contract reserved in Phase 0 is StableInternal
+- function, helper, container, name, and linkage policies are stable
+- module initialization and cycle policies are approved
+
+Exit criteria:
+
+- logical module IDs, imports, namespaces, linkage, and initialization order have
+  explicit deterministic contracts
+- absolute host paths never enter semantic or output fingerprints
+- missing modules, ambiguous logical names, cycles, star imports, dynamic imports,
+  and unsupported package behavior have stable diagnostics
+- the converter performs no filesystem, environment, network, or installed-package
+  discovery driven by source imports
+- mappings and diagnostics identify the correct source document
+- every supported bundle form has end-to-end fixtures and decision-trace explanations
+
+Non-goals:
+
+- Python import-system equivalence
+- package installation or dependency resolution
+- multiple compiled objects, linking, or build orchestration
+
+PHASE 13: STATIC CLASS/RECORD SUBSET
+
+Support only an explicitly static record-like class subset, such as declared fields,
+a bounded initializer form, and methods with understood targets. Broad Python
+object-model equivalence is not a goal.
+
+Entry criteria:
+
+- module namespaces, C struct forms, ownership policy, and function calls are stable
+- class feasibility decisions are refreshed against implemented representations
+- no earlier IR or fact schema must be silently repurposed
+
+Exit criteria:
+
+- object layout, field initialization, method receiver, allocation, ownership,
+  cleanup, and nullability contracts are explicit
+- supported attribute access resolves to known binding and field IDs
+- inheritance, MRO, metaclasses, descriptors, dynamic attributes, reflection, and
+  operator overloading are supported only if separately specified; otherwise they
+  have stable diagnostics
+- aliasing and mutation boundaries have semantic-obligation fixtures
+- every supported form has end-to-end evidence and decision-trace explanations
+
+Non-goals:
+
+- general Python object-model equivalence
+- implicit conversion of arbitrary classes into C structs
+
+PHASE 14: ADVANCED SOURCE-CONSTRUCT EVALUATIONS
+
+Evaluate individually:
+
+- exceptions: try/except/else/finally, raise, and assert
+- comprehensions
+- lambdas
+- decorators
+- context managers
+- generators
+- async syntax
+- pattern matching
+- default, keyword, variadic, and unpacked arguments
+- destructuring and starred assignment
+- f-strings and advanced string operations
+- sets and advanced container operations
+- assignment expressions
+- global, nonlocal, and closure-bearing forms
+- deletion and other state-removal forms
+
+Each feature is an independent mini-phase and passes through feasibility
+classification, semantic specification, breadth budget, and atomic promotion before
+implementation. Acceptance of one feature does not make another feature eligible.
+
+Entry criteria:
+
+- core language subset is stable
+- conversion-debt register has no unowned High or Extreme entries
+
+Exit criteria:
+
+- every evaluated feature has a decision record
+- implemented features pass full vertical-slice evidence
+- rejected features have stable diagnostics and documentation
+- no advanced feature weakens default determinism or explainability
+- no feature bypasses ownership, cancellation, resource, or observer-isolation
+  contracts
+
+Hardening checkpoint E:
+
+- full architecture review
+- full subset fuzzing
+- documentation and feature-matrix reconciliation
+
+PHASE 15: HARDENING AND DISTRIBUTION
+
+Deliver:
+
+- fixture expansion
+- fuzzing
+- architecture fitness enforcement
+- decision-trace diff and telemetry-view maturity
+- user documentation
+- packaged desktop application
+- packaged headless CLI
+- pinned dependency and license inventory
+- reproducible package manifest
+- schema migration and compatibility documentation
+
+Entry criteria:
+
+- supported subset is frozen for the release candidate
+- no unowned High or Extreme conversion debt exists
+
+Exit criteria:
+
+- clean installation and first-use conversion are tested
+- API, CLI, and GUI produce equivalent conversion facts
+- all public schemas are versioned
+- supported OS, Python, and PyQt5 versions are declared and tested
+- installation artifacts are reproducible according to the release manifest
+- release golden manifest is approved
+- limitations and approximations are published
+- atomic save, cancellation, malformed input, and resource-ceiling release tests pass
+- converter latency, memory, artifact-size, cancellation, and observer-overhead
+  budgets pass for declared source-size classes
+- observer failure cannot prevent a valid conversion result
+- distribution contains no C compiler and no generated-code executor
+
+
+28. REVISED DELIVERY ORDER
+--------------------------
+
+The canonical order is:
+
+    Phase -1  conversion feasibility spikes
+    Phase 0   product, target-C, and conversion-semantics contracts
+    Phase 1   facade, stage artifacts, failure containment, and empty pipeline
+    Phase 2   headless conversion laboratory and gate tooling
+    Checkpoint A  facade, CLI, schema, observer, and architecture hardening
+    Phase 3   source frontend and normalized Python IR
+    Phase 4   structured C IR, renderer, and text conformance
+    Phase 5   analysis and conversion-planning foundations
+    Phase 6   first complete headless conversion slice
+    Checkpoint B  first end-to-end semantic and failure-containment hardening
+    Phase 7   minimal PyQt5 workspace over the proven facade
+    Phase 8   control flow
+    Checkpoint C  GUI isolation, facts, control-flow, and determinism hardening
+    Phase 9   functions and calls
+    Phase 10  support-template infrastructure
+    Phase 11  bounded containers
+    Checkpoint D  helper, ownership, container, and generated-source hardening
+    Phase 12  explicit module bundles
+    Phase 13  static class/record subset
+    Phase 14  individually gated advanced-construct evaluations
+    Checkpoint E  full-subset architecture and documentation hardening
+    Phase 15  distribution hardening
+
+This order makes the headless laboratory, artifact inspectors, and gate tools the
+primary feedback loop. PyQt5 is integrated only after the converter can produce,
+explain, validate, and preserve a complete result without GUI observation. Each
+language phase consumes already-promoted semantic and representation foundations;
+no phase is asked to prove a feature before its required facts exist.
+
+
+29. RELEASE POLICY
+------------------
+
+Every feature-expansion release is followed by a hardening checkpoint before the
+next expansion release. A public version may package both, but the gate evidence
+remains separate.
+
+Feature release
+    Adds a bounded set of conversion constructs.
+
+Hardening release
+    Improves diagnostics, semantic obligations, golden coverage, determinism,
+    decision traces, observer isolation, resource containment, architecture checks,
+    output readability, and phase-transition evidence without broadening the
+    language subset.
+
+Release notes must distinguish:
+
+- newly supported constructs
+- changed generated-C style
+- newly documented approximations
+- resolved conversion debt
+- newly rejected ambiguous cases
+- Target C Source Contract or Conversion Semantics changes
+- decision-trace or telemetry schema changes
+- rule-set and helper-manifest changes
+- transition-contract changes
+- public or StableInternal schema-version changes
+- generated-output fingerprint changes and their reviewed cause
+
+No release may advertise execution performance or executable compatibility.
+
+
+29.1 FIRST IMPLEMENTATION MILESTONE
+-----------------------------------
+
+The first meaningful milestone is a complete, inspectable source-conversion path:
+
+Input:
+
+    def add(a: int, b: int) -> int:
+        return a + b
+
+Output:
+
+- readable generated C
+- source/output mapping
+- selected immutable RulePlans and annotation evidence
+- semantic-obligation and representation summary
+- diagnostics, if any
+- deterministic decision-trace record
+- target, semantic-configuration, rule-set, renderer, and output fingerprints
+
+The milestone succeeds when:
+
+- conversion is available through API and CLI with no PyQt dependency
+- repeated conversion is byte-identical across fresh-process determinism tests
+- the approved golden fixture passes
+- inspect explains every selected rule
+- validate reports no structural defect
+- every semantic, representation, ownership, and lifetime obligation is closed
+- trace and telemetry settings leave conversion artifacts unchanged
+- failure injection cannot overwrite the last successful artifact or phase baseline
+- the Phase 6 transition packet is complete
+- Checkpoint B passes
+
+It does not require the generated C to compile or run.
+
+29.2 FIRST WORKSPACE MILESTONE
+------------------------------
+
+Phase 7 succeeds when the PyQt5 workspace presents the promoted Phase 6 result
+through the same facade, the C pane is read-only, CLI and GUI facts are equivalent,
+stale or late results cannot replace current output, saves are atomic, and no
+conversion behavior exists only in the GUI.
+
+
+30. DEFINITION OF SUCCESS
+-------------------------
+
+The project succeeds when it provides:
+
+- a clearly bounded Python-to-C source conversion product
+- a maintainable modular conversion engine
+- explicit and inspectable conversion rules
+- structured, readable, deterministic generated C
+- explicit target-C and conversion-semantics contracts
+- failure-contained, restartable stage and phase boundaries
+- professional diagnostics
+- deterministic native decision feedback plus isolated operational telemetry
+- a fast headless development laboratory
+- a simple professional PyQt5 workspace
+- strong golden, structural, fuzz, and architecture tests
+- cross-process determinism, compatibility, resource, and failure-injection tests
+- explicit unsupported and approximation policies
+- controlled dataclass and object-model usage
+- no hidden dependency on C compilation or execution
+
+The project does not need to become a compiler to be valuable.
+
+Its value is the quality, clarity, consistency, and inspectability of the source
+conversion itself.
+
+
+31. FINAL ARCHITECTURAL PRINCIPLE
+---------------------------------
+
+The converter is never allowed to pretend certainty it does not possess.
+
+For every source construct, it must do exactly one of the following:
+
+1. Convert directly into structured C.
+2. Convert using an explicitly declared helper template.
+3. Apply a documented and prominently reported approximation.
+4. Produce a structured unsupported diagnostic.
+
+A containing construct may additionally be marked BlockedByDependency, with a
+causal reference to one of those primary outcomes. That state is containment, not
+a fifth conversion guess.
+
+It must never silently approximate Python behavior, and it must never imply that
+rendered C has been compiled, executed, or proven equivalent.
+
+No supported outcome is complete until its actual RulePlan closes the declared
+semantic, target, representation, ownership, lifetime, ordering, and failure
+obligations.
+
+That boundary keeps the project focused, credible, and achievable.
+
+======================================================================
+APPENDIX A — ARCHITECTURAL INVARIANTS
+======================================================================
+
+These invariants govern every future revision unless intentionally replaced by a
+major roadmap revision.
+
+1. The project is a Python-to-C source converter only.
+2. Input sources are explicit data; no source-driven import, evaluation, or module
+   discovery is allowed.
+3. Every supported conversion is governed by versioned target-C and conversion-
+   semantics contracts.
+4. Generated C and deterministic decision evidence shall be reproducible.
+5. The project has one canonical Python IR and one canonical C IR.
+6. The renderer performs presentation, not semantic analysis or rule selection.
+7. Diagnostics never mutate conversion state.
+8. Decision tracing and operational telemetry observe but never direct conversion.
+9. Nondeterministic telemetry never enters semantic or output fingerprints.
+10. A stage publishes one complete validated successor artifact or none.
+11. Rejection, failure, cancellation, or resource exhaustion never publishes
+    partial C or overwrites the last successful output.
+12. The CLI and GUI consume the same public conversion facade.
+13. Every supported decision is represented by one immutable RulePlan.
+14. Helpers are trusted, versioned, target-compatible C IR assets, never arbitrary
+    source-controlled text.
+15. Every subsystem has a single primary responsibility.
+16. Public and cross-phase contracts evolve only through explicit versioning.
+17. Phase promotion is atomic and never destroys the last-known-good baseline.
+18. Potentially unbounded input, diagnostics, traces, and analysis have declared
+    limits and cancellation points.
+19. Execution, compilation, linking, debugging, and runtime verification remain
+    permanently outside the product boundary.
+
+APPENDIX B — RULE INDEX
+
+Rule 1  — Coordinator Orchestration Only
+Rule 2  — No Direct AST-to-C Strings
+Rule 3  — Separate Conversion Stages
+Rule 4  — Explicit Rule Contracts
+Rule 5  — No Rule-Owned Global Mutable State
+Rule 6  — Structured C Before Rendering
+Rule 7  — Declared Rule for Every Supported Construct
+Rule 8  — Structured Unsupported Diagnostics
+Rule 9  — No Silent Guessing
+Rule 10 — Visible Approximations
+Rule 11 — GUI Uses the Public Facade Only
+Rule 12 — Engine Independence from PyQt5
+Rule 13 — Independent Stage and Rule Testing
+Rule 14 — Validate Every Stage Boundary
+Rule 15 — Preserve Declared Ordering and Structure
+Rule 16 — Analysis Must Inform Conversion
+Rule 17 — No Hidden Execution Dependencies
+Rule 18 — Track Every Known Limitation
+Rule 19 — Automate Architecture Fitness
+Rule 20 — Mandatory Hardening Cadence
+Rule 21 — No GUI-Only Conversion Features
+Rule 22 — Explainable Conversion Decisions
+Rule 23 — Native Project Identity
+Rule 24 — Explicit Target C Source Contract
+Rule 25 — Failure-Contained Stage Artifacts
+Rule 26 — Observer Isolation
+Rule 27 — Separate Deterministic Facts from Telemetry
+Rule 28 — One Immutable RulePlan per Decision
+Rule 29 — Central Deterministic Allocation and Ordering
+Rule 30 — Atomic Phase Promotion
+Rule 31 — Treat Python Input as Untrusted Data
+Rule 32 — Close Semantic Obligations
+Rule 33 — Approximation by Explicit Allowlist Only
+
+APPENDIX C — CANONICAL GLOSSARY
+
+Approximation Allowlist
+    Versioned request policy naming the exact approximation codes that may be used.
+
+Conversion
+    Deterministic transformation of an explicit SourceBundle into a declared C
+    source artifact, diagnostics, mappings, summaries, and decision evidence.
+
+Conversion Coordinator
+    Small facade-owned orchestrator that advances validated stage artifacts and
+    contains terminal outcomes without implementing construct-specific rules.
+
+Conversion Facts
+    Immutable, provenance-bearing analysis tables keyed by stable decision identity.
+
+Conversion Semantics Specification
+    Versioned contract defining how the supported Python subset maps to the target
+    C source model and where semantic differences are rejected or declared.
+
+Decision Trace
+    Deterministic explanation record built from the actual facts and RulePlans used
+    by conversion. It contains no operational timing.
+
+Diagnostic
+    Stable, structured report of information, approximation, rejection, internal
+    failure, or remediation tied to source and causal identity.
+
+Fingerprint Domain
+    Explicit set of fields covered by one hash, such as source, semantic
+    configuration, rule set, renderer configuration, artifact, or output.
+
+Normalized Python IR
+    Parser-independent, source-provenance-preserving representation of the declared
+    Python subset before analysis and target lowering.
+
+Operational Telemetry
+    Optional nondeterministic measurements of converter operation, isolated from
+    decisions, diagnostics, C output, and deterministic fingerprints.
+
+Promoted Baseline
+    Immutable phase manifest that passed every required gate and is eligible as the
+    stable input to another phase.
+
+RepresentationPlan
+    Central decision describing C type, storage shape, passing convention,
+    ownership, lifetime, nullability, and helper capabilities for a Python value.
+
+RulePlan
+    Immutable selected conversion decision containing evidence, obligations,
+    semantic delta, representation requests, helpers, diagnostics, and lowering
+    parameters.
+
+Rule Registry
+    Frozen, versioned collection of conversion rules with deterministic specificity,
+    overlap, reachability, and manifest checks.
+
+Semantic Delta
+    Precisely documented difference between Python behavior and the emitted source
+    model for one explicitly permitted approximation.
+
+Semantic Obligation
+    Condition that must be proved or policy-authorized before a RulePlan is
+    eligible for lowering.
+
+SourceBundle
+    Explicit ordered set of logically named source documents. No member is found by
+    source-controlled implicit discovery.
+
+SourceDocument
+    Immutable decoded source, byte identity when available, encoding decision,
+    tokens, line index, and revision identity for one input document.
+
+StageArtifact
+    Immutable, schema-versioned, validated output of one pipeline boundary with a
+    parent and content fingerprint.
+
+StageOutcome
+    Typed Completed, Rejected, InternalFailure, or Canceled result returned by a
+    stage.
+
+Structured C Representation (C IR)
+    Canonical typed and provenance-bearing C structure consumed by validation and
+    rendering; it is not final C text.
+
+Support State
+    Contextual classification of a decision as direct, helper-backed, approximated,
+    unsupported, dependency-blocked, or internally pending.
+
+Support Template
+    Trusted, versioned, target-compatible helper asset represented or validated as
+    C IR and selected only by a RulePlan.
+
+Target C Source Contract
+    Versioned declaration of the C edition, types, encodings, identifier rules,
+    implementation assumptions, helper interface, and source constraints used by
+    conversion.
+
+Translation Unit
+    Complete top-level C IR artifact containing ordered declarations, definitions,
+    helpers, mappings, and provenance for one generated C source result.

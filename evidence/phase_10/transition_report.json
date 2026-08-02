@@ -1,0 +1,10 @@
+{
+  "audit": "transition",
+  "phase": "phase_10",
+  "manifest_error": null,
+  "missing": [],
+  "predecessor_archive_preserved": true,
+  "predecessor_archive_sha256": "68a5bbe443513d5a40a009be8e55ca9ec513805a4dc6f8c9d5e08bdd6a4afcff",
+  "predecessor_tree_sha256": "bfbb13eb764b02a6b8fb2c4ff1eb12f4249976bb1919aa85a383d6e24b4079e8",
+  "passed": true
+}

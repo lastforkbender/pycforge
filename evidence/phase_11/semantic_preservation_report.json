@@ -1,0 +1,17 @@
+{
+  "current_helper_manifest": [],
+  "current_status": "Converted",
+  "generated_c_compiled_or_executed": false,
+  "historical_generated_schema": "generated-c/0.10",
+  "historical_inner_c_ir_schema": "c-ir/0.9",
+  "historical_rule_surface_status": "Converted",
+  "passed": true,
+  "phase10_helper_asset_fingerprints": [
+    "23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869",
+    "cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e"
+  ],
+  "phase10_helper_fingerprints_preserved": true,
+  "phase10_helper_registry_fingerprint": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+  "scalar_generated_c_byte_identical": true,
+  "schema_version": "pycforge.semantic-preservation/0.11"
+}

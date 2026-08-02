@@ -1,0 +1,25 @@
+{
+  "schema": "pycforge.phase-transition-manifest/0.1",
+  "phase": 1,
+  "baseline": "phase1-candidate-1",
+  "maturity": {
+    "facade": "StableInternal",
+    "request": "StableInternal",
+    "result": "StableInternal",
+    "stage_outcome": "StableInternal",
+    "stage_artifact": "StableInternal"
+  },
+  "delivered": [
+    "canonical request validation",
+    "deterministic fingerprint services",
+    "typed terminal stage outcomes",
+    "immutable stage artifacts",
+    "failure-contained facade",
+    "resource policy and cooperative cancellation",
+    "isolated decision trace recorder skeleton",
+    "isolated telemetry sink skeleton",
+    "deterministic empty result"
+  ],
+  "deferred": ["Python parsing", "normalized Python IR", "C IR", "C rendering", "CLI laboratory", "GUI"],
+  "prohibitions": ["compile generated C", "execute generated C", "import user source", "publish partial generated C"]
+}

@@ -1,0 +1,6 @@
+{
+  "atomic_save_failure_injection": true,
+  "bounded_observers": true,
+  "cancellation_regression": true,
+  "passed": true
+}

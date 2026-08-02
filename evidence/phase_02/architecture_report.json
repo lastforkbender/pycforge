@@ -1,0 +1,6 @@
+{
+  "dependency_direction": "facade <- laboratory",
+  "gui_leakage": false,
+  "native_toolchain_invocation": false,
+  "passed": true
+}

@@ -1,0 +1,7 @@
+{
+  "total_passed": 92,
+  "regression_passed": 80,
+  "phase_8_passed": 12,
+  "execution": "phase suites executed independently due host chained-subprocess ceiling",
+  "compiled_or_executed_generated_c": false
+}

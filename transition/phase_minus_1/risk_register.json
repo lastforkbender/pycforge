@@ -1,0 +1,11 @@
+{
+  "schema": "pycforge.risk-register/0.1",
+  "risks": [
+    {"id": "R-001", "area": "integer semantics", "class": "extreme", "disposition": "bounded milestone plus later checked-arithmetic feasibility gate"},
+    {"id": "R-002", "area": "ownership/lifetime", "class": "high", "disposition": "not applicable for scalar milestone; mandatory representation plans before heap-backed values"},
+    {"id": "R-003", "area": "evaluation order", "class": "high", "disposition": "explicit sequencing facts and temporary planning"},
+    {"id": "R-004", "area": "rule overlap", "class": "high", "disposition": "specificity contract, frozen manifest, overlap audit"},
+    {"id": "R-005", "area": "observer contamination", "class": "high", "disposition": "separate channels; byte-identical artifact tests with observers toggled"},
+    {"id": "R-006", "area": "source mapping drift", "class": "high", "disposition": "C IR provenance and renderer-produced ranges"}
+  ]
+}

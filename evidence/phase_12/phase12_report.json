@@ -1,0 +1,45 @@
+{
+  "addendum_sha256": "93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6",
+  "generated_c_compiled_or_executed": false,
+  "helper_asset_sha256": [
+    "23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869",
+    "cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e"
+  ],
+  "helper_registry_sha256": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+  "passed": true,
+  "phase": 12,
+  "predecessor_archive_sha256": "8af71e84cb6a1f12fc1206f589233067191f87ce4fc4f550765ff64098038275",
+  "predecessor_tree_sha256": "95fbabf3311a5f7dcb88608ef66c7ef43ed085ae1e3fc99351472da8ca1d4e82",
+  "primary_rejection_codes": [
+    "PYC3501",
+    "PYC3502",
+    "PYC3503",
+    "PYC3504",
+    "PYC3505",
+    "PYC3506",
+    "PYC3507",
+    "PYC3508",
+    "PYC3509",
+    "PYC3510"
+  ],
+  "roadmap_sha256": "d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3",
+  "schema_version": "pycforge.phase-report/0.12",
+  "schemas": {
+    "c_ir": "c-ir/0.12",
+    "conversion_plan": "conversion-plan/0.12",
+    "facts": "fact-table/0.12",
+    "generated_c": "generated-c/0.12",
+    "python_ir": "python-ir/0.4",
+    "result": "0.5",
+    "source_bundle": "source-bundle/0.2",
+    "summary": "pycforge.conversion-summary/0.12",
+    "trace": "pycforge.decision-trace/0.12"
+  },
+  "supported_forms": [
+    "absolute-from-import",
+    "aliased-from-import",
+    "single-translation-unit"
+  ],
+  "test_count": 189,
+  "version": "0.12.0"
+}

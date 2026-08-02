@@ -1,0 +1,16 @@
+{
+  "schema_version": "pycforge.package-report/0.9",
+  "package_version": "0.9.0",
+  "wheel_kind": "py3-none-any",
+  "wheel_sha256": "40085152958ef963987f1c4ab1cd856978dd3d43022a217d0fdb99a60e5a616e",
+  "reproducible_builds_compared": 2,
+  "source_date_epoch": 1784592000,
+  "reproducible_wheel_bytes": true,
+  "wheel_build_passed": true,
+  "isolated_wheel_import_passed": true,
+  "isolated_conversion_status": "Converted",
+  "isolated_artifact_version": "0.9",
+  "native_extension_built": false,
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

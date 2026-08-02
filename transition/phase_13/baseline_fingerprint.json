@@ -1,0 +1,18 @@
+{
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-13-opening-tree",
+  "status": "authenticated-before-phase-13-edits",
+  "predecessor_archive": "pycforge_phase_12_2_v0_12_2.tar.gz",
+  "predecessor_archive_sha256": "6a603684001f2cb2e9365d7e9b318f1a95dbe95b2cb36cf8821c30403c1754d0",
+  "predecessor_tree_sha256": "434981decfd2b2fc2b344f5b9a3b37377396376c2e0a8c8ed00bb9fa9077d765",
+  "predecessor_converter_subtree_sha256": "4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51",
+  "excluded": [
+    "transition/phase_13/baseline_fingerprint.json",
+    "__pycache__",
+    ".pytest_cache",
+    "*.pyc",
+    "build",
+    "dist"
+  ],
+  "value": "434981decfd2b2fc2b344f5b9a3b37377396376c2e0a8c8ed00bb9fa9077d765"
+}

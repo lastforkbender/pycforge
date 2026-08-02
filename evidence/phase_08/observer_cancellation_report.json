@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "observer_isolation": "Phase 1, 6, and 7 regression fixtures remain passing and conversion artifacts are independent of observer failure/truncation.",
+  "cancellation": "Existing cooperative cancellation containment and stale-result publication tests remain passing.",
+  "diagnostic_cascade": "Unsupported control-flow neighbors publish one structured lowering diagnostic and no partial generated C."
+}

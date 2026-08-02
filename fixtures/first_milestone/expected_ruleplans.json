@@ -1,0 +1,223 @@
+{
+  "approximations": [],
+  "rule_plans": [
+    {
+      "decision_key": "decision-8b88fe6ab64ded1772fd",
+      "explanation_tokens": [
+        "selected",
+        "phase6.numeric.arithmetic",
+        "for",
+        "BinOp"
+      ],
+      "facts_used": [
+        "value-category:integer-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-10cdb7be6d69adf50811",
+      "resolved_obligations": [
+        "numeric-representation-selected",
+        "overflow-and-division-policy-declared",
+        "left-before-right-evaluation"
+      ],
+      "rule_id": "phase6.numeric.arithmetic",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "numeric-representation-selected",
+        "overflow-and-division-policy-declared",
+        "left-before-right-evaluation"
+      ],
+      "source_node_id": "py-44644b026a49fe5dc089",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-7ea5a3595ea35e7ac211",
+      "explanation_tokens": [
+        "selected",
+        "phase6.name.bound",
+        "for",
+        "Name"
+      ],
+      "facts_used": [
+        "value-category:callable-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-f49635ba0c5d309cdefa",
+      "resolved_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "source_node_id": "py-45127f98765ccbb72635",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-a0ae01c7d2d7ff54990f",
+      "explanation_tokens": [
+        "selected",
+        "phase6.function.annotated",
+        "for",
+        "FunctionDef"
+      ],
+      "facts_used": [
+        "value-category:callable-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-f37d22390632b96908b8",
+      "resolved_obligations": [
+        "annotation-trust-policy-applied",
+        "parameter-representations-known",
+        "return-representation-known"
+      ],
+      "rule_id": "phase6.function.annotated",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "annotation-trust-policy-applied",
+        "parameter-representations-known",
+        "return-representation-known"
+      ],
+      "source_node_id": "py-484613b78c547d48f491",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-c115887c5e43d48a8d63",
+      "explanation_tokens": [
+        "selected",
+        "phase6.name.bound",
+        "for",
+        "Name"
+      ],
+      "facts_used": [
+        "value-category:integer-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-c8e51c98bd1a605b0016",
+      "resolved_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "source_node_id": "py-53aca8a6657922461ad6",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-d2a4b80bb1bba5453bc0",
+      "explanation_tokens": [
+        "selected",
+        "phase6.name.bound",
+        "for",
+        "Name"
+      ],
+      "facts_used": [
+        "value-category:callable-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-16899e93cd2985f3a037",
+      "resolved_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "source_node_id": "py-742b5b317a7e0df0acd7",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-8fbde05fd10f77e58ded",
+      "explanation_tokens": [
+        "selected",
+        "phase6.name.bound",
+        "for",
+        "Name"
+      ],
+      "facts_used": [
+        "value-category:callable-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-3f1094abd365c1e4cb63",
+      "resolved_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "source_node_id": "py-7af1cce919df1aea8fbc",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-2a6352069752750ead5f",
+      "explanation_tokens": [
+        "selected",
+        "phase6.return.simple",
+        "for",
+        "Return"
+      ],
+      "facts_used": [
+        "value-category:integer-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-7cbc382e2509043b32cb",
+      "resolved_obligations": [
+        "return-representation-compatible"
+      ],
+      "rule_id": "phase6.return.simple",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "return-representation-compatible"
+      ],
+      "source_node_id": "py-a2a1860fc2d8d0f66620",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    },
+    {
+      "decision_key": "decision-18790c9ad66a6778d5e0",
+      "explanation_tokens": [
+        "selected",
+        "phase6.name.bound",
+        "for",
+        "Name"
+      ],
+      "facts_used": [
+        "value-category:integer-like"
+      ],
+      "helper_requirements": [],
+      "plan_id": "plan-b4d56917de44bf8cab92",
+      "resolved_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "semantic_obligations": [
+        "binding-resolved",
+        "representation-known"
+      ],
+      "source_node_id": "py-a96e4f5ff6c164fdbfd0",
+      "support_state": "SupportedDirect",
+      "unresolved_obligations": []
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "pycforge.phase-report/0.9",
+  "phase": 9,
+  "version": "0.9.0",
+  "delivered": [
+    "function signature facts with exact annotation evidence",
+    "deterministic understood-target call resolution",
+    "iterative call-graph and explicit recursion policy",
+    "return-path and local-declaration facts",
+    "closed Phase 9 call RulePlans",
+    "C IR 0.9 function prototypes and structured calls",
+    "left-to-right once-only positional argument and call-result temporaries",
+    "forward and nested calls",
+    "calls in supported control flow and range bounds",
+    "explicit scalar and borrowed-string ownership boundaries",
+    "prototype/parameter/argument/call/temporary/return mappings",
+    "schema-aligned deterministic decision traces and isolated telemetry snapshots",
+    "API, CLI, and workspace publication equivalence"
+  ],
+  "schemas": ["conversion-plan/0.9", "c-ir/0.9", "generated-c/0.9", "pycforge.decision-trace/0.9", "pycforge.telemetry/0.9"],
+  "rule_set": "phase9-functions-calls-v0.9",
+  "dynamic_calls_supported": false,
+  "recursion_supported": false,
+  "helpers_emitted": false,
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

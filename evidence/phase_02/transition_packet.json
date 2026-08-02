@@ -1,0 +1,61 @@
+{
+  "candidate_baseline": "phase_2-v0.2.0",
+  "delivered": [
+    "convert command",
+    "inspect command",
+    "validate command",
+    "suite command",
+    "stage save/load inspection",
+    "rule audit",
+    "determinism audit",
+    "architecture audit",
+    "transition audit",
+    "text and JSON formats",
+    "decision semantic diff skeleton",
+    "separate telemetry snapshot option",
+    "atomic writer"
+  ],
+  "diagnostics_added": [
+    "PYC3001",
+    "PYC3002",
+    "PYC3100",
+    "PYC3101",
+    "PYC3102",
+    "PYC3103",
+    "PYC3104",
+    "PYC3105",
+    "PYC3201",
+    "PYC3901"
+  ],
+  "invariants": [
+    "no PyQt dependency",
+    "no native toolchain invocation",
+    "no generated C publication",
+    "incompatible artifacts rejected before use",
+    "observer state excluded from semantic result and diff",
+    "atomic save preserves preceding file on interruption"
+  ],
+  "last_known_good": "phase_1:c7b1a7139d4505e4b298a581dbd7f7e5804e26d47f3775172699ca4440e7d700",
+  "non_goals": [
+    "Python parsing",
+    "normalization",
+    "conversion rule selection",
+    "C IR",
+    "C rendering",
+    "compilation",
+    "execution",
+    "GUI"
+  ],
+  "phase": "phase_2",
+  "promotion_decision": "approved",
+  "roadmap_revision": "3.1",
+  "stable_internal_contracts": [
+    "laboratory CLI exit categories",
+    "result JSON envelope 0.2",
+    "stage artifact envelope 0.2",
+    "audit JSON records"
+  ],
+  "state": "Promoted",
+  "tests_added": 10,
+  "version": "0.2.0"
+}

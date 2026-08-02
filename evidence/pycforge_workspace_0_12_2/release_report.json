@@ -1,0 +1,79 @@
+{
+  "schema_version": "pycforge.workspace-release-report/0.12.2",
+  "release_version": "0.12.2",
+  "status": "promoted",
+  "phase": 12,
+  "phase_13_opened": false,
+  "workspace_contract": "pycforge-workspace/0.1",
+  "settings_schema_version": 1,
+  "runtime": {
+    "python": "3.12.13",
+    "pyqt": "5.15.11",
+    "qt": "5.15.14",
+    "platform": "offscreen",
+    "scale_factors": [1, 2]
+  },
+  "tests": {
+    "headless": {"total": 250, "passed": 240, "skipped": 10, "failed": 0},
+    "pyqt5": {"total": 250, "passed": 249, "skipped": 1, "failed": 0},
+    "pyqt5_skip_reason": "the missing-PyQt5 negative test is intentionally skipped when PyQt5 is installed"
+  },
+  "widget_smoke": {
+    "required_behavior_checks": 28,
+    "scale_1_passed": true,
+    "scale_2_passed": true,
+    "repeated_scale_1_json_byte_identical": true,
+    "repeated_scale_1_json_sha256": "91a3265074a1f8ece8e08d0a8358cd1c5c10207b804ed45ce574a8dd111de0fc",
+    "unexpected_modal_dialogs": false
+  },
+  "evidence_files": {
+    "qt_widget_smoke_scale_1.json": {"size": 1844, "sha256": "20e56b687a38ab5925bfb8c4990b4274fc250e56e0444154c98f3b43c3e2ecc3"},
+    "qt_widget_smoke_scale_1.png": {"size": 158920, "sha256": "89aed586ec4c5daf98f204ea439bc5789891551930f4dd37682295ec96a04718"},
+    "qt_widget_smoke_scale_2.json": {"size": 1844, "sha256": "c0b4e1af301a9032304650f83953ce3765a33933aff9636fbb02b24f48e015ab"},
+    "qt_widget_smoke_scale_2.png": {"size": 365774, "sha256": "b86b8957470130f10dda9ce9a70379e1a655a0f523395561c13b71b3ba248170"}
+  },
+  "audits": {
+    "architecture": true,
+    "rules": true,
+    "helpers": true,
+    "containers": true,
+    "modules": true,
+    "determinism": true,
+    "phase_12_transition": true,
+    "determinism_sha256": "c6863a1f1ef7f8373c5fbaff067d7b590eb11d8997c60526a25fb7e307d030c3"
+  },
+  "custody": {
+    "predecessor_archive_sha256": "5fd2231024a57c9ca736991e2ca90f645357c1d4cca69dfcf3bd53d1860d507e",
+    "predecessor_tree_sha256": "aed47ffbf4e17aebccfe571d506856dc9cf497308e1769f7db7597089a873efb",
+    "frozen_converter_tree_sha256": "4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51",
+    "predecessor_authenticated": true,
+    "converter_unchanged": true
+  },
+  "artifacts": {
+    "wheel": {
+      "filename": "pycforge-0.12.2-py3-none-any.whl",
+      "size": 201306,
+      "sha256": "74906f50cc97f071e43b81caf1da7a200737394338df5f82db6bb941ef5fba11",
+      "fixed_epoch_builds_byte_identical": true,
+      "zip_members": 107,
+      "record_payloads_verified": 106,
+      "svg_assets": 17,
+      "native_artifacts": 0,
+      "isolated_install_passed": true,
+      "installed_actual_widget_offscreen_passed": true,
+      "installed_source_bundle_conversion_passed": true,
+      "installed_linked_c_atomic_save_passed": true
+    },
+    "source_archive": {
+      "filename": "pycforge_phase_12_2_v0_12_2.tar.gz",
+      "deterministic_builds_byte_identical": true,
+      "sha256_recorded_externally": true
+    }
+  },
+  "generated_c_operations": {
+    "compiled": false,
+    "linked": false,
+    "loaded": false,
+    "executed": false
+  }
+}

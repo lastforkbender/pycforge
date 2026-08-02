@@ -1,0 +1,48 @@
+{
+  "schema": "pycforge.workspace-release-evidence/0.1",
+  "package_version": "0.12.1",
+  "workspace_contract": "pycforge-workspace/0.1",
+  "status": "promoted",
+  "opens_new_converter_phase": false,
+  "converter_contract_status": "byte-identical-source-subtree-at-phase-12-v0.12.0",
+  "converter_tree_sha256": "4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51",
+  "predecessor_archive": "pycforge_phase_12_v0_12_0.tar.gz",
+  "predecessor_archive_sha256": "666ffb5bf3b79758d3b53f0944ba237b1e13da5fb121d86af39934fe4a3e72c9",
+  "predecessor_tree_sha256": "f6530b4e081799f5db3bfe365d82ece2abdcb82f9b986ffe98f3077ab2fe0de6",
+  "tests_run": 224,
+  "tests_passed": 224,
+  "release_validator_passed": true,
+  "predecessor_authenticated_by_validator": true,
+  "audits_passed": [
+    "architecture",
+    "rules",
+    "helpers",
+    "containers",
+    "modules",
+    "determinism",
+    "phase_12_transition"
+  ],
+  "wheel": {
+    "name": "pycforge-0.12.1-py3-none-any.whl",
+    "size": 195307,
+    "sha256": "02524fb74688cfc20455044251233fe2a039c25fb89711c0df4463f3ddef9791",
+    "fixed_epoch_builds_byte_identical": true,
+    "archive_integrity_passed": true,
+    "isolated_headless_install_passed": true,
+    "installed_bundle_conversion_passed": true,
+    "installed_linked_c_atomic_save_passed": true
+  },
+  "source_archive": {
+    "name": "pycforge_phase_12_1_v0_12_1.tar.gz",
+    "fixed_epoch_builds_byte_identical": true,
+    "sha256_recorded_with_external_release_artifact": true
+  },
+  "qt_widget_validation": {
+    "performed_for_0_12_1": false,
+    "reason": "optional PyQt5 dependency unavailable in the release workspace",
+    "headless_and_static_gui_validation_passed": true,
+    "sealed_phase_10_actual_offscreen_widget_evidence_preserved": true
+  },
+  "generated_c_compiled_linked_loaded_or_executed": false,
+  "network_or_host_import_discovery_performed": false
+}

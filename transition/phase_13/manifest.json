@@ -1,0 +1,82 @@
+{
+  "phase": 13,
+  "version": "0.13.0",
+  "status": "promoted",
+  "opened_on": "2026-07-22",
+  "promoted_on": "2026-07-22",
+  "roadmap_revision": "3.1-plus-3.2-addendum",
+  "roadmap_sha256": "d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3",
+  "addendum_sha256": "93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6",
+  "predecessor_version": "0.12.2",
+  "predecessor_archive": "pycforge_phase_12_2_v0_12_2.tar.gz",
+  "predecessor_archive_sha256": "6a603684001f2cb2e9365d7e9b318f1a95dbe95b2cb36cf8821c30403c1754d0",
+  "predecessor_tree_sha256": "434981decfd2b2fc2b344f5b9a3b37377396376c2e0a8c8ed00bb9fa9077d765",
+  "predecessor_converter_subtree_sha256": "4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51",
+  "required_tests": 335,
+  "discovered_tests": 335,
+  "expected_pyqt5_skips": 10,
+  "field_limit": 64,
+  "schemas": {
+    "source_bundle": "source-bundle/0.2",
+    "python_ir": "python-ir/0.4",
+    "container_facts": "fact-table/0.11",
+    "module_facts": "fact-table/0.12",
+    "record_facts": "fact-table/0.13",
+    "conversion_plan": "conversion-plan/0.13",
+    "c_ir": "c-ir/0.13",
+    "generated_c": "generated-c/0.13",
+    "conversion_summary": "pycforge.conversion-summary/0.13",
+    "decision_trace": "pycforge.decision-trace/0.13",
+    "result_serialization": "0.5",
+    "rule_set": "phase13-static-records-v0.13",
+    "renderer": "c-renderer-v0.13",
+    "module_policy": "phase13-explicit-record-modules-v0.13",
+    "record_policy": "phase13-immutable-automatic-records-v0.13",
+    "helper_policy": "phase10-support-templates-v0.10",
+    "container_policy": "phase11-fixed-local-containers-v0.11",
+    "target_contract": "c11-portable-fixed-v1"
+  },
+  "supported_record_forms": [
+    "top-level module-private static record declaration",
+    "one to sixty-four ordered int, float, or bool fields",
+    "exact structural __init__ assignment of every field",
+    "direct fresh function-local positional construction",
+    "immutable direct field read from the unique local owner"
+  ],
+  "required_contract_files": [
+    "README.md",
+    "CURRENT_STATE.md",
+    "CHANGELOG.md",
+    "PyCForge_Phase_13_v0_13_0_Project_Handoff.txt",
+    "docs/python_to_c_converter_architecture_revision_3_1.txt",
+    "docs/python_to_c_converter_architecture_revision_3_2_addendum.md",
+    "specifications/static_records.md",
+    "transition/phase_13/entry_criteria.md",
+    "transition/phase_13/record_representation_decisions.md",
+    "transition/phase_13/rollback_conditions.md",
+    "transition/phase_13/candidate_reseed.md",
+    "transition/phase_13/baseline_fingerprint.json",
+    "transition/phase_13/gate_evidence.md",
+    "transition/phase_13/release_fingerprint.json",
+    "evidence/phase_13/release_report.json",
+    "tools/validate_phase13.py",
+    "tests/test_validate_phase13.py"
+  ],
+  "non_goals": [
+    "general Python class or object model semantics",
+    "methods other than the structural initializer",
+    "inheritance, MRO, metaclasses, descriptors, properties, or reflection",
+    "dynamic, mutable, string, container, nested, nullable, or defaulted fields",
+    "record aliasing, copying, parameters, returns, escape, or cross-module import",
+    "heap allocation, ownership transfer, reference counting, or cleanup",
+    "compilation, linking, loading, execution, or debugging"
+  ],
+  "platform_evidence": {
+    "windows_11": "future-user-feedback-not-claimed"
+  },
+  "next_phase": {
+    "phase": 14,
+    "status": "not-started",
+    "automatic_open": false
+  }
+}

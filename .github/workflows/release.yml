@@ -1,0 +1,109 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Require an exact version tag
+        run: |
+          PACKAGE_VERSION="$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')"
+          test "$GITHUB_REF_NAME" = "v$PACKAGE_VERSION"
+          echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
+      - name: Run the complete release test suite
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest==9.1.1 .
+          python -m pytest -q
+      - name: Build and verify the release subject
+        run: |
+          python -m pip install build==1.5.0 twine==6.2.0 setuptools==82.0.1 wheel==0.47.0
+          python -m build
+          python tools/normalize_sdist.py dist/pycforge-0.15.2.tar.gz
+          python -m twine check --strict dist/*
+          python tools/verify_public_distribution.py dist
+      - name: Clean-install the required desktop application
+        run: |
+          python -m venv /tmp/pycforge-release-install
+          /tmp/pycforge-release-install/bin/python -m pip install dist/pycforge-0.15.2-py3-none-any.whl
+          /tmp/pycforge-release-install/bin/python -m pip check
+          /tmp/pycforge-release-install/bin/python -c "import PyQt5; from pycforge.ide import QT_AVAILABLE; assert QT_AVAILABLE"
+          /tmp/pycforge-release-install/bin/python -c "from PyQt5.QtWidgets import QApplication; from pycforge.ide.qt import MainWindow; app=QApplication.instance() or QApplication([]); window=MainWindow(); window.show(); app.processEvents(); window.close(); app.processEvents()"
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: pycforge-${{ github.ref_name }}
+          path: dist/
+          if-no-files-found: error
+
+  draft-github-release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: pycforge-${{ github.ref_name }}
+          path: dist
+      - name: Create the verified draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            test "$(gh release view "$GITHUB_REF_NAME" --json isDraft --jq .isDraft)" = "true"
+            mkdir existing-release
+            gh release download "$GITHUB_REF_NAME" --dir existing-release
+            test "$(find existing-release -maxdepth 1 -type f | wc -l)" -eq 3
+            for release_file in dist/* docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf; do
+              cmp "$release_file" "existing-release/$(basename "$release_file")"
+            done
+          else
+            gh release create "$GITHUB_REF_NAME" dist/* docs/PyCForge_v0_15_2_Conversion_Examples_Reference_Edition.pdf --draft --verify-tag --title "PyCForge 0.15.2" --notes-file RELEASE_NOTES.md
+          fi
+
+  publish-pypi:
+    needs: draft-github-release
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pycforge
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: pycforge-${{ github.ref_name }}
+          path: dist
+      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
+        with:
+          packages-dir: dist/
+
+  publish-github-release:
+    needs: publish-pypi
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Publish the verified GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release edit "$GITHUB_REF_NAME" --draft=false

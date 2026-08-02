@@ -1,0 +1,150 @@
+{
+  "schema_version": "pycforge.conversion-debt/0.14.1-entry",
+  "phase_owner": "phase-14b-conditional-temporary-regions",
+  "updated_on": "2026-07-22",
+  "items": [
+    {
+      "id": "DEBT-INT-RANGE",
+      "risk": "High",
+      "status": "sealed-contained-in-14A",
+      "owner": "phase14a-numeric-semantics",
+      "description": "Python arbitrary-precision integers are represented only inside the declared signed-int64 domain.",
+      "containment": "Sealed 14A accepts exact integer-like operands only; 14B changes conditional placement only and cannot widen the represented integer domain.",
+      "next_decision": "Any broader integer representation or checked arithmetic remains a separately approved future evaluation."
+    },
+    {
+      "id": "DEBT-DIVMOD-PRECONDITIONS",
+      "risk": "High",
+      "status": "sealed-contained-in-14A",
+      "owner": "phase14a-helper-precondition-gate",
+      "description": "C division and remainder are undefined for zero and INT64_MIN divided by negative one, while Python has defined failure or arbitrary-precision behavior.",
+      "containment": "The sealed 14A literal-divisor proof excludes zero, negative one, INT64_MIN, dynamic, calculated, and out-of-domain divisors. A 14A operation inside a 14B region retains that exact fact and helper contract.",
+      "next_decision": "Do not alter the sealed divisor proof or helpers during 14B."
+    },
+    {
+      "id": "DEBT-FAILURE-MODEL",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-exception-semantics-evaluation",
+      "description": "General Python exceptions, arithmetic failures, raise/assert, and unwinding have no approved C runtime representation.",
+      "containment": "14B may place only operations whose predecessor failure obligations are already closed. It adds no exception, propagation, cleanup, or runtime failure channel.",
+      "next_decision": "A separately approved exception mini-phase must specify propagation, cleanup, ownership, traceback limits, and cancellation before any implementation."
+    },
+    {
+      "id": "DEBT-SHORT-CIRCUIT-CALL-TEMP",
+      "risk": "High",
+      "status": "active-contained-in-14B-opening",
+      "owner": "phase14b-conditional-temporary-regions",
+      "description": "Prerequisite temporaries for already-supported scalar expressions can violate Python conditional evaluation when emitted eagerly inside Boolean expressions or later chained-comparison operands.",
+      "containment": "14B admits only the existing scalar-expression closure, publishes one exact region fact per selected occurrence, and lowers prerequisite closures through flat guarded structured C IR. Every reached operand evaluates once in source order; skipped operands do not evaluate. No primitive source support is added.",
+      "next_decision": "Implement and independently validate Boolean guard polarity, chained rolling-middle reuse, nested prerequisite containment, determinism, cancellation, mappings, and exact historical compatibility before promotion."
+    },
+    {
+      "id": "DEBT-RECURSION",
+      "risk": "High",
+      "status": "explicitly-deferred-clean-rejection",
+      "owner": "phase14-callgraph-evaluation",
+      "description": "Direct and mutual recursion lack a separately budgeted resource and termination contract.",
+      "containment": "The closed call graph continues to reject recursion before a call can participate in a 14B prerequisite closure.",
+      "next_decision": "Retain clean rejection unless a separately approved bounded recursion contract is proposed."
+    },
+    {
+      "id": "DEBT-STRING-RUNTIME",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-string-and-fstring-evaluation",
+      "description": "Formatting, concatenation, allocation, encoding failure, and owned string lifetime are outside the borrowed-literal string boundary.",
+      "containment": "14B does not expand string operations or truth/comparison profiles. The immutable UTF-8 literal and borrowed const-char-pointer boundary remains exact.",
+      "next_decision": "Evaluate f-strings and advanced string operations independently with representation, allocation, cleanup, and failure budgets."
+    },
+    {
+      "id": "DEBT-EXPANDED-CALL-BINDING",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-call-binding-evaluation",
+      "description": "Defaults, keyword arguments, keyword-only parameters, variadics, and unpacking require richer deterministic binding and evaluation rules.",
+      "containment": "Only predecessor-eligible exact positional direct calls may appear in a 14B prerequisite closure. Placement cannot make an expanded call shape eligible.",
+      "next_decision": "Evaluate direct keyword binding in its own later mini-phase; do not bundle defaults, variadics, or unpacking."
+    },
+    {
+      "id": "DEBT-COMPREHENSION-AND-PATTERN",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-comprehension-and-pattern-evaluation",
+      "description": "Comprehensions and pattern matching introduce hidden scopes, conditional binding, iteration, and failure-sensitive control flow.",
+      "containment": "Comprehensions and Match forms remain unsupported and cannot be treated as scalar prerequisites or inferred from guarded-region support.",
+      "next_decision": "Give each family a separate feasibility classification; acceptance of conditional regions authorizes neither."
+    },
+    {
+      "id": "DEBT-CONTEXT-CLEANUP",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-context-manager-and-finally-evaluation",
+      "description": "Context managers and finally regions require exact cleanup ordering across normal, failure, return, break, continue, and cancellation paths.",
+      "containment": "14B guards contain only no-new-cleanup predecessor scalar prerequisites. With, async-with, try/finally, and cleanup stacks remain unsupported.",
+      "next_decision": "Do not open until an exception and cleanup-region architecture is separately approved."
+    },
+    {
+      "id": "DEBT-SUSPENSION-STATE",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-generator-and-async-evaluation",
+      "description": "Generators and async syntax require suspension state, retained locals, resumption, ownership, cancellation, and scheduler boundaries.",
+      "containment": "Yield, yield-from, await, async functions, async iteration, and async context managers reject. A conditional region creates no retained or resumable state.",
+      "next_decision": "Require a dedicated state-machine architecture and resource model before any feature implementation."
+    },
+    {
+      "id": "DEBT-CLOSURE-DECORATOR-DYNAMIC-CALLABLE",
+      "risk": "Extreme",
+      "status": "explicitly-deferred",
+      "owner": "phase14-closure-lambda-decorator-evaluation",
+      "description": "Closures, nonlocal capture, lambdas, decorators, and indirect callables require environment objects or import-time callable transformation.",
+      "containment": "Only predecessor-understood direct source calls may occur inside a region. Nested functions, nonlocal, lambdas, decorators, aliases, and indirect callables remain rejected.",
+      "next_decision": "Evaluate lexical closure representation independently; decorators remain deferred unless their execution timing is separately modeled."
+    },
+    {
+      "id": "DEBT-STATEFUL-BINDING-FORMS",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-binding-and-state-removal-evaluation",
+      "description": "Destructuring, starred assignment, assignment expressions, global/nonlocal mutation, and deletion can alter binding lifetime and control-visible state.",
+      "containment": "14B introduces only synthetic automatic C temporaries backed by region facts; it adds no Python binding form, mutation, deletion, or visible state.",
+      "next_decision": "Evaluate fixed tuple destructuring and any narrow assignment-expression profile separately; defer global, nonlocal, deletion, and starred forms."
+    },
+    {
+      "id": "DEBT-ADVANCED-CONTAINERS",
+      "risk": "High",
+      "status": "explicitly-deferred",
+      "owner": "phase14-advanced-container-evaluation",
+      "description": "Sets, dynamic operations, comprehensions, slicing, mutation, aliasing, and escape exceed fixed local container ownership.",
+      "containment": "Only an already-proved scalar read from the sealed fixed-container profile may participate as an operand. No container value, mutation, dynamic lookup, or ownership change is admitted.",
+      "next_decision": "Any evaluated operation receives its own capacity, representation, ownership, failure, and helper decision."
+    },
+    {
+      "id": "DEBT-GENERAL-OBJECT-MODEL",
+      "risk": "Extreme",
+      "status": "explicit-permanent-boundary-unless-reopened",
+      "owner": "phase13-record-boundary-custodian",
+      "description": "General classes require identity, inheritance, dispatch, descriptors, mutation, allocation, aliasing, and lifecycle semantics absent from static records.",
+      "containment": "Only an already-proved scalar field read from the sealed static-record profile may participate as an operand. Conditional regions do not create or widen object semantics.",
+      "next_decision": "Remain deferred unless a future roadmap explicitly reopens the general object model with a complete runtime architecture."
+    }
+  ],
+  "summary": {
+    "total_items": 14,
+    "high": 9,
+    "extreme": 5,
+    "unowned_high_or_extreme": 0,
+    "items_without_containment": 0,
+    "silent_approximations": 0,
+    "sealed_phase14a_items": [
+      "DEBT-INT-RANGE",
+      "DEBT-DIVMOD-PRECONDITIONS"
+    ],
+    "phase14b_active_items": [
+      "DEBT-SHORT-CIRCUIT-CALL-TEMP"
+    ],
+    "neighboring_items_opened": []
+  }
+}
+

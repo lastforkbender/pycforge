@@ -1,0 +1,97 @@
+{
+  "schema": "pycforge.phase15a-performance-evidence/1",
+  "phase": "15A",
+  "release_version": "0.15.0",
+  "date": "2026-07-26",
+  "environment": {
+    "scope": "headless-phase15a-current-host",
+    "platform": "Linux-6.12.13-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python_version": "3.12.13",
+    "logical_cpu_count": 9,
+    "physical_memory_bytes": 23547826176,
+    "pyqt5_available": false,
+    "visible_widgets_exercised": false
+  },
+  "maximum_revision_fixture": {
+    "utf8_bytes": 999999,
+    "source_lines": 100000,
+    "tokens": 200000,
+    "ast_nodes": 1,
+    "submission_seconds": 0.00004339900260674767,
+    "authentication_and_index_total_seconds": 0.08773285600182135,
+    "work_ran_off_caller_thread": true
+  },
+  "independent_ceiling_fixtures": {
+    "exact_source_bytes": {
+      "utf8_bytes": 1000000,
+      "worker_request_frame_bytes": 1001252,
+      "one_byte_over_rejected": true
+    },
+    "near_tokens": {
+      "tokens": 249996,
+      "utf8_bytes": 249996
+    },
+    "near_ast_nodes": {
+      "ast_nodes": 99996,
+      "utf8_bytes": 199985
+    }
+  },
+  "dense_literal_search": {
+    "utf8_bytes": 950000,
+    "total_matches": 50000,
+    "stored_utf16_ranges": 5000,
+    "projection_cap": 5000,
+    "submission_seconds": 0.000026342000637669116,
+    "worker_seconds": 0.024325554997631116,
+    "total_seconds": 0.02458177099833847,
+    "work_ran_off_caller_thread": true
+  },
+  "supervision_stress": {
+    "edit_convert_cancel_cycles": 100,
+    "canceled_cycles": 100,
+    "active_child_cancel_cycles": 10,
+    "started_workers": 10,
+    "reaped_workers": 10,
+    "maximum_simultaneous_workers": 1,
+    "active_pid_after_gate": null,
+    "pending_generation_after_gate": null
+  },
+  "declared_bounds_seconds": {
+    "cooperative_cancel_grace": 0.75,
+    "worker_reclamation": 2.0,
+    "latest_pending_start": 0.25,
+    "convert_cancel_visible_state": 0.1,
+    "close_acceptance": 0.25
+  },
+  "projection_bounds": {
+    "source_sync_debounce_milliseconds": 120,
+    "literal_search_debounce_milliseconds": 150,
+    "generated_c_chunk_characters": 32768,
+    "stored_marker_limit_per_layer": 2048,
+    "extra_selection_limit": 192,
+    "overview_rail_limit": 384,
+    "stored_search_range_limit": 5000
+  },
+  "supporting_failure_tests": {
+    "noncooperative_hard_termination": true,
+    "latest_pending_start_within_bound": true,
+    "slow_file_io_submission_under_100ms": true,
+    "close_during_blocked_file_io_under_250ms": true,
+    "stale_atomic_save_preserves_destination": true,
+    "malformed_oversized_broken_worker_transport_recoverable": true,
+    "terminal_status_not_blocked_by_output_indexing": true
+  },
+  "claims": {
+    "headless_architecture_and_service_gate": true,
+    "gui_event_loop_measured": false,
+    "visible_linux_measured": false,
+    "visible_windows_11_measured": false,
+    "display_scaling_measured": false,
+    "accessibility_measured": false,
+    "phase_15d_platform_gate_required": true
+  },
+  "c_toolchain_invoked": false,
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

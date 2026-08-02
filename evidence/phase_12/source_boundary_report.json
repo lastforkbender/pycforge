@@ -1,0 +1,28 @@
+{
+  "audit": "source-boundary-no-discovery",
+  "explicit_companion_status": "Converted",
+  "generated_c_compiled_or_executed": false,
+  "installed_host_module_diagnostics": [
+    "PYC3503"
+  ],
+  "installed_host_module_request_status": "Rejected",
+  "instrumented_discovery_calls": [],
+  "instrumented_operations": [
+    "filesystem-open",
+    "filesystem-list",
+    "filesystem-metadata",
+    "filesystem-resolve",
+    "environment-lookup",
+    "import-hook",
+    "import-module",
+    "import-spec",
+    "package-scan",
+    "network-dns",
+    "network-socket"
+  ],
+  "partial_output_published_on_rejection": false,
+  "passed": true,
+  "resolution": "exact-sourcebundle-only",
+  "schema_version": "pycforge.source-boundary-report/0.12",
+  "static_violations": []
+}

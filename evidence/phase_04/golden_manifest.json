@@ -1,0 +1,1 @@
+{"schema_version":"0.4","goldens":[{"id":"essential-add","path":"fixtures/c_ir/essential_golden.c","target_contract":"c11-portable-fixed-v1","conformance":"accepted"}]}

@@ -1,0 +1,240 @@
+PyCForge Phase 15C / v0.15.2 Project Handoff
+=============================================
+
+Release:                0.15.2
+Phase:                  15C — IDE-Grade Transpiler Workspace
+Release status:         Promoted, sealed, and release-custody validated
+Workspace contract:     pycforge-workspace/0.5
+Action registry:        pycforge.action-registry/0.2
+Visual system:          pycforge.visual-system/0.2
+Converter contract:     0.14.3
+Worker protocol:        pycforge.worker-protocol/0.1
+Settings schema:        1
+
+PRODUCT ROLE
+------------
+
+PyCForge is a deterministic Python-to-C source transpiler for a deliberately
+bounded Python subset. It accepts Python as explicit source data and produces
+independently validated deterministic C11 source.
+
+PyCForge does not compile, assemble, link, load, execute, test, debug, profile,
+benchmark, deploy, or invoke generated C. It never imports or executes user
+Python. Generated C remains read-only and explicit-save-only.
+
+PREDECESSOR CUSTODY
+-------------------
+
+Phase 15C began from the promoted and sealed Phase 15B release:
+
+  archive:                  pycforge_phase_15b_v0_15_1.tar.gz
+  archive root:             pycforge_phase_15b_v0_15_1
+  archive size:             1,544,352 bytes
+  archive SHA-256:          aefaebbacb12b458bcadd9aa25ac9f2678a374b51901bcc51aab3698049cd827
+  release-tree SHA-256:     d90225e2e75842dfd2ca581c08b844a3e640988e385cfc70a68dba8f27db9b36
+  converter-tree SHA-256:   a45bc2c31b954f9856c8eab36e95f68b086d5fdd682d2cf47ba2186887743124
+  predecessor package:      0.15.1
+  predecessor workspace:    pycforge-workspace/0.4
+  predecessor actions:      pycforge.action-registry/0.1
+  predecessor visuals:      pycforge.visual-system/0.1
+
+That authenticated source archive and its 0.15.1 wheel are the immediate
+rollback. Phase 15C does not rewrite predecessor bytes.
+
+PHASE 15C RESULT
+----------------
+
+Phase 15C implements the bounded IDE-grade workspace slice without changing
+converter semantics.
+
+DOCUMENTS AND SOURCE AUTHORING
+
+  - identifier-only Python document tabs;
+  - at most two synchronized Python source panes;
+  - deterministic tab activation, close, and reconciliation;
+  - undoable line or selection duplication;
+  - undoable line movement;
+  - undoable indent, outdent, and Python comment toggle;
+  - go-to-line without copying the complete source document;
+  - whitespace display and bounded folding; and
+  - preserved line-number, current-line, syntax, bracket, overview,
+    undo/redo, select, and literal find/replace foundations.
+
+Python remains the only editable code surface. Two views share controller-owned
+source authority rather than creating independent semantic documents.
+
+STRUCTURE, NAVIGATION, AND SEARCH
+
+Outline and breadcrumbs derive only from immutable already-open normalized
+Python source. Analysis is cancellable, latest-wins, and bounded to:
+
+  - 64 documents;
+  - 4,096 symbols;
+  - depth 64;
+  - 256 characters per name; and
+  - 256 KiB source text per projection.
+
+Invalid syntax is inert. Stale generations do not publish.
+
+Find in Source Bundle searches literal text in one to 64 already-open
+documents. Requests are immutable and path-free. The service performs no file
+I/O, project scan, package discovery, import resolution, or environment
+inspection. Results carry Python and UTF-16 positions, bounded previews,
+deterministic ordering, and a global 5,000-match projection cap.
+
+ACTION DISCOVERY, HISTORY, AND INSPECTION
+
+The command palette searches enabled, visible static declared actions only. It
+has no handler authority or free-form command route. Queries are capped at 256
+characters and projections at 50 results.
+
+Current-session transpilation history is capped at 64 immutable payload-free
+records. It retains no Python, generated C, diagnostics, mappings, facts,
+summaries, traces, telemetry, or worker envelopes.
+
+Diagnostics, mappings, Conversion Summary, Decision Trace, Telemetry, outline,
+bundle search, history, and read-only generated C have bounded observer
+surfaces. Save C still requires an exact current authenticated result.
+
+ACTION AND VISUAL CONTRACTS
+---------------------------
+
+The pycforge.action-registry/0.2 contract contains:
+
+  action specifications:             48
+  static actions:                     47
+  bounded dynamic action templates:   1
+  declared surfaces:                  18
+  persistent main menus:               5
+  context surfaces:                   11
+
+The persistent main menus are File, Edit, View, Navigate, and Transpile.
+Persistent QAction construction remains singly owned by qt_actions.py. The
+generated-C context is exactly Copy, Select All, and Find.
+
+The pycforge.visual-system/0.2 catalogue contains 55 safe self-contained SVG
+icons. Phase 15C extends the shared semantic stylesheet to tabs, split panes,
+breadcrumbs, outline, bundle search, history, and the command palette.
+
+RESPONSIVENESS AND ISOLATION
+----------------------------
+
+Phase 15C preserves the Phase 15A architecture:
+
+  - spawned child-process conversion;
+  - exactly one active and one replaceable latest pending request;
+  - cooperative cancellation with bounded hard termination and reaping;
+  - immutable revision, bundle, request, and transport publication guards;
+  - stale, failed, canceled, malformed, oversized, partial, and superseded
+    result suppression;
+  - off-GUI revision/index, file I/O, hashing, search, structure analysis, and
+    atomic writes; and
+  - bounded editor and observer projections plus incremental generated C.
+
+Routine tabs, panes, palette, history, go-to-line, and observer refreshes do
+not invoke the transpiler, scan the host, hash the complete bundle, or build an
+unbounded projection.
+
+UNCHANGED CONVERTER
+-------------------
+
+The converter remains sealed at 0.14.3. Phase 15C changes no supported Python
+construct, converter file, diagnostic, fact, RulePlan, C IR shape, helper,
+mapping, summary, decision trace, telemetry record, result serialization,
+generated-C byte, or converter fingerprint.
+
+The closed one-to-64-document SourceBundle remains the entire source universe.
+
+WORKSPACE-COMPLETENESS DISPOSITION
+----------------------------------
+
+CE-IDE-WORKSPACE-COMPLETENESS is retired for the authorized Phase 15C scope.
+The bounded authoring, navigation, action-discovery, observer, and immutable
+generated-C inspection families now have explicit implementations and
+fail-closed contracts.
+
+This does not retire visible-platform or wider distribution obligations and
+does not claim complete Phase 15. Phase 15D remains.
+
+VALIDATION AND RELEASE STATE
+----------------------------
+
+Phase 15C canonical validation passed. The canonical validation report and
+release fingerprint are assigned, and the milestone source archive, wheel,
+handoff package, report, and checksums are built and validated.
+
+  canonical validation passed:       yes
+  promotion eligible:                yes
+  release fingerprint assigned:      yes
+  source archive built:               yes
+  wheel built:                        yes
+  handoff package built:              yes
+  report and checksums built:         yes
+  generated C compiled or executed:   no
+  C toolchain invoked:                no
+
+These artifacts establish Phase 15C release custody only. They do not establish
+the wider distribution or visible-platform certification reserved for Phase
+15D.
+
+REAL OFFSCREEN QT EVIDENCE
+--------------------------
+
+The promoted Phase 15C release was exercised with a real PyQt widget graph
+under the Qt offscreen platform:
+
+  Python:                              3.12.13
+  PyQt:                                5.15.11
+  Qt build/runtime:                    5.15.14 / 5.15.19
+  QPA platform:                        offscreen
+  QApplication instances:             1
+  focused workspace cases:            18
+  failures / errors / skips:           0 / 0 / 0
+  large Python source:                 250,113 characters
+  workspace construction:             0.054 seconds (< 8 seconds)
+  first event turn:                    0.0103 seconds (< 1 second)
+  timer interval:                      0.01 seconds
+  timer progress during transpilation: 110 ticks in 1.201 seconds (< 30 seconds)
+  large-file policy engaged:           yes
+  syntax highlighter detached:         yes
+  shared source buffer preserved:      yes
+  new PyCForge threads:                0
+  worker leaks:                        0
+
+A supporting small end-to-end conversion completed in 0.408 seconds. These
+measurements establish real offscreen Qt integration and responsiveness; they
+are not visible-platform evidence.
+
+PLATFORM EVIDENCE BOUNDARY
+--------------------------
+
+Current evidence includes headless contracts, static Qt integration, and real
+offscreen PyQt widget execution. It does not include visible-platform runs.
+
+This handoff does not claim:
+
+  - visible Windows 11 rendering or behavior;
+  - visible Linux desktop rendering or behavior;
+  - a real display-scaling matrix;
+  - assistive-technology integration;
+  - visible keyboard, focus, menu, or dismissal behavior;
+  - broad clean-install or first-use certification;
+  - Phase 15D dependency and license custody; or
+  - wider reproducible distribution certification.
+
+Those gates remain mandatory in Phase 15D.
+
+ROADMAP BOUNDARY
+----------------
+
+Phase 15C adds no project explorer, recursive host scan, language server,
+formatter, semantic completion, refactoring, quick-fix mutation, source-control
+hosting, remote files, collaboration, cloud synchronization, arbitrary project
+configuration, plugin or macro system, external command, build/run/debug
+action, terminal, toolchain integration, or generated-C editor.
+
+Phase 15D, reproducible distribution and real visible Windows 11/Linux PyQt
+validation, remains unopened.
+
+The immediate rollback remains the authenticated Phase 15B v0.15.1 source
+archive and wheel.

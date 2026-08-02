@@ -1,0 +1,63 @@
+{
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-14b-release-tree-v1",
+  "status": "promoted",
+  "value": "895329a2723301de66adcb118a32308648a7993068e3ef7b5c9764914b9e2f4f",
+  "excludes": [
+    "transition/phase_14b/release_fingerprint.json",
+    "__pycache__ directories",
+    ".pytest_cache directories",
+    "build directories",
+    "dist directories",
+    "*.pyc",
+    "*.pyo"
+  ],
+  "predecessor_version": "0.14.0",
+  "predecessor_archive_sha256": "d4fe065d168241b4371901e19eda346c38835c1d2ac07e3870f27abb5a7b3917",
+  "predecessor_tree_sha256": "6eb034b63d4f08b8ea6de08fd38e507d12d4fc2436f0d3a68443624fc4c05d76",
+  "predecessor_converter_subtree_sha256": "ccb92a82741202569e4639342e6ae711c246e2122a689f7831715ee182596c2d",
+  "converter_subtree_sha256": "5d261abb5f7dbc480050472cac40a6b4a9539945a3d2e3211af552e094f9780d",
+  "sealed_phase14_transition_subtree_sha256": "cb92282a063d72c22b6db41cd2c0d2da8b7bdb8cb3c5a3290530744a22d6fe8a",
+  "sealed_phase14_transition_files_exact": true,
+  "tests": {
+    "discovered": 413,
+    "passed": 403,
+    "skipped": 10,
+    "failed": 0
+  },
+  "audits": {
+    "architecture": true,
+    "rules": true,
+    "helpers": true,
+    "containers": true,
+    "modules": true,
+    "records": true,
+    "numeric": true,
+    "conditional": true,
+    "determinism": true,
+    "phase_14_transition": true,
+    "phase_14b_transition": true,
+    "determinism_sha256": "f547f60b5405ff91df47e594418ceccbbfe1af0dc0323abb7c0f8d32ef5b0a97",
+    "conditional_generated_c_sha256": "cf9ccd348c69bbf51f8642b06e0b6cac3f82d585f4a334a103c9c3e914f610a5"
+  },
+  "artifacts": {
+    "wheel": {
+      "filename": "pycforge-0.14.1-py3-none-any.whl",
+      "size": 278494,
+      "sha256": "255cba6d45b6f7f2c8347f4764d37ad9858d9616f84cc93b65b07e205785a70d",
+      "fixed_epoch_builds_byte_identical": true,
+      "isolated_install_passed": true
+    },
+    "source_archive": {
+      "filename": "pycforge_phase_14b_v0_14_1.tar.gz",
+      "normalized_builds_byte_identical": true,
+      "sha256_recorded_externally": true
+    }
+  },
+  "c_toolchain_invoked": false,
+  "promoted_candidate_toolchain_invoked": false,
+  "compiler_linker_loader_or_execution_invoked": false,
+  "generated_c_compiled_or_executed": false,
+  "phase_14c_started": false,
+  "phase_15_started": false
+}

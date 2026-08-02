@@ -1,0 +1,35 @@
+{
+  "schema": "pycforge.phase-transition-manifest/0.1",
+  "phase": 6,
+  "baseline": "phase6-candidate-1",
+  "version": "0.6.0",
+  "roadmap_revision": "3.1",
+  "state": "Promoted",
+  "maturity": {
+    "generated_c_artifact": "StableInternal",
+    "first_slice_lowering": "StableInternal",
+    "source_output_mapping": "StableInternal",
+    "facade_generated_c_publication": "StableInternal"
+  },
+  "delivered": [
+    "first complete headless Python-to-C slice",
+    "RulePlan-consuming structured C IR lowering",
+    "integer float boolean and UTF-8 string literals",
+    "simple names and single-name local assignment",
+    "selected numeric arithmetic",
+    "one annotated top-level function form",
+    "return lowering",
+    "provenance-derived source/output mappings",
+    "API and CLI generated-C publication",
+    "Checkpoint B hardening evidence"
+  ],
+  "non_goals": [
+    "control flow",
+    "calls or multiple function forms",
+    "string mutation concatenation or dynamic operations",
+    "helper source emission",
+    "GUI integration",
+    "compilation execution linking or behavioral verification"
+  ],
+  "required_tests": 70
+}

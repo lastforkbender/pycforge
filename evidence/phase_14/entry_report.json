@@ -1,0 +1,66 @@
+{
+  "schema_version": "pycforge.phase14-entry-report/0.14",
+  "phase": 14,
+  "mini_phase": "14A",
+  "status": "entry-gate-passed-implementation-not-claimed",
+  "date": "2026-07-22",
+  "authorization": {
+    "explicit_user_approval": true,
+    "individually_gated_mini_phase": true,
+    "neighboring_phase14_features_authorized": false
+  },
+  "predecessor_authentication": {
+    "version": "0.13.0",
+    "source_archive": "pycforge_phase_13_v0_13_0.tar.gz",
+    "source_archive_size": 963912,
+    "source_archive_sha256": "36938f021db7110c590af878c748b5331ccc2d3de2f2144c3eb3b09d76fb998a",
+    "canonical_release_tree_sha256": "483743b12fdd682b4b2ad488279ef243f00f0b055332096e5af09b0b01ab00a2",
+    "converter_subtree_sha256": "16d780e9eb5861f20ef3a1132928c32353aae97f99a3da526bc42386a0871dc6",
+    "archive_digest_matched": true,
+    "archive_tree_matched_promoted_fingerprint": true,
+    "opening_candidate_tree_matched_before_entry_artifacts": true,
+    "opening_candidate_converter_matched": true
+  },
+  "sealed_release_evidence": {
+    "discovered_tests": 335,
+    "passed": 325,
+    "expected_pyqt5_skips": 10,
+    "failed": 0,
+    "cumulative_audits_passed": true,
+    "release_status": "promoted"
+  },
+  "phase14a_scope": {
+    "operators": ["FloorDiv", "Mod"],
+    "categories": ["integer-like"],
+    "divisor_profile": "direct-existing-lowerable-literal-in-negative-int64max-through-negative-two-or-one-through-int64max",
+    "helpers": [
+      "pycf.i64.floor_div@1.0.0",
+      "pycf.i64.floor_mod@1.0.0"
+    ],
+    "helper_registry_sha256": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+    "runtime_failure_channel": "none"
+  },
+  "conversion_debt": {
+    "register": "evidence/phase_14/conversion_debt.json",
+    "items": 14,
+    "high": 9,
+    "extreme": 5,
+    "unowned_high_or_extreme": 0,
+    "items_without_containment": 0,
+    "silent_approximations": 0
+  },
+  "entry_artifact_validation": {
+    "json_parse_passed": true,
+    "markdown_structure_passed": true,
+    "historical_files_modified_by_entry_packet": false,
+    "converter_code_modified_by_entry_packet": false,
+    "tests_modified_by_entry_packet": false,
+    "compiler_linker_loader_or_execution_invoked": false
+  },
+  "promotion": {
+    "implementation_complete": false,
+    "vertical_evidence_complete": false,
+    "release_promoted": false,
+    "windows_11_execution_claimed": false
+  }
+}

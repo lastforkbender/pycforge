@@ -1,0 +1,152 @@
+PyCForge Phase 13 v0.13.0 Project Handoff
+==========================================
+
+Status
+------
+
+PyCForge 0.13.0 is the promoted Phase 13 release. It implements a deliberately
+bounded immutable static-record profile over the authenticated 0.12.2
+predecessor.
+
+Phase 14 has not started and must not be opened automatically.
+
+Sealed predecessor custody
+--------------------------
+
+Phase 13 began only after authenticating the exact 0.12.2 predecessor:
+
+* archive: pycforge_phase_12_2_v0_12_2.tar.gz
+* archive SHA-256:
+  6a603684001f2cb2e9365d7e9b318f1a95dbe95b2cb36cf8821c30403c1754d0
+* sealed tree SHA-256:
+  434981decfd2b2fc2b344f5b9a3b37377396376c2e0a8c8ed00bb9fa9077d765
+* predecessor converter subtree SHA-256:
+  4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51
+
+These are historical authenticated identities and must not be rewritten.
+
+Phase 13 boundary
+-----------------
+
+The accepted class spelling is one top-level, undecorated, base-free record
+declaration before module functions. Its body has 1-64 distinct value-less
+fields annotated exactly int, float, or bool, followed by exactly one
+__init__(self, fields...) -> None. Parameters match field names, order, and
+types; the body is the exact ordered sequence self.field = field. Dunder field
+names and record class names that shadow int, float, bool, or str reject.
+
+Construction is one direct function-local fresh-name assignment with exact
+positional scalar arguments in the defining module. Arguments evaluate left to
+right and once. The unique owner can be used only for statically resolved
+direct field reads after construction. The class and owner are proved by
+lexical binding ID; type comments and every alternate/rebinding form reject.
+
+The C representation is a deterministic named typedef struct plus a fully
+initialized const aggregate in automatic function storage. Member order is
+source field order. There is no heap, allocation failure, null state, cleanup,
+reference count, ownership transfer, class runtime, method table, or selected
+helper.
+
+Ordinary methods, inheritance, MRO, metaclasses, descriptors, properties,
+decorators, class values, default/string/container/record fields, keyword or
+indirect construction, field mutation, aliasing, rebinding, copying, escape,
+record parameters or returns, identity/truth behavior, dynamic attributes,
+reflection, nested classes, and cross-module record imports/uses reject.
+
+Contract identities
+-------------------
+
+* source bundle: source-bundle/0.2
+* Python IR: python-ir/0.4
+* container facts: fact-table/0.11
+* module facts: fact-table/0.12
+* record facts: fact-table/0.13
+* conversion plan: conversion-plan/0.13
+* C IR: c-ir/0.13
+* generated C: generated-c/0.13
+* conversion summary: pycforge.conversion-summary/0.13
+* decision trace: pycforge.decision-trace/0.13
+* result serialization: 0.5
+* rule set: phase13-static-records-v0.13
+* renderer: c-renderer-v0.13
+* module policy: phase13-explicit-record-modules-v0.13
+* record policy: phase13-immutable-automatic-records-v0.13
+* helper policy: phase10-support-templates-v0.10
+* container policy: phase11-fixed-local-containers-v0.11
+* target: c11-portable-fixed-v1
+
+Safety and compatibility
+------------------------
+
+Explicit Phase 12 configuration identities remain read-compatible. A
+class-free Phase 13 request produces the same generated-C bytes and output
+fingerprint as its Phase 12 counterpart for the same supported source.
+
+The SourceBundle remains closed. PyCForge performs no import-path, filesystem,
+environment, package, installed-distribution, or network discovery. It emits
+one C source translation unit and never compiles, links, loads, or executes it.
+
+The PyCForge workspace keeps generated C read-only and preserves semantic-edit
+staleness, fresh-result-only atomic linked-save, and dirty-document close
+protection. Windows 11 laptop review is planned future user feedback after all
+phases; no Windows execution claim is made for this release.
+
+Compiler-custody incident
+-------------------------
+
+An independent reviewer invoked the host compiler in compile-only mode while
+examining the first working candidate. Three accepted temporary C units
+compiled and one hand-mutated invalid C IR output failed compilation. Nothing
+was linked, loaded, or executed. That event activated the declared rollback
+condition, so the first candidate was abandoned rather than promoted.
+
+The release candidate was reseeded from a newly extracted predecessor whose
+archive, tree, and converter-subtree hashes matched the identities above.
+`transition/phase_13/candidate_reseed.md` preserves the incident. The promoted
+candidate's test, audit, validator, packaging, and installed-wheel gates use no
+C toolchain. PyCForge itself exposes no compiler, linker, loader, execution,
+debugger, terminal, or package-discovery surface.
+
+Validation
+----------
+
+Run from the release root:
+
+    python -m unittest discover -s tests
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit helpers
+    python -m pycforge audit containers
+    python -m pycforge audit modules
+    python -m pycforge audit records
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_13
+    python tools/validate_phase13.py --run-tests
+
+Release evidence:
+
+* tests: 335 run; 325 passed and 10 had expected PyQt5-dependent skips
+* cumulative audits: passed
+* authenticated predecessor: passed before opening and again before reseeding
+* two fixed-epoch wheel builds: byte-identical
+* wheel: pycforge-0.13.0-py3-none-any.whl
+* wheel size: 236,052 bytes
+* wheel SHA-256:
+  90691b4534388e76e6bdcb83766435b3ad53f424802b0e7624af5d89bb2c1fb0
+* two normalized source-archive builds: byte-identical
+* source archive: pycforge_phase_13_v0_13_0.tar.gz
+* isolated wheel install, SourceBundle record conversion, record audit, and
+  linked-C atomic save: passed
+* promoted-candidate validation compiler/linker/loader/execution invocation: no
+* Windows 11 execution claim: no
+
+The canonical release-tree SHA-256 is authenticated by
+transition/phase_13/release_fingerprint.json. The source-archive size and
+SHA-256 are recorded externally to avoid self-reference.
+
+Next objective
+--------------
+
+Do not begin Phase 14 automatically. The user's planned Windows 11 review
+remains downstream feedback and is not a pretext for adding a compiler,
+execution, terminal, or platform-discovery surface.

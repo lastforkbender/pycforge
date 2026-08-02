@@ -1,0 +1,10 @@
+{
+  "errors": 0,
+  "failures": 0,
+  "generated_c_compiled_or_executed": false,
+  "passed": true,
+  "phase12_tests": 20,
+  "predecessor_regressions": 169,
+  "schema_version": "pycforge.test-summary/0.12",
+  "tests_run": 189
+}

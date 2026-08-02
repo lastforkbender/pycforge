@@ -1,0 +1,28 @@
+{
+  "accepted_forms": [
+    "absolute-from-import",
+    "aliased-from-import",
+    "single-translation-unit"
+  ],
+  "audit": "modules",
+  "document_limit": 64,
+  "generated_c_compiled_or_executed": false,
+  "import_edge_limit": 4096,
+  "passed": true,
+  "rejection_codes": [
+    "PYC3501",
+    "PYC3502",
+    "PYC3503",
+    "PYC3504",
+    "PYC3505",
+    "PYC3506",
+    "PYC3507",
+    "PYC3508",
+    "PYC3509",
+    "PYC3510"
+  ],
+  "resolution": "explicit-sourcebundle-only",
+  "runtime_initialization": "none",
+  "schema_version": "pycforge.module-report/0.12",
+  "translation_unit_count": 1
+}

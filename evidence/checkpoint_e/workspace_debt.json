@@ -1,0 +1,128 @@
+{
+  "schema_version": "pycforge.workspace-debt/0.1",
+  "checkpoint": "E",
+  "date": "2026-07-26",
+  "status": "opening-owned",
+  "items": [
+    {
+      "id": "CE-WORKER-ISOLATION",
+      "risk": "Extreme",
+      "status": "open",
+      "owner": "checkpoint-e-worker-supervisor",
+      "description": "The current conversion executor is a single Python thread in the GUI process and cannot hard-stop a non-cooperative or stuck conversion.",
+      "containment": "Existing sequence and fingerprint guards prevent obsolete result publication, but liveness is not claimed.",
+      "exit_evidence": "Process-isolated worker, one-active-one-latest-pending scheduling, bounded terminate/kill escalation, crash/OOM/malformed-IPC tests, and orphan-free shutdown on every platform."
+    },
+    {
+      "id": "CE-CANCELLATION-LATENCY",
+      "risk": "Extreme",
+      "status": "open",
+      "owner": "checkpoint-e-worker-supervisor",
+      "description": "Cancellation is cooperative and several whole-document or host-parser intervals cannot acknowledge it promptly.",
+      "containment": "Cancellation publishes no partial current successor and last-known-good C remains protected.",
+      "exit_evidence": "Visible cancel-requested state within 100 ms, 750 ms cooperative grace, worker termination within 2 seconds, and latest pending start within 250 ms after termination."
+    },
+    {
+      "id": "CE-RESULT-PROJECTION",
+      "risk": "Extreme",
+      "status": "open",
+      "owner": "checkpoint-e-result-presentation",
+      "description": "Complete generated C, syntax highlighting, mappings, and observer trees are eagerly projected on the GUI thread.",
+      "containment": "Output remains immutable and hidden details avoid some current work, but maximum-input responsiveness is unproved.",
+      "exit_evidence": "Viewport-first generated C, cached position indexes, virtualized/lazy models, no event-loop gap over 100 ms, and first output viewport within 250 ms."
+    },
+    {
+      "id": "CE-MAPPING-POSITION-COST",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-text-index-service",
+      "description": "Mapping projection repeatedly splits output and encodes prefixes for each mapping, producing output-size-by-marker-count work.",
+      "containment": "The visible mapping count is capped, but the algorithm is still unsuitable for large results.",
+      "exit_evidence": "One cached line and UTF-16 index per revision, linear index construction, bounded lookup cost, and maximum-result benchmark."
+    },
+    {
+      "id": "CE-EDIT-REVISION-COST",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-revision-service",
+      "description": "Each source edit copies full editor text and synchronously recomputes full source and bundle fingerprints.",
+      "containment": "The current model remains semantically race safe and stale-output safe.",
+      "exit_evidence": "Incremental/debounced revision synchronization with p95 keystroke-to-paint latency at or below 50 ms on the maximum-byte fixture."
+    },
+    {
+      "id": "CE-SEARCH-MARKER-SCALING",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-editor-services",
+      "description": "Live Find may rescan the full document and materialize every match and extra selection, including after the panel closes with a retained query.",
+      "containment": "Search is presentation-only and cannot affect conversion semantics.",
+      "exit_evidence": "Debounced cancelable search, bounded viewport/overview markers, one-character high-match-density fixture, and no event-loop gap over 100 ms."
+    },
+    {
+      "id": "CE-BRACKET-HIGHLIGHT-SCALING",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-editor-services",
+      "description": "Bracket matching can scan a whole Qt document character by character on cursor movement, while highlighting has no measured maximum-file mode.",
+      "containment": "The behavior is visual only.",
+      "exit_evidence": "Indexed or bounded bracket matching, measured large-file highlighting, long-line and 100,000-line fixtures, and cursor latency within budget."
+    },
+    {
+      "id": "CE-FILESYSTEM-GUI-BLOCKING",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-io-service",
+      "description": "Linked-file hashing, path checks, reads, and external-change assessment can execute on the GUI thread.",
+      "containment": "Writes retain atomic custody and external changes never auto-reload source.",
+      "exit_evidence": "Asynchronous I/O and injected 5-second file-system latency with responsive menus, editing, Cancel, and close."
+    },
+    {
+      "id": "CE-ACTIVE-PRODUCT-IDENTITY",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-application-shell",
+      "description": "Historical workspace naming remains visible in the current active application surface.",
+      "containment": "Historical files remain sealed and are not rewritten.",
+      "exit_evidence": "All new and active front-facing surfaces identify PyCForge; automated and visual audits find no alternate theme-derived product or component label."
+    },
+    {
+      "id": "CE-MENU-VISUAL-SYSTEM",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-action-and-menu-system",
+      "description": "The requested cohesive custom gradient/icon main and context-menu system is not implemented or platform-validated.",
+      "containment": "Existing native actions and SVG assets remain usable.",
+      "exit_evidence": "Shared action registry, custom main/context menus for all declared surfaces, keyboard/mnemonic/high-DPI/screen-edge/accessibility tests, and visible platform evidence."
+    },
+    {
+      "id": "CE-REAL-PYQT-PLATFORM-EVIDENCE",
+      "risk": "High",
+      "status": "open",
+      "owner": "checkpoint-e-platform-gate",
+      "description": "The sealed release had no PyQt5 runtime; ten Qt tests skipped and Windows 11 execution was unclaimed.",
+      "containment": "Historical offscreen evidence remains preserved but is not treated as current release evidence.",
+      "exit_evidence": "Passing real visible PyQt gates on Windows 11 and a declared Linux desktop backend, with scaling, keyboard, accessibility, failure, and maximum-input runs."
+    },
+    {
+      "id": "CE-IDE-WORKSPACE-COMPLETENESS",
+      "risk": "Medium",
+      "status": "open",
+      "owner": "checkpoint-e-workspace-experience",
+      "description": "The application lacks portions of the authorized IDE-grade editing, navigation, action-discovery, and virtualized inspection experience.",
+      "containment": "Only features explicitly listed in the Checkpoint E boundary may be added.",
+      "exit_evidence": "Bounded vertical feature slices with real widget, keyboard, accessibility, semantic-preservation, and responsiveness evidence."
+    }
+  ],
+  "summary": {
+    "total_items": 12,
+    "extreme": 3,
+    "high": 8,
+    "medium": 1,
+    "unowned_items": 0,
+    "items_without_containment": 0,
+    "items_without_exit_evidence": 0,
+    "semantic_converter_debt_opened": 0,
+    "phase14e_opened": false,
+    "phase15_opened": false
+  }
+}

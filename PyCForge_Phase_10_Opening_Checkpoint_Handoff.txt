@@ -1,0 +1,57 @@
+PyCForge Phase 10 Opening Checkpoint Handoff
+============================================
+
+Status
+------
+
+The Phase 10 documentation and workspace entry checkpoint is complete. This is
+not a Phase 10 promotion. It uses the explicit prerelease package identity
+0.10.0.dev0. The sealed Phase 9 v0.9.0 archive remains the last promoted release
+and rollback point.
+
+Delivered
+---------
+
+* exact packaged copy of Architecture Revision 3.1
+* Revision 3.2 addendum covering roadmap custody and Phase 10 entry
+* Python-first workspace with full authoring area by default
+* hidden-by-default, explicitly toggleable, permanently read-only generated C
+* hidden-by-default inspection details
+* delayed non-modal status-bar progress
+* immutable pipeline-ready, stage-entered, and stage-completed progress events
+* request/source identity filtering for late progress
+* complete isolation of failing or invalid progress consumers
+
+The progress display reports structural pipeline milestones, not a fabricated
+elapsed-time percentage. Fast conversions finish without flashing the progress
+bar. Cancel remains available. No progress popup was added.
+
+Validation boundary
+-------------------
+
+The checkpoint records 143 tests: all 139 promoted Phase 0–9 tests plus four
+opening-checkpoint tests. PyQt5 was not installed in the validation environment,
+so the controller and widget source contract were tested; an actual Qt widget
+smoke test remains required on a supported PyQt5 installation before Phase 10
+promotion. The headless wheel was reproduced byte-for-byte across two fixed-epoch
+builds, installed in isolation, and exercised through the new progress API.
+Generated C was not compiled or executed.
+
+Phase 10 gate
+-------------
+
+Do not begin the helper registry merely to exercise infrastructure. Revision 3.1
+and the 3.2 addendum require two concrete helper requirements from promoted
+RulePlans or accepted feasibility decisions. The current promoted Phase 9 plan
+correctly emits no helpers. Select and approve the two decisions before building
+the registry, resolver, or helper ingestion path.
+
+Validate
+--------
+
+    python -m unittest discover -s tests
+    python tools/validate_phase10_opening.py
+    python -m pycforge audit architecture
+    python -m pycforge audit determinism
+
+The sealed Phase 9 archive and its SHA-256 remain unchanged.

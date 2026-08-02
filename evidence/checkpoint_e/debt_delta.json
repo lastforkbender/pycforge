@@ -1,0 +1,61 @@
+{
+  "schema_version": "pycforge.checkpoint-e-debt-delta/0.14.4",
+  "checkpoint": "E",
+  "date": "2026-07-26",
+  "status": "checkpoint-complete",
+  "semantic_converter_debt": {
+    "opened": 0,
+    "unowned_high_or_extreme": 0,
+    "phase14d_subset_frozen": true,
+    "feature_matrix_changed": false
+  },
+  "workspace_opening_items": 12,
+  "resolved_in_checkpoint_e": [
+    {
+      "id": "CE-ACTIVE-PRODUCT-IDENTITY",
+      "resolution": "All active front-facing application, accessibility, title, toolbar, settings, and primary theme surfaces identify PyCForge. Historical custody names and three non-exported validator aliases are not active product labels."
+    }
+  ],
+  "accepted_for_phase15": [
+    "CE-WORKER-ISOLATION",
+    "CE-CANCELLATION-LATENCY",
+    "CE-RESULT-PROJECTION",
+    "CE-MAPPING-POSITION-COST",
+    "CE-EDIT-REVISION-COST",
+    "CE-SEARCH-MARKER-SCALING",
+    "CE-BRACKET-HIGHLIGHT-SCALING",
+    "CE-FILESYSTEM-GUI-BLOCKING",
+    "CE-MENU-VISUAL-SYSTEM",
+    "CE-REAL-PYQT-PLATFORM-EVIDENCE",
+    "CE-IDE-WORKSPACE-COMPLETENESS"
+  ],
+  "phase15_assignment": {
+    "15A": [
+      "CE-WORKER-ISOLATION",
+      "CE-CANCELLATION-LATENCY",
+      "CE-RESULT-PROJECTION",
+      "CE-MAPPING-POSITION-COST",
+      "CE-EDIT-REVISION-COST",
+      "CE-SEARCH-MARKER-SCALING",
+      "CE-BRACKET-HIGHLIGHT-SCALING",
+      "CE-FILESYSTEM-GUI-BLOCKING"
+    ],
+    "15B": [
+      "CE-MENU-VISUAL-SYSTEM"
+    ],
+    "15C": [
+      "CE-IDE-WORKSPACE-COMPLETENESS"
+    ],
+    "15D": [
+      "CE-REAL-PYQT-PLATFORM-EVIDENCE"
+    ]
+  },
+  "summary": {
+    "resolved": 1,
+    "accepted_owned": 11,
+    "unowned": 0,
+    "checkpoint_e_promotion_blockers": 0,
+    "phase14e_opened": false,
+    "phase15_opened": false
+  }
+}

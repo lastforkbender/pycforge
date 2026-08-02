@@ -1,0 +1,20 @@
+{
+  "c_ir": "c-ir/0.11",
+  "container_facts": "fact-table/0.11",
+  "container_policy": "phase11-fixed-local-containers-v0.11",
+  "conversion_plan": "conversion-plan/0.11",
+  "conversion_summary": "pycforge.conversion-summary/0.11",
+  "decision_trace": "pycforge.decision-trace/0.11",
+  "generated_c": "generated-c/0.11",
+  "helper_policy": "phase10-support-templates-v0.10",
+  "package_version": "0.11.0",
+  "passed": true,
+  "published_artifact_schema": "generated-c/0.11",
+  "published_c_ir_schema": "c-ir/0.11",
+  "published_summary_schema": "pycforge.conversion-summary/0.11",
+  "published_trace_schema": "pycforge.decision-trace/0.11",
+  "renderer": "c-renderer-v0.11",
+  "result_serialization": "0.4",
+  "rule_set": "phase11-bounded-containers-v0.11",
+  "schema_version": "pycforge.schema-report/0.11"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "pycforge.phase15b-visual-evidence/1",
+  "visual_system": "pycforge.visual-system/0.1",
+  "workspace": "pycforge-workspace/0.4",
+  "svg_assets": 41,
+  "logical_view_box": "0 0 24 24",
+  "vector_only": true,
+  "raster_assets": 0,
+  "remote_references": 0,
+  "embedded_data_references": 0,
+  "font_glyph_dependencies": 0,
+  "fixed_physical_dimensions": 0,
+  "semantic_palette": true,
+  "wcag_aa_primary_pairs": true,
+  "logical_menu_icon_size": 18,
+  "logical_toolbar_icon_size": 20,
+  "inspector_projection": {
+    "iterative": true,
+    "cycle_safe": true,
+    "max_nodes": 1024,
+    "max_depth": 16,
+    "max_children_per_container": 256,
+    "max_text_characters": 2048
+  },
+  "menu_states": [
+    "hover",
+    "focus",
+    "pressed",
+    "checked",
+    "disabled",
+    "danger",
+    "separator",
+    "submenu"
+  ],
+  "animation": false,
+  "visible_platform_certification": false,
+  "visible_platform_gate": "Phase 15D",
+  "status": "supporting-static-contract-passed"
+}

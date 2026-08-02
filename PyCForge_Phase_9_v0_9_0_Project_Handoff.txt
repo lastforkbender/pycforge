@@ -1,0 +1,124 @@
+PyCForge Project Handoff
+========================
+
+Current status
+--------------
+
+Phase 9 promoted candidate — Version 0.9.0
+Roadmap authority: Python-to-C Converter Architecture, Revision 3.1
+
+PyCForge now converts the deliberately bounded cumulative Python subset through
+top-level exact-annotated functions and direct understood-target calls. It emits
+deterministic prototypes, stages positional arguments left to right exactly once,
+validates compatible return paths and local declarations, lowers only through
+structured C IR 0.9, renders deterministic C source, independently parses the
+rendered subset, and stops.
+
+The application does not compile, link, load, execute, benchmark, debug, discover
+a toolchain, or compare behavior with CPython. Generated C is the final boundary.
+
+Predecessor preserved
+---------------------
+
+Phase 8 archive SHA-256:
+c30bb745aa0c471683c8056ca017aa501366ecdb4e3c4c4c16d905658015cbc6
+
+Phase 8 tree fingerprint:
+fcf5161c71e194072c97b5abcf8f690e3172da29c2c65e1ccf81490b050c26e8
+
+The promoted Phase 8 archive and extracted baseline were not edited. Phase 9 was
+built in a separate tree. The mistakenly attached HM(3).txt concerns Cecil+ and
+was not used as PyCForge authority; the recovered Phase 8 PyCForge handoff and
+Revision 3.1 controlled this continuation.
+
+Review and hardening
+--------------------
+
+Before Phase 9, all 92 Phase 0–8 tests and gates were verified. The review then
+fixed semantic and reliability defects including non-converging category
+refinement, repeated range-bound evaluation, dynamic/float range acceptance,
+loop-target escape/rebinding/mutation, shadowed range recognition, nested include
+discovery, literal bounds, return/fallthrough priority, local use-before-binding,
+incompatible-assignment InternalFailure, chained-comparison structure and
+conditional-evaluation hazards, CLI output preservation, stale workspace saving,
+UTF-8 C escape ambiguity, nested unary token fusion, reserved C names, shallow
+artifact immutability, malformed request containment, artifact metadata checks,
+unsupported scalar normalization, complete syntax spans, safe nesting containment,
+runtime observer/schema alignment, schema-aware IR reference discovery, scalable
+worklist category propagation, and incomplete C IR validation.
+
+The stale Phase 5 root README and related specifications were corrected only in
+the new 0.9.0 candidate.
+
+Phase 9 delivered
+-----------------
+
+* conversion-plan/0.9 function-signature facts
+* binding-backed understood-target call facts
+* return-path and local-declaration facts
+* iterative strongly-connected-component call graph
+* explicit direct/mutual recursion rejection
+* explicit nested-function/closure rejection
+* annotation, evaluation-order, representation, ownership, and lifetime evidence
+* phase9.call.understood_target/0.9 RulePlans
+* CFunctionPrototype and structured CCallExpr in c-ir/0.9
+* all prototypes before definitions, enabling forward calls
+* left-to-right once-only argument temporaries
+* deterministic call-result temporaries
+* nested calls and calls in supported control flow/range bounds
+* positional and positional-only exact signatures
+* borrowed const-char-pointer string boundaries
+* definition/prototype/parameter/argument/call/temporary/return mappings
+* recursive immutable artifacts, diagnostics, traces, and telemetry snapshots
+* schema-aligned decision-trace/telemetry 0.9 records and deterministic trace levels
+* strict artifact envelope/fingerprint validation
+* stable diagnostic IDs and canonical semantic context
+* API, CLI, and workspace result equivalence
+
+Unsupported boundary
+--------------------
+
+Unknown, aliased, rebound, indirect, reflective, or dynamic targets reject.
+Defaults, keywords, keyword-only parameters, variadics, unpacking, recursion,
+nested functions, closures, decorators, generators, imports, first-class function
+values, helpers, containers, exceptions, classes, async syntax, compilation, and
+execution remain unsupported. Calls that would require eager temporary evaluation
+across a Python short-circuit boundary reject explicitly.
+
+Validation status
+-----------------
+
+139 tests pass:
+
+* 92 Phase 0–8 regression tests
+* 17 review-hardening tests
+* 30 Phase 9 tests
+
+Architecture, rule-registry, determinism, transition, semantic, mapping,
+observer, cancellation, resource, CLI atomicity, GUI stale-result, C IR, and
+independent C-text gates pass. A fixed-epoch wheel was reproduced byte-for-byte
+across two builds and passed an isolated installation/conversion smoke test.
+Generated C was not compiled or executed.
+
+Authoritative candidate evidence is under evidence/phase_09 and
+transition/phase_9. Run:
+
+    python -m unittest discover -s tests
+    python tools/validate_phase9.py
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_9
+
+Next objective
+--------------
+
+Revision 3.1 Phase 10 is Support-Template Infrastructure: a versioned helper
+registry, exact dependency closure, deduplication, interface/target validation,
+ownership/failure contracts, deterministic ordering, and C IR factories or
+parse-and-validate ingestion. Do not add broad helpers merely to justify the
+infrastructure. Preserve the 0.9.0 release unchanged before continuing.
+
+Maintain semantic honesty, deterministic immutable artifacts, one-time RulePlan
+selection, structured C IR ownership, source/output provenance, observer
+isolation, atomic publication, and the no-compilation/no-execution boundary.

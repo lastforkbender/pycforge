@@ -1,0 +1,30 @@
+{
+  "audit": "rules",
+  "passed": true,
+  "rule_count": 15,
+  "phase9_required_rules": ["phase9.call.understood_target"],
+  "missing_phase9_rules": [],
+  "identities": [
+    "phase6.assignment.simple/0.6",
+    "phase6.numeric.arithmetic/0.6",
+    "phase8.boolean.short_circuit/0.8",
+    "phase8.break.control/0.8",
+    "phase9.call.understood_target/0.9",
+    "phase8.range.bound/0.8",
+    "phase8.comparison.chain/0.8",
+    "phase6.literal.known/0.6",
+    "phase8.continue.control/0.8",
+    "phase8.for.range/0.8",
+    "phase6.function.annotated/0.6",
+    "phase8.if.control/0.8",
+    "phase6.name.bound/0.6",
+    "phase6.return.simple/0.6",
+    "phase8.while.control/0.8"
+  ],
+  "notes": [
+    "registry order is frozen and deterministic",
+    "duplicate identities and equal-specificity overlaps reject",
+    "the Phase 9 positive fixture reaches the call rule",
+    "all published supported decisions reference exactly one closed RulePlan"
+  ]
+}

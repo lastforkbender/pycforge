@@ -1,0 +1,21 @@
+{
+  "schema_version": "pycforge.isolation-report/0.9",
+  "observer_failure_changes_semantic_result": false,
+  "observer_failure_changes_artifact_fingerprint": false,
+  "trace_and_telemetry_snapshots_recursively_immutable": true,
+  "decision_trace_runtime_schema": "pycforge.decision-trace/0.9",
+  "telemetry_runtime_schema": "pycforge.telemetry/0.9",
+  "trace_levels_filter_events_deterministically": true,
+  "trace_truncation_is_observation_only": true,
+  "pre_canceled_request_publishes_generated_c": false,
+  "cancellation_after_stage_or_validation_publishes_successor": false,
+  "ast_resource_rejection_publishes_generated_c": false,
+  "pathological_nesting_rejects_before_lowering": true,
+  "maximum_safe_nesting_depth": 128,
+  "dependency_chain_fixture_bindings": 1000,
+  "dependency_chain_fixture_result": "Rejected/PYC2940",
+  "category_propagation_strategy": "deterministic bounded worklist",
+  "stale_or_rejected_workspace_output_savable": false,
+  "cli_rejection_overwrites_output": false,
+  "passed": true
+}

@@ -1,0 +1,116 @@
+{
+  "schema": "pycforge.phase15c-feature-evidence/1",
+  "package": "0.15.2",
+  "workspace": "pycforge-workspace/0.5",
+  "converter": "0.14.3",
+  "worker_protocol": "pycforge.worker-protocol/0.1",
+  "features": [
+    {
+      "id": "document-tabs-and-split-source",
+      "status": "implemented-headless-contract-passed",
+      "maximum_documents": 64,
+      "maximum_panes": 2,
+      "state_payload": "document-identifiers-only"
+    },
+    {
+      "id": "bounded-source-authoring",
+      "status": "implemented-headless-contract-passed",
+      "operations": [
+        "duplicate-line-or-selection",
+        "move-lines",
+        "indent",
+        "outdent",
+        "toggle-comment",
+        "go-to-line"
+      ],
+      "generated_c_mutation": false
+    },
+    {
+      "id": "source-structure",
+      "status": "implemented-headless-contract-passed",
+      "open_documents_only": true,
+      "latest_wins": true,
+      "maximum_documents": 64,
+      "maximum_symbols": 4096,
+      "maximum_depth": 64,
+      "maximum_name_characters": 256,
+      "maximum_text_characters": 262144
+    },
+    {
+      "id": "bundle-literal-search",
+      "status": "implemented-headless-contract-passed",
+      "open_documents_only": true,
+      "file_io": false,
+      "latest_wins": true,
+      "maximum_matches": 5000,
+      "maximum_query_characters": 4096,
+      "maximum_preview_characters": 512
+    },
+    {
+      "id": "command-palette",
+      "status": "implemented-headless-contract-passed",
+      "declared_actions_only": true,
+      "free_form_execution": false,
+      "maximum_results": 50,
+      "maximum_query_characters": 256
+    },
+    {
+      "id": "session-transpilation-history",
+      "status": "implemented-headless-contract-passed",
+      "maximum_entries": 64,
+      "payload_free": true,
+      "accepted_current_terminals_only": true
+    },
+    {
+      "id": "observer-and-generated-c-inspection",
+      "status": "implemented-static-integration-contract-passed",
+      "diagnostics": true,
+      "mappings": true,
+      "summary": true,
+      "decision_trace": true,
+      "telemetry": true,
+      "generated_c_read_only": true,
+      "generated_c_explicit_save_only": true
+    },
+    {
+      "id": "workspace-qt-integration",
+      "status": "supporting-offscreen-runtime-evidence-passed",
+      "real_pyqt_widgets_exercised": true,
+      "offscreen_pyqt_widgets_exercised": true,
+      "visible_platform_exercised": false
+    }
+  ],
+  "offscreen_runtime": {
+    "python_version": "3.12.13",
+    "pyqt_version": "5.15.11",
+    "qt_build_version": "5.15.14",
+    "qt_runtime_version": "5.15.19",
+    "qpa_platform": "offscreen",
+    "qapplication_instances": 1,
+    "workspace_test_cases": 18,
+    "workspace_test_failures": 0,
+    "workspace_test_errors": 0,
+    "workspace_test_skips": 0,
+    "large_source_characters": 250113,
+    "large_file_mode": true,
+    "syntax_highlighter_detached": true,
+    "shared_buffer_preserved": true,
+    "new_pycforge_threads_after_close": 0,
+    "worker_leaks": 0
+  },
+  "semantic_preservation": {
+    "converter_subtree_files": 92,
+    "converter_subtree_sha256": "a45bc2c31b954f9856c8eab36e95f68b086d5fdd682d2cf47ba2186887743124",
+    "converter_semantics_modified": false,
+    "generated_c_executed": false,
+    "toolchain_invoked": false
+  },
+  "workspace_completeness_debt": {
+    "id": "CE-IDE-WORKSPACE-COMPLETENESS",
+    "status": "retired-for-phase-15c-scope",
+    "real_platform_gate_satisfied": false,
+    "distribution_gate_satisfied": false
+  },
+  "status": "promoted-and-sealed",
+  "promotion_eligible": true
+}

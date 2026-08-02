@@ -1,0 +1,19 @@
+{
+  "artifacts": [
+    {
+      "name": "laboratory CLI",
+      "readiness": "StableInternal",
+      "schema": "0.2"
+    },
+    {
+      "name": "stage artifact envelope",
+      "readiness": "StableInternal",
+      "schema": "0.2"
+    },
+    {
+      "name": "decision diff",
+      "readiness": "StableInternal",
+      "schema": "0.2"
+    }
+  ]
+}

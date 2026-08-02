@@ -1,0 +1,40 @@
+{
+  "schema": "pycforge.phase-transition-manifest/0.1",
+  "phase": 0,
+  "baseline": "phase0-candidate-1",
+  "maturity": {
+    "product_boundary": "PublicStable",
+    "non_execution_contract": "PublicStable",
+    "target_contract": "Candidate",
+    "semantic_contract": "Candidate",
+    "diagnostic_schema": "Candidate",
+    "result_contract": "Candidate",
+    "decision_trace_schema": "Candidate",
+    "telemetry_schema": "Candidate"
+  },
+  "required_files": [
+    "specifications/product_boundary.md",
+    "specifications/supported_python.md",
+    "specifications/feature_matrix.json",
+    "specifications/source_bundle.md",
+    "specifications/target_c_source_contract.md",
+    "specifications/conversion_semantics.md",
+    "specifications/configuration.md",
+    "specifications/approximation_policy.md",
+    "specifications/representation_ownership_lifetime.md",
+    "specifications/c_output_style.md",
+    "specifications/diagnostics.md",
+    "specifications/result_and_fingerprints.md",
+    "specifications/resource_cancellation_save.md",
+    "schemas/decision_trace.schema.json",
+    "schemas/telemetry.schema.json",
+    "transition/phase_minus_1/feasibility_decisions.md",
+    "transition/phase_minus_1/risk_register.json",
+    "transition/phase_0/first_milestone_contract.md",
+    "transition/phase_0/non_goals_by_phase.md",
+    "fixtures/first_milestone/add.py",
+    "fixtures/first_milestone/expected.c",
+    "fixtures/first_milestone/expected_ruleplans.json"
+  ],
+  "prohibitions": ["compile generated C", "execute generated C", "import user source", "implicit module discovery", "GUI dependency"]
+}

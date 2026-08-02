@@ -1,0 +1,159 @@
+PyCForge Phase 14A v0.14.0 Project Handoff
+============================================
+
+Status
+------
+
+PyCForge 0.14.0 seals the independently approved Phase 14A scope: bounded
+signed-64 Python floor division and modulo with a direct statically safe
+literal divisor.
+
+Broader Phase 14 remains closed pending a new feasibility decision and explicit
+approval. Phase 15 has not started.
+
+Sealed predecessor custody
+--------------------------
+
+Phase 14A began only after authenticating the exact 0.13.0 predecessor:
+
+* archive: pycforge_phase_13_v0_13_0.tar.gz
+* archive size: 963,912 bytes
+* archive SHA-256:
+  36938f021db7110c590af878c748b5331ccc2d3de2f2144c3eb3b09d76fb998a
+* sealed tree SHA-256:
+  483743b12fdd682b4b2ad488279ef243f00f0b055332096e5af09b0b01ab00a2
+* predecessor converter subtree SHA-256:
+  16d780e9eb5861f20ef3a1132928c32353aae97f99a3da526bc42386a0871dc6
+* predecessor wheel SHA-256:
+  90691b4534388e76e6bdcb83766435b3ad53f424802b0e7624af5d89bb2c1fb0
+
+These are historical authenticated identities and must not be rewritten.
+
+Phase 14A boundary
+------------------
+
+The accepted operators are integer // and %. The left operand must be an
+otherwise supported exact integer-like scalar expression. The right operand
+must be a direct integer Constant or that Constant under one unary plus or
+minus, with mathematical value in:
+
+    [-9223372036854775807, -2] or [1, 9223372036854775807]
+
+Parentheses and literal bases do not change the parsed proof shape. No constant
+folding is performed. Zero, signed zero, negative one, INT64_MIN, Boolean,
+floating, named, called, indexed, attributed, calculated, nested-sign, and
+out-of-range divisors reject before C IR or generated C is published.
+
+The INT64_MIN divisor remains a deliberate rejection. Its parsed positive
+magnitude exceeds the predecessor signed-literal lowering domain, and Phase 14A
+does not add a one-off unsigned cast, structured repair, or text injection.
+
+Every accepted occurrence has one immutable fact-table/0.14 numeric operation
+fact and one phase14.numeric.floor_arithmetic RulePlan. Floor division selects
+pycf.i64.floor_div@1.0.0; modulo selects pycf.i64.floor_mod@1.0.0. The left,
+right, and result are staged with deterministic int64_t temporaries so the left
+operand is evaluated once before the literal right operand. The helper registry
+deduplicates repeated requirements and emits each selected helper once.
+
+The static divisor proof excludes division by zero and INT64_MIN / -1, so the
+frozen helpers need no exception or runtime failure channel. They implement
+Python floor quotient and divisor-sign remainder over the admitted bounded
+domain. There is no arbitrary-precision claim.
+
+Contract identities
+-------------------
+
+* source bundle: source-bundle/0.2
+* Python IR: python-ir/0.4
+* container facts: fact-table/0.11
+* module facts: fact-table/0.12
+* record facts: fact-table/0.13
+* numeric facts: fact-table/0.14
+* conversion plan: conversion-plan/0.14
+* C IR: c-ir/0.14
+* generated C: generated-c/0.14
+* conversion summary: pycforge.conversion-summary/0.14
+* decision trace: pycforge.decision-trace/0.14
+* result serialization: 0.5
+* rule set: phase14-bounded-numeric-v0.14
+* renderer: c-renderer-v0.14
+* numeric policy: phase14-proved-floor-arithmetic-v0.14
+* module policy: phase13-explicit-record-modules-v0.13
+* record policy: phase13-immutable-automatic-records-v0.13
+* helper policy: phase10-support-templates-v0.10
+* container policy: phase11-fixed-local-containers-v0.11
+* target: c11-portable-fixed-v1
+
+The Phase 10 helper registry fingerprint remains:
+
+    fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98
+
+Safety and compatibility
+------------------------
+
+Explicit Phase 13 configuration identities remain read-compatible. A
+representative Phase 13 request preserves its exact sealed generated-C bytes,
+output fingerprint, request fingerprint, and semantic configuration shape;
+numeric policy data is absent from that historical payload, summary, and trace.
+
+The SourceBundle remains closed. PyCForge performs no import-path, filesystem,
+environment, package, installed-distribution, or network discovery. It emits
+one C source translation unit and never compiles, links, loads, or executes it.
+
+The PyCForge workspace keeps generated C read-only and preserves semantic-edit
+staleness, fresh-result-only atomic linked-save, dirty-document close
+protection, and cancellation isolation. Windows 11 laptop review remains
+planned future user feedback; no Windows execution claim is made for 0.14.0.
+
+Validation
+----------
+
+Run from the release root:
+
+    python -m unittest discover -s tests
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit helpers
+    python -m pycforge audit containers
+    python -m pycforge audit modules
+    python -m pycforge audit records
+    python -m pycforge audit numeric
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_14
+
+Promotion evidence covers all operand-sign quadrants, INT64 boundaries, Python
+floor and modulo identities, helper selection/deduplication, nested-left and
+once-only evaluation, stable rejection classes, cancellation atomicity,
+determinism, mappings, summaries, traces, packaging, and isolated installation.
+Validation is structural and mathematical: generated C is not compiled, linked,
+loaded, or executed.
+
+Release evidence
+----------------
+
+* tests: 365 discovered; 355 passed, 10 had the expected PyQt5-unavailable
+  skip, and none failed
+* cumulative audits: passed, including the independent numeric audit
+* authenticated Phase 13 predecessor: passed
+* two fixed-epoch wheel builds: byte-identical
+* wheel: pycforge-0.14.0-py3-none-any.whl
+* wheel size: 252,934 bytes
+* wheel SHA-256:
+  8de55533728eae00caa6381c4eb0af402ed479e4068047f5e14402cf668c0822
+* wheel RECORD/metadata inspection: 115 entries, 17 SVG assets, no native
+  binaries, tag py3-none-any
+* isolated wheel installation, SourceBundle numeric conversion, numeric audit,
+  and linked-C atomic save: passed
+* two normalized source-archive builds: byte-identical
+* source archive: pycforge_phase_14_v0_14_0.tar.gz
+* source archive size and SHA-256: recorded externally to avoid self-reference
+* canonical release-tree SHA-256: authenticated by
+  transition/phase_14/release_fingerprint.json
+* compiler/linker/loader/generated-C execution invocation: no
+
+Next objective
+--------------
+
+Do not widen Phase 14 automatically. Phase 14A is sealed; any next Phase 14
+mini-phase requires an independent debt/feasibility record and explicit user
+approval. Do not begin Phase 15.

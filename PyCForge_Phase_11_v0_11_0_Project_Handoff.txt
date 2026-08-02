@@ -1,0 +1,155 @@
+PyCForge Phase 11 v0.11.0 Project Handoff
+==========================================
+
+Status
+------
+
+Phase 11 is complete and promoted as PyCForge 0.11.0. The release adds the
+deliberately bounded local-container profile required by Architecture Revision
+3.1 while preserving the Revision 3.2 addendum and the source-only product
+boundary.
+
+The sealed Phase 10 release was authenticated before development and was not
+modified:
+
+* archive: pycforge_phase_10_v0_10_0.tar.gz
+* archive SHA-256: 0f54742d1ae1cef604291d0a38286a475cd048792f986ca95e20b3348cdc5c4b
+* sealed tree SHA-256: f3fc12f357ff7c3667f483375d431e087dcfb65302d279194f9ed51466787ea2
+
+The earlier Phase 9 rollback identities also remain recorded and unchanged.
+Historical whole-tree validators remain scoped to their sealed trees.
+
+Roadmap custody
+---------------
+
+The complete authoritative documents remain packaged:
+
+* Architecture Revision 3.1 SHA-256:
+  d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3
+* Revision 3.2 addendum SHA-256:
+  93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6
+
+Phase 11 boundary
+-----------------
+
+The approved profile supports:
+
+* nonempty homogeneous list and tuple literals with capacity 1 through 64,
+  assigned once to a direct function-local name;
+* nonempty dictionaries with at most 64 distinct homogeneous literal int or
+  str keys and homogeneous scalar values;
+* compile-time proved list/tuple integer indices, including normalized negative
+  literals;
+* compile-time present dictionary literal keys resolved to fixed offsets;
+* bounded direct iteration in source order, with dictionaries yielding keys in
+  insertion order and existing break/continue structure preserved.
+
+Lists lower to fixed automatic arrays. Tuples lower to read-only fixed arrays.
+Dictionaries lower to collision-checked parallel read-only key/value arrays.
+Element/key/value expressions are materialized once in Python source order
+before the array declarations. Storage has automatic function lifetime. There
+is no heap allocation, ownership transfer, cleanup, runtime hashing, runtime
+bounds/key failure branch, retained alias, or helper requirement.
+
+Dynamic resizing, mutation, slicing, comparison, unpacking, heterogeneous or
+nested containers, comprehensions, rebinding, aliasing, container parameters or
+returns, and value escape remain unsupported. PYC3401 through PYC3407 are the
+primary deterministic container diagnostics. Rejection publishes no partial C
+IR, helper output, or generated C.
+
+Implementation and hardening
+----------------------------
+
+The release provides:
+
+* immutable container shape, binding, access, and iteration fact tables with
+  provenance and deterministic conflict handling;
+* seven reachable Phase 11 RulePlans with closed capacity, representation,
+  ordering, lifetime, alias, bounds/key, and helper obligations;
+* C IR 0.11 fixed-array types, correct read-only declarators, initializer lists,
+  and structured subscripts;
+* validator restrictions to one-dimensional automatic arrays, nonempty
+  homogeneous initializers, scalar results, and no element writes;
+* deterministic renderer and independent grammar support for array declarators,
+  brace initializers, pointer-object const, and postfix subscripts;
+* separate container analysis and C-IR-lowering modules; analysis does not
+  depend on C IR or rendering;
+* centralized current schema/configuration identities and CURRENT_STATE.md to
+  distinguish active contracts from historical phase records;
+* a deterministic evidence collector with freshness checking;
+* an architecture ceiling that prevents the cumulative lowering hotspot from
+  absorbing the container implementation.
+
+C IR 0.8 through 0.10 serialization remains unchanged. The exact Phase 10
+helper contracts remain StableInternal:
+
+* registry fingerprint:
+  fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98
+* floor-div asset:
+  23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869
+* floor-mod asset:
+  cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e
+
+Scalar generated C is byte-identical when comparing the current rule set with
+the explicit historical Phase 9 function/call surface.
+
+Schema identities
+-----------------
+
+Phase 11 publishes conversion-plan/0.11, fact-table/0.11 container facts,
+c-ir/0.11, generated-c/0.11, pycforge.conversion-summary/0.11,
+pycforge.decision-trace/0.11, and result serialization 0.4. The default rule
+set is phase11-bounded-containers-v0.11, renderer c-renderer-v0.11, and
+container policy phase11-fixed-local-containers-v0.11. The Phase 10 helper
+policy remains phase10-support-templates-v0.10.
+
+Release evidence
+----------------
+
+* tests: 169 passed (154 predecessor regressions + 15 Phase 11 tests)
+* audits: architecture, rules, helpers, containers, determinism, and transition
+  passed
+* all seven PYC34xx primary boundaries have negative fixtures
+* generated evidence freshness: passed for ten generated reports
+* wheel: pycforge-0.11.0-py3-none-any.whl, 124254 bytes
+* wheel SHA-256: 1470ca66ae4feb50da6366966fb1662df1b480315d6c8898de22a9edbb18fad9
+* two fixed-epoch wheel builds: byte-identical
+* isolated wheel install, container conversion, schema checks, text
+  conformance, and helper-fingerprint checks: passed
+
+The optional PyQt5 dependency was unavailable in the Phase 11 release
+workspace, so no new widget run is claimed. The sealed Phase 10 actual offscreen
+widget-smoke evidence remains preserved, and the cumulative controller,
+workspace, observer, stale-output, and atomic-save regression tests pass.
+
+Generated C and helper sources were validated structurally and textually only.
+They were not compiled, linked, loaded, or executed.
+
+Validation
+----------
+
+Run from the release root:
+
+    python -m unittest discover -s tests
+    python tools/validate_phase11.py
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit helpers
+    python -m pycforge audit containers
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_11
+    python tools/collect_phase11_evidence.py check --tests-run 169
+
+Pass --predecessor-archive to validate_phase11.py when the sealed Phase 10
+archive is available beside an extracted release.
+
+Next objective
+--------------
+
+Phase 12 is explicit module bundles. Do not begin by importing Python's module
+system or splitting C output into multiple files. First approve deterministic
+logical module IDs, internal import forms, namespaces/linkage, initialization
+order, cycle policy, missing/ambiguous module diagnostics, source mappings, and
+the single-translation-unit representation. Accept only documents explicitly
+present in SourceBundle. Never inspect host paths, installed packages,
+environment state, or the network in response to source imports.

@@ -1,0 +1,16 @@
+{
+  "schema_version": "pycforge.package-report/phase10-opening-0.1",
+  "package_version": "0.10.0.dev0",
+  "promotion_claimed": false,
+  "wheel_kind": "py3-none-any",
+  "wheel_sha256": "37353787e9a9156176d496da44b122addcb3a6150b8af9f1cd05ecfe19382a8c",
+  "fixed_epoch_builds_compared": 2,
+  "reproducible_wheel_bytes": true,
+  "isolated_install_passed": true,
+  "conversion_progress_imported": true,
+  "isolated_conversion_status": "Converted",
+  "pyqt5_installed": false,
+  "native_extension_built": false,
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

@@ -1,0 +1,221 @@
+PyCForge Checkpoint E / v0.14.4 Project Handoff
+================================================
+
+STATUS
+------
+
+Hardening Checkpoint E is promoted and sealed.
+
+Installable package version: 0.14.4
+Deterministic converter contract: 0.14.3
+Workspace contract: pycforge-workspace/0.2
+Immediate rollback: sealed Phase 14D / 0.14.3
+
+PyCForge remains a Python-to-C source transpiler. Its terminal product artifact
+is deterministic C11 source. It does not compile, assemble, link, load, run,
+execute, debug, profile, benchmark, or deploy generated C. No C toolchain was
+invoked by this checkpoint.
+
+PRODUCT IDENTITY
+----------------
+
+The front-facing application and workspace identity is PyCForge. No alternate
+theme-derived product, component, workspace, mode, schema, or feature name is
+retained in the current source tree. Active titles, accessibility identity,
+toolbar, theme exports, and settings use PyCForge.
+
+Original pre-migration records remain authoritative in the authenticated Phase
+15A archive.
+
+CHECKPOINT E RESULT
+-------------------
+
+Checkpoint E completes the Revision 3.1 post-Phase-14 hardening boundary:
+
+1. Full architecture and product-boundary review passed.
+2. The complete frozen semantic matrix was reconciled and executed.
+3. The full supported subset was fuzzed deterministically across every
+   promoted family.
+4. Exact behavior was compared with the authenticated Phase 14D source tree.
+5. Documentation, workspace identity, release validation, and packaging
+   custody were reconciled.
+
+No Python construct, context, diagnostic meaning, C IR shape, helper,
+converter policy, schema, rule-set, renderer, generated-C style, or output
+fingerprint contract was added or changed.
+
+EXECUTABLE MATRIX EVIDENCE
+--------------------------
+
+Frozen feature matrix:
+
+  schema: pycforge.feature-matrix/0.14.3
+  entries: 69
+  supported: 37
+  unsupported: 31
+  deferred: 1
+  unlisted-default witnesses: 1
+
+All 37 supported entries converted and passed independent generated-C text
+conformance. The 31 unsupported entries, deferred Match entry, and unlisted
+Try default witness rejected without publishing C. There were zero
+matrix-contract mismatches and zero witness errors.
+
+Matrix report SHA-256:
+  e4a2ddf3e202ee4630f7a0c217afce8c3fb63f297fa48873af1a664b11eecc85
+
+FULL-SUBSET AND PREDECESSOR EVIDENCE
+-----------------------------------
+
+The promotion corpus contains 16 fixed cases and 64 seeded generated cases.
+Each of the 16 promoted families receives four generated cases. The generated
+set explicitly includes eight fixed-container-iteration witnesses and four
+floating-division witnesses.
+
+Each case is checked for repeated byte determinism, observer invariance, and
+leading-comment, CRLF, and blank-line metamorphic stability. The gate performs
+480 public-converter calls, including 240 metamorphic conversions.
+
+Promotion corpus SHA-256:
+  b42f01c16cdeb466c9f690ce67be1bee3fe20f136f87b05746ba240d2b1701d5
+
+The sealed predecessor archive is:
+
+  pycforge_phase_14d_v0_14_3.tar.gz
+  1,282,543 bytes
+  SHA-256:
+  13228fe8e40c89335cf1bb6c44a2ebb94bc581e287873520b7c530984053c4f1
+
+It is authenticated before private temporary extraction. An isolated
+Python -I -S runner converts the same 80 cases and returns canonical JSON.
+Candidate and predecessor result_to_json bytes match for 80 of 80 cases.
+
+Candidate and predecessor aggregate result SHA-256:
+  e4ad127d681523c71fdb3fad15764bc657a88eeb77a7c45a869c6f2a69e21b86
+
+No pickle, native command, compiler, linker, loader, foreign-function call, or
+generated-C execution is used.
+
+TEST AND AUDIT EVIDENCE
+-----------------------
+
+Final cumulative suite:
+
+  discovered: 589
+  passed: 572
+  expected skips: 17
+  failed: 0
+
+Expected skips are 12 real-PyQt tests because PyQt5 is unavailable in the
+release environment and five older custody-artifact tests. The focused
+Checkpoint E set passes 46 of 46.
+
+All source-only audits pass:
+
+  architecture
+  rules
+  helpers
+  containers
+  modules
+  records
+  numeric
+  conditional
+  keyword
+  keyword-only
+  determinism
+  Phase 14A transition
+  Phase 14B transition
+  Phase 14C transition
+  Phase 14D transition
+
+Cumulative determinism SHA-256:
+  6d132fa7544ea5d8b609689907c014b14c663cdd4999b47d921836182c38a35a
+
+RELEASE ARTIFACTS
+-----------------
+
+Canonical deliverables:
+
+  pycforge_checkpoint_e_v0_14_4.tar.gz
+  pycforge-0.14.4-py3-none-any.whl
+  PyCForge_Checkpoint_E_v0_14_4_Project_Handoff.txt
+  PyCForge_Checkpoint_E_v0_14_4_Package_Report.json
+  PyCForge_Checkpoint_E_v0_14_4_Checksums.json
+
+The external package and checksum reports are authoritative for exact artifact
+sizes and SHA-256 values; source-archive size and hash are intentionally not
+embedded in the source archive.
+
+The release builder compares two fixed-epoch wheel builds and two normalized
+source-archive builds byte-for-byte. It requires the exact two PyCForge console
+entry points, Python >=3.11 metadata, all 17 SVG assets, zero native binaries,
+complete RECORD coverage, isolated wheel installation, extracted-source
+smokes, headless CLI smokes, and the sealed release-tree fingerprint.
+
+REPRODUCTION
+------------
+
+From the extracted source root, with the authenticated Phase 14D archive
+available:
+
+  python -m unittest discover -s tests
+
+  python -m unittest \
+    tests.test_checkpoint_e_audits \
+    tests.test_checkpoint_e_feature_matrix \
+    tests.test_checkpoint_e_predecessor_equivalence \
+    tests.test_checkpoint_e_release_packaging \
+    tests.test_checkpoint_e_versioning \
+    tests.test_validate_checkpoint_e
+
+  python tools/validate_checkpoint_e.py \
+    --mode sealed \
+    --predecessor-archive /absolute/path/to/pycforge_phase_14d_v0_14_3.tar.gz \
+    --fuzz-cases 64
+
+  python tools/build_checkpoint_e_release.py \
+    /fresh/external/output/directory
+
+Validation is source-only. Do not add a compiler or generated-C execution step
+to these commands.
+
+WORKSPACE QUALITY CONTRACT AND NON-CLAIMS
+-----------------------------------------
+
+Checkpoint E accepts and freezes the Phase 15 workspace architecture and
+quality budgets. It does not claim that the future implementation already
+exists.
+
+Not implemented or claimed in 0.14.4:
+
+  process-isolated conversion worker
+  process-level hard cancellation
+  maximum-input no-freeze evidence
+  virtualized large-result projections
+  custom gradient/icon main and context menus
+  complete IDE-grade authoring and inspection
+  current visible PyQt accessibility evidence
+  Windows 11 or visible Linux platform evidence
+
+These remain 11 explicitly owned debt items assigned to bounded Phase 15A-D
+stages. Generated C remains read-only; the closed SourceBundle remains the
+only source universe. There is no run, build, debug, terminal, plugin,
+project-explorer, toolchain, host-discovery, or generated-C editing surface.
+
+NEXT AUTHORIZED BOUNDARY
+------------------------
+
+Checkpoint E opens neither Phase 14E nor Phase 15.
+
+The next separately authorized work is Phase 15A:
+
+  responsiveness and process isolation
+  one-active/one-latest-pending scheduling
+  bounded cooperative and hard cancellation
+  revision/index services
+  maximum-input no-freeze evidence
+
+Phase 15B then owns the PyCForge visual/action/menu system, Phase 15C owns the
+IDE-grade transpiler workspace, and Phase 15D owns distribution and real
+platform validation. Every stage must preserve the exact direct-converter
+contract and the no-toolchain boundary.

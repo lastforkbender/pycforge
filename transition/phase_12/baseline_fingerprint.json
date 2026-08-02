@@ -1,0 +1,15 @@
+{
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-12-tree",
+  "status": "promoted",
+  "predecessor_tree_sha256": "95fbabf3311a5f7dcb88608ef66c7ef43ed085ae1e3fc99351472da8ca1d4e82",
+  "excluded": [
+    "transition/phase_12/baseline_fingerprint.json",
+    "__pycache__",
+    ".pytest_cache",
+    "*.pyc",
+    "build",
+    "dist"
+  ],
+  "value": "f6530b4e081799f5db3bfe365d82ece2abdcb82f9b986ffe98f3077ab2fe0de6"
+}

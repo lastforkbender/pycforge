@@ -1,0 +1,13 @@
+{
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-10-opening-checkpoint-tree",
+  "excluded": [
+    "transition/phase_10/opening_checkpoint_fingerprint.json",
+    "__pycache__",
+    ".pytest_cache",
+    "*.pyc",
+    "build",
+    "dist"
+  ],
+  "value": "f9ff0610c084610d917e4a11a68b83a95ab6aea8746276f3e6771c3b64e5fd18"
+}

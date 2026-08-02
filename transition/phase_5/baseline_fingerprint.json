@@ -1,0 +1,7 @@
+{
+  "domain": "phase-baseline",
+  "schema_version": "0.1",
+  "canonicalization_version": "length-prefixed-path-bytes-v1",
+  "algorithm": "sha256",
+  "value": "8fce06019e8757164961ca49d7a4b87b5ae876485a6292f48e4f68f57ba9f932"
+}

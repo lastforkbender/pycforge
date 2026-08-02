@@ -1,0 +1,22 @@
+{
+  "schema_version": "pycforge.qt-smoke/0.10",
+  "pyqt_version": "5.15.11",
+  "qt_version": "5.15.14",
+  "platform": "offscreen",
+  "checks": {
+    "conversion_completed": true,
+    "conversion_did_not_reveal_c": true,
+    "details_hidden_by_default": true,
+    "explicit_toggles_reveal_views": true,
+    "fast_progress_finished_hidden": true,
+    "generated_c_hidden_by_default": true,
+    "generated_c_read_only": true,
+    "hiding_c_retains_output": true,
+    "inline_progress_widget": true,
+    "non_modal": true,
+    "python_editor_visible_by_default": true,
+    "toggle_labels": true
+  },
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

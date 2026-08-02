@@ -1,0 +1,269 @@
+{
+  "audit": "rules",
+  "manifest": [
+    {
+      "node_kind": "Assign",
+      "rule_id": "phase11.container.assignment",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "Assign",
+      "rule_id": "phase6.assignment.simple",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "BinOp",
+      "rule_id": "phase6.numeric.arithmetic",
+      "rule_version": "0.6",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "BoolOp",
+      "rule_id": "phase8.boolean.short_circuit",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "Break",
+      "rule_id": "phase8.break.control",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "Call",
+      "rule_id": "phase12.module.cross_call",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    },
+    {
+      "node_kind": "Call",
+      "rule_id": "phase9.call.understood_target",
+      "rule_version": "0.9",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "Call",
+      "rule_id": "phase8.range.bound",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "Compare",
+      "rule_id": "phase8.comparison.chain",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "Constant",
+      "rule_id": "phase6.literal.known",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "Continue",
+      "rule_id": "phase8.continue.control",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "Dict",
+      "rule_id": "phase11.container.dict_literal",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "For",
+      "rule_id": "phase11.container.for.bounded",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "For",
+      "rule_id": "phase8.for.range",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "FunctionDef",
+      "rule_id": "phase12.module.function_namespace",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    },
+    {
+      "node_kind": "FunctionDef",
+      "rule_id": "phase6.function.annotated",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "If",
+      "rule_id": "phase8.if.control",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "ImportFrom",
+      "rule_id": "phase12.module.import_from",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    },
+    {
+      "node_kind": "List",
+      "rule_id": "phase11.container.list_literal",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "ModuleBundleAssembly",
+      "rule_id": "phase12.module.bundle_assembly",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    },
+    {
+      "node_kind": "ModuleDocument",
+      "rule_id": "phase12.module.document",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    },
+    {
+      "node_kind": "ModuleInitialization",
+      "rule_id": "phase12.module.initialization",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    },
+    {
+      "node_kind": "Name",
+      "rule_id": "phase11.container.name",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "Name",
+      "rule_id": "phase6.name.bound",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "Return",
+      "rule_id": "phase6.return.simple",
+      "rule_version": "0.6",
+      "specificity": [
+        10
+      ]
+    },
+    {
+      "node_kind": "Subscript",
+      "rule_id": "phase11.container.index.proved",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "Tuple",
+      "rule_id": "phase11.container.tuple_literal",
+      "rule_version": "0.11",
+      "specificity": [
+        30
+      ]
+    },
+    {
+      "node_kind": "While",
+      "rule_id": "phase8.while.control",
+      "rule_version": "0.8",
+      "specificity": [
+        20
+      ]
+    },
+    {
+      "node_kind": "alias",
+      "rule_id": "phase12.module.imported_binding",
+      "rule_version": "0.12",
+      "specificity": [
+        40
+      ]
+    }
+  ],
+  "missing_phase11_rules": [],
+  "missing_phase12_rules": [],
+  "missing_phase9_rules": [],
+  "notes": [
+    "Registry is frozen and sorted.",
+    "Duplicate identities and equal-specificity overlaps reject at registry construction.",
+    "Positive Phase 9, Phase 11, and Phase 12 fixtures prove the cumulative promoted rules are reachable."
+  ],
+  "passed": true,
+  "phase11_required_rules": [
+    "phase11.container.assignment",
+    "phase11.container.dict_literal",
+    "phase11.container.for.bounded",
+    "phase11.container.index.proved",
+    "phase11.container.list_literal",
+    "phase11.container.name",
+    "phase11.container.tuple_literal"
+  ],
+  "phase12_required_rules": [
+    "phase12.module.bundle_assembly",
+    "phase12.module.cross_call",
+    "phase12.module.document",
+    "phase12.module.function_namespace",
+    "phase12.module.import_from",
+    "phase12.module.imported_binding",
+    "phase12.module.initialization"
+  ],
+  "phase9_required_rules": [
+    "phase9.call.understood_target"
+  ],
+  "rule_count": 29,
+  "schema_version": "pycforge.rule-report/0.12"
+}

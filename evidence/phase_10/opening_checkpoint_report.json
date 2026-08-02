@@ -1,0 +1,19 @@
+{
+  "schema_version": "pycforge.phase10-opening-report/0.1",
+  "checkpoint": "phase_10_opening",
+  "passed": true,
+  "phase_10_promoted": false,
+  "checkpoint_package_version": "0.10.0.dev0",
+  "promoted_base_version": "0.9.0",
+  "phase_9_baseline_modified": false,
+  "roadmap_revision_3_1_packaged": true,
+  "revision_3_2_addendum_packaged": true,
+  "python_editor_primary_by_default": true,
+  "generated_c_hidden_by_default": true,
+  "generated_c_remains_read_only": true,
+  "inspection_details_hidden_by_default": true,
+  "conversion_progress_modal": false,
+  "progress_stage_aware": true,
+  "helper_registry_started": false,
+  "generated_c_compiled_or_executed": false
+}

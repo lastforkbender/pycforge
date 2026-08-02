@@ -1,0 +1,6 @@
+{
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-9-tree",
+  "excluded": ["transition/phase_9/baseline_fingerprint.json", "__pycache__", ".pytest_cache", "*.pyc", "build", "dist"],
+  "value": "bfbb13eb764b02a6b8fb2c4ff1eb12f4249976bb1919aa85a383d6e24b4079e8"
+}

@@ -1,0 +1,178 @@
+PyCForge Phase 15B / v0.15.1 Project Handoff
+=============================================
+
+Release:             0.15.1
+Phase:               15B — Application Shell and Visual System
+Workspace contract:  pycforge-workspace/0.4
+Action registry:     pycforge.action-registry/0.1
+Visual system:       pycforge.visual-system/0.1
+Converter contract:  0.14.3
+Worker protocol:     pycforge.worker-protocol/0.1
+Settings schema:     1
+
+PRODUCT ROLE
+------------
+
+PyCForge is a deterministic Python-to-C source transpiler for a deliberately
+bounded Python subset. It accepts Python as explicit source data and produces
+independently validated deterministic C11 source.
+
+PyCForge does not compile, assemble, link, load, execute, test, debug, profile,
+benchmark, or deploy generated C. It never imports or executes user Python.
+Generated C remains read-only and explicit-save-only.
+
+PHASE 15B RESULT
+----------------
+
+Phase 15B establishes a professional application shell without changing
+converter semantics.
+
+One import-safe declarative registry now owns every persistent application
+command. Stable action identifiers define labels, mnemonics, icons, shortcuts,
+tooltips, status explanations, accessible names, checkability, semantic tones,
+and allowed surfaces. The Qt adapter creates and binds each persistent QAction
+once and shares it across menus, toolbars, context surfaces, and bounded
+dynamic entries.
+
+The File, Edit, View, and Transpile menus use custom PyCForge gradient and icon
+presentation over native QMenu and QAction interaction mechanics. Required
+context menus cover:
+
+  - editable Python source;
+  - read-only generated C;
+  - the closed Source Bundle navigator;
+  - diagnostics;
+  - source-to-C mappings;
+  - Conversion Summary;
+  - Decision Trace; and
+  - Telemetry.
+
+The generated-C menu is a closed read-only allowlist. It exposes no Undo, Cut,
+Paste, Replace, formatting, refactoring, or other mutation command.
+
+VISUAL SYSTEM
+-------------
+
+The pycforge.visual-system/0.1 contract provides semantic graphite surfaces,
+layered gradients, high-contrast text, blue and violet focus and selection
+accents, a restrained warm transpilation accent, and explicit success, warning,
+error, and danger treatment.
+
+Professional self-contained SVG icons use logical dimensions. They contain no
+raster image, embedded data, remote or file reference, script, foreign object,
+font-glyph dependency, or fixed physical size.
+
+High-DPI scaling is enabled before application construction. Menus, toolbars,
+navigator controls, and window branding use logical icon sizes. Icon-only
+controls have visible tooltips and accessible names. Menu and context surfaces
+have stable accessible names. Important states use text, shape, check state,
+rails, and contrast in addition to color. The interface has no animation.
+
+These are keyboard, high-DPI, and accessibility foundations. They are not a
+claim of visible platform certification.
+
+IDENTITY AND SETTINGS
+---------------------
+
+The current source and distribution use PyCForge identity exclusively. Phase
+15B removes the legacy presentation-namespace migration and compatibility
+surface. Presentation settings remain schema 1 and use the active PyCForge
+namespace only.
+
+Original pre-migration bytes remain authoritative in the authenticated Phase
+15A archive. They are not active current-source identities.
+
+RESPONSIVENESS PRESERVED
+------------------------
+
+Phase 15B preserves the Phase 15A responsiveness and isolation architecture:
+
+  - spawned child-process conversion;
+  - exactly one active and one replaceable latest pending request;
+  - cooperative cancellation with bounded hard termination and reaping;
+  - immutable revision, bundle, request, and transport publication guards;
+  - stale, failed, canceled, malformed, oversized, partial, and superseded
+    result suppression;
+  - off-GUI revision/index, file I/O, hashing, literal search, and atomic
+    writes;
+  - bounded editor markers, search ranges, overview and bracket work; and
+  - incremental generated-C projection with deferred hidden details.
+
+Action enablement and menu refresh remain bounded presentation projections.
+They do not invoke the transpiler, scan the host, discover projects or packages,
+or weaken exact Save C authority.
+
+Summary, Decision Trace, and Telemetry use an iterative cycle-safe tree
+projection capped at 1,024 nodes, 16 levels, 256 children per container, and
+2,048 characters per displayed value. Uncommitted module identity edits
+immediately mark generated output stale and disable Save C. Diagnostics are not
+presented as current while cancellation is pending.
+
+RELEASE CUSTODY
+---------------
+
+The release builder captures one descriptor-bound, size-bounded source
+snapshot and validates the snapshotted project configuration and converter
+subtree. The promotion report carries a validation-subject digest over those
+exact releasable bytes, excluding only the report and final fingerprint. The
+final release fingerprint then covers the report.
+
+The pinned production environment builds two fixed-epoch wheels and two
+normalized source payloads. The sealed wheel bytes are the same bytes inspected,
+installed, smoked, and published. The complete seven-artifact set is checksum-
+linked, rescanned, synchronized, and exposed through one staged directory
+publication; failed staging leaves no release output.
+
+UNCHANGED CONVERTER
+-------------------
+
+The converter remains sealed at 0.14.3. Phase 15B changes no supported Python
+construct, converter file, diagnostic, fact, RulePlan, C IR shape, helper,
+mapping, summary, decision trace, telemetry record, result serialization,
+generated-C byte, or converter fingerprint.
+
+The closed one-to-64-document SourceBundle remains the entire source universe.
+Python is the only editable code surface.
+
+VALIDATION SCOPE
+----------------
+
+PyQt5 is unavailable on the validation host. Phase 15B validation therefore
+provides supporting source, static, headless, action-registry, icon, and
+optional-widget evidence only.
+
+This host cannot establish:
+
+  - visible Windows 11 rendering or behavior;
+  - visible Linux desktop rendering or behavior;
+  - a real display-scaling matrix;
+  - assistive-technology integration; or
+  - visible native menu interaction.
+
+Those gates remain mandatory in Phase 15D. Validation invokes no C toolchain
+and never executes generated C.
+
+Final test discovery:
+
+  - discovered: 750
+  - passed:     734
+  - skipped:    16 expected
+  - failed:     0
+
+Eleven skips require unavailable PyQt5 widgets. Five require unavailable older
+optional custody artifacts.
+
+ROADMAP BOUNDARY
+----------------
+
+Phase 15B adds no project explorer, recursive scan, outline, breadcrumb system,
+language server, formatter, refactoring engine, completion engine, command
+palette, plugin system, macro system, build/run/debug command, terminal,
+toolchain integration, or generated-C editor.
+
+Phase 15C, the wider IDE-grade workspace, remains unopened.
+Phase 15D, distribution and visible Windows 11/Linux PyQt validation, remains
+unopened.
+
+The immediate rollback is the authenticated Phase 15A v0.15.0 source archive
+and wheel.

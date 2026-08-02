@@ -1,0 +1,14 @@
+{
+  "deterministic": true,
+  "events": [
+    {
+      "kind": "stage_enter",
+      "stage": "phase1.empty"
+    },
+    {
+      "kind": "stage_completed",
+      "stage": "phase1.empty"
+    }
+  ],
+  "schema_version": "0.1"
+}

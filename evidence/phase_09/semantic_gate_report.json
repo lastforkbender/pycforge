@@ -1,0 +1,16 @@
+{
+  "schema_version": "pycforge.semantic-gate/0.9",
+  "target_resolution": "binding-backed-understood-source-function-only",
+  "argument_order": "left-to-right-temporary-staging",
+  "argument_single_evaluation": true,
+  "return_paths_compatible": true,
+  "implicit_none_fallthrough_rejected": true,
+  "ownership_boundary_explicit": true,
+  "recursion_policy": "detected-and-rejected",
+  "iterative_scc_large_cycle_fixture_functions": 150,
+  "nested_function_policy": "rejected",
+  "dynamic_target_policy": "rejected",
+  "silent_approximations": 0,
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

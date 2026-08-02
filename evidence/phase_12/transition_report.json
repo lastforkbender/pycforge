@@ -1,0 +1,8 @@
+{
+  "audit": "transition",
+  "manifest_error": null,
+  "missing": [],
+  "passed": true,
+  "phase": "phase_12",
+  "schema_version": "pycforge.transition-report/0.12"
+}

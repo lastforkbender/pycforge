@@ -1,0 +1,270 @@
+PyCForge Phase 14C v0.14.2 Project Handoff
+============================================
+
+Status
+------
+
+PyCForge 0.14.2 seals the independently bounded Phase 14C scope: exact static
+binding of explicit keyword actuals for already-resolved direct source
+functions. It does not add a Python runtime call binder.
+
+Phase 14C adds one complete fact-table family and one RulePlan family. It adds
+no helper, public policy, C IR node kind, renderer syntax, runtime failure
+channel, allocation, ownership transfer, or cleanup model. Phase 14D and Phase
+15 have not started.
+
+Sealed predecessor custody
+--------------------------
+
+Phase 14C began only after authenticating the exact promoted 0.14.1
+predecessor:
+
+* archive: pycforge_phase_14b_v0_14_1.tar.gz
+* archive size: 1,088,259 bytes
+* archive SHA-256:
+  30737e3a49dc3ed163be071742736f8310c2636a1dc8ac9b9b297aa8c030d2a1
+* sealed tree SHA-256:
+  895329a2723301de66adcb118a32308648a7993068e3ef7b5c9764914b9e2f4f
+* predecessor converter subtree SHA-256:
+  5d261abb5f7dbc480050472cac40a6b4a9539945a3d2e3211af552e094f9780d
+* predecessor wheel: pycforge-0.14.1-py3-none-any.whl
+* predecessor wheel size: 278,494 bytes
+* predecessor wheel SHA-256:
+  255cba6d45b6f7f2c8347f4764d37ad9858d9616f84cc93b65b07e205785a70d
+
+Safe archive inspection explicitly omitted only the Phase 14B release-
+fingerprint self-reference when reproducing its canonical tree. Every sealed
+Phase 14A and Phase 14B transition identity remains in custody.
+
+Phase 14C boundary
+------------------
+
+An eligible call has a Name target already resolved by the sealed lexical,
+function, module, and SourceBundle machinery to a top-level source function.
+The target may be in the same module or reached through an existing explicit
+cross-module function import. Assignment-created aliases, attributes,
+subscriptions, methods, closures, lambdas, decorators, function values, and
+dynamic targets remain unsupported.
+
+The callee retains the exact existing declaration subset: required, uniquely
+named, exactly annotated positional-only and positional-or-keyword parameters,
+with no defaults, keyword-only parameters, *args, or **kwargs. The call has
+zero or more ordinary positional actuals and at least one explicit named
+keyword actual. Starred or double-starred unpacking remains excluded.
+
+Binding is complete and static. Ordinary positionals bind formal ordinals from
+zero upward. Each keyword name must identify one still-unbound positional-or-
+keyword formal. Positional-only formals cannot be addressed by keyword. Every
+formal receives exactly one actual, and the established actual and formal
+representations must match exactly.
+
+Python source evaluation order and C formal order are represented separately.
+Actual values and all already-planned prerequisites are evaluated and staged
+once in source order. Only after staging completes does the structured C call
+receive one pure temporary reference per formal ordinal. The exact lowering
+shape is:
+
+    source-order-temporaries-formal-order-references-v1
+
+Source order is reconstructed with a linear two-pointer merge of the
+normalized positional and keyword lists by source offset. This preserves
+truthful ordering even for excluded interleavings such as a keyword before a
+later starred actual. Formal indexing, binding, independent reconstruction,
+plan lookup, permutation validation, and lowering are linear. There is no
+backtracking, permutation search, repeated per-call plan scan, or renderer
+inference.
+
+Every keyword-bearing direct-source candidate whose declaration signature
+reaches the binder owns one complete keyword-call-binding-facts record under
+fact-table/0.14.2. Accepted candidates select exactly one:
+
+    phase14.keyword_call.exact_binding@0.14.2
+
+The RulePlan owns no helper. Rejected candidates retain complete negative
+facts with their exact code, nonempty reason and rejection node, and publish no
+Phase 14C RulePlan or C IR.
+
+Final cumulative function eligibility remains authoritative. An otherwise
+exact binding whose target fails sealed return-path, local-binding,
+nested-call, module, or call-graph rules becomes complete PYC2911 negative
+evidence with reason:
+
+    Keyword-call target is outside the eligible direct source-function profile
+
+The target function is the rejection node. The intrinsic owning diagnostic
+remains primary, and no generic keyword failure may mask it.
+
+Diagnostics
+-----------
+
+The closed diagnostic matrix is:
+
+* PYC2910: starred or double-starred unpacking and excluded keyword shapes
+* PYC2912: unknown keyword, positional-only name used by keyword,
+  positional/keyword collision, or duplicate keyword
+* PYC2904: missing or excess arity
+* PYC2905: actual/formal representation mismatch
+* PYC2911: ineligible declaration or cumulative target eligibility
+* PYC2842: range keyword use
+* PYC3605: static-record constructor keyword use
+* PYC2901: unresolved or dynamic target
+* PYC2920: direct or mutual recursion
+
+There is no runtime TypeError model. Malformed or adversarial tables,
+dependencies, bindings, signatures, plans, facts, and permutations fail closed
+as a clean internal validation failure or bounded PYC2912 rejection; raw
+TypeError or AttributeError cannot escape and no partial output is published.
+
+Contract identities
+-------------------
+
+* source bundle: source-bundle/0.2
+* Python IR: python-ir/0.4
+* container facts: fact-table/0.11
+* module facts: fact-table/0.12
+* record facts: fact-table/0.13
+* numeric facts: fact-table/0.14
+* conditional facts: fact-table/0.14.1
+* keyword-call binding facts: fact-table/0.14.2
+* conversion plan: conversion-plan/0.14.2
+* C IR: c-ir/0.14.2
+* generated C: generated-c/0.14.2
+* conversion summary: pycforge.conversion-summary/0.14.2
+* decision trace: pycforge.decision-trace/0.14.2
+* result serialization: 0.5
+* rule set: phase14-direct-keyword-calls-v0.14.2
+* renderer: c-renderer-v0.14.2
+* semantic policy: strict-source-v1
+* numeric policy: phase14-proved-floor-arithmetic-v0.14
+* module policy: phase13-explicit-record-modules-v0.13
+* record policy: phase13-immutable-automatic-records-v0.13
+* container policy: phase11-fixed-local-containers-v0.11
+* helper policy: phase10-support-templates-v0.10
+* target: c11-portable-fixed-v1
+
+The Phase 10 helper-registry fingerprint remains:
+
+    fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98
+
+Safety and compatibility
+------------------------
+
+Independent validation reconstructs exact candidate coverage, target and
+signature identities, parameter kinds and names, categories, source and formal
+orders, the full bijection, provenance, cumulative eligibility, negative
+evidence, and supported RulePlan coverage. Lowering only consumes validated
+facts; it cannot resolve names, repair evidence, or widen eligibility.
+
+Cancellation checks cover discovery, source-order merging, binding,
+reconstruction, planning, permutation validation, actual staging, and formal-
+vector assembly. Cancellation, rejection, stale output, internal failure, or
+interrupted replacement publishes no partial current successor and cannot
+overwrite the last-known-good linked C file. Generated C remains immutable and
+fresh-result-only Save C remains atomic.
+
+Active conversions selecting no keyword-call rule preserve Phase 14B
+generated-C bytes and output fingerprints. The compatibility generated-C
+SHA-256 is:
+
+    36528709609e8b53a06fff4739dfa1ae5f1568d27daa0838a03315ecf701fb7e
+
+The corresponding output fingerprint is:
+
+    a30db4341270842057a722c41d5a88e9599aff0a6992cf058aad642f7a724300
+
+Explicit Phase 14B requests preserve their exact 0.14.1 contracts and keyword
+PYC2910 rejection envelope. Numeric, conditional-region, module, record,
+container, helper, ownership, lifetime, workspace, and target semantics remain
+unchanged.
+
+Defaults, keyword-only declarations, variadics, unpacking, indirect calls,
+methods, runtime dispatch, recursion, exceptions, unwinding, mutation,
+allocation, cleanup, closures, generators, async behavior, destructuring,
+comprehensions, and neighboring dangerous families remain outside the
+boundary.
+
+The SourceBundle remains closed. PyCForge performs no import-path, filesystem,
+environment, package, installed-distribution, or network discovery. It exposes
+no compilation, linking, loading, execution, debugging, or terminal surface.
+
+Validation
+----------
+
+Run from the release root:
+
+    python -m unittest discover -s tests
+    python tools/validate_phase14c.py --run-tests
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit helpers
+    python -m pycforge audit containers
+    python -m pycforge audit modules
+    python -m pycforge audit records
+    python -m pycforge audit numeric
+    python -m pycforge audit conditional
+    python -m pycforge audit keyword
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_14
+    python -m pycforge audit transition --phase phase_14b
+    python -m pycforge audit transition --phase phase_14c
+
+Pass --predecessor-archive pycforge_phase_14b_v0_14_1.tar.gz,
+--predecessor-wheel pycforge-0.14.1-py3-none-any.whl,
+--require-predecessor, and --require-predecessor-wheel to the authenticated
+validator when the sealed predecessor artifacts are available. Final artifact
+validation may additionally require the 0.14.2 wheel and source archive.
+
+Promotion evidence covers same-module and explicit cross-module calls,
+positional prefixes, positional-only parameters, heterogeneous reordering,
+nested value calls, Phase 14B guard containment, numeric helpers, proved
+container and record reads, complete negative facts, cumulative eligibility,
+exact diagnostic precedence, malformed evidence, tamper rejection,
+cancellation, linear stress, observers, mappings, summaries, traces,
+determinism, packaging, isolated installation, and historical Phase 14B
+compatibility. Generated C was never compiled, linked, loaded, or executed.
+
+Release evidence
+----------------
+
+* tests: 474 discovered; 464 passed, 10 had the expected PyQt5-unavailable
+  skip, and none failed
+* cumulative audits: passed, including keyword and Phase 14C transition
+* cumulative determinism SHA-256:
+  337ec6f2fc04912c924981e66ff9ae6a25126b6868319d46916d681bec15c243
+* keyword-audit witness generated-C SHA-256:
+  3d99653c0f0e1ee86a8508fdd618d19f9bb4f1de93012325f1bc3552f8a3e671
+* keyword-audit serialized-result SHA-256:
+  c85327ffe11244ab5f8f8c8ce972102425f76b8fc930004d95ce6a14891a28aa
+* authenticated Phase 14B predecessor archive and wheel: passed
+* authenticated Phase 14C validator: passed
+* two fixed-epoch wheel builds: byte-identical
+* wheel: pycforge-0.14.2-py3-none-any.whl
+* wheel size: 309,077 bytes
+* wheel SHA-256:
+  6e14d24742e4bfff4017320ebdb04b35117c18fa95d97499560875a764feb4b5
+* wheel RECORD/metadata inspection: 126 members, 17 SVG assets, no native
+  binaries, tag py3-none-any
+* isolated wheel installation, same-module and SourceBundle keyword
+  conversion, keyword audit, and linked-C atomic save: passed
+* two normalized source-archive builds: byte-identical
+* source archive: pycforge_phase_14c_v0_14_2.tar.gz
+* source archive size and SHA-256: recorded externally to avoid self-reference
+* canonical release-tree SHA-256: recorded externally and authenticated by
+  transition/phase_14c/release_fingerprint.json, which alone carries the value
+  and is excluded from its own hash domain
+* compiler invocation: no
+* generated C compiled, linked, loaded, or executed: no
+* Windows 11 execution or validation: not claimed
+
+PyQt5 was unavailable in the release environment. The 10 existing GUI tests
+therefore retain their expected skips and previously sealed offscreen-widget
+evidence remains preserved. Windows 11 laptop review remains future user
+feedback rather than release evidence.
+
+Next objective
+--------------
+
+Do not begin Phase 14D automatically. Preserve and authenticate the 0.14.2
+release artifacts. Windows 11 feedback remains planned after all phases, as
+requested by the user. Any next mini-phase requires its own bounded
+feasibility, entry decision, and explicit approval. Do not begin Phase 15.

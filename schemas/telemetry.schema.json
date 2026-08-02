@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pycforge.telemetry/0.9",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "conversion_observation_id",
+    "measurements",
+    "drop_count",
+    "truncated",
+    "observer_failed",
+    "events",
+    "dropped"
+  ],
+  "properties": {
+    "schema_version": {"const": "pycforge.telemetry/0.9"},
+    "conversion_observation_id": {"type": "string"},
+    "measurements": {"type": "array", "items": {"type": "object"}},
+    "drop_count": {"type": "integer", "minimum": 0},
+    "truncated": {"type": "boolean"},
+    "observer_failed": {"type": "boolean"},
+    "events": {"type": "array", "items": {"type": "object"}},
+    "dropped": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": false,
+  "description": "Operational observation snapshot. This schema is excluded from semantic and generated-output fingerprints."
+}

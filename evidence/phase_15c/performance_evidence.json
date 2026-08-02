@@ -1,0 +1,89 @@
+{
+  "schema": "pycforge.phase15c-performance-evidence/1",
+  "package": "0.15.2",
+  "workspace": "pycforge-workspace/0.5",
+  "worker_protocol": "pycforge.worker-protocol/0.1",
+  "absolute_bounds": {
+    "editor_panes": 2,
+    "source_documents": 64,
+    "bundle_search_matches": 5000,
+    "bundle_search_query_characters": 4096,
+    "bundle_search_preview_characters": 512,
+    "command_palette_results": 50,
+    "command_palette_query_characters": 256,
+    "session_history_entries": 64,
+    "outline_symbols": 4096,
+    "outline_depth": 64,
+    "outline_name_characters": 256,
+    "outline_text_characters": 262144
+  },
+  "background_services": {
+    "conversion_process_isolated": true,
+    "conversion_one_active_one_latest": true,
+    "bundle_search_latest_wins": true,
+    "bundle_search_file_io": false,
+    "source_structure_latest_wins": true,
+    "source_structure_file_io": false,
+    "stale_publication_suppressed": true
+  },
+  "routine_interaction_contracts": {
+    "go_to_line_complete_source_copy": false,
+    "tab_state_retains_source_payload": false,
+    "split_state_retains_source_payload": false,
+    "command_palette_retains_handlers": false,
+    "history_retains_semantic_payload": false,
+    "routine_host_scan": false,
+    "routine_converter_invocation": false
+  },
+  "measurement_scope": {
+    "headless_contract_tests": true,
+    "static_qt_integration_tests": true,
+    "real_qapplication_exercised": true,
+    "real_pyqt_widgets_exercised": true,
+    "offscreen_pyqt_widgets_exercised": true,
+    "visible_windows_11_exercised": false,
+    "visible_linux_desktop_exercised": false,
+    "display_scaling_matrix_exercised": false,
+    "assistive_technology_exercised": false,
+    "gui_event_loop_timing_recorded": true
+  },
+  "phase15a_architecture_preserved": true,
+  "generated_c_executed": false,
+  "toolchain_invoked": false,
+  "status": "supporting-offscreen-runtime-evidence-passed",
+  "promotion_eligible": true,
+  "offscreen_runtime": {
+    "python_version": "3.12.13",
+    "pyqt_version": "5.15.11",
+    "qt_build_version": "5.15.14",
+    "qt_runtime_version": "5.15.19",
+    "qpa_platform": "offscreen",
+    "qapplication_instances": 1,
+    "workspace_test_cases": 18,
+    "workspace_test_failures": 0,
+    "workspace_test_errors": 0,
+    "workspace_test_skips": 0,
+    "event_loop": {
+      "large_source_characters": 250113,
+      "large_source_minimum_characters": 250000,
+      "first_turn_seconds": 0.0103,
+      "first_turn_limit_seconds": 1.0,
+      "timer_interval_seconds": 0.01,
+      "timer_ticks_while_waiting": 110,
+      "within_limit": true
+    },
+    "large_file": {
+      "window_construction_seconds": 0.054,
+      "window_construction_limit_seconds": 8.0,
+      "transpilation_seconds": 1.201,
+      "transpilation_limit_seconds": 30.0,
+      "large_file_mode": true,
+      "syntax_highlighter_detached": true,
+      "shared_buffer_preserved": true
+    },
+    "shutdown": {
+      "new_pycforge_threads_after_close": 0,
+      "worker_leaks": 0
+    }
+  }
+}

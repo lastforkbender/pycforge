@@ -1,0 +1,65 @@
+{
+  "schema_version": "pycforge.phase14d-opening-baseline/0.14.3",
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-14d-opening-predecessor-v1",
+  "phase": 14,
+  "mini_phase": "14D",
+  "status": "authenticated-before-phase-14d-implementation",
+  "authenticated_on": "2026-07-26",
+  "predecessor": {
+    "version": "0.14.2",
+    "source_archive": "pycforge_phase_14c_v0_14_2.tar.gz",
+    "source_archive_size": 1181034,
+    "source_archive_sha256": "1eb9666866f38dc80993a6f39175a0d98fdc1634f3aa3ab1eeb3dded2992ffb8",
+    "canonical_release_tree_sha256": "be433ef7a46bbb208efe82087b9ef924fad48eba42e42330c7964894a269bcb4",
+    "converter_subtree_sha256": "ba4457158430bce7fb5094f68e1b07718bd168ca96e22310193efe45bd0d882b",
+    "release_fingerprint_file": "transition/phase_14c/release_fingerprint.json",
+    "release_status": "promoted",
+    "wheel": "pycforge-0.14.2-py3-none-any.whl",
+    "wheel_size": 309077,
+    "wheel_sha256": "6e14d24742e4bfff4017320ebdb04b35117c18fa95d97499560875a764feb4b5"
+  },
+  "sealed_release_evidence": {
+    "tests_discovered": 474,
+    "tests_passed": 464,
+    "expected_pyqt5_skips": 10,
+    "tests_failed": 0,
+    "cumulative_audits_passed": true,
+    "generated_c_compiled_or_executed": false
+  },
+  "authority": {
+    "roadmap_revision": "3.1-plus-3.2-addendum",
+    "roadmap_sha256": "d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3",
+    "addendum_sha256": "93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6",
+    "explicit_user_approval": true,
+    "approval_text": "Continue to Phase 14D",
+    "approval_scope": "open-the-bounded-exact-required-keyword-only-call-mini-phase-only"
+  },
+  "frozen_contract_custody": {
+    "source_bundle": "source-bundle/0.2",
+    "python_ir": "python-ir/0.4",
+    "result_serialization": "0.5",
+    "helper_policy": "phase10-support-templates-v0.10",
+    "helper_registry_sha256": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+    "container_policy": "phase11-fixed-local-containers-v0.11",
+    "module_policy": "phase13-explicit-record-modules-v0.13",
+    "record_policy": "phase13-immutable-automatic-records-v0.13",
+    "numeric_policy": "phase14-proved-floor-arithmetic-v0.14",
+    "conditional_fact_schema": "fact-table/0.14.1",
+    "keyword_call_fact_schema": "fact-table/0.14.2",
+    "keyword_call_rule_set": "phase14-direct-keyword-calls-v0.14.2",
+    "semantic_policy": "strict-source-v1",
+    "target_contract": "c11-portable-fixed-v1"
+  },
+  "authentication": {
+    "source_archive_digest_matched": true,
+    "archive_canonical_tree_recomputed": true,
+    "archive_tree_matched_promoted_release_fingerprint": true,
+    "archive_converter_subtree_recomputed": true,
+    "wheel_identity_matched_promoted_release_evidence": true,
+    "opening_candidate_seeded_from_authenticated_archive": true,
+    "compiler_linker_loader_or_execution_invoked": false
+  },
+  "value": "be433ef7a46bbb208efe82087b9ef924fad48eba42e42330c7964894a269bcb4",
+  "value_meaning": "canonical promoted PyCForge 0.14.2 predecessor release tree; not a Phase 14D candidate or release fingerprint"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "pycforge.phase-transition-manifest/0.1",
+  "phase": 5,
+  "baseline": "phase5-candidate-1",
+  "version": "0.5.0",
+  "roadmap_revision": "3.1",
+  "state": "Promoted",
+  "maturity": {
+    "fact_table_protocol": "StableInternal",
+    "binding_scope_facts": "StableInternal",
+    "value_category_lattice": "StableInternal",
+    "RulePlan": "StableInternal",
+    "representation_plan": "StableInternal",
+    "rule_registry": "StableInternal"
+  },
+  "delivered": [
+    "immutable fact-table protocol",
+    "lexical scope and binding facts",
+    "limited deterministic value-category lattice",
+    "evaluation-order, truthiness, and effect facts",
+    "representation ownership and lifetime requests",
+    "deterministic generated-name planning",
+    "terminal support classification",
+    "frozen rule registry and overlap audit",
+    "immutable RulePlan selection",
+    "declarative helper requirements",
+    "final conversion-plan validation",
+    "RulePlan-backed decision trace explanations"
+  ],
+  "non_goals": [
+    "Python IR to C IR lowering",
+    "generated C publication",
+    "helper source emission",
+    "broad Python feature coverage",
+    "GUI integration",
+    "compilation or execution"
+  ],
+  "required_tests": 58
+}

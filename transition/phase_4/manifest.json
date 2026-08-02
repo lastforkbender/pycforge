@@ -1,0 +1,30 @@
+{
+  "schema": "pycforge.phase-transition-manifest/0.1",
+  "phase": 4,
+  "baseline": "phase4-candidate-1",
+  "version": "0.4.0",
+  "maturity": {
+    "essential_c_ir": "StableInternal",
+    "renderer_protocol": "StableInternal",
+    "formatter_style": "Candidate",
+    "text_conformance": "StableInternal"
+  },
+  "delivered": [
+    "versioned essential C IR schema",
+    "structured type and declarator model",
+    "binding-ID and source-provenance references",
+    "single-publication translation-unit builder",
+    "independent C IR validator",
+    "precedence-aware deterministic renderer",
+    "source-output mapping assembly",
+    "independent non-executing generated-C grammar validator",
+    "renderer and conformance golden tests"
+  ],
+  "non_goals": [
+    "Python construct support",
+    "rule selection",
+    "inference of C representation from Python facts",
+    "compiler or generated-program execution"
+  ],
+  "required_tests": 44
+}

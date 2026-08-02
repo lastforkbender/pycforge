@@ -1,0 +1,11 @@
+{
+  "phase": 7,
+  "version": "0.7.0",
+  "required_tests": 80,
+  "regression_tests": 70,
+  "phase_tests": 10,
+  "non_goals": ["new conversion behavior", "compilation", "execution", "debugging", "terminal", "toolchain discovery"],
+  "entry_criteria": "entry_criteria.md",
+  "gate_evidence": "gate_evidence.md",
+  "rollback_conditions": "rollback_conditions.md"
+}

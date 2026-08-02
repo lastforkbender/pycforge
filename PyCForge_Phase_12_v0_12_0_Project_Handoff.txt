@@ -1,0 +1,167 @@
+PyCForge Phase 12 v0.12.0 Project Handoff
+==========================================
+
+Status
+------
+
+Phase 12 is complete and promoted as PyCForge 0.12.0. The release adds the
+deliberately bounded explicit-module-bundle profile required by Architecture
+Revision 3.1 while preserving the Revision 3.2 addendum and the source-only
+product boundary.
+
+The sealed Phase 11 release was authenticated before development and was not
+modified:
+
+* archive: pycforge_phase_11_v0_11_0.tar.gz
+* archive SHA-256: 8af71e84cb6a1f12fc1206f589233067191f87ce4fc4f550765ff64098038275
+* sealed tree SHA-256: 95fbabf3311a5f7dcb88608ef66c7ef43ed085ae1e3fc99351472da8ca1d4e82
+
+Earlier rollback identities remain recorded. Historical whole-tree validators
+remain scoped to their sealed trees.
+
+Roadmap custody
+---------------
+
+The complete authoritative documents remain packaged:
+
+* Architecture Revision 3.1 SHA-256:
+  d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3
+* Revision 3.2 addendum SHA-256:
+  93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6
+
+Phase 12 boundary
+-----------------
+
+The approved profile supports one through 64 explicitly supplied documents.
+Each has a unique canonical lowercase dotted logical module ID, a unique
+relative logical source name, and decoded text. The only import form is a
+top-level preamble `from exact.module import direct_function`, with optional
+aliases and multiple ordered names. At most 4,096 normalized import items are
+accepted.
+
+Resolution uses exact SourceBundle identities only. No source import inspects a
+host path, filesystem, working directory, environment, import hook/cache,
+installed package, or network. There is no implicit parent, package behavior,
+re-export, module object, runtime import cache, or executable initialization.
+Self and multi-module dependency cycles reject; acyclic modules use a
+dependency-first order with module-ID byte order as the ready-set tie breaker.
+
+All documents lower into one deterministic C translation unit. Source
+functions have external linkage. Multi-document functions use digest-first
+`pycm_` names whose collision entropy is inside C11's guaranteed significant
+external-identifier prefix; helpers retain static `pycf_` linkage. All source
+prototypes precede all source definitions. Imports produce namespace bindings
+and source-symbol relationships but no C declaration or runtime state.
+
+Plain, relative, star, local, late, conditional, dynamic, attribute, module-
+value, package, and fallback imports remain unsupported. General top-level
+state and initialization also reject. PYC3501 through PYC3510 are the primary
+deterministic module diagnostics. Rejection publishes no partial C IR, helper
+output, mapping set, or generated C.
+
+Implementation and hardening
+----------------------------
+
+The release provides:
+
+* immutable module identity, import, function, namespace, source, dependency,
+  and initialization facts with exact provenance and closed validation;
+* seven reachable Phase 12 RulePlans with resolved namespace, linkage,
+  ordering, cycle, lifetime, discovery, and assembly obligations;
+* retained ModuleDocument, ModuleInitialization, and ModuleBundleAssembly
+  Python-IR nodes under python-ir/0.4;
+* a separate module-analysis/resolution boundary that does not depend on C IR,
+  rendering, host discovery, or Python's module system;
+* C IR 0.12 module manifests, dependency/order metadata, exact function
+  ownership, ordinal checks, digest-first names, and cross-owner call closure;
+* dependency-first prototype/definition lowering and alias-to-target
+  source-output relationships for used and unused imports;
+* exact fact/namespace/import/source closure validation, deterministic
+  independent-module tie ordering, bundle-wide recursion analysis, and C11
+  significant-prefix collision checks;
+* deterministic summaries/traces and a source-boundary evidence probe covering
+  filesystem, environment, import, package, and network discovery channels;
+* a release validator that reruns the 189-test suite, authenticates sealed
+  historical fixtures, checks promoted state, and can authenticate the exact
+  wheel and predecessor archive.
+
+Historical C IR 0.8 through 0.11 fixture serialization is byte-identical to the
+sealed predecessor. Phase 11 scalar and container generated-C fixtures are
+also byte-identical. The exact Phase 10 helper contracts remain StableInternal:
+
+* registry fingerprint:
+  fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98
+* floor-div asset:
+  23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869
+* floor-mod asset:
+  cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e
+
+A one-document bundle with no imports preserves explicit Phase 11 generated-C
+bytes and the generated-output fingerprint.
+
+Schema identities
+-----------------
+
+Phase 12 publishes source-bundle/0.2, python-ir/0.4, conversion-plan/0.12,
+fact-table/0.12 module facts, c-ir/0.12, generated-c/0.12,
+pycforge.conversion-summary/0.12, pycforge.decision-trace/0.12, and result
+serialization 0.5. The default rule set is
+phase12-explicit-module-bundles-v0.12, renderer c-renderer-v0.12, and module
+policy phase12-explicit-sourcebundle-modules-v0.12. Phase 10 helper and Phase
+11 container policies remain unchanged.
+
+Release evidence
+----------------
+
+* tests: 189 passed (169 predecessor regressions + 20 Phase 12 tests)
+* audits: architecture, rules, helpers, containers, modules, determinism, and
+  transition passed
+* all ten PYC35xx primary boundaries have negative fixtures
+* exact fact/C-IR mutation checks and source-only no-discovery probes passed
+* generated evidence freshness: passed for twelve generated reports
+* wheel: pycforge-0.12.0-py3-none-any.whl, 154717 bytes
+* wheel SHA-256: ef9db5222c5ce023861ffb558717d00c1d01d5931c558a385b96158863ae47c5
+* two fixed-epoch wheel builds: byte-identical
+* four fresh-process bundle results were identical across two Python 3.12 patch
+  versions and varied hash seed, timezone, locale, temporary root, and
+  CPU-count observation
+* authenticated isolated-wheel install, module/container conversion, schemas,
+  text conformance, mapping, and helper-fingerprint checks: passed
+
+The optional PyQt5 dependency was unavailable in the Phase 12 release
+workspace, so no new widget run is claimed. Preserved sealed widget evidence
+remains packaged, and the cumulative controller, workspace, observer,
+stale-output, atomic-save, and predecessor regression tests pass.
+
+Generated C and helper sources were validated structurally and textually only.
+They were not compiled, linked, loaded, or executed.
+
+Validation
+----------
+
+Run from the release root:
+
+    python -m unittest discover -s tests
+    python tools/validate_phase12.py
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit helpers
+    python -m pycforge audit containers
+    python -m pycforge audit modules
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_12
+    python tools/collect_phase12_evidence.py check --tests-run 189
+
+For the complete release gate, pass `--predecessor-archive` with the sealed
+Phase 11 archive and `--wheel` with the exact Phase 12 wheel to
+validate_phase12.py. The validator itself also reruns exactly 189 tests.
+
+Next objective
+--------------
+
+Phase 13 is the static class/record subset. First approve object layout, field
+initialization, receiver and method targeting, C-struct representation,
+allocation, ownership, cleanup, nullability, aliasing, mutation, module
+namespace interaction, mappings, and diagnostics. Do not begin with general
+Python object-model equivalence, inheritance, MRO, metaclasses, descriptors,
+dynamic attributes, reflection, or operator overloading.

@@ -1,0 +1,50 @@
+{
+  "checkpoint": "phase_10_opening",
+  "state": "CompletedEntryCheckpoint",
+  "promotion_state": "not-promoted",
+  "base_version": "0.9.0",
+  "checkpoint_package_version": "0.10.0.dev0",
+  "roadmap_revision": "3.1-plus-3.2-addendum",
+  "tests": {
+    "phase_0_to_9_regressions": 139,
+    "opening_checkpoint": 4,
+    "required": 143
+  },
+  "delivered": [
+    "packaged authoritative Revision 3.1 roadmap",
+    "Revision 3.2 Phase 10 entry and workspace addendum",
+    "Python-first full editor presentation",
+    "hidden-by-default read-only generated C with explicit toggle",
+    "hidden-by-default inspection details with explicit toggle",
+    "delayed non-modal stage progress",
+    "observer-isolated immutable progress events",
+    "stale progress sequence containment"
+  ],
+  "deferred_until_entry_gate": [
+    "helper registry",
+    "helper dependency resolver",
+    "helper C IR factories or template ingestion",
+    "version 0.10.0 promotion"
+  ],
+  "required_files": [
+    "README.md",
+    "PyCForge_Phase_10_Opening_Checkpoint_Handoff.txt",
+    "docs/python_to_c_converter_architecture_revision_3_1.txt",
+    "docs/python_to_c_converter_architecture_revision_3_2_addendum.md",
+    "pycforge/converter/core/progress.py",
+    "pycforge/ide/controller.py",
+    "pycforge/ide/model.py",
+    "pycforge/ide/qt.py",
+    "specifications/phase7_workspace.md",
+    "specifications/result_and_fingerprints.md",
+    "specifications/resource_cancellation_save.md",
+    "tests/test_phase10_opening.py",
+    "evidence/phase_10/opening_checkpoint_report.json",
+    "evidence/phase_10/package_report.json",
+    "evidence/phase_10/progress_observer_report.json",
+    "evidence/phase_10/test_summary.json",
+    "transition/phase_10/entry_gate.md",
+    "transition/phase_10/opening_checkpoint_fingerprint.json",
+    "tools/validate_phase10_opening.py"
+  ]
+}

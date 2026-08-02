@@ -1,0 +1,34 @@
+{
+  "addendum_sha256": "93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6",
+  "generated_c_compiled_or_executed": false,
+  "passed": true,
+  "phase": 11,
+  "predecessor_archive_sha256": "0f54742d1ae1cef604291d0a38286a475cd048792f986ca95e20b3348cdc5c4b",
+  "predecessor_tree_sha256": "f3fc12f357ff7c3667f483375d431e087dcfb65302d279194f9ed51466787ea2",
+  "primary_rejection_codes": [
+    "PYC3401",
+    "PYC3402",
+    "PYC3403",
+    "PYC3404",
+    "PYC3405",
+    "PYC3406",
+    "PYC3407"
+  ],
+  "roadmap_sha256": "d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3",
+  "schema_version": "pycforge.phase-report/0.11",
+  "schemas": {
+    "c_ir": "c-ir/0.11",
+    "conversion_plan": "conversion-plan/0.11",
+    "generated_c": "generated-c/0.11",
+    "result": "0.4",
+    "summary": "pycforge.conversion-summary/0.11",
+    "trace": "pycforge.decision-trace/0.11"
+  },
+  "supported_forms": [
+    "dict-lookup",
+    "list-index",
+    "tuple-loop"
+  ],
+  "test_count": 169,
+  "version": "0.11.0"
+}

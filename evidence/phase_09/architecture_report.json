@@ -1,0 +1,13 @@
+{
+  "audit": "architecture",
+  "passed": true,
+  "violations": [],
+  "checks": [
+    "converter core has no GUI or subprocess dependency",
+    "analysis and rules do not import the renderer or C IR builder",
+    "lowering constructs structured C IR only",
+    "one deterministic renderer owns final C text",
+    "independent C text conformance imports neither C IR nor renderer",
+    "no compilation, execution, linking, or native toolchain path exists"
+  ]
+}

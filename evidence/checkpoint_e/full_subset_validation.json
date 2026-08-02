@@ -1,0 +1,3730 @@
+{
+  "architecture_branding_product_boundary": {
+    "audit": "checkpoint-e-architecture-branding-product-boundary",
+    "boundary_violations": [],
+    "c_toolchain_invoked": false,
+    "contract_identities": {
+      "c_ir": "c-ir/0.14.3",
+      "conditional_facts": "fact-table/0.14.1",
+      "container_facts": "fact-table/0.11",
+      "container_policy": "phase11-fixed-local-containers-v0.11",
+      "conversion_plan": "conversion-plan/0.14.3",
+      "conversion_summary": "pycforge.conversion-summary/0.14.3",
+      "converter_contract": "0.14.3",
+      "decision_trace": "pycforge.decision-trace/0.14.3",
+      "generated_c": "generated-c/0.14.3",
+      "helper_policy": "phase10-support-templates-v0.10",
+      "keyword_call_facts": "fact-table/0.14.2",
+      "keyword_call_rule": "phase14.keyword_call.exact_binding",
+      "keyword_only_call_facts": "fact-table/0.14.3",
+      "keyword_only_call_rule": "phase14.keyword_only_call.exact_binding",
+      "module_facts": "fact-table/0.12",
+      "module_policy": "phase13-explicit-record-modules-v0.13",
+      "numeric_facts": "fact-table/0.14",
+      "numeric_policy": "phase14-proved-floor-arithmetic-v0.14",
+      "python_ir_bundle": "python-ir/0.4",
+      "record_facts": "fact-table/0.13",
+      "record_policy": "phase13-immutable-automatic-records-v0.13",
+      "renderer": "c-renderer-v0.14.3",
+      "result": "0.5",
+      "rule_set": "phase14-required-keyword-only-calls-v0.14.3",
+      "semantic_policy": "strict-source-v1",
+      "source_bundle": "source-bundle/0.2",
+      "target_contract": "c11-portable-fixed-v1"
+    },
+    "cumulative_architecture": {
+      "active_contract_identities_valid": true,
+      "active_contracts": {
+        "c_ir": "c-ir/0.14.3",
+        "conversion_plan": "conversion-plan/0.14.3",
+        "generated_c": "generated-c/0.14.3",
+        "keyword_call_facts": "fact-table/0.14.2",
+        "keyword_only_call_facts": "fact-table/0.14.3",
+        "renderer": "c-renderer-v0.14.3",
+        "rule_set": "phase14-required-keyword-only-calls-v0.14.3"
+      },
+      "audit": "architecture",
+      "conditional_analysis_depends_on_c_ir": false,
+      "conditional_analysis_present": true,
+      "conditional_lowering_present": true,
+      "conditional_validation_depends_on_producer_or_lowerer": false,
+      "conditional_validation_present": true,
+      "cumulative_lowerer_lines": 1000,
+      "keyword_analysis_depends_on_c_ir": false,
+      "keyword_analysis_present": true,
+      "keyword_contract_valid": true,
+      "keyword_fact_schema": "fact-table/0.14.2",
+      "keyword_lowering_present": true,
+      "keyword_only_analysis_depends_on_c_ir": false,
+      "keyword_only_analysis_present": true,
+      "keyword_only_fact_schema": "fact-table/0.14.3",
+      "keyword_only_lowering_present": true,
+      "keyword_only_rule_id": "phase14.keyword_only_call.exact_binding",
+      "keyword_only_validation_depends_on_producer_or_lowerer": false,
+      "keyword_only_validation_present": true,
+      "keyword_rule_id": "phase14.keyword_call.exact_binding",
+      "keyword_validation_depends_on_producer_or_lowerer": false,
+      "keyword_validation_present": true,
+      "numeric_analysis_depends_on_c_ir": false,
+      "numeric_analysis_present": true,
+      "numeric_lowering_present": true,
+      "passed": true,
+      "record_analysis_depends_on_c_ir": false,
+      "record_analysis_present": true,
+      "record_lowering_present": true,
+      "violations": []
+    },
+    "errors": [],
+    "front_facing_brand": "PyCForge",
+    "generated_c_compiled_or_executed": false,
+    "identity_mismatches": {},
+    "passed": true,
+    "product_boundary": "deterministic Python-to-C source transpiler"
+  },
+  "c_toolchain_invoked": false,
+  "contract_identities": {
+    "c_ir": "c-ir/0.14.3",
+    "conditional_facts": "fact-table/0.14.1",
+    "container_facts": "fact-table/0.11",
+    "container_policy": "phase11-fixed-local-containers-v0.11",
+    "conversion_plan": "conversion-plan/0.14.3",
+    "conversion_summary": "pycforge.conversion-summary/0.14.3",
+    "converter_contract": "0.14.3",
+    "decision_trace": "pycforge.decision-trace/0.14.3",
+    "generated_c": "generated-c/0.14.3",
+    "helper_policy": "phase10-support-templates-v0.10",
+    "keyword_call_facts": "fact-table/0.14.2",
+    "keyword_call_rule": "phase14.keyword_call.exact_binding",
+    "keyword_only_call_facts": "fact-table/0.14.3",
+    "keyword_only_call_rule": "phase14.keyword_only_call.exact_binding",
+    "module_facts": "fact-table/0.12",
+    "module_policy": "phase13-explicit-record-modules-v0.13",
+    "numeric_facts": "fact-table/0.14",
+    "numeric_policy": "phase14-proved-floor-arithmetic-v0.14",
+    "python_ir_bundle": "python-ir/0.4",
+    "record_facts": "fact-table/0.13",
+    "record_policy": "phase13-immutable-automatic-records-v0.13",
+    "renderer": "c-renderer-v0.14.3",
+    "result": "0.5",
+    "rule_set": "phase14-required-keyword-only-calls-v0.14.3",
+    "semantic_policy": "strict-source-v1",
+    "source_bundle": "source-bundle/0.2",
+    "target_contract": "c11-portable-fixed-v1"
+  },
+  "errors": [],
+  "executable_feature_matrix": {
+    "actual_diagnostic_counts": {
+      "PYC2812": 2,
+      "PYC2901": 2,
+      "PYC2902": 1,
+      "PYC2904": 1,
+      "PYC2910": 1,
+      "PYC2911": 1,
+      "PYC2912": 1,
+      "PYC2915": 1,
+      "PYC2930": 1,
+      "PYC2931": 1,
+      "PYC2940": 1,
+      "PYC2943": 1,
+      "PYC3403": 1,
+      "PYC3406": 2,
+      "PYC3503": 1,
+      "PYC3504": 2,
+      "PYC3505": 1,
+      "PYC3507": 1,
+      "PYC3509": 1,
+      "PYC3601": 1,
+      "PYC3602": 1,
+      "PYC3603": 1,
+      "PYC3604": 1,
+      "PYC3605": 1,
+      "PYC3606": 1,
+      "PYC3607": 1,
+      "PYC3610": 1,
+      "PYC3701": 1,
+      "PYC3702": 1
+    },
+    "actual_status_counts": {
+      "Converted": 37,
+      "Rejected": 33
+    },
+    "audit": "checkpoint-e-executable-feature-matrix",
+    "c_toolchain_invoked": false,
+    "coverage_complete": true,
+    "errors": [],
+    "execution_rows": [
+      {
+        "exercise": "A two-document explicit bundle places an absolute import first, a static record second, and an annotated top-level function last.",
+        "matrix_key": [
+          "Module",
+          "explicit-1-to-64-document-bundle/import-preamble-then-records-then-top-level-functions"
+        ],
+        "observed_ast_kinds_sha256": "dad6606a34505b82e824a6383edb15221c2b2bdef7fa2bc53e8d75aff563a68a",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "59137caf533f28d01560037c281faa6ca8bbff0145ca4a37b142cea487715e92"
+          }
+        ],
+        "required_ast_kinds": [
+          "Module",
+          "ImportFrom",
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-00"
+      },
+      {
+        "exercise": "The module contains one top-level function whose parameter and return are exactly annotated.",
+        "matrix_key": [
+          "FunctionDef",
+          "top-level/exact-annotated-signature"
+        ],
+        "observed_ast_kinds_sha256": "50c1c16c7f608d89d4bea9ff63292c46e50706cc9fb5c2abc1551bdd2c47a0f4",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "986cfa437c71f2b81383d876ef74fb632e1850d066540b2cc222fe6c437b6111"
+          }
+        ],
+        "required_ast_kinds": [
+          "FunctionDef"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-01"
+      },
+      {
+        "exercise": "The inner FunctionDef closes over the outer parameter.",
+        "matrix_key": [
+          "FunctionDef",
+          "nested-or-closure"
+        ],
+        "observed_ast_kinds_sha256": "8ce95f28ae22ce83f49705c188f18e1ac13b93c2a62d19c010ce6c6cf5ef1adf",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2915"
+            ],
+            "actual_reasons": [
+              "Nested functions and closures are unsupported in Phase 9"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2915",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "7e1d2636b23075adec2241790598270bcb4a162cc9c203af640e14abaeae5d51"
+          }
+        ],
+        "required_ast_kinds": [
+          "FunctionDef"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-02"
+      },
+      {
+        "exercise": "The identity signature has one positional-only parameter and no default.",
+        "matrix_key": [
+          "arguments",
+          "positional-or-positional-only/no-default"
+        ],
+        "observed_ast_kinds_sha256": "50c1c16c7f608d89d4bea9ff63292c46e50706cc9fb5c2abc1551bdd2c47a0f4",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "986cfa437c71f2b81383d876ef74fb632e1850d066540b2cc222fe6c437b6111"
+          }
+        ],
+        "required_ast_kinds": [
+          "arguments",
+          "arg"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-03"
+      },
+      {
+        "exercise": "The choose signature includes an exactly annotated required keyword-only scale parameter with no default or variadic.",
+        "matrix_key": [
+          "arguments",
+          "required-keyword-only/exact-annotations/no-defaults-or-variadics"
+        ],
+        "observed_ast_kinds_sha256": "e0a3ae3951801095f15324921cc2f3c25ebc985c0180621d02f811f225d3009e",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "94f5650cf02ab78226d72acb77023ab141034399fdaaabf25cdd83ef1eda6db0"
+          }
+        ],
+        "required_ast_kinds": [
+          "arguments",
+          "arg"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-04"
+      },
+      {
+        "exercise": "The keyword-only flag formal has a default, placing the signature outside the required-only profile.",
+        "matrix_key": [
+          "arguments",
+          "positional-default-keyword-only-default-variadic-or-keyword-only-outside-required-profile"
+        ],
+        "observed_ast_kinds_sha256": "2771988058b20d8735e075d43e5ccf5aa079c20776089737fe631299bed4723f",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2911"
+            ],
+            "actual_reasons": [
+              "default, keyword-only, or variadic parameters are unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2911",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "b9db4e95d7f477fd1558ee6712f63d55319641a296000de00911246874ad8497"
+          }
+        ],
+        "required_ast_kinds": [
+          "arguments"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-05"
+      },
+      {
+        "exercise": "run directly calls the understood add definition with two exact positional arguments.",
+        "matrix_key": [
+          "Call",
+          "direct-understood-source-function/exact-positional-signature"
+        ],
+        "observed_ast_kinds_sha256": "242b55948b54f610abc1df5e87636fb02b645774f4709a09060460912bb69c4a",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "01e4feb8933ed3fa684e31ef52658bfe49b27632aec35247be88b32c77dcd66e"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-06"
+      },
+      {
+        "exercise": "The For iterator is a direct call to the unshadowed built-in range.",
+        "matrix_key": [
+          "Call",
+          "unshadowed-range-for-iterator"
+        ],
+        "observed_ast_kinds_sha256": "ec1ad358d497f16d44f56adba11bef6154d09e765df89aa2b1ba4b3a9d4d4b35",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "5ddf2d866447ce56059b12244c2faae9e71b833b8939bbc92ed385d84fbdc940"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "For"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-07"
+      },
+      {
+        "exercise": "The call target is a parameter value rather than a direct understood source function.",
+        "matrix_key": [
+          "Call",
+          "unknown-indirect-aliased-dynamic"
+        ],
+        "observed_ast_kinds_sha256": "e558a08a3e0601079ca870126d9258f02f1c72e05c1c4d2bf6503d68271898d7",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2901"
+            ],
+            "actual_reasons": [
+              "Unresolved call target: target"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2901",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "e41f2c3f8b7af17efa3733550ecd687333f5d2c535855d81ae20dee152702135"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-08"
+      },
+      {
+        "exercise": "run binds choose with one leading positional argument followed by explicit keywords that cover every remaining required parameter.",
+        "matrix_key": [
+          "Call",
+          "direct-understood-source-function/leading-positional-then-explicit-keywords/exact-required-parameter-coverage"
+        ],
+        "observed_ast_kinds_sha256": "93fc72dc252ae83e05c5fe10d5199d40a6290c3c7248d7208a7f9bdd8dbaf148",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "eb986bc7fee93c233d5fc08a25192f0d3f6d31e2a279c283ed84fefc24727d14"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "keyword"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-09"
+      },
+      {
+        "exercise": "run calls choose with its positional-only, positional-or-keyword, and required keyword-only formals covered exactly.",
+        "matrix_key": [
+          "Call",
+          "direct-understood-source-function/required-keyword-only-formals/exact-positional-and-named-coverage"
+        ],
+        "observed_ast_kinds_sha256": "e0a3ae3951801095f15324921cc2f3c25ebc985c0180621d02f811f225d3009e",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "94f5650cf02ab78226d72acb77023ab141034399fdaaabf25cdd83ef1eda6db0"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "keyword"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-10"
+      },
+      {
+        "exercise": "The direct sink call omits its required keyword-only flag.",
+        "matrix_key": [
+          "Call",
+          "missing-required-keyword-only-or-positional-overflow-into-keyword-only-range"
+        ],
+        "observed_ast_kinds_sha256": "e558a08a3e0601079ca870126d9258f02f1c72e05c1c4d2bf6503d68271898d7",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2904"
+            ],
+            "actual_reasons": [
+              "Every target parameter must be supplied exactly once; missing: flag"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2904",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "b1a4449a1edef01e697cf301b930b26b0b648af1338b34b71afbd76913abe124"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-11"
+      },
+      {
+        "exercise": "The sink call contains a starred positional argument.",
+        "matrix_key": [
+          "Call",
+          "starred-or-unpacked-keywords"
+        ],
+        "observed_ast_kinds_sha256": "8ec05f9abeb3b1e7165d1bdc41ce593e42feaec452ad94f5c5a7a2c7fb0e1eaa",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2910"
+            ],
+            "actual_reasons": [
+              "Starred and unpacked arguments are unsupported by the exact required keyword-only profile"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2910",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "6f0ce173489fee9a526e43e8905d144b26a9e70d720c9681f4500287b68c048a"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "Starred"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-12"
+      },
+      {
+        "exercise": "The call illegally names the positional-only value formal as a keyword.",
+        "matrix_key": [
+          "Call",
+          "unknown-duplicate-colliding-or-positional-only-keyword-name"
+        ],
+        "observed_ast_kinds_sha256": "3ffd1eae6430cf4e2df58e3273cf234941baddc0668965e6f9d02878b61c78f9",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2912"
+            ],
+            "actual_reasons": [
+              "Positional-only parameter cannot be bound by keyword: value"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2912",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "80050d7642aaf1da171e0546c05341eb1ed2d53c30f69f304fc03ae0c965e3f0"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "keyword"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-13"
+      },
+      {
+        "exercise": "choose has an explicit compatible return after its exhaustive conditional assignment.",
+        "matrix_key": [
+          "Return",
+          "explicit-compatible-all-paths"
+        ],
+        "observed_ast_kinds_sha256": "c3935ba8059413a1b7931b0c9a889c9fb1069861c71688ad8b565e24a6c1172e",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "3a6983c1e5c20f2f1b89e445f1440840f1527c61b93cb4619bddc05e63bce8f6"
+          }
+        ],
+        "required_ast_kinds": [
+          "Return"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-14"
+      },
+      {
+        "exercise": "The explicit Boolean return conflicts with the annotated integer representation.",
+        "matrix_key": [
+          "Return",
+          "mismatch"
+        ],
+        "observed_ast_kinds_sha256": "9904f5c64fdb00f81f95e9694a719acab94b6502494ac6b7c8fc5a559ffc329d",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2930"
+            ],
+            "actual_reasons": [
+              "Every explicit return must match the declared return representation"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2930",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "74e4de67a18b2acc8705bdf9a734ca34e4fdb1bb66bdb77c71169afaba8e05f4"
+          }
+        ],
+        "required_ast_kinds": [
+          "Return"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-15"
+      },
+      {
+        "exercise": "The annotated non-None function has a reachable implicit-None fallthrough path.",
+        "matrix_key": [
+          "FunctionFallthrough",
+          "annotated-non-none"
+        ],
+        "observed_ast_kinds_sha256": "8a6cc4cc1bfae80cd792314ce9ef6adbd712ab0dade9ab8ca66e67d1c94e1dee",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2931"
+            ],
+            "actual_reasons": [
+              "A reachable function path falls through to implicit None"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2931",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "59b2c3a13424395a4905dc6699418f11cd7d7e71bc69cfaf300488ad28448897"
+          }
+        ],
+        "required_ast_kinds": [
+          "FunctionDef",
+          "If"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-16"
+      },
+      {
+        "exercise": "result is bound once as a direct function-local integer-like name.",
+        "matrix_key": [
+          "Assign",
+          "single-local-name/stable-representation"
+        ],
+        "observed_ast_kinds_sha256": "50c1c16c7f608d89d4bea9ff63292c46e50706cc9fb5c2abc1551bdd2c47a0f4",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "986cfa437c71f2b81383d876ef74fb632e1850d066540b2cc222fe6c437b6111"
+          }
+        ],
+        "required_ast_kinds": [
+          "Assign",
+          "Name"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-17"
+      },
+      {
+        "exercise": "The same local is assigned integer-like and Boolean-like representations.",
+        "matrix_key": [
+          "Assign",
+          "representation-conflict"
+        ],
+        "observed_ast_kinds_sha256": "4d1cb35698128a88b709e02931312d95c0728e254262a92ecb25d396851fec7b",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2943"
+            ],
+            "actual_reasons": [
+              "A binding is assigned incompatible C representations"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2943",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "b0ea25dcd7d64d4db5d1b0e60577814946f4170175e5f2f5739fcf8e7b697c3d"
+          }
+        ],
+        "required_ast_kinds": [
+          "Assign"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-18"
+      },
+      {
+        "exercise": "The witness resolves parameter names, the local function binding add, and their return use.",
+        "matrix_key": [
+          "Name",
+          "resolved-parameter-local-or-function"
+        ],
+        "observed_ast_kinds_sha256": "242b55948b54f610abc1df5e87636fb02b645774f4709a09060460912bb69c4a",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "01e4feb8933ed3fa684e31ef52658bfe49b27632aec35247be88b32c77dcd66e"
+          }
+        ],
+        "required_ast_kinds": [
+          "Name"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-19"
+      },
+      {
+        "exercise": "result is read on the right-hand side before its first local binding.",
+        "matrix_key": [
+          "Name",
+          "local-use-before-binding"
+        ],
+        "observed_ast_kinds_sha256": "54f457717df04aa201e8913b0103c8032569f3d47b351e8766aea03ad1308532",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2940"
+            ],
+            "actual_reasons": [
+              "Local name may be used before its first binding"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2940",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "48495c747d84d7988f23dfc440bccd4fd568a1ef850fdcdc37b347b37752446c"
+          }
+        ],
+        "required_ast_kinds": [
+          "Name"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-20"
+      },
+      {
+        "exercise": "Four functions exercise bounded int, finite float, bool, and UTF-8 string constants.",
+        "matrix_key": [
+          "Constant",
+          "bounded-int-finite-float-bool-utf8-string"
+        ],
+        "observed_ast_kinds_sha256": "9904f5c64fdb00f81f95e9694a719acab94b6502494ac6b7c8fc5a559ffc329d",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "2ef736eeb415bd7932569e87693caee90105abcdad8b914296aa9fe33cd8d1e5"
+          }
+        ],
+        "required_ast_kinds": [
+          "Constant"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-21"
+      },
+      {
+        "exercise": "The floating-like function exercises plus, minus, multiply, and true division with stable representations.",
+        "matrix_key": [
+          "BinOp",
+          "selected-stable-numeric-plus-minus-multiply-and-floating-divide"
+        ],
+        "observed_ast_kinds_sha256": "a2e52734181574be2a2e6002f7f8d94c6376fba37d74a631a7a0f2c1cba9ebc6",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "c8a8abbd2d536c208ca79c90a044e572fa6613fc90d65827af73bfd20258fdbc"
+          }
+        ],
+        "required_ast_kinds": [
+          "BinOp",
+          "Div",
+          "Add",
+          "Sub",
+          "Mult"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-22"
+      },
+      {
+        "exercise": "The integer-like left operand uses a direct safe signed int64 literal divisor of -3.",
+        "matrix_key": [
+          "BinOp.FloorDiv",
+          "integer-like-left/direct-safe-signed-int64-literal-divisor"
+        ],
+        "observed_ast_kinds_sha256": "e2d4ff970a9291b77d6acc240205977ce6b224e02eb79594977417c7f75a1210",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "7391089f7013c9b83ff4d79fbeb966b32288a429684cd2d8846c9085e2afc5e5"
+          }
+        ],
+        "required_ast_kinds": [
+          "BinOp",
+          "FloorDiv"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-23"
+      },
+      {
+        "exercise": "The integer-like left operand uses a direct safe signed int64 literal divisor of 5.",
+        "matrix_key": [
+          "BinOp.Mod",
+          "integer-like-left/direct-safe-signed-int64-literal-divisor"
+        ],
+        "observed_ast_kinds_sha256": "d095fd265e30853075dc6686516a2c8ac7e74d130d44dea470ad6492b8b02d74",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "cce2e853013afa8f8dd4c32003f8d78610fb30bb85751bf0d69ecc0b854a51de"
+          }
+        ],
+        "required_ast_kinds": [
+          "BinOp",
+          "Mod"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-24"
+      },
+      {
+        "exercise": "Floor division is applied to a floating-like left operand.",
+        "matrix_key": [
+          "BinOp.FloorDivOrMod",
+          "noninteger-or-unsupported-expression-context"
+        ],
+        "observed_ast_kinds_sha256": "01d05451ce88d483fb17eaa1121428ec519e0df595890ed6d553b8f8ed148d40",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3701"
+            ],
+            "actual_reasons": [
+              "Integer // and % require exact integer-like operands and an integer-like result; bool and mixed categories are excluded"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3701",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "025f46fff6b7398ec28e06028c2ef91550d45aff227585359a4f19be8f2e1bc8"
+          }
+        ],
+        "required_ast_kinds": [
+          "BinOp",
+          "FloorDiv"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-25"
+      },
+      {
+        "exercise": "The divisor is dynamic rather than a directly proved safe signed int64 literal.",
+        "matrix_key": [
+          "BinOp.FloorDivOrMod",
+          "zero-negative-one-INT64_MIN-dynamic-calculated-or-out-of-range-divisor"
+        ],
+        "observed_ast_kinds_sha256": "a2d624c4e65792a2634e6e56e783708d0b2f9e4e957f0b67d6e5718e26ef5f6d",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3702"
+            ],
+            "actual_reasons": [
+              "The divisor of integer // or % must be a directly recognized, lowerable signed int64 literal"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3702",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "2715b155a562a6be512a03be042d31719736efab404a91f369acd1d4f21bc0d8"
+          }
+        ],
+        "required_ast_kinds": [
+          "BinOp",
+          "FloorDiv"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-26"
+      },
+      {
+        "exercise": "A direct and-expression combines two already Boolean-represented parameters.",
+        "matrix_key": [
+          "BoolOp",
+          "boolean-represented/direct-expression-form"
+        ],
+        "observed_ast_kinds_sha256": "06c39f79b2c79c8683463222b2089df313d5a81a672c32d5246faa5be850f48d",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "e87e64c01d915dcdb7df43d7e4b7f59b064b5507554ece0dc96d717c57844176"
+          }
+        ],
+        "required_ast_kinds": [
+          "BoolOp",
+          "And"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-27"
+      },
+      {
+        "exercise": "The later Boolean operand is an understood scalar function call placed in one flat guarded region.",
+        "matrix_key": [
+          "BoolOp",
+          "boolean-represented/already-supported-scalar-prerequisites/flat-guarded-placement"
+        ],
+        "observed_ast_kinds_sha256": "a5a8f6e9e59f0db0ed642bb9da23856f9053ca4902ec858e33c245bee3ce71d2",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "0a07ae6a616e13e6d96646ce8dd48967b429f5e5927dd5f6a3d7274b7ad7ddb8"
+          }
+        ],
+        "required_ast_kinds": [
+          "BoolOp",
+          "Call"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-28"
+      },
+      {
+        "exercise": "A direct numeric comparison has a trivially preservable operand sequence.",
+        "matrix_key": [
+          "Compare",
+          "numeric-or-boolean/direct-sequence-preservable"
+        ],
+        "observed_ast_kinds_sha256": "4c781ba59d40f12de3e87297ac160dc0a6742558f90fe506a8b6a32406c680ad",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "89afd1787fe9ecf030aac7c598b3dc7018f7ec98803fed29ecdd00b1cae214c0"
+          }
+        ],
+        "required_ast_kinds": [
+          "Compare"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-29"
+      },
+      {
+        "exercise": "The chained numeric comparison places an understood later scalar call in a flat guarded region.",
+        "matrix_key": [
+          "Compare",
+          "chained-numeric-or-boolean/already-supported-later-scalar-prerequisites/flat-guarded-placement"
+        ],
+        "observed_ast_kinds_sha256": "206cf02ff0b064d3fcecabffb301e0cf376114c4f9c1a352b29d7bfcb74790cc",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "0f33386c73b989a44732b58766df6db906244835e93c56975d6ffaf9c4ba0d5e"
+          }
+        ],
+        "required_ast_kinds": [
+          "Compare",
+          "Call"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-30"
+      },
+      {
+        "exercise": "The If condition is an exactly Boolean-represented parameter.",
+        "matrix_key": [
+          "If",
+          "supported-truthiness"
+        ],
+        "observed_ast_kinds_sha256": "c3935ba8059413a1b7931b0c9a889c9fb1069861c71688ad8b565e24a6c1172e",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "3a6983c1e5c20f2f1b89e445f1440840f1527c61b93cb4619bddc05e63bce8f6"
+          }
+        ],
+        "required_ast_kinds": [
+          "If"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-31"
+      },
+      {
+        "exercise": "The While condition is a supported numeric comparison and the loop has no else.",
+        "matrix_key": [
+          "While",
+          "supported-truthiness/no-else"
+        ],
+        "observed_ast_kinds_sha256": "f6eb5971e5d2552cfda86c01fae2a8fa722cecb9b7b5ffcdf2dc07b29c390ca6",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "596c28997212fd907ccf1c828bbca32cc0945ac44936cee9bf2871cbf62506ae"
+          }
+        ],
+        "required_ast_kinds": [
+          "While"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-32"
+      },
+      {
+        "exercise": "The For loop iterates an unshadowed range with direct bounded start, stop, and step.",
+        "matrix_key": [
+          "For",
+          "unshadowed-builtin-range/bounded-policy"
+        ],
+        "observed_ast_kinds_sha256": "ec1ad358d497f16d44f56adba11bef6154d09e765df89aa2b1ba4b3a9d4d4b35",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "5ddf2d866447ce56059b12244c2faae9e71b833b8939bbc92ed385d84fbdc940"
+          }
+        ],
+        "required_ast_kinds": [
+          "For",
+          "Call"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-33"
+      },
+      {
+        "exercise": "Break occurs lexically inside the supported no-else While loop.",
+        "matrix_key": [
+          "Break",
+          "supported-loop"
+        ],
+        "observed_ast_kinds_sha256": "f6eb5971e5d2552cfda86c01fae2a8fa722cecb9b7b5ffcdf2dc07b29c390ca6",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "596c28997212fd907ccf1c828bbca32cc0945ac44936cee9bf2871cbf62506ae"
+          }
+        ],
+        "required_ast_kinds": [
+          "Break",
+          "While"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-34"
+      },
+      {
+        "exercise": "Continue occurs lexically inside the supported no-else While loop.",
+        "matrix_key": [
+          "Continue",
+          "supported-loop"
+        ],
+        "observed_ast_kinds_sha256": "f6eb5971e5d2552cfda86c01fae2a8fa722cecb9b7b5ffcdf2dc07b29c390ca6",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "596c28997212fd907ccf1c828bbca32cc0945ac44936cee9bf2871cbf62506ae"
+          }
+        ],
+        "required_ast_kinds": [
+          "Continue",
+          "While"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-35"
+      },
+      {
+        "exercise": "A nonempty three-element homogeneous integer list has one direct local binding.",
+        "matrix_key": [
+          "List",
+          "nonempty-1-to-64/homogeneous-scalar/direct-local-single-binding"
+        ],
+        "observed_ast_kinds_sha256": "5867ef1bf190bdd85323333c739f7d3d4a4eed46f0051798776fef9b909c4e8a",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "0a11830de881f08b0ad6d983a3ea629c4bdee11fd1693006cb57b3aa21f99121"
+          }
+        ],
+        "required_ast_kinds": [
+          "List",
+          "Assign"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-36"
+      },
+      {
+        "exercise": "A nonempty two-element homogeneous string tuple has one direct local binding.",
+        "matrix_key": [
+          "Tuple",
+          "nonempty-1-to-64/homogeneous-scalar/direct-local-single-binding"
+        ],
+        "observed_ast_kinds_sha256": "42452f687de179e5cb841e51b1fdc934738c04262874fa7022cc067903eea061",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "ec2ade3709942c380e2550c5af090c8d448a9b7c96df704d8113b23da1b71561"
+          }
+        ],
+        "required_ast_kinds": [
+          "Tuple",
+          "Assign"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-37"
+      },
+      {
+        "exercise": "A nonempty dictionary has distinct homogeneous literal string keys and homogeneous integer values.",
+        "matrix_key": [
+          "Dict",
+          "nonempty-1-to-64/distinct-homogeneous-literal-int-or-str-keys/homogeneous-scalar-values"
+        ],
+        "observed_ast_kinds_sha256": "1f38b6f67adb7a411f25f96613a23aa1ca3f11df86f8f5944f9430d51ac28428",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "0ab95284ccb19c5e3979fa63c473fe033987c90203eea6191304c4344473f4d8"
+          }
+        ],
+        "required_ast_kinds": [
+          "Dict",
+          "Assign"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-38"
+      },
+      {
+        "exercise": "The fixed list is indexed by the signed literal -1, proved in bounds.",
+        "matrix_key": [
+          "Subscript",
+          "fixed-list-or-tuple/signed-literal-in-bounds"
+        ],
+        "observed_ast_kinds_sha256": "5867ef1bf190bdd85323333c739f7d3d4a4eed46f0051798776fef9b909c4e8a",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "0a11830de881f08b0ad6d983a3ea629c4bdee11fd1693006cb57b3aa21f99121"
+          }
+        ],
+        "required_ast_kinds": [
+          "Subscript",
+          "List"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-39"
+      },
+      {
+        "exercise": "The fixed dictionary is indexed by its present literal key 'b'.",
+        "matrix_key": [
+          "Subscript",
+          "fixed-dict/present-literal-key"
+        ],
+        "observed_ast_kinds_sha256": "1f38b6f67adb7a411f25f96613a23aa1ca3f11df86f8f5944f9430d51ac28428",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "0ab95284ccb19c5e3979fa63c473fe033987c90203eea6191304c4344473f4d8"
+          }
+        ],
+        "required_ast_kinds": [
+          "Subscript",
+          "Dict"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-40"
+      },
+      {
+        "exercise": "The loop directly names a fixed list, has one target, and has no else.",
+        "matrix_key": [
+          "For",
+          "direct-fixed-container-name/single-target/no-else"
+        ],
+        "observed_ast_kinds_sha256": "71f8af0c8cbc12dbaf3ab4838acf0932a50440c211b089fd9169c55b3bf29083",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "6fa901d0cd9c9606de98b8a2d3787e4bad5b5fd9fa39ab16fd894650b644205d"
+          }
+        ],
+        "required_ast_kinds": [
+          "For",
+          "List"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-41"
+      },
+      {
+        "exercise": "A subscript assignment mutates a fixed list after binding.",
+        "matrix_key": [
+          "ContainerMutation",
+          "any"
+        ],
+        "observed_ast_kinds_sha256": "7df428a3c85a03d50e04f5e7d468dbc29854b61eb463d3a2fcc8e19c24b2aa67",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3406"
+            ],
+            "actual_reasons": [
+              "Container element mutation is unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3406",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "e607bc24b5018d0317d86dfc74330d858f7bb3f097a2fa0f62e559d0c2df9c61"
+          }
+        ],
+        "required_ast_kinds": [
+          "Assign",
+          "Subscript",
+          "List"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-42"
+      },
+      {
+        "exercise": "The fixed list escapes its single-binding proof through a second local alias.",
+        "matrix_key": [
+          "ContainerAliasOrEscape",
+          "any"
+        ],
+        "observed_ast_kinds_sha256": "7df428a3c85a03d50e04f5e7d468dbc29854b61eb463d3a2fcc8e19c24b2aa67",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3403"
+            ],
+            "actual_reasons": [
+              "Container aliasing, escape, rebinding, or scalar use is unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3403",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "95dca283a95edd73f718ffdcc741bddb1dd7f51de2f5e953de16923fc3016a32"
+          }
+        ],
+        "required_ast_kinds": [
+          "Assign",
+          "List",
+          "Name"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-43"
+      },
+      {
+        "exercise": "A ListComp attempts to construct a container dynamically.",
+        "matrix_key": [
+          "Comprehension",
+          "any"
+        ],
+        "observed_ast_kinds_sha256": "5ecda58c5dc3ecf9e4b6799b90c86bc9b89880f60507096f7d9f027d60011731",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3406"
+            ],
+            "actual_reasons": [
+              "Container comprehensions and generator expressions are unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3406",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "cdc54b774eeac98341891f76f51e9f5fe9f6607a54606dda9c9fc83c6f52f8d5"
+          }
+        ],
+        "required_ast_kinds": [
+          "ListComp",
+          "comprehension"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-44"
+      },
+      {
+        "exercise": "An absolute preamble import resolves an optionally aliased eligible function from the explicit companion.",
+        "matrix_key": [
+          "ImportFrom",
+          "absolute-exact-sourcebundle-module/direct-eligible-functions/optional-aliases/preamble"
+        ],
+        "observed_ast_kinds_sha256": "812a950d4f965183c10772ed1ef0dd8728522fd61951c06d9b405afce44998ed",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "79e57d514ef49823d96719a6aeb3e034d6424b97b536e92cd048c1448e1a9d5c"
+          }
+        ],
+        "required_ast_kinds": [
+          "ImportFrom",
+          "alias"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-45"
+      },
+      {
+        "exercise": "A plain Import statement names an otherwise explicit companion module.",
+        "matrix_key": [
+          "Import",
+          "plain-module-import"
+        ],
+        "observed_ast_kinds_sha256": "dea8223655cb4800b0cc01e63f277c23174d3a54b6799454281c5b6a90308df2",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3504"
+            ],
+            "actual_reasons": [
+              "Plain imports are unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3504",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "ae70ec1170d9591e17d629b22d98d6d29b6524868a5415501ad3a5fdb353f787"
+          }
+        ],
+        "required_ast_kinds": [
+          "Import"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-46"
+      },
+      {
+        "exercise": "The ImportFrom is conditional instead of an unconditional module preamble item.",
+        "matrix_key": [
+          "ImportFrom",
+          "relative-star-late-local-conditional-or-dynamic"
+        ],
+        "observed_ast_kinds_sha256": "a1b5da6b02022c4b1ced063a6372742d28c1644987e22720e11115c6ef10342b",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3504"
+            ],
+            "actual_reasons": [
+              "Local and conditional imports are unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3504",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "785ea7da2fdc079de76ba86039002da8e069753ebeebcfd5445e4c37a53bcfb1"
+          }
+        ],
+        "required_ast_kinds": [
+          "ImportFrom",
+          "If"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-47"
+      },
+      {
+        "exercise": "The absolute import target absent is not present in the explicit source bundle.",
+        "matrix_key": [
+          "ImportFrom",
+          "missing-explicit-module"
+        ],
+        "observed_ast_kinds_sha256": "3858c37c0d0b2e805e3ee8c4e426d37d27fc1d00e0b5ba850892502ae744363e",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3503"
+            ],
+            "actual_reasons": [
+              "Import target module 'absent' is not present in SourceBundle"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3503",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "aabbc2ebd02647fe5c0deffeedaea972cd915f6df6e04cc44ff704a6cc6004fe"
+          }
+        ],
+        "required_ast_kinds": [
+          "ImportFrom"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-48"
+      },
+      {
+        "exercise": "The explicit companion exists but does not define the directly imported member absent.",
+        "matrix_key": [
+          "ImportFrom",
+          "missing-or-ineligible-direct-member"
+        ],
+        "observed_ast_kinds_sha256": "7c35ec7e97d66f8c349083c5a5d628ffa213f3642c57b28dcd809710a0bf8df0",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3505"
+            ],
+            "actual_reasons": [
+              "Imported member lib.absent is not a direct top-level function"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3505",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "ab321af99c2d9893cb8945e374bd6bc65ca00fca06308906b7b2aa8d516d25c9"
+          }
+        ],
+        "required_ast_kinds": [
+          "ImportFrom"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-49"
+      },
+      {
+        "exercise": "The app-to-lib and lib-to-app imports form a two-module strongly connected dependency cycle.",
+        "matrix_key": [
+          "ModuleDependency",
+          "self-or-strongly-connected-cycle"
+        ],
+        "observed_ast_kinds_sha256": "feefd4ac1f846d8a427af32a4bc8acdddd710cc4c622cc7069947a60f7e15f51",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3507"
+            ],
+            "actual_reasons": [
+              "Module dependency graph contains a rejected import cycle"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3507",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "b6f13adf59496f2d7fa9ebc6d76abd98350cdce415423a1b24c65582da79623b"
+          }
+        ],
+        "required_ast_kinds": [
+          "ImportFrom"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-50"
+      },
+      {
+        "exercise": "The module body contains only namespace-defining imports, a record declaration, and function declarations.",
+        "matrix_key": [
+          "ModuleInitialization",
+          "compile-time-namespace-only"
+        ],
+        "observed_ast_kinds_sha256": "dad6606a34505b82e824a6383edb15221c2b2bdef7fa2bc53e8d75aff563a68a",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "59137caf533f28d01560037c281faa6ca8bbff0145ca4a37b142cea487715e92"
+          }
+        ],
+        "required_ast_kinds": [
+          "Module",
+          "ImportFrom",
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-51"
+      },
+      {
+        "exercise": "The top-level assignment creates executable module initialization state.",
+        "matrix_key": [
+          "ModuleInitialization",
+          "executable-top-level-state"
+        ],
+        "observed_ast_kinds_sha256": "4d1cb35698128a88b709e02931312d95c0728e254262a92ecb25d396851fec7b",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3509"
+            ],
+            "actual_reasons": [
+              "Executable module initialization and top-level state are unsupported"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3509",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8727b5eb1ef96010df81a2fe7e891b990a78c41aa8853783bac6ae1ac2d45871"
+          }
+        ],
+        "required_ast_kinds": [
+          "Assign",
+          "Module"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-52"
+      },
+      {
+        "exercise": "Sample is a top-level undecorated base-free static record placed before the read function.",
+        "matrix_key": [
+          "ClassDef",
+          "top-level-undecorated-base-free-static-record-before-functions"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8b5b457a7bbd96bd0adcb26ed075dd279ed5dd60fe5c33e840b7637c6efd4968"
+          }
+        ],
+        "required_ast_kinds": [
+          "ClassDef"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-53"
+      },
+      {
+        "exercise": "Point has an inherited base and therefore is outside the base-free static-record profile.",
+        "matrix_key": [
+          "ClassDef",
+          "nested-decorated-inherited-keyworded-or-general-class"
+        ],
+        "observed_ast_kinds_sha256": "71cced03dd04d3ed4332999fb67a4e3566854d960d4ed3b194fda696c0a939ca",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3601"
+            ],
+            "actual_reasons": [
+              "Static-record classes cannot have bases, keywords, metaclasses, or decorators"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3601",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "ec5a1af5eb6d1e048a6a9a19f6f0871aefaadf9fbb56d5e53baa61dd400eda2b"
+          }
+        ],
+        "required_ast_kinds": [
+          "ClassDef"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-54"
+      },
+      {
+        "exercise": "Sample declares three distinct value-less int, float, and bool record fields within capacity.",
+        "matrix_key": [
+          "AnnAssign",
+          "record-value-less-distinct-int-float-bool-field/1-to-64"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8b5b457a7bbd96bd0adcb26ed075dd279ed5dd60fe5c33e840b7637c6efd4968"
+          }
+        ],
+        "required_ast_kinds": [
+          "AnnAssign"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-55"
+      },
+      {
+        "exercise": "The value-less record field uses unsupported str storage.",
+        "matrix_key": [
+          "AnnAssign",
+          "record-default-unsupported-type-duplicate-or-capacity"
+        ],
+        "observed_ast_kinds_sha256": "71cced03dd04d3ed4332999fb67a4e3566854d960d4ed3b194fda696c0a939ca",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3602"
+            ],
+            "actual_reasons": [
+              "Static-record fields require an exact int, float, or bool annotation"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3602",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "a2570698b22a662c82271aa7967b994b1ce7bd7d0feb2617bf49b357a1c9ac7c"
+          }
+        ],
+        "required_ast_kinds": [
+          "AnnAssign"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-56"
+      },
+      {
+        "exercise": "Sample.__init__ exactly assigns every declared field from its corresponding annotated parameter.",
+        "matrix_key": [
+          "FunctionDef",
+          "record-exact-structural-__init__"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8b5b457a7bbd96bd0adcb26ed075dd279ed5dd60fe5c33e840b7637c6efd4968"
+          }
+        ],
+        "required_ast_kinds": [
+          "FunctionDef",
+          "Attribute"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-57"
+      },
+      {
+        "exercise": "Point.__init__ declares int rather than the exact structural None return.",
+        "matrix_key": [
+          "FunctionDef",
+          "record-nonstructural-__init__"
+        ],
+        "observed_ast_kinds_sha256": "71cced03dd04d3ed4332999fb67a4e3566854d960d4ed3b194fda696c0a939ca",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3603"
+            ],
+            "actual_reasons": [
+              "Static-record __init__ must declare -> None"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3603",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "d46494af5b36209a8c01b5ad572f9c4190f73a7746cca43b13392143be3d071b"
+          }
+        ],
+        "required_ast_kinds": [
+          "FunctionDef"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-58"
+      },
+      {
+        "exercise": "The record class declares an ordinary get method in addition to structural __init__.",
+        "matrix_key": [
+          "FunctionDef",
+          "ordinary-record-method"
+        ],
+        "observed_ast_kinds_sha256": "71cced03dd04d3ed4332999fb67a4e3566854d960d4ed3b194fda696c0a939ca",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3604"
+            ],
+            "actual_reasons": [
+              "The first static-record slice supports __init__ only; other methods are deferred"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3604",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "4cf79f95a8f794f7198a4d593e8ea109172655451b87921f855f40a08507b44b"
+          }
+        ],
+        "required_ast_kinds": [
+          "FunctionDef"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-59"
+      },
+      {
+        "exercise": "read directly constructs same-module Sample positionally into a fresh local.",
+        "matrix_key": [
+          "Call",
+          "same-module-record-direct-positional-fresh-local-construction"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8b5b457a7bbd96bd0adcb26ed075dd279ed5dd60fe5c33e840b7637c6efd4968"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "ClassDef"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-60"
+      },
+      {
+        "exercise": "The record constructor is invoked with a keyword rather than the exact direct positional profile.",
+        "matrix_key": [
+          "Call",
+          "record-indirect-keyword-nested-conditional-returned-or-mismatched-construction"
+        ],
+        "observed_ast_kinds_sha256": "2318238af9c17f0b0637e4f04826d4555e825be2be37a8165c7366f29aaac857",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3605"
+            ],
+            "actual_reasons": [
+              "Static-record construction uses exact positional arity and no keywords"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3605",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "bc8c8c8d9ba900a0480e7e570dcc076aa953be1d98741fcfdd850e29eb82d429"
+          }
+        ],
+        "required_ast_kinds": [
+          "Call",
+          "keyword"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-61"
+      },
+      {
+        "exercise": "The fresh record value is copied into alias, violating immutable no-alias ownership.",
+        "matrix_key": [
+          "RecordValue",
+          "alias-rebind-copy-escape-parameter-return-call-container-identity-or-truth"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3606"
+            ],
+            "actual_reasons": [
+              "Static-record instances cannot be aliased, rebound, escaped, compared by identity, tested for truth, passed, returned, or stored in containers"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3606",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "1518b20f9ef8420bab746ecb7a690b5f96be81b8963a4717c3d786f8f3e20f4a"
+          }
+        ],
+        "required_ast_kinds": [
+          "Assign",
+          "Call"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-62"
+      },
+      {
+        "exercise": "read returns sample.count through a direct statically bound field access.",
+        "matrix_key": [
+          "Attribute",
+          "direct-statically-bound-record-field-read"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [],
+            "actual_reasons": [],
+            "actual_status": "Converted",
+            "deterministic": true,
+            "expected_diagnostic": null,
+            "expected_status": "Converted",
+            "generated_c_published": true,
+            "independent_c_conformance_accepted": true,
+            "independent_c_conformance_message": "accepted",
+            "output_fingerprint_published": true,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8b5b457a7bbd96bd0adcb26ed075dd279ed5dd60fe5c33e840b7637c6efd4968"
+          }
+        ],
+        "required_ast_kinds": [
+          "Attribute"
+        ],
+        "state": "supported",
+        "witness_id": "feature-matrix-63"
+      },
+      {
+        "exercise": "An Attribute target mutates the immutable record field point.x.",
+        "matrix_key": [
+          "Attribute",
+          "record-mutation-unknown-dynamic-or-chained-attribute"
+        ],
+        "observed_ast_kinds_sha256": "80ac504e7a5a9751ada5aaa3449426818a59bf378d7014c17eb159c91aeab747",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3607"
+            ],
+            "actual_reasons": [
+              "Static-record fields are immutable after construction"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3607",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "c837dd28c763aa96a8d40e34111120d3e5914f7c9102be2eb339a4ef633097a6"
+          }
+        ],
+        "required_ast_kinds": [
+          "Attribute",
+          "Assign"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-64"
+      },
+      {
+        "exercise": "The ImportFrom attempts to import a record class across module boundaries.",
+        "matrix_key": [
+          "ImportFrom",
+          "record-class-import"
+        ],
+        "observed_ast_kinds_sha256": "8d28bc46354ee6f9401199f4218b2a12e93ce27ffad99062837ffbda9b443fc6",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC3610"
+            ],
+            "actual_reasons": [
+              "Record class import records.Point is outside the module-private Phase 13 record boundary"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3610",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "8931d2d2848956b97183eeba14abaa89fa527a91d3022d3b0c9783f2e401a3f2"
+          }
+        ],
+        "required_ast_kinds": [
+          "ImportFrom"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-65"
+      },
+      {
+        "exercise": "A Lambda is bound as an indirect call target value.",
+        "matrix_key": [
+          "Lambda",
+          "call-target-or-value"
+        ],
+        "observed_ast_kinds_sha256": "1f5ed4c065ac36c01c5c02573b5e449621eb7ae0075f460f52b56fc6e3f5bc36",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2901"
+            ],
+            "actual_reasons": [
+              "Unresolved call target: target"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2901",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "f3b2506969fff0e49665a612feec075a9cc4de12eb3021315282411646ce695e"
+          }
+        ],
+        "required_ast_kinds": [
+          "Lambda",
+          "Call"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-66"
+      },
+      {
+        "exercise": "The Phase 9 profile owns the original AsyncFunctionDef boundary and emits PYC2902; the current module profile rejects it earlier as ineligible module initialization.",
+        "matrix_key": [
+          "AsyncFunctionDef",
+          "any"
+        ],
+        "observed_ast_kinds_sha256": "31c123aa13982f2e95dcecc3969660c38983675fb0f2f2455682cbbb28914c8e",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2902"
+            ],
+            "actual_reasons": [
+              "Phase 9 accepts only top-level function definitions in the selected module subset"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2902",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {
+              "renderer_version": "c-renderer-v0.9",
+              "rule_set_version": "phase9-functions-calls-v0.9"
+            },
+            "result_sha256": "516e7565bcddd15fc30ce0df8d6a4b1ff3c03181ba7870a275b4f763e83c0d23"
+          },
+          {
+            "actual_diagnostics": [
+              "PYC3509"
+            ],
+            "actual_reasons": [
+              "Only eligible synchronous top-level functions may define a module namespace"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC3509",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "current-default-precedence",
+            "request_options": {},
+            "result_sha256": "bb0deaa4693b464cef2f175848f8d12e43fa1dc2d25c77c5876577390da7553f"
+          }
+        ],
+        "required_ast_kinds": [
+          "AsyncFunctionDef"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-67"
+      },
+      {
+        "exercise": "A Match statement is present while an explicit trailing return prevents fallthrough from masking the deferred boundary.",
+        "matrix_key": [
+          "Match",
+          "any"
+        ],
+        "observed_ast_kinds_sha256": "fe371717ed5f122c8b1355eac4b086537cc6de783bc4831c4245157bfe63e3f1",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2812"
+            ],
+            "actual_reasons": [
+              "Unsupported statement in the selected subset: Match"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2812",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "fed743d393c1d9fbee33b6a4418d31e6eeb4c22217c0772807118e83ff909e75"
+          }
+        ],
+        "required_ast_kinds": [
+          "Match"
+        ],
+        "state": "deferred",
+        "witness_id": "feature-matrix-68"
+      },
+      {
+        "exercise": "Try is intentionally absent from the 69-entry matrix; an explicit trailing return prevents fallthrough from masking the default unsupported boundary.",
+        "matrix_key": [
+          "Try",
+          "unlisted-node/default-unsupported"
+        ],
+        "observed_ast_kinds_sha256": "110af70f77b32f2ce6a8f08e1245a85cd8de6059fdfa44a3e5c445dd4ff0ac83",
+        "profiles": [
+          {
+            "actual_diagnostics": [
+              "PYC2812"
+            ],
+            "actual_reasons": [
+              "Unsupported statement in the selected subset: Try"
+            ],
+            "actual_status": "Rejected",
+            "deterministic": true,
+            "expected_diagnostic": "PYC2812",
+            "expected_status": "Rejected",
+            "generated_c_published": false,
+            "independent_c_conformance_accepted": null,
+            "independent_c_conformance_message": null,
+            "output_fingerprint_published": false,
+            "profile_id": "matrix-owner",
+            "request_options": {},
+            "result_sha256": "819278b531054aec86085934574f8d74ba3aed9cc1804cbfda76107a15230745"
+          }
+        ],
+        "required_ast_kinds": [
+          "Try"
+        ],
+        "state": "unsupported",
+        "witness_id": "feature-matrix-unlisted-default"
+      }
+    ],
+    "execution_sha256": "66527ec9e7eff8debe0d5ba9f36738e349c684ce544f2339608ecf52bd9cd78f",
+    "expected_matrix_entry_count": 69,
+    "expected_matrix_sha256": "ca78dff3ea203130781f5e0fde879c0ca9d7b7a0e550a05ab5d46ea3432cc01a",
+    "generated_c_compiled_or_executed": false,
+    "matrix_contract_mismatches": [],
+    "matrix_entry_count": 69,
+    "matrix_path": "specifications/feature_matrix.json",
+    "matrix_schema": "pycforge.feature-matrix/0.14.3",
+    "matrix_sha256": "ca78dff3ea203130781f5e0fde879c0ca9d7b7a0e550a05ab5d46ea3432cc01a",
+    "matrix_state_counts": {
+      "deferred": 1,
+      "supported": 37,
+      "unsupported": 31
+    },
+    "matrix_witness_count": 69,
+    "passed": true,
+    "precedence_profile_execution_count": 1,
+    "report_sha256": "e4a2ddf3e202ee4630f7a0c217afce8c3fb63f297fa48873af1a664b11eecc85",
+    "total_primary_execution_count": 70,
+    "unlisted_default_witness_count": 1,
+    "witness_errors": [],
+    "witness_manifest_sha256": "b0b763058399edca6482ba7ab93c791f8b93c840b46f32a7cd0abe7813ba8b18"
+  },
+  "full_supported_subset": {
+    "audit": "checkpoint-e-full-supported-subset",
+    "c_toolchain_invoked": false,
+    "case_count": 80,
+    "case_digests": [
+      {
+        "case_id": "fixed-literals",
+        "result_sha256": "af1008ce5bb616b1aa24a93a610801d3489d2cdd7576dde9d9b6f4af2b18122a",
+        "shape_sha256": "35534dcd175847a5723169c532bb7ae1c5cf2cb0c2723d67513c4754763a1018"
+      },
+      {
+        "case_id": "fixed-arithmetic",
+        "result_sha256": "e2288ab05e9b52bd54fed995ea20bc63b46e291e067f66c574b79428e0c78c54",
+        "shape_sha256": "e8d8e162575270ec850ef8730dfa0ca6c11f79a39a322f3bb803881330b4336e"
+      },
+      {
+        "case_id": "fixed-positional-call",
+        "result_sha256": "4ef0ee7d23710e7008e2ef004a02bdafbc2c8a40ac5b10b0b0ad00b974ea6b72",
+        "shape_sha256": "2fc10d2e2fcc2d03cdabce6b27c7b01fdfd376b50712515be73953ce00d2c8ff"
+      },
+      {
+        "case_id": "fixed-if-else",
+        "result_sha256": "407a7d9a435d9cca7b97ce71fcee4fad80cfb20013a506cd174a1b6fe1739668",
+        "shape_sha256": "dfda22681beb147455d7cf61292a565e2a0e3a23824fc15e88fc66ce5661a366"
+      },
+      {
+        "case_id": "fixed-while",
+        "result_sha256": "8d2fec205b58d7429effae02c3a93187b7c688fdacb65ef263c7b1e866ac5345",
+        "shape_sha256": "af7d77c2a971b668d2cd57e19e5fbe7fa89ad2cbeb278fdc253d31d64375d663"
+      },
+      {
+        "case_id": "fixed-range-for",
+        "result_sha256": "78f7410971b0035b652966f6f6babec8662914d0099c5c26141fc7867812c848",
+        "shape_sha256": "fa5c0c10b12abea102df9c24eec6b5890b785968171c6893ee260ef83d3b0b0b"
+      },
+      {
+        "case_id": "fixed-list",
+        "result_sha256": "8728ffcd9101b29a6b5da3e1dad1763abb17fa7356c06acdfb60659dd3a9e54e",
+        "shape_sha256": "6dc9cd54847126a68cfc9018bfd1ab44a34fa2cf08ad04e0b1f14a5e24e20e22"
+      },
+      {
+        "case_id": "fixed-tuple",
+        "result_sha256": "7c5b5aecc8eba7af05fda0b86c1b87c91fd7ef2ea234125f33b037a0b3dbbd5c",
+        "shape_sha256": "0a05bafc34ec0f09ef78d68d8855e2baa85f240d07105d07fded84ff5d828802"
+      },
+      {
+        "case_id": "fixed-dict",
+        "result_sha256": "e3dac65510816e8722af33071842497302ab27dfc2589dc207a995bb3e374d93",
+        "shape_sha256": "6318548ec38b0f2c5a2c30c679a1f9f0a54f2add0ecaf2555c02b802be162081"
+      },
+      {
+        "case_id": "fixed-module-bundle",
+        "result_sha256": "d9ab8e14762227d61c19fe4c4bc2f17b23b89d7d286155d7f233d3ccb4e66b1c",
+        "shape_sha256": "a11f684b2e3c0a69d7e936ab000c9839f853547e027996e403dc96a596e000b0"
+      },
+      {
+        "case_id": "fixed-record",
+        "result_sha256": "a63aeebae61e3634bf1b7ae21ba0732ddf16dfce6059049756ae8d4d4facf146",
+        "shape_sha256": "cb9f7e95a44ba3679222f26b1f6ec08084b61c827cbbeea602f1206933557090"
+      },
+      {
+        "case_id": "fixed-floor-arithmetic",
+        "result_sha256": "077dab49c2310eb01356c7f4783050e6ccdde27f1ad9716d17452182122e65e1",
+        "shape_sha256": "b3c7b4b3443eb118067adba1845e7b756add072b4c9c023146df40f3fa73d4d6"
+      },
+      {
+        "case_id": "fixed-boolean-region",
+        "result_sha256": "ca0ddf70cb5f4523ad9fdb63c2af04a6e9a0202245a469c23cc021820d06c83e",
+        "shape_sha256": "d44799783de82dd126c272302df1d9b08430658a72c07e6ae91f123de8c9ccd0"
+      },
+      {
+        "case_id": "fixed-comparison-region",
+        "result_sha256": "0d2280a9e9a76de2847989ae7c9897b2ba4e07f2c533e68689142b57e20fe8b7",
+        "shape_sha256": "5b98794132fdc956a96cb0455a258bb81a404cd40584a475ca185931ccbb5818"
+      },
+      {
+        "case_id": "fixed-keyword-call",
+        "result_sha256": "e51b259f24cb3d834a3624fa69db31cb1b449c7d0385124a9a7bf4f87d9e495c",
+        "shape_sha256": "b60028ef71918117041fccc573d512262dc52d18474a730e9a4e5b9c2a03ea49"
+      },
+      {
+        "case_id": "fixed-keyword-only-call",
+        "result_sha256": "a62ad6a6cdf5eabfe570122f4dd38a51f504b935c38e577e206e9c184936f2b6",
+        "shape_sha256": "5a30b1adb04986484e6073211c1ff9898d5cd1b2f6eedd7770dfc6c37eb1138c"
+      },
+      {
+        "case_id": "fuzz-000",
+        "result_sha256": "e00542bf2f893f92ccd2f9b2c3d0e39a30fe3653b1cbf064f5b1ef5c5c46b808",
+        "shape_sha256": "57845f78f5af7630fbd2a16aaa3f12af70effefc439730232ee71ecc16e65832"
+      },
+      {
+        "case_id": "fuzz-001",
+        "result_sha256": "90489fd3cfddd24232f6a18caa849e5d2b62a08b72a5e288f5237cd69e6f874d",
+        "shape_sha256": "dff02325bc8720dfffc428c8d4d5291c69f490204b797131f00ac13267a94d01"
+      },
+      {
+        "case_id": "fuzz-002",
+        "result_sha256": "f536f85a59c723c675e6662b1c9dfef68b701c10221c88dddd299efca1d2c939",
+        "shape_sha256": "d67a118da1e1fed1c4157587eba41f30f3fe7f9e9e8d77ac807a16f788c400a2"
+      },
+      {
+        "case_id": "fuzz-003",
+        "result_sha256": "1a656b880d0f2c33864f1c7ea6feb9d97379d91d6c4f9c1a6dc2839474861bfc",
+        "shape_sha256": "f8cb02cffcab87afab8d0c8d057f6d3fc1834759e70366f02c8c574a47e2e58b"
+      },
+      {
+        "case_id": "fuzz-004",
+        "result_sha256": "53a3ca912b29425d20c82e59e57ed5eced56a7e5131240adc83225f4489d7790",
+        "shape_sha256": "b9f0d91a16ae0d4a0017611138e74985d81c48581cbc334f111f33c3f4fc5595"
+      },
+      {
+        "case_id": "fuzz-005",
+        "result_sha256": "e61b602e868deeb3b6adfc4cdce279a2eec6324ab987ffbbdccdb9a4314abe90",
+        "shape_sha256": "13df2fff91231de19a1ec5ca4e278a9e32d1cc597db77cec2b74488f8bac2c2e"
+      },
+      {
+        "case_id": "fuzz-006",
+        "result_sha256": "1627a6cebb090233a619580720f67ae4d7f8114293c915697fabc096761959b9",
+        "shape_sha256": "58ab55ce3f7dea81983c6f31d98339d172057b2bea3663a84a0c07357fd41dee"
+      },
+      {
+        "case_id": "fuzz-007",
+        "result_sha256": "2168b86b7608506d209aa94fd1360558ea716aad52b74c6fb64b42d8050883a8",
+        "shape_sha256": "20eb62ed03ac11df8e08815ca6123b8a7779c762a63554387f5bf9a40bd38abf"
+      },
+      {
+        "case_id": "fuzz-008",
+        "result_sha256": "0325b333575d7037675b2b5eb87f7b078d72a4163a972bf3adfe79305943d825",
+        "shape_sha256": "dfbb0335ddb499b5f90b4e91413c8527db831ac232cdd6e3d56f840ca2e82805"
+      },
+      {
+        "case_id": "fuzz-009",
+        "result_sha256": "33c197851e2bad92fb053101ec887d382350633595cb77cdac8d292ce34e3616",
+        "shape_sha256": "169f67441e55cb361bb8039c05376cb0808825e95c5d91219600a0b203f5e7a1"
+      },
+      {
+        "case_id": "fuzz-010",
+        "result_sha256": "cce2d260b6af995bc0185fe610c0eeab82a134129d1dacac657feee6f48f4a3c",
+        "shape_sha256": "f29ae8e92c69eafbca8d52b79310e31cc1e4832586670103913e55d0875efd9a"
+      },
+      {
+        "case_id": "fuzz-011",
+        "result_sha256": "4bfc7ef16028433549b6ce0d6e0b1b85d9da7b81d46c7402f338b08f4613edf8",
+        "shape_sha256": "61147e723c3163bed24daf2529f0daced682420b4ceab3ee646989243d0493fa"
+      },
+      {
+        "case_id": "fuzz-012",
+        "result_sha256": "3810a5a19dc8bc673dd8b803aa4d24e6202cfc99209ac514adf66e610a80f115",
+        "shape_sha256": "e1f0c146e95986f87af22b5eb83e827b4b788ae41a2a47857cb04831066a9349"
+      },
+      {
+        "case_id": "fuzz-013",
+        "result_sha256": "d6ef964f9c8c2f7291c0ef16c9b69aded69223596f4c8ad79ddb3dba1c1c7520",
+        "shape_sha256": "50f5085fb96dab04fffe702181e23a6a6705b626e08adc8b13b496e59543314e"
+      },
+      {
+        "case_id": "fuzz-014",
+        "result_sha256": "d0845abb48d02ed5d2f65bb0494ee8530f9add1ee6793d2f8571b18062a1a3d9",
+        "shape_sha256": "aaafe997b8808f3a639cd1d05745261b5efacc76210edaeeb9eac3971f161b0c"
+      },
+      {
+        "case_id": "fuzz-015",
+        "result_sha256": "217d75efa801178c36e4ab462e039fd546ba8bdc2aae88e40e0ff7416ab434d1",
+        "shape_sha256": "2207f029f5274c53f6c8ed9ef188cdaa0212893685e268fa01702722007691ce"
+      },
+      {
+        "case_id": "fuzz-016",
+        "result_sha256": "9d8957bed4a3fb4cddc9286e739eed363bdf5c1839e13a2e0efc244953ac3269",
+        "shape_sha256": "45b4659d4514d4026d20563acc8c727c788e49b8e1f6d99b7b6421ee9332dd14"
+      },
+      {
+        "case_id": "fuzz-017",
+        "result_sha256": "d5299799d41e8fad97d811828dad83a81ad6dac72fe6073e90a96fb88648bcb8",
+        "shape_sha256": "fcb2509f25973709ac2938740dee0fe46ec6e7ca7ae30114d0c099aa76132fcb"
+      },
+      {
+        "case_id": "fuzz-018",
+        "result_sha256": "30454f328363d12be78bf251fda9fbffa8688584b5d211ed3d8f40a5f98d343e",
+        "shape_sha256": "89207984ceaaf09f43a8847a298f29800e407d4227e5f0e524c028a16af405c7"
+      },
+      {
+        "case_id": "fuzz-019",
+        "result_sha256": "d45f6aed682d9d1c2e37cb32df5c21e34eb006f7621777e93654b12e7cf00c9e",
+        "shape_sha256": "77c1ee54ba8d6246827a4dbc1f6af85827da2ae18548e17079622973e0532c16"
+      },
+      {
+        "case_id": "fuzz-020",
+        "result_sha256": "7f4b9a75fb22e1fbbe951a8acbbda035a21dc18459767e645d40d762fa7eea41",
+        "shape_sha256": "243cb42af4aad36a845dc6a708ce1eb04d4850f986a62c1237e7dc5205d705e9"
+      },
+      {
+        "case_id": "fuzz-021",
+        "result_sha256": "97b4540d3a8cc95a797fc1c5d606d7ec9052c9303fb82ff0e10c4025792180ab",
+        "shape_sha256": "22b7730fde3a2feb4447a6e8ac22fbfcfd864407ab522f96a1795cdb81a56236"
+      },
+      {
+        "case_id": "fuzz-022",
+        "result_sha256": "c16402076fe4c093a0604fb9faf6ab8023ddbc3397b7a291caaee58047ede514",
+        "shape_sha256": "2e0141c534ae4b9578dff97b3cda2129173047bd23862fd55d4b80bfd4736589"
+      },
+      {
+        "case_id": "fuzz-023",
+        "result_sha256": "5d4f1c3b4602fdf2fc66b38ba2513e6ab15be3f977d6254f32cccc1aed40b3ca",
+        "shape_sha256": "a04de4b3af72acb0a2e26eab43af442eb8c5716d39c309d5ab6ecc71cae7fd59"
+      },
+      {
+        "case_id": "fuzz-024",
+        "result_sha256": "2d88cd358453d3f6b38de42271a1f151de38688e353fb00d964f0ef05df2711b",
+        "shape_sha256": "f914a346f45451ef4322c74b4ddd18c7696a7551fccf1ef53946d40a993debed"
+      },
+      {
+        "case_id": "fuzz-025",
+        "result_sha256": "8fe1448b756a92c07b4a6f9088526a54f4b5376f884c7eea37d25edd8fd6a5a6",
+        "shape_sha256": "50886cd0fd9c7f9fef76566ce6ac9f9136c7c15ec7798d193f2f24bddadef278"
+      },
+      {
+        "case_id": "fuzz-026",
+        "result_sha256": "ff8a48255381a741ba03ed27b78a634ee82c3db6d6ef5514fff4b00b09caa3cc",
+        "shape_sha256": "822fc7c9999c4f15b3872dc56bb3a227b7bb7706dd83e863b6b639efd9730a53"
+      },
+      {
+        "case_id": "fuzz-027",
+        "result_sha256": "56d340743907c8083dc0d15c98ff5e5fdb58c71bf2ff32368a78e83707f9c24b",
+        "shape_sha256": "062551c7e9a341411a3b766dc8a701df912a3a158de57b2b06320f38eff40ecf"
+      },
+      {
+        "case_id": "fuzz-028",
+        "result_sha256": "2b640a244d3a324a016b7cc81bac1fea0331b394e32f5c3658d4a6cae130ff31",
+        "shape_sha256": "d6d99c18da16474971cab1c26ef63e2c635db1650cd0944f98315342d7632d2d"
+      },
+      {
+        "case_id": "fuzz-029",
+        "result_sha256": "0ec32f9cf892c5774276cdb85ecc793e34546de0e44d011af2384c4fac18f4de",
+        "shape_sha256": "7565ae04846987ffa9dbe3dc6c2c1efd00c30c284f47f261b1fb772e50607803"
+      },
+      {
+        "case_id": "fuzz-030",
+        "result_sha256": "d96224de65cc14177e1778b894117fa69e39ea42451e1333c3b4fa9760a5b400",
+        "shape_sha256": "afb5f0995ed1a151fceaee7f3df65bd5e100ea66b56f4bce4f8a2d0e61f1af9f"
+      },
+      {
+        "case_id": "fuzz-031",
+        "result_sha256": "7b3641228179ae889ad2a507e8d95ed5a03e36bd345bc5bf66b914351fdfbcbb",
+        "shape_sha256": "f75768b154a184f1fb0836bc8e6fb7c8403d640256f402a8d4deb7dfdd164458"
+      },
+      {
+        "case_id": "fuzz-032",
+        "result_sha256": "43997fa78f8e12937113629e66b4db10101df482421fed044536df0a730a004b",
+        "shape_sha256": "f4cd4e1575e38e0e7669619551e6bfc248bffd4a05f17e03363edf632b7508df"
+      },
+      {
+        "case_id": "fuzz-033",
+        "result_sha256": "30a733fba8b750226b35f6cfa7f3f31c7ae059e7bb73fc415b17cfc4ef708267",
+        "shape_sha256": "01f8b04e5cbec06d540ab97a64eec6d4fac9c93551659a754fbea836fb4e2014"
+      },
+      {
+        "case_id": "fuzz-034",
+        "result_sha256": "9e9acc7c23afe9d534a0ca10d0343a02c09a8d58b71dc6626163c37bed3e2287",
+        "shape_sha256": "6ec3e8e27a971cbc9ac1420e5ec63d5112d5cc4c985ce7506decb9ac1d207125"
+      },
+      {
+        "case_id": "fuzz-035",
+        "result_sha256": "6e228b68f46f9bcc066f39e5ad4089489e8317c739ce5571891ca11e91c0021f",
+        "shape_sha256": "5f998c4b6b59e50df6aed7c541d31386acc7dff92a55ad734328b1b04d34e5c1"
+      },
+      {
+        "case_id": "fuzz-036",
+        "result_sha256": "a2212e3bbdef10384a833567e4fdf37133128c6fe4cfde4fdba70dffa093599c",
+        "shape_sha256": "55547dc8453a35ea522b1f52049c336199bf8b8b35e3f6b253ada4d2af432457"
+      },
+      {
+        "case_id": "fuzz-037",
+        "result_sha256": "8e9bf55d8437478054eba48bca2e0b5da80c690d228aaf811bb47e47c7d01b65",
+        "shape_sha256": "663509775243605d2081441d3c0b8a47335271339874cd4ee7c5dab83bba2904"
+      },
+      {
+        "case_id": "fuzz-038",
+        "result_sha256": "e3ba774a401c58a97d6dc3aa9d52e9e6b0ca5015e24d0be959fc76cef30fe319",
+        "shape_sha256": "98ca9503d12637ad79b1e06637d96376d7c82fd9bdbd827113dfbc123e95d49b"
+      },
+      {
+        "case_id": "fuzz-039",
+        "result_sha256": "ab3e391a5c73382ee6648db63d1694342bf6065e20b8ec7b98f07b02dc99e8ab",
+        "shape_sha256": "b38686876d99bfef4de9b119dc347ca117ad437ec955de3cc4469f5c9c7da4fb"
+      },
+      {
+        "case_id": "fuzz-040",
+        "result_sha256": "ae212220221f843300dd2f62ab5c02a4384b2e5b37659152be05ec7d8e77f3a9",
+        "shape_sha256": "8c53e5152335d8e983e3bbd29639557b7f32eee77f8d521fd65dced302e0e89c"
+      },
+      {
+        "case_id": "fuzz-041",
+        "result_sha256": "0b2505d35f892be06df046a6411469b6d72fb42c272d98196a584e3f2906a746",
+        "shape_sha256": "31bbe48eda8dfe795fc7b99905f0699d3354df85667ed9b17d88478c6093192b"
+      },
+      {
+        "case_id": "fuzz-042",
+        "result_sha256": "b929a47e0a0f9c35bb2b544ab342f46d8e15fb5381ab903aabd41fd7eba32008",
+        "shape_sha256": "934e026e97f1d76ebb0ba91fc4380e339a262f13080898a618dccce09da3bf4a"
+      },
+      {
+        "case_id": "fuzz-043",
+        "result_sha256": "db74ccc368d87180e6f2caee31a12deff87d80cc1448b6e28e2515f4d1c592a8",
+        "shape_sha256": "da5926ad9b194c4c747ac0d7ce906dfdb3f7c6e71dbd91c354db2136698d6994"
+      },
+      {
+        "case_id": "fuzz-044",
+        "result_sha256": "4ab116e3b99f171526dc9f97ced8f697f0002be1044366fc0aec56b419cbae07",
+        "shape_sha256": "8b7129465e03cc413d9f47d7ba46eded3514d6c3646794933f5684ec886841b4"
+      },
+      {
+        "case_id": "fuzz-045",
+        "result_sha256": "1a7e2bb10dd4bace7d1f06340420e7c7d75ee72d29619008417906e213254a47",
+        "shape_sha256": "bf28d0a807a0ae1938e07b28cc566a5d9785ac08aeaf581249adc7f57262a753"
+      },
+      {
+        "case_id": "fuzz-046",
+        "result_sha256": "975f64a3cdf137e3fd6dd7d1dcf4965abeb21024d7d40f8d8f93f3c1a2cb3cc5",
+        "shape_sha256": "584c48c07ad4c53d72c1c58e6cbb3eb2b59bae8062d0c34e5bb05444e459f022"
+      },
+      {
+        "case_id": "fuzz-047",
+        "result_sha256": "3a9bef0d53dce4b8e0dd6942b7f1b3cc468f1ab7823740b65e65c050ae216a2e",
+        "shape_sha256": "977f0e55237d7826e14bf8c4866688542781dc951a0db9e1594de8da981f460a"
+      },
+      {
+        "case_id": "fuzz-048",
+        "result_sha256": "9eefb299557f4a822561d057de109f7980567a67daff7983227e51983a3c1f36",
+        "shape_sha256": "10b69fea906d8098812b4a414c681e6043a380c224499932527ecb2d6dfb7e99"
+      },
+      {
+        "case_id": "fuzz-049",
+        "result_sha256": "3fa629c34c7a91aca527a78c256144fd12142185af19c2bb5f2f51a6b59b061b",
+        "shape_sha256": "5d75ee11f7d860e2041429faec3207b9ca125e0e22ad32f168d5399cd332718e"
+      },
+      {
+        "case_id": "fuzz-050",
+        "result_sha256": "d0bd34609fd5a6ce23b4e444b588b92c8ad58963a7b7d4c2ac1062737f08c9b5",
+        "shape_sha256": "eff5844e77c70eff7ac41d18022adc5ad44b33080506fe97bbb70366fa8a80c7"
+      },
+      {
+        "case_id": "fuzz-051",
+        "result_sha256": "e3c5c1bf4af6b1a2b7927720e72a432160c320f2e114fdd2384c791810419ad7",
+        "shape_sha256": "03387868c5f26aa4fba83918e27c184ecb93f5f38ccb7684246c543ce625078a"
+      },
+      {
+        "case_id": "fuzz-052",
+        "result_sha256": "00bf4d2d48dc3e7f79dd6b7250cc2ab4895c2c884915c8987b9ce1071f08ebaa",
+        "shape_sha256": "1eed25ab187bccf2ecd8f80fa49d31269be7cc5a6e2f2774286b7e55e39635a7"
+      },
+      {
+        "case_id": "fuzz-053",
+        "result_sha256": "3cbf14568ed3ea89fcfe3f5debe1f6ce7b925b2fd333ad5a0faaafe112b1bbe9",
+        "shape_sha256": "cdef26438126d2bf955ca7cd5c13bd5d0d96ec99cff1923afa6e57b45cca7084"
+      },
+      {
+        "case_id": "fuzz-054",
+        "result_sha256": "715252604f5d528b082f9ac03066541a548c8fb62733752a1d66ffbe7dfe6b88",
+        "shape_sha256": "5c21ed42ead04bc288c19f32ccaff115eef48cb0b942035a69bb8eafac751f1f"
+      },
+      {
+        "case_id": "fuzz-055",
+        "result_sha256": "71ddd40862c8ada6fbf8cb3ad26b75d76daa768bf854ed2d9bbab2a2bb1573f3",
+        "shape_sha256": "cc3f08afc7098b1a38b857c827aad8a210ef914309d3eb4d2c37dcb24e8cdde6"
+      },
+      {
+        "case_id": "fuzz-056",
+        "result_sha256": "bb0605457e142024a21663c9690b23bf08e15693dd7abad82c65820a640d6040",
+        "shape_sha256": "8199bed5706c318589f83d32fddf147097548af2c86a46eee871556e2272ccd7"
+      },
+      {
+        "case_id": "fuzz-057",
+        "result_sha256": "d5e5939d468406570e2d16e53964e35e89101aad91309bda3c495bc92e3ab548",
+        "shape_sha256": "a9e6ae5b06f68a321a2d19dcbbc7eb336cc5d778c9e1c9f329452b87696e510b"
+      },
+      {
+        "case_id": "fuzz-058",
+        "result_sha256": "1cdba63cda2aea813549ccc7f5414c604649ed74fa20f932ec78aa21621b7d40",
+        "shape_sha256": "2f0656bf206d326fee14d72da770bcccebc7635c039f6c70489f8c466f92a56f"
+      },
+      {
+        "case_id": "fuzz-059",
+        "result_sha256": "079771ab34c359c4e40ab5345778aa40642b98fdc62e6d8fdcd2c46f0e77e3e6",
+        "shape_sha256": "1d04d7dd6144a7729ef120fce723e157cd7f9b1415d7e3e2ec96bcd03bf83863"
+      },
+      {
+        "case_id": "fuzz-060",
+        "result_sha256": "ff5fa75b3c72f9fdaaaafafb8249e179b8513810c857373e62e961a0b20b6d4a",
+        "shape_sha256": "1c1cb11e9bbc3a172e6afc210f8d31ccdc632504f0fb5a7c4fc45eac144777ca"
+      },
+      {
+        "case_id": "fuzz-061",
+        "result_sha256": "a795fcd49296fdd4a20c393e5bfd7a130df3b3318030fc7892ef46c0c3261f8c",
+        "shape_sha256": "ef8a6a148a4400fe0c5b07b4b3fb3861289fc0d8a23b28e7827f8982723c3720"
+      },
+      {
+        "case_id": "fuzz-062",
+        "result_sha256": "f489bee001d2191456c3c7004baf1d0f03f3ba9fd153f251e4c2cc01015a8e44",
+        "shape_sha256": "71ccdf367041689b37304bc307da710b12d3530536417b0e0fea9e2557c99002"
+      },
+      {
+        "case_id": "fuzz-063",
+        "result_sha256": "dec5a56ed98e85fc7c290e8ddb96adb92c4336ede25993ab1b8c9ba86a39e207",
+        "shape_sha256": "1dfd3505b1d560ebebc243c303aed30bee41bdb4b06c7a1555fda4e243abad0e"
+      }
+    ],
+    "corpus_sha256": "b42f01c16cdeb466c9f690ce67be1bee3fe20f136f87b05746ba240d2b1701d5",
+    "errors": [],
+    "fixed_case_count": 16,
+    "fixed_feature_witnesses": {
+      "fixed-container-iteration": "fixed-list",
+      "floating-division": "fixed-arithmetic"
+    },
+    "generated_c_compiled_or_executed": false,
+    "generated_case_count": 64,
+    "generated_complete_family_cycles": 4,
+    "generated_family_counts": {
+      "assignments-and-arithmetic": 4,
+      "boolean-conditional-region": 4,
+      "bounded-floor-arithmetic": 4,
+      "bounded-range-for": 4,
+      "comparison-conditional-region": 4,
+      "dict": 4,
+      "direct-keyword-call": 4,
+      "explicit-module-bundle": 4,
+      "functions-and-positional-calls": 4,
+      "if-else": 4,
+      "list": 4,
+      "literals": 4,
+      "required-keyword-only-call": 4,
+      "static-record": 4,
+      "tuple": 4,
+      "while-break-continue": 4
+    },
+    "generated_feature_counts": {
+      "fixed-container-iteration": 8,
+      "floating-division": 4
+    },
+    "generated_missing_families": [],
+    "metamorphic_conversion_count": 240,
+    "metamorphic_transformations": [
+      "leading-comment",
+      "crlf",
+      "blank-lines"
+    ],
+    "missing_supported_families": [],
+    "passed": true,
+    "report_sha256": "2fa7089e7b8bbec1c89a88dcabffdd029e2dbd5ff5cff10e4ed42d883e0a7594",
+    "seed": 21897254,
+    "supported_families": [
+      "assignments-and-arithmetic",
+      "boolean-conditional-region",
+      "bounded-floor-arithmetic",
+      "bounded-range-for",
+      "comparison-conditional-region",
+      "dict",
+      "direct-keyword-call",
+      "explicit-module-bundle",
+      "functions-and-positional-calls",
+      "if-else",
+      "list",
+      "literals",
+      "required-keyword-only-call",
+      "static-record",
+      "tuple",
+      "while-break-continue"
+    ]
+  },
+  "generated_c_compiled_or_executed": false,
+  "identity_mismatches": {},
+  "internal_release_records": {
+    "audit": "checkpoint-e-internal-release-records",
+    "errors": [],
+    "missing": [],
+    "passed": true,
+    "records": {
+      "evidence/checkpoint_e/release_report.json": {
+        "schema": "pycforge.checkpoint-e-release-report/0.14.4",
+        "scope_status": "sealed",
+        "status": "promoted",
+        "version": "0.14.4"
+      },
+      "transition/checkpoint_e/manifest.json": {
+        "schema": "pycforge.checkpoint-e-manifest/0.14.4",
+        "scope_status": "sealed",
+        "status": "promoted",
+        "version": "0.14.4"
+      }
+    },
+    "required": true
+  },
+  "metadata_roadmap_feature_matrix": {
+    "audit": "checkpoint-e-release-metadata-and-roadmap",
+    "converter_contract_version": "0.14.3",
+    "errors": [],
+    "feature_matrix_entry_count": 69,
+    "feature_matrix_schema": "pycforge.feature-matrix/0.14.3",
+    "feature_matrix_sha256": "ca78dff3ea203130781f5e0fde879c0ca9d7b7a0e550a05ab5d46ea3432cc01a",
+    "package_version": "0.14.4",
+    "passed": true,
+    "phase14e_opened": false,
+    "phase15_opened": false,
+    "project_version": "0.14.4",
+    "workspace_contract": "pycforge-workspace/0.2"
+  },
+  "missing_required_files": [],
+  "mode": "promotion",
+  "passed": true,
+  "promotion_blockers": [],
+  "promotion_eligible": true,
+  "promotion_minimum_generated_case_count": 64,
+  "promotion_minimum_total_case_count": 80,
+  "promotion_missing_files": [],
+  "promotion_requirements_satisfied": true,
+  "release_fingerprint": {
+    "actual_file_count": 520,
+    "actual_value": "e27232c2e52113993fe564dd894bb5ab5b77f4c2e507e3e0d933c1a7f5ce778d",
+    "algorithm": "sha256",
+    "audit": "checkpoint-e-release-fingerprint",
+    "declarations_match": false,
+    "declared_file_count": 0,
+    "declared_value": "0000000000000000000000000000000000000000000000000000000000000000",
+    "domain": "pycforge-checkpoint-e-release-tree-v1",
+    "errors": [
+      "release fingerprint status is 'preseal', expected 'promoted'",
+      "release fingerprint scope_status is 'unsealed', expected 'sealed'",
+      "release fingerprint value does not match the self-excluding release tree: declared '0000000000000000000000000000000000000000000000000000000000000000', actual 'e27232c2e52113993fe564dd894bb5ab5b77f4c2e507e3e0d933c1a7f5ce778d'",
+      "release fingerprint file_count does not match the release tree: declared 0, actual 520"
+    ],
+    "passed": false,
+    "path": "transition/checkpoint_e/release_fingerprint.json",
+    "present": true,
+    "required": false,
+    "scope_status": "unsealed",
+    "self_excluded_from_tree_hash": true,
+    "status": "preseal"
+  },
+  "schema": "pycforge.checkpoint-e-validation-report/1",
+  "sealed_missing_files": [],
+  "sealed_predecessor": {
+    "actual_sha256": "13228fe8e40c89335cf1bb6c44a2ebb94bc581e287873520b7c530984053c4f1",
+    "actual_size": 1282543,
+    "archive_extracted": false,
+    "archive_name": "pycforge_phase_14d_v0_14_3.tar.gz",
+    "archive_roots": [
+      "pycforge_phase_14d_v0_14_3"
+    ],
+    "audit": "sealed-phase14d-predecessor-authentication",
+    "errors": [],
+    "expected_sha256": "13228fe8e40c89335cf1bb6c44a2ebb94bc581e287873520b7c530984053c4f1",
+    "expected_size": 1282543,
+    "member_count": 573,
+    "passed": true,
+    "regular_file_count": 495
+  },
+  "sealed_predecessor_equivalence": {
+    "archive_authenticated_before_extraction": true,
+    "archive_extracted_to_private_temporary_directory": true,
+    "audit": "sealed-phase14d-exact-behavioral-equivalence",
+    "c_toolchain_invoked": false,
+    "candidate_results_sha256": "e4ad127d681523c71fdb3fad15764bc657a88eeb77a7c45a869c6f2a69e21b86",
+    "case_count": 80,
+    "case_digests": [
+      {
+        "candidate_sha256": "af1008ce5bb616b1aa24a93a610801d3489d2cdd7576dde9d9b6f4af2b18122a",
+        "candidate_size": 50243,
+        "case_id": "fixed-literals",
+        "exact_match": true,
+        "predecessor_sha256": "af1008ce5bb616b1aa24a93a610801d3489d2cdd7576dde9d9b6f4af2b18122a",
+        "predecessor_size": 50243
+      },
+      {
+        "candidate_sha256": "e2288ab05e9b52bd54fed995ea20bc63b46e291e067f66c574b79428e0c78c54",
+        "candidate_size": 61792,
+        "case_id": "fixed-arithmetic",
+        "exact_match": true,
+        "predecessor_sha256": "e2288ab05e9b52bd54fed995ea20bc63b46e291e067f66c574b79428e0c78c54",
+        "predecessor_size": 61792
+      },
+      {
+        "candidate_sha256": "4ef0ee7d23710e7008e2ef004a02bdafbc2c8a40ac5b10b0b0ad00b974ea6b72",
+        "candidate_size": 49754,
+        "case_id": "fixed-positional-call",
+        "exact_match": true,
+        "predecessor_sha256": "4ef0ee7d23710e7008e2ef004a02bdafbc2c8a40ac5b10b0b0ad00b974ea6b72",
+        "predecessor_size": 49754
+      },
+      {
+        "candidate_sha256": "407a7d9a435d9cca7b97ce71fcee4fad80cfb20013a506cd174a1b6fe1739668",
+        "candidate_size": 48590,
+        "case_id": "fixed-if-else",
+        "exact_match": true,
+        "predecessor_sha256": "407a7d9a435d9cca7b97ce71fcee4fad80cfb20013a506cd174a1b6fe1739668",
+        "predecessor_size": 48590
+      },
+      {
+        "candidate_sha256": "8d2fec205b58d7429effae02c3a93187b7c688fdacb65ef263c7b1e866ac5345",
+        "candidate_size": 61713,
+        "case_id": "fixed-while",
+        "exact_match": true,
+        "predecessor_sha256": "8d2fec205b58d7429effae02c3a93187b7c688fdacb65ef263c7b1e866ac5345",
+        "predecessor_size": 61713
+      },
+      {
+        "candidate_sha256": "78f7410971b0035b652966f6f6babec8662914d0099c5c26141fc7867812c848",
+        "candidate_size": 51303,
+        "case_id": "fixed-range-for",
+        "exact_match": true,
+        "predecessor_sha256": "78f7410971b0035b652966f6f6babec8662914d0099c5c26141fc7867812c848",
+        "predecessor_size": 51303
+      },
+      {
+        "candidate_sha256": "8728ffcd9101b29a6b5da3e1dad1763abb17fa7356c06acdfb60659dd3a9e54e",
+        "candidate_size": 85614,
+        "case_id": "fixed-list",
+        "exact_match": true,
+        "predecessor_sha256": "8728ffcd9101b29a6b5da3e1dad1763abb17fa7356c06acdfb60659dd3a9e54e",
+        "predecessor_size": 85614
+      },
+      {
+        "candidate_sha256": "7c5b5aecc8eba7af05fda0b86c1b87c91fd7ef2ea234125f33b037a0b3dbbd5c",
+        "candidate_size": 38533,
+        "case_id": "fixed-tuple",
+        "exact_match": true,
+        "predecessor_sha256": "7c5b5aecc8eba7af05fda0b86c1b87c91fd7ef2ea234125f33b037a0b3dbbd5c",
+        "predecessor_size": 38533
+      },
+      {
+        "candidate_sha256": "e3dac65510816e8722af33071842497302ab27dfc2589dc207a995bb3e374d93",
+        "candidate_size": 44251,
+        "case_id": "fixed-dict",
+        "exact_match": true,
+        "predecessor_sha256": "e3dac65510816e8722af33071842497302ab27dfc2589dc207a995bb3e374d93",
+        "predecessor_size": 44251
+      },
+      {
+        "candidate_sha256": "d9ab8e14762227d61c19fe4c4bc2f17b23b89d7d286155d7f233d3ccb4e66b1c",
+        "candidate_size": 56207,
+        "case_id": "fixed-module-bundle",
+        "exact_match": true,
+        "predecessor_sha256": "d9ab8e14762227d61c19fe4c4bc2f17b23b89d7d286155d7f233d3ccb4e66b1c",
+        "predecessor_size": 56207
+      },
+      {
+        "candidate_sha256": "a63aeebae61e3634bf1b7ae21ba0732ddf16dfce6059049756ae8d4d4facf146",
+        "candidate_size": 59360,
+        "case_id": "fixed-record",
+        "exact_match": true,
+        "predecessor_sha256": "a63aeebae61e3634bf1b7ae21ba0732ddf16dfce6059049756ae8d4d4facf146",
+        "predecessor_size": 59360
+      },
+      {
+        "candidate_sha256": "077dab49c2310eb01356c7f4783050e6ccdde27f1ad9716d17452182122e65e1",
+        "candidate_size": 74315,
+        "case_id": "fixed-floor-arithmetic",
+        "exact_match": true,
+        "predecessor_sha256": "077dab49c2310eb01356c7f4783050e6ccdde27f1ad9716d17452182122e65e1",
+        "predecessor_size": 74315
+      },
+      {
+        "candidate_sha256": "ca0ddf70cb5f4523ad9fdb63c2af04a6e9a0202245a469c23cc021820d06c83e",
+        "candidate_size": 53604,
+        "case_id": "fixed-boolean-region",
+        "exact_match": true,
+        "predecessor_sha256": "ca0ddf70cb5f4523ad9fdb63c2af04a6e9a0202245a469c23cc021820d06c83e",
+        "predecessor_size": 53604
+      },
+      {
+        "candidate_sha256": "0d2280a9e9a76de2847989ae7c9897b2ba4e07f2c533e68689142b57e20fe8b7",
+        "candidate_size": 63196,
+        "case_id": "fixed-comparison-region",
+        "exact_match": true,
+        "predecessor_sha256": "0d2280a9e9a76de2847989ae7c9897b2ba4e07f2c533e68689142b57e20fe8b7",
+        "predecessor_size": 63196
+      },
+      {
+        "candidate_sha256": "e51b259f24cb3d834a3624fa69db31cb1b449c7d0385124a9a7bf4f87d9e495c",
+        "candidate_size": 53777,
+        "case_id": "fixed-keyword-call",
+        "exact_match": true,
+        "predecessor_sha256": "e51b259f24cb3d834a3624fa69db31cb1b449c7d0385124a9a7bf4f87d9e495c",
+        "predecessor_size": 53777
+      },
+      {
+        "candidate_sha256": "a62ad6a6cdf5eabfe570122f4dd38a51f504b935c38e577e206e9c184936f2b6",
+        "candidate_size": 62863,
+        "case_id": "fixed-keyword-only-call",
+        "exact_match": true,
+        "predecessor_sha256": "a62ad6a6cdf5eabfe570122f4dd38a51f504b935c38e577e206e9c184936f2b6",
+        "predecessor_size": 62863
+      },
+      {
+        "candidate_sha256": "e00542bf2f893f92ccd2f9b2c3d0e39a30fe3653b1cbf064f5b1ef5c5c46b808",
+        "candidate_size": 63349,
+        "case_id": "fuzz-000",
+        "exact_match": true,
+        "predecessor_sha256": "e00542bf2f893f92ccd2f9b2c3d0e39a30fe3653b1cbf064f5b1ef5c5c46b808",
+        "predecessor_size": 63349
+      },
+      {
+        "candidate_sha256": "90489fd3cfddd24232f6a18caa849e5d2b62a08b72a5e288f5237cd69e6f874d",
+        "candidate_size": 66286,
+        "case_id": "fuzz-001",
+        "exact_match": true,
+        "predecessor_sha256": "90489fd3cfddd24232f6a18caa849e5d2b62a08b72a5e288f5237cd69e6f874d",
+        "predecessor_size": 66286
+      },
+      {
+        "candidate_sha256": "f536f85a59c723c675e6662b1c9dfef68b701c10221c88dddd299efca1d2c939",
+        "candidate_size": 61757,
+        "case_id": "fuzz-002",
+        "exact_match": true,
+        "predecessor_sha256": "f536f85a59c723c675e6662b1c9dfef68b701c10221c88dddd299efca1d2c939",
+        "predecessor_size": 61757
+      },
+      {
+        "candidate_sha256": "1a656b880d0f2c33864f1c7ea6feb9d97379d91d6c4f9c1a6dc2839474861bfc",
+        "candidate_size": 53750,
+        "case_id": "fuzz-003",
+        "exact_match": true,
+        "predecessor_sha256": "1a656b880d0f2c33864f1c7ea6feb9d97379d91d6c4f9c1a6dc2839474861bfc",
+        "predecessor_size": 53750
+      },
+      {
+        "candidate_sha256": "53a3ca912b29425d20c82e59e57ed5eced56a7e5131240adc83225f4489d7790",
+        "candidate_size": 59562,
+        "case_id": "fuzz-004",
+        "exact_match": true,
+        "predecessor_sha256": "53a3ca912b29425d20c82e59e57ed5eced56a7e5131240adc83225f4489d7790",
+        "predecessor_size": 59562
+      },
+      {
+        "candidate_sha256": "e61b602e868deeb3b6adfc4cdce279a2eec6324ab987ffbbdccdb9a4314abe90",
+        "candidate_size": 49890,
+        "case_id": "fuzz-005",
+        "exact_match": true,
+        "predecessor_sha256": "e61b602e868deeb3b6adfc4cdce279a2eec6324ab987ffbbdccdb9a4314abe90",
+        "predecessor_size": 49890
+      },
+      {
+        "candidate_sha256": "1627a6cebb090233a619580720f67ae4d7f8114293c915697fabc096761959b9",
+        "candidate_size": 63073,
+        "case_id": "fuzz-006",
+        "exact_match": true,
+        "predecessor_sha256": "1627a6cebb090233a619580720f67ae4d7f8114293c915697fabc096761959b9",
+        "predecessor_size": 63073
+      },
+      {
+        "candidate_sha256": "2168b86b7608506d209aa94fd1360558ea716aad52b74c6fb64b42d8050883a8",
+        "candidate_size": 61472,
+        "case_id": "fuzz-007",
+        "exact_match": true,
+        "predecessor_sha256": "2168b86b7608506d209aa94fd1360558ea716aad52b74c6fb64b42d8050883a8",
+        "predecessor_size": 61472
+      },
+      {
+        "candidate_sha256": "0325b333575d7037675b2b5eb87f7b078d72a4163a972bf3adfe79305943d825",
+        "candidate_size": 74304,
+        "case_id": "fuzz-008",
+        "exact_match": true,
+        "predecessor_sha256": "0325b333575d7037675b2b5eb87f7b078d72a4163a972bf3adfe79305943d825",
+        "predecessor_size": 74304
+      },
+      {
+        "candidate_sha256": "33c197851e2bad92fb053101ec887d382350633595cb77cdac8d292ce34e3616",
+        "candidate_size": 50159,
+        "case_id": "fuzz-009",
+        "exact_match": true,
+        "predecessor_sha256": "33c197851e2bad92fb053101ec887d382350633595cb77cdac8d292ce34e3616",
+        "predecessor_size": 50159
+      },
+      {
+        "candidate_sha256": "cce2d260b6af995bc0185fe610c0eeab82a134129d1dacac657feee6f48f4a3c",
+        "candidate_size": 58241,
+        "case_id": "fuzz-010",
+        "exact_match": true,
+        "predecessor_sha256": "cce2d260b6af995bc0185fe610c0eeab82a134129d1dacac657feee6f48f4a3c",
+        "predecessor_size": 58241
+      },
+      {
+        "candidate_sha256": "4bfc7ef16028433549b6ce0d6e0b1b85d9da7b81d46c7402f338b08f4613edf8",
+        "candidate_size": 56940,
+        "case_id": "fuzz-011",
+        "exact_match": true,
+        "predecessor_sha256": "4bfc7ef16028433549b6ce0d6e0b1b85d9da7b81d46c7402f338b08f4613edf8",
+        "predecessor_size": 56940
+      },
+      {
+        "candidate_sha256": "3810a5a19dc8bc673dd8b803aa4d24e6202cfc99209ac514adf66e610a80f115",
+        "candidate_size": 48636,
+        "case_id": "fuzz-012",
+        "exact_match": true,
+        "predecessor_sha256": "3810a5a19dc8bc673dd8b803aa4d24e6202cfc99209ac514adf66e610a80f115",
+        "predecessor_size": 48636
+      },
+      {
+        "candidate_sha256": "d6ef964f9c8c2f7291c0ef16c9b69aded69223596f4c8ad79ddb3dba1c1c7520",
+        "candidate_size": 49765,
+        "case_id": "fuzz-013",
+        "exact_match": true,
+        "predecessor_sha256": "d6ef964f9c8c2f7291c0ef16c9b69aded69223596f4c8ad79ddb3dba1c1c7520",
+        "predecessor_size": 49765
+      },
+      {
+        "candidate_sha256": "d0845abb48d02ed5d2f65bb0494ee8530f9add1ee6793d2f8571b18062a1a3d9",
+        "candidate_size": 38601,
+        "case_id": "fuzz-014",
+        "exact_match": true,
+        "predecessor_sha256": "d0845abb48d02ed5d2f65bb0494ee8530f9add1ee6793d2f8571b18062a1a3d9",
+        "predecessor_size": 38601
+      },
+      {
+        "candidate_sha256": "217d75efa801178c36e4ab462e039fd546ba8bdc2aae88e40e0ff7416ab434d1",
+        "candidate_size": 51351,
+        "case_id": "fuzz-015",
+        "exact_match": true,
+        "predecessor_sha256": "217d75efa801178c36e4ab462e039fd546ba8bdc2aae88e40e0ff7416ab434d1",
+        "predecessor_size": 51351
+      },
+      {
+        "candidate_sha256": "9d8957bed4a3fb4cddc9286e739eed363bdf5c1839e13a2e0efc244953ac3269",
+        "candidate_size": 54141,
+        "case_id": "fuzz-016",
+        "exact_match": true,
+        "predecessor_sha256": "9d8957bed4a3fb4cddc9286e739eed363bdf5c1839e13a2e0efc244953ac3269",
+        "predecessor_size": 54141
+      },
+      {
+        "candidate_sha256": "d5299799d41e8fad97d811828dad83a81ad6dac72fe6073e90a96fb88648bcb8",
+        "candidate_size": 61757,
+        "case_id": "fuzz-017",
+        "exact_match": true,
+        "predecessor_sha256": "d5299799d41e8fad97d811828dad83a81ad6dac72fe6073e90a96fb88648bcb8",
+        "predecessor_size": 61757
+      },
+      {
+        "candidate_sha256": "30454f328363d12be78bf251fda9fbffa8688584b5d211ed3d8f40a5f98d343e",
+        "candidate_size": 49764,
+        "case_id": "fuzz-018",
+        "exact_match": true,
+        "predecessor_sha256": "30454f328363d12be78bf251fda9fbffa8688584b5d211ed3d8f40a5f98d343e",
+        "predecessor_size": 49764
+      },
+      {
+        "candidate_sha256": "d45f6aed682d9d1c2e37cb32df5c21e34eb006f7621777e93654b12e7cf00c9e",
+        "candidate_size": 66287,
+        "case_id": "fuzz-019",
+        "exact_match": true,
+        "predecessor_sha256": "d45f6aed682d9d1c2e37cb32df5c21e34eb006f7621777e93654b12e7cf00c9e",
+        "predecessor_size": 66287
+      },
+      {
+        "candidate_sha256": "7f4b9a75fb22e1fbbe951a8acbbda035a21dc18459767e645d40d762fa7eea41",
+        "candidate_size": 59560,
+        "case_id": "fuzz-020",
+        "exact_match": true,
+        "predecessor_sha256": "7f4b9a75fb22e1fbbe951a8acbbda035a21dc18459767e645d40d762fa7eea41",
+        "predecessor_size": 59560
+      },
+      {
+        "candidate_sha256": "97b4540d3a8cc95a797fc1c5d606d7ec9052c9303fb82ff0e10c4025792180ab",
+        "candidate_size": 63072,
+        "case_id": "fuzz-021",
+        "exact_match": true,
+        "predecessor_sha256": "97b4540d3a8cc95a797fc1c5d606d7ec9052c9303fb82ff0e10c4025792180ab",
+        "predecessor_size": 63072
+      },
+      {
+        "candidate_sha256": "c16402076fe4c093a0604fb9faf6ab8023ddbc3397b7a291caaee58047ede514",
+        "candidate_size": 63349,
+        "case_id": "fuzz-022",
+        "exact_match": true,
+        "predecessor_sha256": "c16402076fe4c093a0604fb9faf6ab8023ddbc3397b7a291caaee58047ede514",
+        "predecessor_size": 63349
+      },
+      {
+        "candidate_sha256": "5d4f1c3b4602fdf2fc66b38ba2513e6ab15be3f977d6254f32cccc1aed40b3ca",
+        "candidate_size": 74304,
+        "case_id": "fuzz-023",
+        "exact_match": true,
+        "predecessor_sha256": "5d4f1c3b4602fdf2fc66b38ba2513e6ab15be3f977d6254f32cccc1aed40b3ca",
+        "predecessor_size": 74304
+      },
+      {
+        "candidate_sha256": "2d88cd358453d3f6b38de42271a1f151de38688e353fb00d964f0ef05df2711b",
+        "candidate_size": 51351,
+        "case_id": "fuzz-024",
+        "exact_match": true,
+        "predecessor_sha256": "2d88cd358453d3f6b38de42271a1f151de38688e353fb00d964f0ef05df2711b",
+        "predecessor_size": 51351
+      },
+      {
+        "candidate_sha256": "8fe1448b756a92c07b4a6f9088526a54f4b5376f884c7eea37d25edd8fd6a5a6",
+        "candidate_size": 56939,
+        "case_id": "fuzz-025",
+        "exact_match": true,
+        "predecessor_sha256": "8fe1448b756a92c07b4a6f9088526a54f4b5376f884c7eea37d25edd8fd6a5a6",
+        "predecessor_size": 56939
+      },
+      {
+        "candidate_sha256": "ff8a48255381a741ba03ed27b78a634ee82c3db6d6ef5514fff4b00b09caa3cc",
+        "candidate_size": 50160,
+        "case_id": "fuzz-026",
+        "exact_match": true,
+        "predecessor_sha256": "ff8a48255381a741ba03ed27b78a634ee82c3db6d6ef5514fff4b00b09caa3cc",
+        "predecessor_size": 50160
+      },
+      {
+        "candidate_sha256": "56d340743907c8083dc0d15c98ff5e5fdb58c71bf2ff32368a78e83707f9c24b",
+        "candidate_size": 58243,
+        "case_id": "fuzz-027",
+        "exact_match": true,
+        "predecessor_sha256": "56d340743907c8083dc0d15c98ff5e5fdb58c71bf2ff32368a78e83707f9c24b",
+        "predecessor_size": 58243
+      },
+      {
+        "candidate_sha256": "2b640a244d3a324a016b7cc81bac1fea0331b394e32f5c3658d4a6cae130ff31",
+        "candidate_size": 48636,
+        "case_id": "fuzz-028",
+        "exact_match": true,
+        "predecessor_sha256": "2b640a244d3a324a016b7cc81bac1fea0331b394e32f5c3658d4a6cae130ff31",
+        "predecessor_size": 48636
+      },
+      {
+        "candidate_sha256": "0ec32f9cf892c5774276cdb85ecc793e34546de0e44d011af2384c4fac18f4de",
+        "candidate_size": 38599,
+        "case_id": "fuzz-029",
+        "exact_match": true,
+        "predecessor_sha256": "0ec32f9cf892c5774276cdb85ecc793e34546de0e44d011af2384c4fac18f4de",
+        "predecessor_size": 38599
+      },
+      {
+        "candidate_sha256": "d96224de65cc14177e1778b894117fa69e39ea42451e1333c3b4fa9760a5b400",
+        "candidate_size": 61472,
+        "case_id": "fuzz-030",
+        "exact_match": true,
+        "predecessor_sha256": "d96224de65cc14177e1778b894117fa69e39ea42451e1333c3b4fa9760a5b400",
+        "predecessor_size": 61472
+      },
+      {
+        "candidate_sha256": "7b3641228179ae889ad2a507e8d95ed5a03e36bd345bc5bf66b914351fdfbcbb",
+        "candidate_size": 49889,
+        "case_id": "fuzz-031",
+        "exact_match": true,
+        "predecessor_sha256": "7b3641228179ae889ad2a507e8d95ed5a03e36bd345bc5bf66b914351fdfbcbb",
+        "predecessor_size": 49889
+      },
+      {
+        "candidate_sha256": "43997fa78f8e12937113629e66b4db10101df482421fed044536df0a730a004b",
+        "candidate_size": 49890,
+        "case_id": "fuzz-032",
+        "exact_match": true,
+        "predecessor_sha256": "43997fa78f8e12937113629e66b4db10101df482421fed044536df0a730a004b",
+        "predecessor_size": 49890
+      },
+      {
+        "candidate_sha256": "30a733fba8b750226b35f6cfa7f3f31c7ae059e7bb73fc415b17cfc4ef708267",
+        "candidate_size": 59560,
+        "case_id": "fuzz-033",
+        "exact_match": true,
+        "predecessor_sha256": "30a733fba8b750226b35f6cfa7f3f31c7ae059e7bb73fc415b17cfc4ef708267",
+        "predecessor_size": 59560
+      },
+      {
+        "candidate_sha256": "9e9acc7c23afe9d534a0ca10d0343a02c09a8d58b71dc6626163c37bed3e2287",
+        "candidate_size": 61470,
+        "case_id": "fuzz-034",
+        "exact_match": true,
+        "predecessor_sha256": "9e9acc7c23afe9d534a0ca10d0343a02c09a8d58b71dc6626163c37bed3e2287",
+        "predecessor_size": 61470
+      },
+      {
+        "candidate_sha256": "6e228b68f46f9bcc066f39e5ad4089489e8317c739ce5571891ca11e91c0021f",
+        "candidate_size": 38600,
+        "case_id": "fuzz-035",
+        "exact_match": true,
+        "predecessor_sha256": "6e228b68f46f9bcc066f39e5ad4089489e8317c739ce5571891ca11e91c0021f",
+        "predecessor_size": 38600
+      },
+      {
+        "candidate_sha256": "a2212e3bbdef10384a833567e4fdf37133128c6fe4cfde4fdba70dffa093599c",
+        "candidate_size": 58242,
+        "case_id": "fuzz-036",
+        "exact_match": true,
+        "predecessor_sha256": "a2212e3bbdef10384a833567e4fdf37133128c6fe4cfde4fdba70dffa093599c",
+        "predecessor_size": 58242
+      },
+      {
+        "candidate_sha256": "8e9bf55d8437478054eba48bca2e0b5da80c690d228aaf811bb47e47c7d01b65",
+        "candidate_size": 49764,
+        "case_id": "fuzz-037",
+        "exact_match": true,
+        "predecessor_sha256": "8e9bf55d8437478054eba48bca2e0b5da80c690d228aaf811bb47e47c7d01b65",
+        "predecessor_size": 49764
+      },
+      {
+        "candidate_sha256": "e3ba774a401c58a97d6dc3aa9d52e9e6b0ca5015e24d0be959fc76cef30fe319",
+        "candidate_size": 51352,
+        "case_id": "fuzz-038",
+        "exact_match": true,
+        "predecessor_sha256": "e3ba774a401c58a97d6dc3aa9d52e9e6b0ca5015e24d0be959fc76cef30fe319",
+        "predecessor_size": 51352
+      },
+      {
+        "candidate_sha256": "ab3e391a5c73382ee6648db63d1694342bf6065e20b8ec7b98f07b02dc99e8ab",
+        "candidate_size": 53750,
+        "case_id": "fuzz-039",
+        "exact_match": true,
+        "predecessor_sha256": "ab3e391a5c73382ee6648db63d1694342bf6065e20b8ec7b98f07b02dc99e8ab",
+        "predecessor_size": 53750
+      },
+      {
+        "candidate_sha256": "ae212220221f843300dd2f62ab5c02a4384b2e5b37659152be05ec7d8e77f3a9",
+        "candidate_size": 63349,
+        "case_id": "fuzz-040",
+        "exact_match": true,
+        "predecessor_sha256": "ae212220221f843300dd2f62ab5c02a4384b2e5b37659152be05ec7d8e77f3a9",
+        "predecessor_size": 63349
+      },
+      {
+        "candidate_sha256": "0b2505d35f892be06df046a6411469b6d72fb42c272d98196a584e3f2906a746",
+        "candidate_size": 74304,
+        "case_id": "fuzz-041",
+        "exact_match": true,
+        "predecessor_sha256": "0b2505d35f892be06df046a6411469b6d72fb42c272d98196a584e3f2906a746",
+        "predecessor_size": 74304
+      },
+      {
+        "candidate_sha256": "b929a47e0a0f9c35bb2b544ab342f46d8e15fb5381ab903aabd41fd7eba32008",
+        "candidate_size": 48636,
+        "case_id": "fuzz-042",
+        "exact_match": true,
+        "predecessor_sha256": "b929a47e0a0f9c35bb2b544ab342f46d8e15fb5381ab903aabd41fd7eba32008",
+        "predecessor_size": 48636
+      },
+      {
+        "candidate_sha256": "db74ccc368d87180e6f2caee31a12deff87d80cc1448b6e28e2515f4d1c592a8",
+        "candidate_size": 56939,
+        "case_id": "fuzz-043",
+        "exact_match": true,
+        "predecessor_sha256": "db74ccc368d87180e6f2caee31a12deff87d80cc1448b6e28e2515f4d1c592a8",
+        "predecessor_size": 56939
+      },
+      {
+        "candidate_sha256": "4ab116e3b99f171526dc9f97ced8f697f0002be1044366fc0aec56b419cbae07",
+        "candidate_size": 66287,
+        "case_id": "fuzz-044",
+        "exact_match": true,
+        "predecessor_sha256": "4ab116e3b99f171526dc9f97ced8f697f0002be1044366fc0aec56b419cbae07",
+        "predecessor_size": 66287
+      },
+      {
+        "candidate_sha256": "1a7e2bb10dd4bace7d1f06340420e7c7d75ee72d29619008417906e213254a47",
+        "candidate_size": 63073,
+        "case_id": "fuzz-045",
+        "exact_match": true,
+        "predecessor_sha256": "1a7e2bb10dd4bace7d1f06340420e7c7d75ee72d29619008417906e213254a47",
+        "predecessor_size": 63073
+      },
+      {
+        "candidate_sha256": "975f64a3cdf137e3fd6dd7d1dcf4965abeb21024d7d40f8d8f93f3c1a2cb3cc5",
+        "candidate_size": 61757,
+        "case_id": "fuzz-046",
+        "exact_match": true,
+        "predecessor_sha256": "975f64a3cdf137e3fd6dd7d1dcf4965abeb21024d7d40f8d8f93f3c1a2cb3cc5",
+        "predecessor_size": 61757
+      },
+      {
+        "candidate_sha256": "3a9bef0d53dce4b8e0dd6942b7f1b3cc468f1ab7823740b65e65c050ae216a2e",
+        "candidate_size": 50162,
+        "case_id": "fuzz-047",
+        "exact_match": true,
+        "predecessor_sha256": "3a9bef0d53dce4b8e0dd6942b7f1b3cc468f1ab7823740b65e65c050ae216a2e",
+        "predecessor_size": 50162
+      },
+      {
+        "candidate_sha256": "9eefb299557f4a822561d057de109f7980567a67daff7983227e51983a3c1f36",
+        "candidate_size": 74706,
+        "case_id": "fuzz-048",
+        "exact_match": true,
+        "predecessor_sha256": "9eefb299557f4a822561d057de109f7980567a67daff7983227e51983a3c1f36",
+        "predecessor_size": 74706
+      },
+      {
+        "candidate_sha256": "3fa629c34c7a91aca527a78c256144fd12142185af19c2bb5f2f51a6b59b061b",
+        "candidate_size": 63349,
+        "case_id": "fuzz-049",
+        "exact_match": true,
+        "predecessor_sha256": "3fa629c34c7a91aca527a78c256144fd12142185af19c2bb5f2f51a6b59b061b",
+        "predecessor_size": 63349
+      },
+      {
+        "candidate_sha256": "d0bd34609fd5a6ce23b4e444b588b92c8ad58963a7b7d4c2ac1062737f08c9b5",
+        "candidate_size": 61472,
+        "case_id": "fuzz-050",
+        "exact_match": true,
+        "predecessor_sha256": "d0bd34609fd5a6ce23b4e444b588b92c8ad58963a7b7d4c2ac1062737f08c9b5",
+        "predecessor_size": 61472
+      },
+      {
+        "candidate_sha256": "e3c5c1bf4af6b1a2b7927720e72a432160c320f2e114fdd2384c791810419ad7",
+        "candidate_size": 51351,
+        "case_id": "fuzz-051",
+        "exact_match": true,
+        "predecessor_sha256": "e3c5c1bf4af6b1a2b7927720e72a432160c320f2e114fdd2384c791810419ad7",
+        "predecessor_size": 51351
+      },
+      {
+        "candidate_sha256": "00bf4d2d48dc3e7f79dd6b7250cc2ab4895c2c884915c8987b9ce1071f08ebaa",
+        "candidate_size": 50161,
+        "case_id": "fuzz-052",
+        "exact_match": true,
+        "predecessor_sha256": "00bf4d2d48dc3e7f79dd6b7250cc2ab4895c2c884915c8987b9ce1071f08ebaa",
+        "predecessor_size": 50161
+      },
+      {
+        "candidate_sha256": "3cbf14568ed3ea89fcfe3f5debe1f6ce7b925b2fd333ad5a0faaafe112b1bbe9",
+        "candidate_size": 61757,
+        "case_id": "fuzz-053",
+        "exact_match": true,
+        "predecessor_sha256": "3cbf14568ed3ea89fcfe3f5debe1f6ce7b925b2fd333ad5a0faaafe112b1bbe9",
+        "predecessor_size": 61757
+      },
+      {
+        "candidate_sha256": "715252604f5d528b082f9ac03066541a548c8fb62733752a1d66ffbe7dfe6b88",
+        "candidate_size": 58243,
+        "case_id": "fuzz-054",
+        "exact_match": true,
+        "predecessor_sha256": "715252604f5d528b082f9ac03066541a548c8fb62733752a1d66ffbe7dfe6b88",
+        "predecessor_size": 58243
+      },
+      {
+        "candidate_sha256": "71ddd40862c8ada6fbf8cb3ad26b75d76daa768bf854ed2d9bbab2a2bb1573f3",
+        "candidate_size": 48636,
+        "case_id": "fuzz-055",
+        "exact_match": true,
+        "predecessor_sha256": "71ddd40862c8ada6fbf8cb3ad26b75d76daa768bf854ed2d9bbab2a2bb1573f3",
+        "predecessor_size": 48636
+      },
+      {
+        "candidate_sha256": "bb0605457e142024a21663c9690b23bf08e15693dd7abad82c65820a640d6040",
+        "candidate_size": 54141,
+        "case_id": "fuzz-056",
+        "exact_match": true,
+        "predecessor_sha256": "bb0605457e142024a21663c9690b23bf08e15693dd7abad82c65820a640d6040",
+        "predecessor_size": 54141
+      },
+      {
+        "candidate_sha256": "d5e5939d468406570e2d16e53964e35e89101aad91309bda3c495bc92e3ab548",
+        "candidate_size": 56940,
+        "case_id": "fuzz-057",
+        "exact_match": true,
+        "predecessor_sha256": "d5e5939d468406570e2d16e53964e35e89101aad91309bda3c495bc92e3ab548",
+        "predecessor_size": 56940
+      },
+      {
+        "candidate_sha256": "1cdba63cda2aea813549ccc7f5414c604649ed74fa20f932ec78aa21621b7d40",
+        "candidate_size": 49765,
+        "case_id": "fuzz-058",
+        "exact_match": true,
+        "predecessor_sha256": "1cdba63cda2aea813549ccc7f5414c604649ed74fa20f932ec78aa21621b7d40",
+        "predecessor_size": 49765
+      },
+      {
+        "candidate_sha256": "079771ab34c359c4e40ab5345778aa40642b98fdc62e6d8fdcd2c46f0e77e3e6",
+        "candidate_size": 63071,
+        "case_id": "fuzz-059",
+        "exact_match": true,
+        "predecessor_sha256": "079771ab34c359c4e40ab5345778aa40642b98fdc62e6d8fdcd2c46f0e77e3e6",
+        "predecessor_size": 63071
+      },
+      {
+        "candidate_sha256": "ff5fa75b3c72f9fdaaaafafb8249e179b8513810c857373e62e961a0b20b6d4a",
+        "candidate_size": 59561,
+        "case_id": "fuzz-060",
+        "exact_match": true,
+        "predecessor_sha256": "ff5fa75b3c72f9fdaaaafafb8249e179b8513810c857373e62e961a0b20b6d4a",
+        "predecessor_size": 59561
+      },
+      {
+        "candidate_sha256": "a795fcd49296fdd4a20c393e5bfd7a130df3b3318030fc7892ef46c0c3261f8c",
+        "candidate_size": 38601,
+        "case_id": "fuzz-061",
+        "exact_match": true,
+        "predecessor_sha256": "a795fcd49296fdd4a20c393e5bfd7a130df3b3318030fc7892ef46c0c3261f8c",
+        "predecessor_size": 38601
+      },
+      {
+        "candidate_sha256": "f489bee001d2191456c3c7004baf1d0f03f3ba9fd153f251e4c2cc01015a8e44",
+        "candidate_size": 49890,
+        "case_id": "fuzz-062",
+        "exact_match": true,
+        "predecessor_sha256": "f489bee001d2191456c3c7004baf1d0f03f3ba9fd153f251e4c2cc01015a8e44",
+        "predecessor_size": 49890
+      },
+      {
+        "candidate_sha256": "dec5a56ed98e85fc7c290e8ddb96adb92c4336ede25993ab1b8c9ba86a39e207",
+        "candidate_size": 66287,
+        "case_id": "fuzz-063",
+        "exact_match": true,
+        "predecessor_sha256": "dec5a56ed98e85fc7c290e8ddb96adb92c4336ede25993ab1b8c9ba86a39e207",
+        "predecessor_size": 66287
+      }
+    ],
+    "corpus_schema": "pycforge.checkpoint-e-predecessor-corpus/1",
+    "corpus_sha256": "b9792235cd9f802e37fddbf9f94a44fd0ac4822baa43f134f34a9dc219fb41f5",
+    "corpus_size": 23551,
+    "errors": [],
+    "exact_result_json_byte_equivalence": true,
+    "fixed_case_count": 16,
+    "generated_c_compiled_or_executed": false,
+    "generated_case_count": 64,
+    "matched_case_count": 80,
+    "mismatched_case_count": 0,
+    "mismatches": [],
+    "missing_case_count": 0,
+    "native_toolchain_commands": [],
+    "passed": true,
+    "predecessor_archive": {
+      "archive_name": "pycforge_phase_14d_v0_14_3.tar.gz",
+      "archive_root": "pycforge_phase_14d_v0_14_3",
+      "archive_sha256": "13228fe8e40c89335cf1bb6c44a2ebb94bc581e287873520b7c530984053c4f1",
+      "archive_size": 1282543,
+      "member_count": 573,
+      "regular_file_count": 495,
+      "uncompressed_regular_bytes": 4124229
+    },
+    "predecessor_results_sha256": "e4ad127d681523c71fdb3fad15764bc657a88eeb77a7c45a869c6f2a69e21b86",
+    "promotion_eligible": true,
+    "promotion_minimum_case_count": 80,
+    "promotion_minimum_generated_case_count": 64,
+    "python_command_flags": [
+      "-I",
+      "-S"
+    ],
+    "python_interpreter_invoked": true,
+    "python_isolated_mode": true,
+    "python_no_site_mode": true,
+    "runner_mode": "python-isolated",
+    "runner_result_schema": "pycforge.checkpoint-e-predecessor-results/1",
+    "seed": 21897254,
+    "temporary_extraction_removed": true,
+    "unexpected_case_count": 0,
+    "untrusted_pickle_loaded": false
+  },
+  "sealed_release_eligible": false,
+  "validator": "checkpoint-e"
+}

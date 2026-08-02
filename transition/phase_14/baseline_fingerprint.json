@@ -1,0 +1,47 @@
+{
+  "schema_version": "pycforge.phase14-opening-baseline/0.14",
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-14-opening-predecessor-v1",
+  "phase": 14,
+  "mini_phase": "14A",
+  "status": "authenticated-before-phase-14-implementation",
+  "authenticated_on": "2026-07-22",
+  "predecessor": {
+    "version": "0.13.0",
+    "source_archive": "pycforge_phase_13_v0_13_0.tar.gz",
+    "source_archive_size": 963912,
+    "source_archive_sha256": "36938f021db7110c590af878c748b5331ccc2d3de2f2144c3eb3b09d76fb998a",
+    "canonical_release_tree_sha256": "483743b12fdd682b4b2ad488279ef243f00f0b055332096e5af09b0b01ab00a2",
+    "converter_subtree_sha256": "16d780e9eb5861f20ef3a1132928c32353aae97f99a3da526bc42386a0871dc6",
+    "release_fingerprint_file": "transition/phase_13/release_fingerprint.json",
+    "release_status": "promoted",
+    "wheel": "pycforge-0.13.0-py3-none-any.whl",
+    "wheel_size": 236052,
+    "wheel_sha256": "90691b4534388e76e6bdcb83766435b3ad53f424802b0e7624af5d89bb2c1fb0"
+  },
+  "authority": {
+    "roadmap_revision": "3.1-plus-3.2-addendum",
+    "roadmap_sha256": "d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3",
+    "addendum_sha256": "93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6",
+    "explicit_user_approval": true
+  },
+  "frozen_helper_custody": {
+    "registry": "phase10-support-templates-v0.10",
+    "registry_sha256": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+    "resolved_all_manifest_sha256": "b866ee57db0b14c324e090501b80a40730734242eb115dbcaf829db099ed97ca",
+    "assets": {
+      "pycf.i64.floor_div@1.0.0": "23fa88ff57ffe15bc20845c6a7359f6d35648ecffd3a30ea23fe43f24e1dd869",
+      "pycf.i64.floor_mod@1.0.0": "cc2e29f5823a119009df78ed20dc410c6eef4d72c57ada115790bd1120dc663e"
+    }
+  },
+  "authentication": {
+    "source_archive_digest_matched": true,
+    "archive_canonical_tree_matched_release_fingerprint": true,
+    "archive_converter_subtree_recomputed": true,
+    "opening_candidate_tree_matched_archive_before_entry_artifacts": true,
+    "opening_candidate_converter_subtree_matched_archive": true,
+    "compiler_linker_loader_or_execution_invoked": false
+  },
+  "value": "483743b12fdd682b4b2ad488279ef243f00f0b055332096e5af09b0b01ab00a2",
+  "value_meaning": "canonical promoted PyCForge 0.13.0 predecessor release tree; not a Phase 14 candidate or release fingerprint"
+}

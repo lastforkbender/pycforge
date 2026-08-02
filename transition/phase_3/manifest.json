@@ -1,0 +1,23 @@
+{
+  "schema": "pycforge.phase-transition-manifest/0.1",
+  "phase": 3,
+  "baseline": "phase3-candidate-1",
+  "version": "0.3.0",
+  "maturity": {
+    "SourceBundle": "StableInternal",
+    "SourceDocument": "StableInternal",
+    "NormalizedPythonIR": "StableInternal",
+    "parser_adapter": "StableInternal"
+  },
+  "delivered": [
+    "immutable SourceDocument",
+    "bounded token, line-index, newline, and span services",
+    "declared Python 3.11 parser adapter",
+    "stable source and synthetic node ID domains",
+    "normalized Python IR and provenance",
+    "syntax and resource diagnostics",
+    "IR validation, serialization, inspection, and final-stage save"
+  ],
+  "non_goals": ["value-category inference", "rule selection", "C construction", "C rendering"],
+  "required_tests": 32
+}

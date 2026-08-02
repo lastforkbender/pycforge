@@ -1,0 +1,16 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include CURRENT_STATE.md
+include RELEASE_NOTES.md
+recursive-include pycforge/ide/resources/icons *.svg
+prune docs
+prune evidence
+prune fixtures
+prune schemas
+prune specifications
+prune tests
+prune tools
+prune transition
+exclude PyCForge_*.txt
+global-exclude *.py[cod]

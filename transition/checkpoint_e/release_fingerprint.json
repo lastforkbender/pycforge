@@ -1,0 +1,90 @@
+{
+  "schema_version": "pycforge.checkpoint-e-release-fingerprint/0.14.4",
+  "algorithm": "sha256",
+  "domain": "pycforge-checkpoint-e-release-tree-v1",
+  "status": "promoted",
+  "scope_status": "sealed",
+  "value": "7bc3959111808fe9ac15ba351798f62e024714e600edc4e6eeecc78a8b14138a",
+  "value_status": "assigned-self-excluding-tree-hash",
+  "file_count": 520,
+  "release_files_including_fingerprint": 521,
+  "excludes": [
+    "transition/checkpoint_e/release_fingerprint.json",
+    "declared cache and build directories",
+    "canonical external release artifacts",
+    "*.pyc",
+    "*.pyo",
+    "*.tar.gz",
+    "*.tgz",
+    "*.whl",
+    "*.zip"
+  ],
+  "subtrees": {
+    "pycforge/converter": {
+      "files": 92,
+      "sha256": "a45bc2c31b954f9856c8eab36e95f68b086d5fdd682d2cf47ba2186887743124"
+    },
+    "pycforge/ide": {
+      "files": 26,
+      "sha256": "4f3fa7bb73dfe6f79c606354753ec0ebb25e6a8f53bbba86135fdca15d663eb8"
+    },
+    "pycforge/laboratory": {
+      "files": 7,
+      "sha256": "951af33767abb4d3e0af8ba16a3fbf3cb4cb3137883afcfb49010f425c36230d"
+    },
+    "schemas": {
+      "files": 2,
+      "sha256": "d9e7c25c2d1e29ab542b5fd89736d2335081d4456390423806f4fae4b4a93298"
+    },
+    "specifications": {
+      "files": 35,
+      "sha256": "e29876c1f1b94ffc7d64b2b91b5f5e9f8f9fe8232baaab781afe47d91932d00c"
+    }
+  },
+  "predecessor": {
+    "version": "0.14.3",
+    "archive": "pycforge_phase_14d_v0_14_3.tar.gz",
+    "archive_size": 1282543,
+    "archive_sha256": "13228fe8e40c89335cf1bb6c44a2ebb94bc581e287873520b7c530984053c4f1",
+    "authenticated_before_extraction": true
+  },
+  "tests": {
+    "discovered": 589,
+    "passed": 572,
+    "skipped": 17,
+    "failed": 0,
+    "focused_checkpoint_e_passed": 46
+  },
+  "gates": {
+    "feature_matrix_entries": 69,
+    "unlisted_default_witnesses": 1,
+    "feature_matrix_report_sha256": "e4a2ddf3e202ee4630f7a0c217afce8c3fb63f297fa48873af1a664b11eecc85",
+    "fixed_subset_cases": 16,
+    "generated_subset_cases": 64,
+    "promotion_cases": 80,
+    "full_subset_report_sha256": "2fa7089e7b8bbec1c89a88dcabffdd029e2dbd5ff5cff10e4ed42d883e0a7594",
+    "predecessor_exact_matches": 80,
+    "predecessor_results_sha256": "e4ad127d681523c71fdb3fad15764bc657a88eeb77a7c45a869c6f2a69e21b86",
+    "cumulative_determinism_sha256": "6d132fa7544ea5d8b609689907c014b14c663cdd4999b47d921836182c38a35a"
+  },
+  "product": {
+    "front_facing_name": "PyCForge",
+    "role": "deterministic Python-to-C source transpiler",
+    "package_version": "0.14.4",
+    "converter_contract_version": "0.14.3",
+    "workspace_contract_version": "pycforge-workspace/0.2"
+  },
+  "safety": {
+    "c_toolchain_invoked": false,
+    "compiler_invoked": false,
+    "linker_invoked": false,
+    "loader_invoked": false,
+    "foreign_function_invoked": false,
+    "generated_c_compiled": false,
+    "generated_c_linked": false,
+    "generated_c_loaded": false,
+    "generated_c_executed": false
+  },
+  "phase_14e_opened": false,
+  "phase_15_started": false
+}

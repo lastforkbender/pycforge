@@ -1,0 +1,99 @@
+{
+  "schema_version": "pycforge.phase14a-release-report/0.14",
+  "release_version": "0.14.0",
+  "phase": 14,
+  "mini_phase": "14A",
+  "status": "promoted",
+  "scope_status": "sealed",
+  "tests": {
+    "discovered": 365,
+    "passed": 355,
+    "skipped": 10,
+    "failed": 0,
+    "skip_reason": "PyQt5 is unavailable in the release environment; sealed 0.12.2 offscreen-widget evidence is preserved"
+  },
+  "audits": {
+    "architecture": true,
+    "rules": true,
+    "helpers": true,
+    "containers": true,
+    "modules": true,
+    "records": true,
+    "numeric": true,
+    "determinism": true,
+    "phase_9_through_phase_14_transitions": true,
+    "determinism_sha256": "67e309271328db2031659953645769987f6654770a4395dc73261d10bee97ef0",
+    "numeric_generated_c_sha256": "3b57b1466fc4f75506301c3393456d09d38328680befe82ee7986bd9949d6812",
+    "numeric_reference_model_cases": 56,
+    "adversarial_reference_model_cases": 100014
+  },
+  "custody": {
+    "predecessor_archive": "pycforge_phase_13_v0_13_0.tar.gz",
+    "predecessor_archive_size": 963912,
+    "predecessor_archive_sha256": "36938f021db7110c590af878c748b5331ccc2d3de2f2144c3eb3b09d76fb998a",
+    "predecessor_tree_sha256": "483743b12fdd682b4b2ad488279ef243f00f0b055332096e5af09b0b01ab00a2",
+    "predecessor_converter_subtree_sha256": "16d780e9eb5861f20ef3a1132928c32353aae97f99a3da526bc42386a0871dc6",
+    "predecessor_authenticated_before_opening": true
+  },
+  "numeric_gate": {
+    "operators": ["BinOp.FloorDiv", "BinOp.Mod"],
+    "operand_category": "exact-existing-integer-like",
+    "divisor_domain": "[-9223372036854775807,-2] union [1,9223372036854775807]",
+    "direct_literal_proof_only": true,
+    "rejected_divisors": ["zero", "negative-one", "INT64_MIN", "dynamic", "calculated", "out-of-range"],
+    "facts": "fact-table/0.14",
+    "rule": "phase14.numeric.floor_arithmetic",
+    "helpers": [
+      "pycf.i64.floor_div@1.0.0",
+      "pycf.i64.floor_mod@1.0.0"
+    ],
+    "helper_registry_fingerprint": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+    "runtime_failure_channel": "none",
+    "allocation": "none",
+    "cleanup": "none",
+    "phase13_exact_compatibility": true
+  },
+  "artifacts": {
+    "wheel": {
+      "filename": "pycforge-0.14.0-py3-none-any.whl",
+      "size": 252934,
+      "sha256": "8de55533728eae00caa6381c4eb0af402ed479e4068047f5e14402cf668c0822",
+      "fixed_epoch": 1700000000,
+      "fixed_epoch_builds_compared": 2,
+      "byte_identical": true,
+      "zip_members": 115,
+      "record_entries": 115,
+      "svg_assets": 17,
+      "native_binaries": 0,
+      "metadata_version": "0.14.0",
+      "tag": "py3-none-any",
+      "isolated_install_passed": true,
+      "installed_sourcebundle_numeric_conversion_passed": true,
+      "installed_numeric_audit_passed": true,
+      "installed_linked_c_atomic_save_passed": true
+    },
+    "source_archive": {
+      "filename": "pycforge_phase_14_v0_14_0.tar.gz",
+      "fixed_epoch": 1700000000,
+      "normalized_builds_compared": 2,
+      "byte_identical": true,
+      "sha256_recorded_externally": true
+    }
+  },
+  "toolchain_custody": {
+    "product_exposes_toolchain_surface": false,
+    "compiler_invoked": false,
+    "linked": false,
+    "loaded": false,
+    "executed": false,
+    "validation": "structured C IR, independent textual conformance, and mathematical reference fixtures"
+  },
+  "platform_evidence": {
+    "release_runtime": "Python 3.12.13 on Linux",
+    "pyqt5_available": false,
+    "windows_11": "future user feedback; not claimed"
+  },
+  "release_tree_authentication": "transition/phase_14/release_fingerprint.json",
+  "broader_phase_14": "closed-pending-separate-decision-and-explicit-approval",
+  "phase_15_started": false
+}

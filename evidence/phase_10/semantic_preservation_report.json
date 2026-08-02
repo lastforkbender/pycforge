@@ -1,0 +1,18 @@
+{
+  "schema_version": "pycforge.semantic-preservation/0.10",
+  "comparison_base": "phase10-opening-checkpoint-over-sealed-phase9-semantics",
+  "representative_outputs": {
+    "calls": "c944251fc4b64cf26fd95fb9ad12d979fa28baa170a7eb48dda00afb8e68d335",
+    "control": "e0edf1d32771b27e5b04c9660bbe913d5bdc4e7068382495cdb4b8a4f59b8fe2",
+    "borrowed_strings": "72ccaf7b1b4f2224a413cc390d034d324ec62a8359d00a9544fa023ba29c23ee"
+  },
+  "candidate_matches_opening_checkpoint": true,
+  "current_helper_requirements": [],
+  "current_helper_manifest": [],
+  "supported_python_boundary_changed": false,
+  "sealed_phase9_archive": "pycforge_phase_9_v0_9_0.tar.gz",
+  "sealed_phase9_archive_sha256": "68a5bbe443513d5a40a009be8e55ca9ec513805a4dc6f8c9d5e08bdd6a4afcff",
+  "sealed_phase9_tree_sha256": "bfbb13eb764b02a6b8fb2c4ff1eb12f4249976bb1919aa85a383d6e24b4079e8",
+  "generated_c_compiled_or_executed": false,
+  "passed": true
+}

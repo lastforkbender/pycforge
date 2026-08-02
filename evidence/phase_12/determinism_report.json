@@ -1,0 +1,22 @@
+{
+  "audit": "determinism",
+  "fresh_processes": 4,
+  "module_bundle_sha256": "ab27a0bac62bd6e64025a0407637cc42a08210cd5710e3cea76eaa876e98c285",
+  "passed": true,
+  "python_patch_versions": [
+    "3.12.13",
+    "3.12.3"
+  ],
+  "release_interpreter": "3.12.13",
+  "schema_version": "pycforge.determinism-report/0.12",
+  "singleton_audit_sha256": "59863281aa1f3b4eb32c2d5065ee36efb07e99837e7d42c0e4c4ac234b8f0505",
+  "varied_environment_fields": [
+    "PYTHONHASHSEED",
+    "TZ",
+    "LC_ALL",
+    "TMPDIR",
+    "TEMP",
+    "TMP",
+    "os.cpu_count"
+  ]
+}

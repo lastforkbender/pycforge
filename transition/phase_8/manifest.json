@@ -1,0 +1,14 @@
+{
+  "phase": 8,
+  "version": "0.8.0",
+  "roadmap_revision": "3.1",
+  "required_tests": 92,
+  "regression_tests": 80,
+  "phase_tests": 12,
+  "schemas": {"c_ir": "c-ir/0.8", "generated_c": "generated-c/0.8", "conversion_plan": "conversion-plan/0.5"},
+  "rule_set": "phase8-control-flow-v0.8",
+  "non_goals": ["function calls beyond range loop recognition", "loop else", "general iteration", "dynamic truthiness", "containers", "compilation", "execution"],
+  "entry_criteria": "entry_criteria.md",
+  "gate_evidence": "gate_evidence.md",
+  "rollback_conditions": "rollback_conditions.md"
+}

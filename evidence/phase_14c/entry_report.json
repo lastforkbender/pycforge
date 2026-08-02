@@ -1,0 +1,150 @@
+{
+  "schema_version": "pycforge.phase14c-entry-report/0.14.2",
+  "release_target": "0.14.2",
+  "phase": 14,
+  "mini_phase": "14C",
+  "status": "entry-gate-passed-implementation-not-claimed",
+  "date": "2026-07-22",
+  "authorization": {
+    "explicit_user_approval": true,
+    "approval_text": "Continue to Phase 14C",
+    "approval_scope": "exact-direct-keyword-call-binding-only",
+    "dangerous_families_remain_excluded": true,
+    "phase14d_or_later_authorized_by_this_packet": false,
+    "phase15_started": false
+  },
+  "predecessor_authentication": {
+    "version": "0.14.1",
+    "source_archive": "pycforge_phase_14b_v0_14_1.tar.gz",
+    "source_archive_size": 1088259,
+    "source_archive_sha256": "30737e3a49dc3ed163be071742736f8310c2636a1dc8ac9b9b297aa8c030d2a1",
+    "canonical_release_tree_sha256": "895329a2723301de66adcb118a32308648a7993068e3ef7b5c9764914b9e2f4f",
+    "converter_subtree_sha256": "5d261abb5f7dbc480050472cac40a6b4a9539945a3d2e3211af552e094f9780d",
+    "archive_digest_matched": true,
+    "archive_tree_recomputed": true,
+    "archive_tree_matched_promoted_fingerprint": true,
+    "archive_converter_subtree_recomputed": true
+  },
+  "sealed_release_evidence": {
+    "discovered_tests": 413,
+    "passed": 403,
+    "expected_pyqt5_skips": 10,
+    "failed": 0,
+    "cumulative_audits_passed": true,
+    "wheel": "pycforge-0.14.1-py3-none-any.whl",
+    "wheel_size": 278494,
+    "wheel_sha256": "255cba6d45b6f7f2c8347f4764d37ad9858d9616f84cc93b65b07e205785a70d",
+    "release_status": "promoted"
+  },
+  "phase14c_scope": {
+    "semantic_family": "exact-static-direct-keyword-call-binding",
+    "root_kinds": [
+      "Call"
+    ],
+    "target_profile": [
+      "already-resolved-same-module-source-function",
+      "already-resolved-explicit-cross-module-source-function"
+    ],
+    "argument_profile": "zero-or-more-leading-ordinary-positionals-followed-by-one-or-more-explicit-named-keywords",
+    "formal_profile": "existing-required-positional-only-and-positional-or-keyword-parameters-without-defaults",
+    "binding_profile": "every-required-formal-exactly-once-positional-only-only-positionally",
+    "category_profile": "exact-existing-actual-to-formal-representation-match",
+    "keyword_fact_table_id": "keyword-call-binding-facts",
+    "lowering_shape": "source-order-temporaries-formal-order-references-v1",
+    "rule_families": [
+      "phase14.keyword_call.exact_binding"
+    ],
+    "source_evaluation_order": "ordinary-positional-values-then-explicit-keyword-values-in-normalized-source-order",
+    "c_call_order": "one-pure-staged-temporary-reference-per-formal-ordinal",
+    "new_python_root_kinds": 0,
+    "new_call_profiles": 1,
+    "new_c_ir_node_kinds": 0,
+    "new_helpers": 0,
+    "new_runtime_failure_channels": 0,
+    "new_allocation_ownership_or_cleanup_models": 0,
+    "new_argument_cap": null,
+    "resource_boundary": "existing-source-byte-line-token-ast-node-nesting-and-signature-ceilings"
+  },
+  "excluded_profiles": [
+    "defaults",
+    "keyword-only-parameters",
+    "variadics",
+    "starred-positional-unpacking",
+    "double-star-keyword-unpacking",
+    "range-keywords",
+    "record-constructor-keywords",
+    "target-alias-values",
+    "indirect-or-dynamic-targets",
+    "recursion",
+    "runtime-call-binding-or-typeerror-model"
+  ],
+  "prospective_contract_identities": {
+    "rule_set": "phase14-direct-keyword-calls-v0.14.2",
+    "renderer": "c-renderer-v0.14.2",
+    "keyword_binding_facts": "fact-table/0.14.2",
+    "conversion_plan": "conversion-plan/0.14.2",
+    "c_ir": "c-ir/0.14.2",
+    "generated_c": "generated-c/0.14.2",
+    "conversion_summary": "pycforge.conversion-summary/0.14.2",
+    "decision_trace": "pycforge.decision-trace/0.14.2",
+    "result_serialization": "0.5",
+    "new_public_policy_identity": null
+  },
+  "frozen_contracts": {
+    "source_bundle": "source-bundle/0.2",
+    "python_ir": "python-ir/0.4",
+    "semantic_policy": "strict-source-v1",
+    "numeric_policy": "phase14-proved-floor-arithmetic-v0.14",
+    "conditional_facts": "fact-table/0.14.1",
+    "module_policy": "phase13-explicit-record-modules-v0.13",
+    "record_policy": "phase13-immutable-automatic-records-v0.13",
+    "container_policy": "phase11-fixed-local-containers-v0.11",
+    "helper_policy": "phase10-support-templates-v0.10",
+    "helper_registry_sha256": "fcb719f07984f3b79e17262e90f93823a9a0139a60529f8486ab09f6c3663d98",
+    "target_contract": "c11-portable-fixed-v1"
+  },
+  "diagnostic_budget": {
+    "pyc2910": "retained-for-starred-unpacking-null-keywords-and-excluded-keyword-shapes",
+    "pyc2912": "exact-static-name-binding-failures-unknown-positional-only-collision-or-duplicate",
+    "existing_target_signature_arity_category_and_recursion_precedence_required": true,
+    "new_diagnostic_families_maximum": 1
+  },
+  "budgets": {
+    "keyword_fact_table_families": 1,
+    "new_rule_families_maximum": 1,
+    "cumulative_lowerer_line_ceiling": 1000,
+    "opening_central_lowerer_lines": 957,
+    "isolated_call_binding_component_required": true,
+    "linear_analysis_validation_and_lowering_required": true,
+    "two_distinct_order_vectors_required": true,
+    "historical_0_14_1_exact_compatibility_required": true
+  },
+  "conversion_debt": {
+    "register": "evidence/phase_14c/conversion_debt.json",
+    "items": 14,
+    "high": 9,
+    "extreme": 5,
+    "unowned_high_or_extreme": 0,
+    "items_without_containment": 0,
+    "silent_approximations": 0,
+    "active_phase14c_item": "DEBT-EXPANDED-CALL-BINDING",
+    "neighboring_items_opened": 0
+  },
+  "entry_artifact_validation": {
+    "json_parse_required": true,
+    "markdown_structure_required": true,
+    "phase14a_or_phase14b_historical_files_modified_by_packet": false,
+    "converter_code_modified_by_packet": false,
+    "tests_modified_by_packet": false,
+    "manifest_or_promotion_gate_created": false,
+    "compiler_linker_loader_or_execution_invoked": false
+  },
+  "promotion": {
+    "implementation_complete": false,
+    "vertical_evidence_complete": false,
+    "hardening_complete": false,
+    "packaging_complete": false,
+    "release_promoted": false,
+    "windows_11_execution_claimed": false
+  }
+}

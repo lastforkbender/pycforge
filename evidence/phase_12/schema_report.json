@@ -1,0 +1,29 @@
+{
+  "c_ir": "c-ir/0.12",
+  "container_facts": "fact-table/0.11",
+  "container_policy": "phase11-fixed-local-containers-v0.11",
+  "conversion_plan": "conversion-plan/0.12",
+  "conversion_summary": "pycforge.conversion-summary/0.12",
+  "decision_trace": "pycforge.decision-trace/0.12",
+  "generated_c": "generated-c/0.12",
+  "helper_policy": "phase10-support-templates-v0.10",
+  "module_facts": "fact-table/0.12",
+  "module_policy": "phase12-explicit-sourcebundle-modules-v0.12",
+  "package_version": "0.12.0",
+  "passed": true,
+  "published_artifact_schema": "generated-c/0.12",
+  "published_c_ir_schema": "c-ir/0.12",
+  "published_module_fact_schemas": [
+    "fact-table/0.12"
+  ],
+  "published_python_ir_schema": "python-ir/0.4",
+  "published_result_schema": "0.5",
+  "published_summary_schema": "pycforge.conversion-summary/0.12",
+  "published_trace_schema": "pycforge.decision-trace/0.12",
+  "python_ir": "python-ir/0.4",
+  "renderer": "c-renderer-v0.12",
+  "result_serialization": "0.5",
+  "rule_set": "phase12-explicit-module-bundles-v0.12",
+  "schema_version": "pycforge.schema-report/0.12",
+  "source_bundle": "source-bundle/0.2"
+}

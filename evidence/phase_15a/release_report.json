@@ -1,0 +1,126 @@
+{
+  "schema": "pycforge.phase15a-release-report/0.15.0",
+  "phase": "15A",
+  "release_version": "0.15.0",
+  "converter_contract_version": "0.14.3",
+  "workspace_contract_version": "pycforge-workspace/0.3",
+  "worker_protocol_version": "pycforge.worker-protocol/0.1",
+  "settings_schema_version": 1,
+  "status": "promoted",
+  "scope_status": "sealed",
+  "date": "2026-07-26",
+  "tests": {
+    "discovered": 670,
+    "passed": 652,
+    "skipped": 18,
+    "failed": 0,
+    "skip_reasons": {
+      "PyQt5 unavailable": 9,
+      "real PyQt5 widgets unavailable": 4,
+      "older sealed-custody artifacts unavailable": 5
+    }
+  },
+  "predecessor": {
+    "version": "0.14.4",
+    "archive": "pycforge_checkpoint_e_v0_14_4.tar.gz",
+    "archive_root": "pycforge_checkpoint_e_v0_14_4",
+    "archive_size": 1398824,
+    "archive_sha256": "b609c761748a4caf96a42df7ba99dc2e74416fb6c880a2ac547f181f5313c5c0",
+    "tree_sha256": "7bc3959111808fe9ac15ba351798f62e024714e600edc4e6eeecc78a8b14138a",
+    "wheel": "pycforge-0.14.4-py3-none-any.whl",
+    "wheel_size": 360994,
+    "wheel_sha256": "c1bcafe638cb07b2bc87cb869ab2bbf2fbff20c8cc073b5716b189b075e5ccd6",
+    "authenticated_before_extraction": true
+  },
+  "converter_custody": {
+    "subtree_files": 92,
+    "subtree_sha256": "a45bc2c31b954f9856c8eab36e95f68b086d5fdd682d2cf47ba2186887743124",
+    "modified": false,
+    "direct_isolated_exact_cases": 2,
+    "direct_isolated_mismatches": 0
+  },
+  "supervision": {
+    "spawn_only": true,
+    "maximum_active_workers": 1,
+    "maximum_pending_requests": 1,
+    "cooperative_cancel_grace_seconds": 0.75,
+    "forced_reclamation_seconds": 2.0,
+    "latest_pending_start_seconds": 0.25,
+    "stress_cycles": 100,
+    "stress_canceled": 100,
+    "stress_started_workers": 10,
+    "stress_reaped_workers": 10,
+    "stress_maximum_simultaneous_workers": 1,
+    "orphan_workers": 0
+  },
+  "protocol": {
+    "schema": "pycforge.worker-protocol/0.1",
+    "canonical_json": true,
+    "byte_connections_only": true,
+    "pickle_allowed": false,
+    "object_connection_transport_allowed": false,
+    "bounded_request_result_control_progress_frames": true,
+    "malformed_or_oversized_fails_closed": true
+  },
+  "responsiveness": {
+    "revision_index_off_gui_thread": true,
+    "file_io_and_hashing_off_gui_thread": true,
+    "literal_search_off_gui_thread": true,
+    "output_position_index_off_gui_thread": true,
+    "source_edits_coalesced": true,
+    "marker_projection_bounded": true,
+    "generated_c_projection_incremental": true,
+    "hidden_output_deferred": true
+  },
+  "maximum_input_gate": {
+    "aggregate_utf8_source_bytes": 1000000,
+    "aggregate_source_lines": 100000,
+    "tokens": 250000,
+    "ast_nodes": 100000,
+    "exact_byte_ceiling_frame_passed": true,
+    "one_byte_over_rejected": true,
+    "headless_gate_passed": true
+  },
+  "platform_evidence": {
+    "headless_linux": true,
+    "pyqt5_available": false,
+    "visible_pyqt": false,
+    "visible_windows_11": false,
+    "visible_linux_desktop": false,
+    "phase_15d_required": true
+  },
+  "product_boundary": {
+    "front_facing_name": "PyCForge",
+    "role": "deterministic Python-to-C source transpiler",
+    "generated_c_read_only": true,
+    "compiler_surface": false,
+    "runner_surface": false,
+    "debugger_surface": false,
+    "terminal_surface": false,
+    "toolchain_surface": false,
+    "plugin_surface": false,
+    "project_explorer_surface": false,
+    "host_discovery_surface": false
+  },
+  "promotion": {
+    "phase_15a_implemented": true,
+    "phase_15a_validated": true,
+    "phase_15a_promoted": true,
+    "phase_15a_sealed": true,
+    "packaging_validated": true,
+    "c_toolchain_invoked": false,
+    "generated_c_compiled": false,
+    "generated_c_linked": false,
+    "generated_c_loaded": false,
+    "generated_c_executed": false
+  },
+  "phase_15b": {
+    "status": "not-opened"
+  },
+  "phase_15c": {
+    "status": "not-opened"
+  },
+  "phase_15d": {
+    "status": "not-opened"
+  }
+}

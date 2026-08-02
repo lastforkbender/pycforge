@@ -1,0 +1,60 @@
+{
+  "schema": "pycforge.phase15c-action-evidence/1",
+  "action_registry": "pycforge.action-registry/0.2",
+  "visual_system": "pycforge.visual-system/0.2",
+  "workspace": "pycforge-workspace/0.5",
+  "actions": 48,
+  "static_actions": 47,
+  "bounded_dynamic_action_templates": 1,
+  "declared_surfaces": 18,
+  "persistent_qaction_constructor_owner": "pycforge/ide/qt_actions.py",
+  "main_menu_surfaces": [
+    "menu.file",
+    "menu.edit",
+    "menu.view",
+    "menu.navigate",
+    "menu.conversion"
+  ],
+  "context_surfaces": [
+    "context.bundle_search",
+    "context.conversion_history",
+    "context.diagnostics",
+    "context.document_tabs",
+    "context.generated_c",
+    "context.inspector",
+    "context.mappings",
+    "context.python_source",
+    "context.read_only_text",
+    "context.source_bundle",
+    "context.text_input"
+  ],
+  "generated_c_context_actions": [
+    "edit.copy",
+    "edit.select_all",
+    "search.find"
+  ],
+  "generated_c_mutation_actions": 0,
+  "bounded_dynamic_groups": [
+    "recent_python"
+  ],
+  "phase15c_action_additions": 15,
+  "svg_assets": 55,
+  "phase15c_svg_additions": 14,
+  "command_palette_declared_actions_only": true,
+  "command_palette_free_form_execution": false,
+  "source_mutations_widget_scoped": true,
+  "keyboard_contract_declared": true,
+  "mnemonics_declared": true,
+  "accessible_names_declared": true,
+  "real_pyqt_widgets_exercised": true,
+  "offscreen_pyqt_widgets_exercised": true,
+  "qpa_platform": "offscreen",
+  "qapplication_instances": 1,
+  "workspace_test_cases": 18,
+  "workspace_test_failures": 0,
+  "workspace_test_errors": 0,
+  "workspace_test_skips": 0,
+  "visible_platform_certification": false,
+  "status": "promoted-and-sealed",
+  "promotion_eligible": true
+}

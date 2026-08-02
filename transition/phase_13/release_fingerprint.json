@@ -1,0 +1,42 @@
+{
+  "algorithm": "sha256",
+  "domain": "pycforge-phase-13-release-tree-v1",
+  "status": "promoted",
+  "value": "483743b12fdd682b4b2ad488279ef243f00f0b055332096e5af09b0b01ab00a2",
+  "excludes": [
+    "transition/phase_13/release_fingerprint.json",
+    "__pycache__ directories",
+    ".pytest_cache directories",
+    "build directories",
+    "dist directories",
+    "*.pyc",
+    "*.pyo"
+  ],
+  "predecessor_version": "0.12.2",
+  "predecessor_archive_sha256": "6a603684001f2cb2e9365d7e9b318f1a95dbe95b2cb36cf8821c30403c1754d0",
+  "predecessor_tree_sha256": "434981decfd2b2fc2b344f5b9a3b37377396376c2e0a8c8ed00bb9fa9077d765",
+  "predecessor_converter_subtree_sha256": "4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51",
+  "reseeded_after_abandoned_candidate": true,
+  "tests": {
+    "discovered": 335,
+    "passed": 325,
+    "skipped": 10,
+    "failed": 0
+  },
+  "artifacts": {
+    "wheel": {
+      "filename": "pycforge-0.13.0-py3-none-any.whl",
+      "size": 236052,
+      "sha256": "90691b4534388e76e6bdcb83766435b3ad53f424802b0e7624af5d89bb2c1fb0",
+      "fixed_epoch_builds_byte_identical": true,
+      "isolated_install_passed": true
+    },
+    "source_archive": {
+      "filename": "pycforge_phase_13_v0_13_0.tar.gz",
+      "normalized_builds_byte_identical": true,
+      "sha256_recorded_externally": true
+    }
+  },
+  "promoted_candidate_toolchain_invoked": false,
+  "phase_14_started": false
+}

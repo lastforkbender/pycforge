@@ -1,0 +1,18 @@
+{
+  "schema_version": "pycforge.mapping-report/0.9",
+  "covered": [
+    "function definitions",
+    "synthetic prototypes",
+    "prototype and definition parameters",
+    "argument expressions and argument temporaries",
+    "callee and call occurrences",
+    "call-result temporaries",
+    "returns and local declarations",
+    "branches, loops, range bounds, and comparison temporaries"
+  ],
+  "provenance_derived": true,
+  "rendered_string_search_used": false,
+  "byte_and_line_ranges_validated": true,
+  "ruleplan_attribution_on_calls": true,
+  "passed": true
+}

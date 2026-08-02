@@ -1,0 +1,27 @@
+{
+  "accepted_forms": [
+    "dict-lookup",
+    "list-index",
+    "tuple-loop"
+  ],
+  "aliasing": "rejected",
+  "allocation": "none",
+  "audit": "containers",
+  "capacity_limit": 64,
+  "cleanup": "not-required",
+  "generated_c_compiled_or_executed": false,
+  "helper_manifest_empty": true,
+  "passed": true,
+  "phase10_helper_registry_fingerprint_preserved": true,
+  "rejection_codes": [
+    "PYC3401",
+    "PYC3402",
+    "PYC3403",
+    "PYC3404",
+    "PYC3405",
+    "PYC3406",
+    "PYC3407"
+  ],
+  "runtime_bounds_or_hash_failure_channel": "none; statically proved",
+  "schema_version": "pycforge.container-report/0.12"
+}

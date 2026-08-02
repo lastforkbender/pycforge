@@ -1,0 +1,13 @@
+{
+  "coverage_intent": [
+    "CLI parity",
+    "artifact compatibility",
+    "atomic save",
+    "determinism",
+    "architecture",
+    "observer separation"
+  ],
+  "failed": 0,
+  "passed": 22,
+  "tests": 22
+}

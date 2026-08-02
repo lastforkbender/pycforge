@@ -1,0 +1,122 @@
+PyCForge Phase 10 v0.10.0 Project Handoff
+==========================================
+
+Status
+------
+
+Phase 10 is complete and promoted as PyCForge 0.10.0. The release delivers the
+bounded support-template infrastructure required by Architecture Revision 3.1
+and its active Revision 3.2 addendum. The cumulative supported Python boundary
+is unchanged from Phase 9.
+
+The sealed Phase 9 release was not modified. Its exact rollback identities are:
+
+* archive: pycforge_phase_9_v0_9_0.tar.gz
+* archive SHA-256: 68a5bbe443513d5a40a009be8e55ca9ec513805a4dc6f8c9d5e08bdd6a4afcff
+* sealed tree SHA-256: bfbb13eb764b02a6b8fb2c4ff1eb12f4249976bb1919aa85a383d6e24b4079e8
+
+The supplied Phase 10 opening checkpoint was authenticated before development:
+
+* opening archive SHA-256: 75405ec38815be29b287b838ba0ff866dfe6ac1dc8cd6124551b2637a1065904
+* opening tree SHA-256: f9ff0610c084610d917e4a11a68b83a95ab6aea8746276f3e6771c3b64e5fd18
+* opening tests: 143 passed
+
+Roadmap custody
+---------------
+
+The full authoritative roadmap and addendum remain packaged:
+
+* Architecture Revision 3.1 SHA-256:
+  d05963984105466ae7df4c0e25941865fb0e55181059e3c95e3fde42556fd8e3
+* Revision 3.2 addendum SHA-256:
+  93b228528a10895fdbdce7b6934d422e7eddd1a79b409bdbc15ea6677e5ab8c6
+
+Historical whole-tree validators remain scoped to their sealed historical
+trees. Later cumulative trees prove compatibility through the complete
+regression suite, predecessor identities, and the current-phase validator.
+
+Phase 10 delivery
+-----------------
+
+The accepted entry-gate decisions are exact, genuine, and non-promoting:
+
+* pycf.i64.floor_div@1.0.0
+* pycf.i64.floor_mod@1.0.0
+
+They document prospective bounded-int64 Python/C rounding obligations,
+caller-proved divisor and overflow preconditions, scalar-by-value ownership,
+no allocation or cleanup, no runtime failure channel, and eligibility only in a
+separate numeric-semantics mini-phase no earlier than Phase 14. They authorize
+infrastructure and fixtures only. Python floor division and modulo remain
+unsupported.
+
+The release provides:
+
+* frozen project-owned helper registry phase10-support-templates-v0.10;
+* exact interface pycforge-helper/1 and exact semantic-version references;
+* complete dependency closure, deduplication, deterministic topological order,
+  cycle and missing-dependency diagnostics, and unused-helper exclusion;
+* Target C Source Contract, interface, ownership/lifetime, failure, provenance,
+  static-linkage, identifier, structured-C-IR, and rendered-text validation;
+* structured C IR factories only, with no raw-text or user-template path;
+* deterministic manifests, registry/asset/closure fingerprints, conversion
+  summaries, Full-trace evidence, and PYC33xx helper diagnostics;
+* cancellation without a partial helper plan, artifact, or generated source;
+* exact helper golden sources and source/installed helper audits;
+* the completed Python-first, hidden-read-only-C, non-modal-progress workspace
+  gate from the opening checkpoint.
+
+Current promoted RulePlans declare no helper requirements. The final helper
+manifest is empty for the existing supported subset, and representative
+generated C remains byte-identical to the opening checkpoint.
+
+Schema identities
+-----------------
+
+Phase 10 publishes generated-c/0.10 artifacts,
+pycforge.conversion-summary/0.10 summaries,
+pycforge.decision-trace/0.10 traces, and result serialization 0.3. With the
+current empty helper manifest, the inner structured representation remains
+c-ir/0.9. Actual helper assembly advances that inner representation to
+c-ir/0.10.
+
+Release evidence
+----------------
+
+* tests: 154 passed (143 opening-checkpoint regressions + 11 Phase 10 tests)
+* audits: architecture, rules, helpers, determinism, and transition passed
+* actual widget smoke: PyQt5 5.15.11 / Qt 5.15.14, offscreen, passed
+* wheel: pycforge-0.10.0-py3-none-any.whl, 106869 bytes
+* wheel SHA-256: 042285b57d93ede6443a6ae700283f639ac3957e7ebececd689f2ad25e87b5e7
+* two fixed-epoch wheel builds: byte-identical
+* isolated wheel install, conversion, schema checks, and installed helper audit:
+  passed
+
+Generated C and helper sources were validated structurally and textually only.
+They were not compiled, linked, loaded, or executed.
+
+Validation
+----------
+
+Run from the release root:
+
+    python -m unittest discover -s tests
+    python tools/validate_phase10.py
+    python -m pycforge audit architecture
+    python -m pycforge audit rules
+    python -m pycforge audit helpers
+    python -m pycforge audit determinism
+    python -m pycforge audit transition --phase phase_10
+
+Next objective
+--------------
+
+Phase 11 bounded containers has not started. Before any container form is
+implemented, approve its representation and failure policy. Each admitted form
+must define capacity, aliasing, ownership/lifetime, mutability or immutability,
+ordering, indexing and negative-index behavior, bounds and allocation failure,
+cleanup, element constraints, and exact helper requirements. Preserve the
+single deterministic translation-unit architecture until a genuine boundary
+requires more. Do not introduce broad import/library semantics, a Python
+runtime, a broad helper library, dynamic resizing, or multi-file architecture
+by convenience.

@@ -1,0 +1,11 @@
+{
+  "schema_version": "pycforge.test-summary/0.10",
+  "runner": "python -m unittest discover -s tests",
+  "tests_run": 154,
+  "opening_checkpoint_regressions": 143,
+  "phase_10_tests": 11,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "generated_c_compiled_or_executed": false
+}

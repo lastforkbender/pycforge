@@ -1,0 +1,12 @@
+{
+  "schema_version": "pycforge.test-summary/0.9",
+  "runner": "python -m unittest discover -s tests",
+  "tests_run": 139,
+  "phase_0_to_8_regressions": 92,
+  "review_hardening": 17,
+  "phase_9": 30,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "generated_c_compiled_or_executed": false
+}

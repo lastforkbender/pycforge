@@ -1,0 +1,19 @@
+{
+  "schema_version": "pycforge.progress-observer-report/0.1",
+  "event_type": "immutable ConversionProgress",
+  "states": [
+    "pipeline-ready",
+    "stage-entered",
+    "stage-completed"
+  ],
+  "stage_counts_are_elapsed_time_percentages": false,
+  "observer_failure_changes_result": false,
+  "observer_failure_changes_artifact_fingerprint": false,
+  "invalid_observer_changes_result": false,
+  "late_request_progress_published": false,
+  "ui_delay_milliseconds": 180,
+  "popup_used": false,
+  "pyqt5_runtime_smoke": "not-run-optional-dependency-unavailable",
+  "controller_and_static_widget_contract_tests_passed": true,
+  "passed": true
+}

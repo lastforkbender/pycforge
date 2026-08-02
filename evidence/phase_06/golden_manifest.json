@@ -1,0 +1,13 @@
+{
+  "accepted": true,
+  "fixture": "fixtures/first_milestone/add.py",
+  "golden": "fixtures/first_milestone/expected.c",
+  "output_fingerprint": {
+    "algorithm": "sha256",
+    "canonicalization_version": "canonical-json-v1",
+    "domain": "generated-output",
+    "schema_version": "0.1",
+    "value": "14c1b8fb562a405b7956396d8dc6bd745c1a4c71eedbe72bfb08db70f6061dd5"
+  },
+  "schema": "pycforge.golden-manifest/0.6"
+}

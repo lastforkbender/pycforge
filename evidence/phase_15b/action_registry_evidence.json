@@ -1,0 +1,40 @@
+{
+  "schema": "pycforge.phase15b-action-evidence/1",
+  "action_registry": "pycforge.action-registry/0.1",
+  "workspace": "pycforge-workspace/0.4",
+  "actions": 33,
+  "persistent_qaction_constructor_owner": "pycforge/ide/qt_actions.py",
+  "main_menu_surfaces": [
+    "menu.file",
+    "menu.edit",
+    "menu.view",
+    "menu.conversion"
+  ],
+  "context_surfaces": [
+    "context.diagnostics",
+    "context.generated_c",
+    "context.inspector",
+    "context.mappings",
+    "context.python_source",
+    "context.read_only_text",
+    "context.source_bundle",
+    "context.text_input"
+  ],
+  "generated_c_context_actions": [
+    "edit.copy",
+    "edit.select_all",
+    "search.find"
+  ],
+  "generated_c_mutation_actions": 0,
+  "bounded_dynamic_groups": [
+    "recent_python"
+  ],
+  "native_backed_interaction": true,
+  "scroll_area_context_coordinates": "viewport-to-global",
+  "keyboard_contract_declared": true,
+  "mnemonics_declared": true,
+  "accessible_names_declared": true,
+  "pending_identity_save_c_disabled": true,
+  "cancel_requested_diagnostics_current": false,
+  "status": "supporting-static-contract-passed"
+}

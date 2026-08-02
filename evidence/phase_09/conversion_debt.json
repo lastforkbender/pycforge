@@ -1,0 +1,31 @@
+{
+  "schema_version": "pycforge.conversion-debt/0.9",
+  "items": [
+    {
+      "id": "DEBT-INT-RANGE",
+      "status": "explicit-bounded-contract",
+      "description": "Python arbitrary-precision integers map only inside the declared signed-int64 domain; checked arithmetic helpers remain deferred."
+    },
+    {
+      "id": "DEBT-FAILURE-MODEL",
+      "status": "unsupported-outside-selected-domain",
+      "description": "General Python exception and arithmetic failure equivalence remains outside the Phase 9 subset."
+    },
+    {
+      "id": "DEBT-SHORT-CIRCUIT-CALL-TEMP",
+      "status": "clean-rejection",
+      "description": "Calls requiring eager temporaries in Boolean or later chained-comparison operands reject pending a conditional-temporary rule."
+    },
+    {
+      "id": "DEBT-RECURSION",
+      "status": "clean-rejection",
+      "description": "Direct and mutual recursion are detected and rejected in Phase 9."
+    },
+    {
+      "id": "DEBT-STRING-RUNTIME",
+      "status": "explicit-borrowed-boundary",
+      "description": "Only immutable UTF-8 literals and borrowed const-char-pointer calls are selected; allocation and cleanup helpers are deferred."
+    }
+  ],
+  "silent_approximations": 0
+}

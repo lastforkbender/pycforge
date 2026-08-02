@@ -1,0 +1,15 @@
+{
+  "combined_run_note": "The hosting environment imposed a subprocess ceiling during one combined invocation; both groups passed independently in fresh invocations.",
+  "groups": [
+    {
+      "command": "python -m pytest -q tests/test_phase0.py ... tests/test_phase5.py",
+      "passed": 58
+    },
+    {
+      "command": "python -m pytest -q tests/test_phase6.py",
+      "passed": 12
+    }
+  ],
+  "schema": "pycforge.test-summary/0.6",
+  "total_passed": 70
+}

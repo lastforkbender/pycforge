@@ -1,0 +1,40 @@
+{
+  "release": "workspace-hardening",
+  "version": "0.12.2",
+  "status": "promoted",
+  "phase": 12,
+  "opens_new_converter_phase": false,
+  "workspace_contract": "pycforge-workspace/0.1",
+  "settings_schema_version": 1,
+  "converter_contract_status": "frozen-at-phase-12-v0.12.0",
+  "predecessor_version": "0.12.1",
+  "predecessor_archive": "pycforge_phase_12_1_v0_12_1.tar.gz",
+  "predecessor_archive_sha256": "5fd2231024a57c9ca736991e2ca90f645357c1d4cca69dfcf3bd53d1860d507e",
+  "predecessor_tree_sha256": "aed47ffbf4e17aebccfe571d506856dc9cf497308e1769f7db7597089a873efb",
+  "predecessor_converter_tree_sha256": "4d7676a46105652efd13efb699d00e7a39a4b1bfd7ae7daad32c22702fd41b51",
+  "validator": "tools/validate_pycforge_workspace_0_12_2.py",
+  "widget_smoke": "tools/smoke_pycforge_workspace_0_12_2.py",
+  "test_gate": "all-discovered-tests-must-pass-with-real-PyQt5",
+  "required_corrections": [
+    "semantic revision retires every in-flight conversion generation",
+    "document save destinations validate before atomic filesystem writes",
+    "unexpected worker and submission failures leave converting state",
+    "pending document identity commits before generated-C save",
+    "explicit accessible document reorder controls",
+    "UTF-16-correct find-and-replace navigation",
+    "single unambiguous keyboard replace path",
+    "keyboard-operable accessible quantum visibility rail",
+    "versioned typed failure-tolerant presentation settings",
+    "v0.12.2-specific actual-widget smoke at multiple scale factors"
+  ],
+  "required_safety_properties": [
+    "optional PyQt5 dependency and headless-safe imports",
+    "closed one-through-64 document bundle",
+    "bundle-generation late-result suppression including source reversion",
+    "generated C always read-only in the workspace",
+    "fresh-result-only atomic linked C save",
+    "vector-only self-contained local visual assets",
+    "no compile, link, load, run, debug, terminal, or toolchain action"
+  ],
+  "current_tree_sha256_embedded": false
+}
