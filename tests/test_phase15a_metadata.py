@@ -33,22 +33,32 @@ class Phase15AMetadataTests(unittest.TestCase):
         self.assertEqual(WORKSPACE_CONTRACT_VERSION, "pycforge-workspace/0.5")
         self.assertEqual(PROTOCOL_SCHEMA, "pycforge.worker-protocol/0.1")
 
-    def test_current_docs_name_phase15c_and_preserve_transpiler_boundary(self) -> None:
+    def test_public_readme_and_current_state_preserve_product_boundary(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         current = (ROOT / "CURRENT_STATE.md").read_text(encoding="utf-8")
         for text in (readme, current):
             self.assertIn("PyCForge", text)
-            self.assertIn("Phase 15A", text)
             self.assertIn("source transpiler", text)
-            self.assertIn("pycforge.worker-protocol/0.1", text)
-        self.assertIn("0.15.2", readme)
-        self.assertIn("pycforge-workspace/0.5", readme)
-        self.assertIn("pycforge.action-registry/0.2", readme)
-        self.assertIn("pycforge.visual-system/0.2", readme)
-        self.assertIn("Phase 15B", readme)
-        self.assertIn("Phase 15C", readme)
-        self.assertIn("Phase 15D", readme)
-        self.assertIn("unopened", readme.casefold())
+
+        for value in (
+            "Phase 15A",
+            "pycforge.worker-protocol/0.1",
+            "0.15.2",
+            "pycforge-workspace/0.5",
+            "pycforge.action-registry/0.2",
+            "pycforge.visual-system/0.2",
+            "Phase 15B",
+            "Phase 15C",
+            "Phase 15D",
+        ):
+            self.assertIn(value, current)
+        self.assertIn("unopened", current.casefold())
+
+        self.assertIn("python -m pip install pycforge", readme)
+        self.assertIn("PyQt5 and the desktop application as required", readme)
+        self.assertIn("pycforge-workspace", readme)
+        self.assertIn("Programmer's Conversion Guide", readme)
+        self.assertIn("pycforge-workspace-0.15.2.png", readme)
 
     def test_transition_and_evidence_inventory_is_complete(self) -> None:
         required = (
